@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'DB-Adman-X';
+  src: url('DB-Adman-X.eot');
+  src: url('DB-Adman-X.woff2') format('woff2'),
+       url('DB-Adman-X.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DBAdmanXRegular';
+  src: url('DBAdmanXRegular.woff') format('woff'),
+       url('DBAdmanXRegular.ttf') format('truetype'),
+       url('DBAdmanXRegular.svg#DBAdmanXRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

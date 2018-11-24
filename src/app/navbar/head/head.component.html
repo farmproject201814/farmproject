@@ -1,0 +1,134 @@
+<!-- ก่อนล็อกอิน -->
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top " style="background-color: #003171" *ngIf="!isLogin">
+  <div class="container-fluid">
+    <a routerLink="/"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+    <a class="navbar-brand text" routerLink="/">
+      <h2><b>ระบบการจัดการสหกรณ์</b></h2>
+    </a>
+
+    <div class="collapse navbar-collapse inline-block" id="navbarshead">
+      <div class="navbar-expand-ml navbar-nav ml-auto">
+        <div class="navbar-nav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-item nav-link" routerLink="/login">
+                <h4><i class="fas fa-sign-in-alt" style="margin-right: 5px"></i><b>เข้าสู่ระบบ</b></h4>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-item nav-link" routerLink="/register">
+                <h4><i class="material-icons" style="margin-right: 5px">group_add</i><b>สมัครสมาชิก</b></h4>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- หลังล็อกอิน -->
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top " style="background-color: #003171" *ngIf="isLogin">
+  <!--*ngIf="isLogin"-->
+  <div class="container-fluid">
+
+    <a href="/"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+    <a class="navbar-brand text" routerLink="/">
+      <h2><b>ระบบการตัดเกรดเนื้อโค</b></h2>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarshead" aria-controls="navbarshead"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse inline-block " id="navbarshead">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-item nav-link" routerLink="/dashboard">
+            <h4><i class="material-icons" style="margin-right: 5px">home</i><b>หน้าแรก</b></h4>
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-item nav-link" routerLink="/aboutcattle">
+            <h4><i class="material-icons" style="margin-right: 5px">format_list_bulleted</i><b>รายการซากโค</b></h4>
+          </a>
+        </li>
+
+        <!-- <li class="nav-item ">
+          <a class="nav-item nav-link" routerLink="/grading">
+            <h4>-ตัดเกรด-</h4>
+          </a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-item nav-link" routerLink="/graded">
+            <h4>-บันทึกเกรด-</h4>
+          </a>
+        </li> -->
+
+        <li class="nav-item active">
+          <a class="nav-item nav-link" routerLink="/sumgrade">
+            <h4><i class="material-icons" style="margin-right: 5px">assignment_turned_in</i><b>สรุปเกรด</b></h4>
+          </a>
+        </li>
+
+        <!-- <li class="nav-item">
+          <a class="nav-item nav-link" routerLink="/sumgraded">
+            <h4>-แสดงสรุปเกรด-</h4>
+          </a>
+        </li> -->
+
+        <li class="nav-item active">
+          <a class="nav-item nav-link" routerLink="/history">
+            <h4><i class="material-icons" style="margin-right: 5px">history</i><b>ประวัติการตัดเกรด</b></h4>
+          </a>
+        </li>
+
+        <!-- <li class="nav-item ">
+          <a class="nav-item nav-link" routerLink="/report">
+            <h4>-ออกรายงาน-</h4>
+          </a>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-item nav-link" routerLink="/addcattle">
+            <h4>-เพิ่มข้อมูลโค-</h4>
+          </a>
+        </li> -->
+
+        <li class="nav-item active">
+          <a class="nav-item nav-link" routerLink="/setting">
+            <h4><i class="fa fa-cogs" style="margin-right: 3px"></i><b>การตั้งค่า</b></h4>
+          </a>
+        </li>
+      </ul>
+
+
+      <div class="navbar-expand-ml navbar-nav">
+        <div class="dropdown">
+          <button class="dropbtn" style="width: auto;text-align: right">
+            <i class="fa fa-bell" style="margin-right: 3px"></i>
+            <b>แจ้งเตือน</b>
+            <i class="fa fa-caret-down" style="margin-left: 3px"></i></button>
+          <div class="dropdown-content" style="width: 180px">
+            <a routerLink="/"><i class="fa fa-cogs"></i> ตั้งค่าแจ้งเตือน</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn" style="width:auto;text-align: right">
+            <i class="material-icons">person</i>
+            <b>คุณ {{user}}</b>
+            <i class="fa fa-caret-down" style="margin-left: 3px"></i>
+          </button>
+          <div class="dropdown-content" style="width: 180px">
+            <a routerLink="/editprofile"><i class="fas fa-user-edit" style="margin-right: 3px" ></i>ข้อมูลผู้ใช้งาน</a>
+            <!-- <a routerLink="/setting"><i class="fa fa-cogs" style="margin-right: 3px"></i>ตั้งค่าระบบ</a> -->
+            <a routerLink="/" (click)="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 3px; vertical-align: -1px"></i>ออกจากระบบ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

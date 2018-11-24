@@ -1,0 +1,29 @@
+.navbar-text{
+  font-size: 1em;
+}
+
+.row{
+  width: 100%;
+}
+
+.navbar{
+  height: 65px;
+}
+
+.navbar-icon{
+  /* min-height: 50px; */
+  /* padding: 0 15px 5px; */
+  height: 50px;
+  width: 50px;
+  margin-left: 5px;
+}
+
+.far{
+  font-size: 0.8rem;
+}
+.fas{
+  font-size: 0.8rem;
+}
+.fab{
+  font-size: 0.8rem;
+}

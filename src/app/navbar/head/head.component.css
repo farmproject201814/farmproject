@@ -1,0 +1,135 @@
+.navbar-icon{
+  /* min-height: 50px; */
+  /* padding: 0 15px 5px; */
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
+}
+
+.navbar{
+  height: 65px;
+}
+
+.material-icons{
+  vertical-align: -5px;
+  font-size: 1.45rem;
+}
+.fas{
+  font-size: 1rem;
+  vertical-align: 1px;
+}
+.fa{
+  font-size: 1rem;
+  vertical-align: -1px;
+}
+
+.btn{
+  font-size: 1.2em;
+  width: 150px;
+}
+
+.text{
+  padding-top: 15px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #003171;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding-top: 18px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+
+li a:hover {
+  transition: all 0.5s ease;
+  background-color: rgb(0, 110, 255);
+}
+
+.dropbtn {
+  background-color: #003171;
+  color: white;
+  width: 100%;
+  vertical-align: 20px;
+  padding-top: 18px;
+  padding-bottom: 15px;
+  font-size: 23px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #003171 ;
+  width: auto;
+  margin-top: -2px;
+}
+
+.dropdown-content a {
+  display: block;
+  color: white;
+  font-size: 22px;
+  padding: 13px 20px;
+  text-decoration: none;
+  text-align: center;
+  width: auto;
+}
+
+.dropdown-content a:hover {
+  background-color:rgb(0, 86, 199);
+  transition: all 0.5s ease;
+  width: auto;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:rgb(0, 110, 255);
+  transition: all 0.5s ease;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  width: 100px;
+  /* margin-top: -2px;
+  margin-left: -1px; */
+  padding: 0;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+  top: 0;
+  left: 100%;
+  width: 100px;
+  /* margin-top: -2px;
+  margin-left: -2px; */
+  padding: 0;
+  background-color: #003171;
+}

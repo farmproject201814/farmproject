@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+@font-face {
+  font-family: "DBadminX";
+  src: url("../src/DBadminX/DB-Adman-X.eot");
+  src:
+  url("../src/DBadminX/DBAdmanXRegular.woff") format("woff"),
+  url("../src/DBadminX/DB-Adman-X.woff2") format("woff2"),
+  url("../src/DBadminX/DBAdmanXRegular.ttf") format("ttf"),
+  url("../src/DBadminX/DBAdmanXRegular.svg#filename") format("svg");
+}
+
+*{
+  /* font-family: 'Mitr', sans-serif; */
+  /* font-family: 'Kanit', sans-serif; */
+  /* font-family: 'Quark-Light', sans-serif; */
+  /* font-family: 'Quark-Bold', sans-serif; */
+  /* font-family: 'ThaiSansLite', Arial, sans-serif; */
+  font-family: 'DBadminX', Arial, sans-serif;
+  /* font-weight:normal;
+  font-style:normal; */
+}
