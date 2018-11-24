@@ -17,7 +17,8 @@ import { BeefgradingComponent } from './beefgrading/beefgrading.component';
 import { HeadComponent } from './navbar/head/head.component';
 import { FootComponent } from './navbar/foot/foot.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Menu1Component } from './storehouse/menu1/menu1.component';
+import { PageComponent } from './storehouse/page/page.component';
+import { Menu1Component } from './storehouse/page/menu1/menu1.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { Menu1Component } from './storehouse/menu1/menu1.component';
     BeefgradingComponent,
     HeadComponent,
     FootComponent,
+    PageComponent,
     Menu1Component
   ],
   imports: [
