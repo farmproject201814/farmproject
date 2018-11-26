@@ -1,0 +1,19 @@
+.navbar-text{
+  font-size: 16px;
+}
+
+.row{
+  width: 100%;
+  font-size: 16px;
+}
+
+.navbar-icon{
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+}
+
+.center{
+  align-self: center;
+  font-size: 16px;
+}

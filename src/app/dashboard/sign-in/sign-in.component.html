@@ -1,0 +1,50 @@
+<div class="header">
+  <p class="text-center"><strong>เข้าสู่ระบบ</strong></p>
+
+  <div class="container font">
+    <form> <!-- (ngSubmit)="authenUsers(loginForm)" #loginForm="ngForm"-->
+      <div class="card jumsize shadow">
+        <div class="card-body">
+          <div class="form-group mt-2">
+            <label
+              ><i class="fas fa-user-circle"></i> ชื่อผู้ใช้งาน / Email</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="users"
+              required
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-lock"></i> รหัสผ่าน</label>
+            <input
+              type="password"
+              class="form-control"
+              name="pass"
+              maxlength="12"
+              required
+              ngModel
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary mt-4"
+            style="width:100%;margin-bottom: 10px"
+          >
+            เข้าสู่ระบบ
+          </button>
+          <div
+            class="text-center"
+            style="width:100% ; font-size: 17px;font-weight: normal;"
+          >
+            <a>หากยังไม่มีบัญชีผู้ใช้</a
+            ><a routerLink="/register">สมัครสมาชิก</a><a>หรือ</a
+            ><a routerLink="/forgot-password">ลืมรหัสผ่าน</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
