@@ -1,2 +1,2 @@
 # cooperative_main
-หน้า main ระบบสหกรณื
+หน้า main ระบบสหกรณ์
