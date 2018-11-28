@@ -4,6 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GlobalService {
-
+  user: string;
   constructor() { }
+
+  setUser(user) {
+    this.user = user;
+  }
+  getUser() {
+    return this.user;
+  }
+
 }

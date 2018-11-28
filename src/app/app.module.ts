@@ -1,3 +1,4 @@
+// system
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,8 +16,13 @@ import { LyToolbarModule } from '@alyle/ui/toolbar';
 import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-images';
 import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
 
+// mainpage
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+// beefgrading
+
+// storehouse
 import { StorehouseComponent } from './storehouse/storehouse.component';
 import { BeefgradingComponent } from './beefgrading/beefgrading.component';
 import { AppRoutingModule } from './app-routing.module';
