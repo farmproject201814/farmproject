@@ -1,0 +1,55 @@
+.text-center {
+  font-size: 24px;
+}
+
+.register{
+  margin: 20px;
+  font-size: 25px;
+  color: #1560BD;
+}
+
+.btn{
+  font-size: 20px;
+}
+
+.material-icons{
+  vertical-align: -6px;
+  font-size: 1.8rem;
+}
+
+.card {
+  margin-bottom: 5%
+}
+
+input {
+  font-size: 18px;
+  height: 28px;
+}
+
+select {
+  height: 30px;
+}
+
+.form-control {
+  font-size: 16px;
+}
+
+font {
+  color: red;
+}
+
+textarea {
+  height: 105px;
+}s
+
+::placeholder {
+  font-size: 15px;
+}
+
+button {
+  width: 30%;
+  text-align: center;
+  margin-left: 35%;
+  margin-right: 25%;
+}
+
