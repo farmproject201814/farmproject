@@ -1,7 +1,7 @@
 <!-- ก่อน login -->
-<nav class="navbar navbar-expand-xl navbar-dark fixed-top" style="background-color: #003171;" *ngIf="!isLogin">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top" style="background-color: #003171;" [hidden]="isLogin">
     <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
-    <div class="navbar-brand"><a routerLink="/" class="head">ระบบคลังชิ้นเนื้อ</a></div>
+    <div class="navbar-brand"><a routerLink="/" class="head">ระบบการจัดการสหกรณ์</a></div>
     <div class="collapse navbar-collapse inline-block">
       <div class="navbar-expand-ml navbar-nav ml-auto">
           <ul class="navbar-nav">
@@ -22,13 +22,44 @@
     </div>
   </nav>
 
+
+  <!-- เมื่อ login แล้ว -->
+  <nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!afterLogin">
+    <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+    <div class="navbar-brand"><a routerLink="/dashboard2" class="head">ระบบการจัดการสหกรณ์</a></div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <div class="dropdown">
+          <button class="dropbtn" (click)="goSystem1()"><i class='fas fa-file-import'></i> ระบบคลังชิ้นเนื้อ</button>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn" (click)="goSystem2()"><i class='fas fa-file-import'></i> ระบบการตัดเกรดเนื้อโค</button>
+        </div>
+      </ul>
+      <div class="navbar-expand-ml navbar-nav">
+        <div class="navbar-expand-ml navbar-nav">
+          <div class="dropdown">
+            <button class="dropbtn" routerLink="/setting" routerLinkActive="active"><i class="fas fa-user"></i> คุณ {{user}} <i
+                class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content" style="width: 160px">
+              <a [hidden]="privilege_id === '2' || privilege_id === '3'"><i class="fas fa-user-cog"></i> ตั้งค่าสิทธิ์ผู้ใช้งาน</a>
+              <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
   <!-- หลัง login (ตัดเกรด) -->
-  <nav class="navbar navbar-expand-xl navbar-dark fixed-top " style="background-color: #003171" *ngIf="isLogin">
-    <!--*ngIf="isLogin"-->
+  <nav class="navbar navbar-expand-xl navbar-dark fixed-top " style="background-color: #003171" [hidden]="!user1">
     <div class="container-fluid">
 
       <a href="/"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
-      <a class="navbar-brand text" routerLink="/">
+      <a class="navbar-brand text" (click)="test()">
         <h2><b>ระบบการตัดเกรดเนื้อโค</b></h2>
       </a>
 
@@ -39,67 +70,31 @@
       <div class="collapse navbar-collapse inline-block " id="navbarshead">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-item nav-link" routerLink="/dashboard">
+            <a class="nav-item nav-link">
               <h4><i class="material-icons" style="margin-right: 5px">home</i><b>หน้าแรก</b></h4>
             </a>
           </li>
-
           <li class="nav-item active">
             <a class="nav-item nav-link" routerLink="/aboutcattle">
               <h4><i class="material-icons" style="margin-right: 5px">format_list_bulleted</i><b>รายการซากโค</b></h4>
             </a>
           </li>
-
-          <!-- <li class="nav-item ">
-            <a class="nav-item nav-link" routerLink="/grading">
-              <h4>-ตัดเกรด-</h4>
-            </a>
-          </li>
-
-          <li class="nav-item ">
-            <a class="nav-item nav-link" routerLink="/graded">
-              <h4>-บันทึกเกรด-</h4>
-            </a>
-          </li> -->
-
           <li class="nav-item active">
             <a class="nav-item nav-link" routerLink="/sumgrade">
               <h4><i class="material-icons" style="margin-right: 5px">assignment_turned_in</i><b>สรุปเกรด</b></h4>
             </a>
           </li>
-
-          <!-- <li class="nav-item">
-            <a class="nav-item nav-link" routerLink="/sumgraded">
-              <h4>-แสดงสรุปเกรด-</h4>
-            </a>
-          </li> -->
-
           <li class="nav-item active">
             <a class="nav-item nav-link" routerLink="/history">
               <h4><i class="material-icons" style="margin-right: 5px">history</i><b>ประวัติการตัดเกรด</b></h4>
             </a>
           </li>
-
-          <!-- <li class="nav-item ">
-            <a class="nav-item nav-link" routerLink="/report">
-              <h4>-ออกรายงาน-</h4>
-            </a>
-          </li>
-
-          <li class="nav-item ">
-            <a class="nav-item nav-link" routerLink="/addcattle">
-              <h4>-เพิ่มข้อมูลโค-</h4>
-            </a>
-          </li> -->
-
           <li class="nav-item active">
             <a class="nav-item nav-link" routerLink="/setting">
               <h4><i class="fa fa-cogs" style="margin-right: 3px"></i><b>การตั้งค่า</b></h4>
             </a>
           </li>
         </ul>
-
-
         <div class="navbar-expand-ml navbar-nav">
           <div class="dropdown">
             <button class="dropbtn" style="width: auto;text-align: right">
@@ -118,8 +113,7 @@
             </button>
             <div class="dropdown-content" style="width: 180px">
               <a routerLink="/editprofile"><i class="fas fa-user-edit" style="margin-right: 3px" ></i>ข้อมูลผู้ใช้งาน</a>
-              <!-- <a routerLink="/setting"><i class="fa fa-cogs" style="margin-right: 3px"></i>ตั้งค่าระบบ</a> -->
-              <a routerLink="/" (click)="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 3px; vertical-align: -1px"></i>ออกจากระบบ</a>
+              <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 3px; vertical-align: -1px"></i>ออกจากระบบ</a>
             </div>
           </div>
         </div>
@@ -128,9 +122,9 @@
   </nav>
 
 <!-- หลัง login (คลัง) -->
-<nav class="navbar navbar-expand-xl navbar-dark fixed-top" *ngIf="isLogin">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!user2">
   <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
-  <div class="navbar-brand"><a routerLink="/dashboard" class="head">ระบบคลังชิ้นเนื้อ</a></div>
+  <div class="navbar-brand"><a class="head" (click)="test()">ระบบคลังชิ้นเนื้อ</a></div>
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
@@ -161,7 +155,6 @@
           <a routerLink="/menu5/report1-d1">ออกรายงานนำเข้า</a>
           <a routerLink="/menu5/report2-d1">ออกรายงานเบิกออก</a>
           <a routerLink="/menu5/report3">ออกรายงานคงคลัง</a>
-          <!-- <a routerLink="/menu5/report4">ออกรายงานการบ่มเนื้อ</a> -->
         </div>
       </div>
 
@@ -188,8 +181,8 @@
               class="fa fa-caret-down"></i></button>
           <div class="dropdown-content" style="width: 160px">
             <a routerLink="/setting/edit-profile"><i class="fas fa-edit"></i> แก้ไขบัญชี</a>
-            <a routerLink="/setting/admin-only"><i class="fas fa-user-cog"></i> ตั้งค่าระบบ</a> <!-- [hidden]="privilege_id=='2'"-->
-            <a routerLink="/home" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+            <a routerLink="/setting/admin-only"><i class="fas fa-user-cog"></i> ตั้งค่าระบบ</a>
+            <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
           </div>
         </div>
       </div>

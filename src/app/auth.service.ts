@@ -5,20 +5,41 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import { Http } from '@angular/http';
+import { api } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public user: Observable<firebase.User>;
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private http: Http) {
     this.user = afAuth.authState;
    }
+
+   showMember() {
+    return this.http.get(api.url + '/api/show/user').pipe(map(res => res.json()));
+  }
+
+   registerMember(data) {
+    return this.http.post(api.url + '/api/sign-up', data).pipe(map(res => res.json()));
+  }
+
+  updateUser(key, data) {
+    return this.http.post(api.url + '/api/update/' + key, data).pipe(map(res => res.json()));
+  }
+
+  showData(email) {
+    return this.http.get(api.url + '/api/show/' + email).pipe(map(res => res.json()));
+  }
+
 
   login(email, password) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
     (data) => {
-      // this.router.navigate(['menu2/d1-type1']);
+
+    this.router.navigate(['/dashboard2']);
+
      const toast = swal.mixin({
       toast: true,
       position: 'top-end',
@@ -38,7 +59,6 @@ export class AuthService {
 
   logout() {
     this.afAuth.auth.signOut();
-    this.router.navigate(['/home']);
   }
 
   cookieAuth(): Observable<boolean> {

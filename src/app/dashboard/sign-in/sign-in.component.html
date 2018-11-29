@@ -2,7 +2,7 @@
   <p class="text-center"><strong>เข้าสู่ระบบ</strong></p>
 
   <div class="container font">
-    <form> <!-- (ngSubmit)="authenUsers(loginForm)" #loginForm="ngForm"-->
+    <form (ngSubmit)="authenUsers(loginForm)" #loginForm="ngForm">
       <div class="card jumsize shadow">
         <div class="card-body">
           <div class="form-group mt-2">
@@ -40,8 +40,8 @@
             style="width:100% ; font-size: 17px;font-weight: normal;"
           >
             <a>หากยังไม่มีบัญชีผู้ใช้</a
-            ><a routerLink="/register">สมัครสมาชิก</a><a>หรือ</a
-            ><a routerLink="/forgot-password">ลืมรหัสผ่าน</a>
+            ><a routerLink="/sign-up">สมัครสมาชิก</a><a>หรือ</a
+            ><a>ลืมรหัสผ่าน</a>
           </div>
         </div>
       </div>

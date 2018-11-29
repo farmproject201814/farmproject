@@ -2,7 +2,7 @@
     <p class="text-center"><strong>สมัครสมาชิก</strong></p>
 
 <div class="container font">
-  <form> <!-- (ngSubmit)="addUsers(dataForm)" #dataForm="ngForm"-->
+  <form (ngSubmit)="addUsers(dataForm)" #dataForm="ngForm">
     <div class="card jumsize2 shadow p">
       <div class="card-body">
         <div class="row">
@@ -96,9 +96,11 @@
           <div class="form-group row" hidden>     <!-- ตัวกำหนดสิทธิ์ผู้ใช้งาน -->
             <label class="mx-sm-3">ตัวกำหนดสิทธิ์ผู้ใช้งาน</label>
             <div class="col-8 ml-auto">
-              <select class="form-control" name="privilege_id" ngModel="1">
-                <option selected value="1">admin</option>
-                <option value="2">ผู้ใช้ทั่วไป</option>
+              <select class="form-control" name="privilege_id" ngModel="0">
+                <option selected value="0">ผู้ใช้งานที่ยังไม่ได้ยืนยันสิทธิ์</option>
+                <option value="1">Admin</option>
+                <option value="2">พนักงานระบบคลังชิ้นเนื้อ</option>
+                <option value="3">พนักงานระบบการตัดเกรดชิ้นเนื้อ</option>
               </select>
             </div>
           </div>

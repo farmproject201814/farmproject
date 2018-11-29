@@ -52,6 +52,7 @@ import { OrderT2Component } from './storehouse/page/menu2/order/order-t2/order-t
 import { OrderT3Component } from './storehouse/page/menu2/order/order-t3/order-t3.component';
 import { OrderT4Component } from './storehouse/page/menu2/order/order-t4/order-t4.component';
 import { OrderT5Component } from './storehouse/page/menu2/order/order-t5/order-t5.component';
+import { Dashboard2Component } from './dashboard/dashboard2/dashboard2.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { OrderT5Component } from './storehouse/page/menu2/order/order-t5/order-t
     OrderT2Component,
     OrderT3Component,
     OrderT4Component,
-    OrderT5Component
+    OrderT5Component,
+    Dashboard2Component
   ],
   imports: [
     BrowserModule,

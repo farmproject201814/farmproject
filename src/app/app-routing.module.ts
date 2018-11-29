@@ -4,14 +4,16 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StorehouseComponent } from './storehouse/storehouse.component';
 import { BeefgradingComponent } from './beefgrading/beefgrading.component';
-import { HeadComponent } from './navbar/head/head.component';
-import { FootComponent } from './navbar/foot/foot.component';
+import { HeaderComponent } from './dashboard/header/header.component';
+import { FooterComponent } from './dashboard/footer/footer.component';
 import { SignInComponent } from './dashboard/sign-in/sign-in.component';
 import { SignUpComponent } from './dashboard/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'store', component: StorehouseComponent },
+  { path: 'beefgrading', component: BeefgradingComponent }
 ];
 
 @NgModule({
