@@ -1,18 +1,50 @@
 <!-- ก่อน login -->
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-xl navbar-dark fixed-top" style="background-color: #003171;" *ngIf="!isLogin">
+=======
+<nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="isLogin">
+  <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+  <a routerLink="/" class="head nav-link">ระบบการจัดการสหกรณ์</a>
+
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <ul>
+        <li class="nav-item">
+          <a [routerLink]="['/sign-in']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fas fa-sign-in-alt" style="margin-right: 5px"></i>เข้าสู่ระบบ
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/sign-up']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fas fa-user-plus"></i> สมัครสมาชิก
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-xl navbar-dark fixed-top" style="background-color: #003171;" [hidden]="isLogin">
+  <div class="container-fluid">
+>>>>>>> a4b7d95bb7d04420058b05db01f5fbbe678be7be
     <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
     <div class="navbar-brand"><a routerLink="/" class="head">ระบบการจัดการสหกรณ์</a></div>
     <div class="collapse navbar-collapse inline-block">
       <div class="navbar-expand-ml navbar-nav ml-auto">
           <ul class="navbar-nav">
-            <li>
-              <a class="nav-item" [routerLink]="['/sign-in']"
+            <li class="nav-item">
+              <a [routerLink]="['/sign-in']"
               routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <i class='fas fa-sign-in-alt'></i> เข้าสู่ระบบ
+              <i class="fas fa-sign-in-alt" style="margin-right: 5px"></i>เข้าสู่ระบบ
               </a>
             </li>
-            <li>
-              <a class="nav-item" [routerLink]="['/sign-up']"
+            <li class="nav-item">
+              <a [routerLink]="['/sign-up']"
               routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <i class='fas fa-user-plus'></i> สมัครสมาชิก
               </a>
@@ -20,11 +52,47 @@
           </ul>
       </div>
     </div>
-  </nav>
+  </div>
+</nav> -->
 
 
   <!-- เมื่อ login แล้ว -->
-  <nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!afterLogin">
+<nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!afterLogin">
+  <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+  <a routerLink="/" class="head nav-link" style="margin-right: 50px">ระบบการจัดการสหกรณ์</a>
+
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <ul>
+        <li class="nav-item">
+          <a class="text-light nav-link" (click)="goSystem1()">
+            <i class="fas fa-file-import" style="margin-right: 5px"></i>ระบบคลังชิ้นเนื้อ
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" (click)="goSystem2()">
+            <i class="fas fa-file-import" style="margin-right: 5px"></i>ระบบการตัดเกรดเนื้อโค
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <div class="dropdown">
+          <button class="dropbtn" routerLink="/setting" routerLinkActive="active">
+            <i class="fas fa-user" style="margin-right: 5px"></i>คุณ {{user}}<i class="fa fa-caret-down" style="margin-left: 5px"></i>
+          </button>
+          <div class="dropdown-content" style="width: 160px">
+            <a [hidden]="privilege_id === '2' || privilege_id === '3'"><i class="fas fa-user-cog"></i> ตั้งค่าสิทธิ์ผู้ใช้งาน</a>
+            <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- <nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!afterLogin">
     <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
     <div class="navbar-brand"><a routerLink="/dashboard2" class="head">ระบบการจัดการสหกรณ์</a></div>
 
@@ -50,12 +118,74 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
 
 
   <!-- หลัง login (ตัดเกรด) -->
-  <nav class="navbar navbar-expand-xl navbar-dark fixed-top " style="background-color: #003171" [hidden]="!user1">
+<nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!user1">
+  <a (click)="test()"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+  <a (click)="test()" class="head nav-link" style="margin-right: 50px; color: white">ระบบการตัดเกรดเนื้อโค</a>
+
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <ul>
+        <li class="nav-item">
+          <a class="text-light nav-link" routerLink="/dashboard">
+            <i class="material-icons" style="margin-right: 5px">home</i>หน้าแรก
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" routerLink="/">
+            <i class="material-icons" style="margin-right: 5px">format_list_bulleted</i>รายการซากโค
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" routerLink="/">
+            <i class="material-icons" style="margin-right: 5px">assignment_turned_in</i>สรุปเกรด
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" routerLink="/">
+            <i class="material-icons" style="margin-right: 5px">history</i>ประวัติการตัดเกรด
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" routerLink="/">
+            <i class="fa fa-cogs" style="margin-right: 5px"></i>การตั้งค่า
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <div class="dropdown">
+        <button class="dropbtn" style="width: auto;text-align: right">
+          <i class="fa fa-bell" style="margin-right: 3px"></i>
+          แจ้งเตือน
+          <i class="fa fa-caret-down" style="margin-left: 3px"></i>
+        </button>
+        <div class="dropdown-content" style="width: 180px">
+          <a routerLink="/"><i class="fa fa-cogs"></i> ตั้งค่าแจ้งเตือน</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" style="width:auto;text-align: right">
+          <i class="material-icons">person</i>
+          คุณ {{user}}
+          <i class="fa fa-caret-down" style="margin-left: 5px"></i>
+        </button>
+        <div class="dropdown-content" style="width: 180px">
+          <a routerLink="/editprofile"><i class="fas fa-user-edit" style="margin-right: 3px" ></i>ข้อมูลผู้ใช้งาน</a>
+          <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 3px; vertical-align: -1px"></i>ออกจากระบบ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- <nav class="navbar navbar-expand-xl navbar-dark fixed-top " style="background-color: #003171" [hidden]="!user1">
     <div class="container-fluid">
 
       <a href="/"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
@@ -119,10 +249,76 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
 <!-- หลัง login (คลัง) -->
-<nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!user2">
+<nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!user2">
+  <a (click)="test()"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+  <a (click)="test()" class="head nav-link" style="margin-right: 50px; color: white">ระบบคลังชิ้นเนื้อ</a>
+
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <div class="dropdown">
+        <button class="dropbtn" routerLink="/menu1" routerLinkActive="active"><i class='fas fa-file-import'></i> การนำเข้า <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 125px">
+          <a routerLink="/menu1/import-t1">ประวัติการนำเข้า</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" routerLink="/menu2" routerLinkActive="active"><i class='fas fa-file-export'></i> การเบิกออก <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 135px">
+          <a routerLink="/menu2/order-t1">ประวัติการเบิกออก</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" routerLink="/menu4" routerLinkActive="active"><i class='fas fa-home'></i> คลัง <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 100px">
+          <a routerLink="/menu4/store-t1">ยอดคงคลัง</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" routerLink="/menu5" routerLinkActive="active"><i class='fas fa-file-pdf'></i> ออกรายงาน <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 160px">
+          <a routerLink="/menu5/report1-d1">ออกรายงานนำเข้า</a>
+          <a routerLink="/menu5/report2-d1">ออกรายงานเบิกออก</a>
+          <a routerLink="/menu5/report3">ออกรายงานคงคลัง</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" routerLink="/menu6" routerLinkActive="active"><i class="fas fa-exclamation-triangle"></i> การแจ้งเตือน <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 130px">
+          <a routerLink="/menu6/notification-t1">การแจ้งเตือน</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-cogs"></i> ตั้งค่า <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 135px">
+          <a>ตั้งค่าการแจ้งเตือน</a>
+          <a>ตั้งค่าคลังชิ้นเนื้อ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <div class="dropdown">
+        <button class="dropbtn" routerLink="/setting" routerLinkActive="active"><i class="fas fa-user"></i> คุณ {{user}} <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 160px">
+          <a routerLink="/setting/edit-profile"><i class="fas fa-edit"></i> แก้ไขบัญชี</a>
+          <a routerLink="/setting/admin-only"><i class="fas fa-user-cog"></i> ตั้งค่าระบบ</a>
+          <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!user2">
   <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
   <div class="navbar-brand"><a routerLink="/dashboard2" class="head" (click)="test()">ระบบคลังชิ้นเนื้อ</a></div>
 
@@ -188,4 +384,4 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
