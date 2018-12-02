@@ -33,6 +33,17 @@ export class AuthService {
     return this.http.get(api.url + '/api/show/' + email).pipe(map(res => res.json()));
   }
 
+  showMembers() {
+    return this.http.get(api.url + '/api/showMembers').pipe(map(res => res.json()));
+  }
+
+  saveStatusMember(key, data) {
+    return this.http.post(api.url + '/api/editStatus/' + key, data).pipe(map(res => res.json()));
+  }
+
+  removeMember(key) {
+    return this.http.delete(api.url + '/api/removeMember/' + key).pipe(map(res => res.json()));
+  }
 
   login(email, password) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
@@ -68,9 +79,11 @@ export class AuthService {
   register(email, password) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(data => {
       console.log('Register Success');
+
     }, err => {
       console.log('Regisrter Failed');
     });
+    this.afAuth.auth.signOut();
   }
 
   getEmail() {

@@ -55,6 +55,7 @@ export class SignUpComponent implements OnInit {
         confirmButtonText: 'ปิด'
       });
       this.router.navigate(['/sign-in']);
+
     } else {
     let c = 0;
     for (let i = 0 ; i < this.user.length ; i++) {

@@ -1,0 +1,143 @@
+<div class="header">
+  <p class="text-center"><strong>ตั้งค่าสิทธิ์ผู้ใช้งาน (Admin Only)</strong></p>
+
+  <div class="card2 shadow p">
+    <div class="card-header">
+      <h5><i class="fa fa-table"></i> ตารางแสดงผู้ใช้งาน</h5>
+    </div>
+    <div class="card-body">
+          <table id="tables">
+            <thead>
+              <tr>
+                <th width=50>ลำดับ</th>
+                <th width=140>ชื่อ</th>
+                <th width=140>นามสกุล</th>
+                <th width=120>ชื่อผู้ใช้งาน</th>
+                <th width=210>ที่อยู่</th>
+                <th width=120>เบอร์โทร</th>
+                <th width=160>อีเมล</th>
+                <th width=120>สิทธิ์ผู้ใช้งาน</th>
+                <th width=90>แก้ไข</th>
+                <th>ลบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let e of datas;let i = index">
+                <td width=50>{{i+1}}</td>
+                <td width=140>{{e.fname}}</td>
+                <td width=140>{{e.lname}}</td>
+                <td width=120>{{e.users}}</td>
+                <td width=210>{{e.address}}</td>
+                <td width=120>{{e.mobile}}</td>
+                <td width=160>{{e.email}}</td>
+                <td width=120>{{e.privilege}}</td>
+                <td width=90>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modelEdit"
+                  (click)="editMember(e)"><i class="fas fa-edit"></i></button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger mx-sm-2" (click)="onDeleteMember(e.key)"><i class="material-icons">delete_forever</i></button>
+                   <!--(click)="sw_alert()"-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-right ml-auto">
+            <h5><strong>จำนวนผู้ใช้งานทั้งหมด {{count}} รายการ</strong></h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modelEdit" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <form (ngSubmit)="onEditMember(items.key,data)" #data="ngForm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"><b>แก้ไขข้อมูลผู้ใช้งาน</b></h5>
+              </div>
+              <div class="modal-body">
+                <div class="row" style="margin-top: -12px">
+                  <div class="col">
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">ชื่อผู้ใช้งาน (Username)</label>
+                      <input type="text" class="form-control mx-sm-3" name="users" ngModel="{{items.users}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">รหัสผ่าน (Password)</label>
+                      <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}">
+                      <input type="checkbox" class="mx-sm-3" (click)="showPass()">
+                      <label class="sp">แสดงรหัสผ่าน</label>
+                    </div>
+                    <hr>
+                    <div class="form-group row"> <!--style="margin-top: -33px"-->
+                      <label class="mx-sm-3 mb-1">คำถามกรณีเมื่อลืมรหัส</label>
+                      <input type="text" class="form-control mx-sm-3" name="question" ngModel="{{items.question}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">คำตอบกรณีเมื่อลืมรหัส</label>
+                      <input type="text" class="form-control mx-sm-3" name="answer" ngModel="{{items.answer}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">ชื่อจริง (ภาษาไทย)</label>
+                      <input type="text" class="form-control mx-sm-3" name="fname" ngModel="{{items.fname}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">นามสกุล (ภาษาไทย)</label>
+                      <input type="text" class="form-control mx-sm-3" name="lname" ngModel="{{items.lname}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">เพศ</label>
+                      <select class="form-control mx-sm-3" name="gender" ngModel="{{items.gender}}">
+                        <option selected value="ชาย">ชาย</option>
+                        <option value="หญิง">หญิง</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">วัน/เดือน/ปีเกิด</label>
+                      <input type="date" class="form-control mx-sm-3" style="height: 38px;margin-top: -10px;" name="day_of_birth" ngModel="{{items.day_of_birth}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">เลขบัตรประจำตัวประชาชน</label>
+                      <input type="text" class="form-control mx-sm-3" name="id_code" maxlength="13" ngModel="{{items.id_code}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">อีเมล</label>
+                      <input type="text" class="form-control mx-sm-3" name="email" ngModel="{{items.email}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">ที่อยู่</label>
+                      <textarea name="address" ngModel="{{items.address}}"></textarea>
+                      <!-- <input type="text" class="form-control mx-sm-3" name="address" ngModel="{{items.address}}"> -->
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">เบอร์โทรศัพท์</label>
+                      <input type="text" class="form-control mx-sm-3" name="mobile" maxlength="10" ngModel="{{items.mobile}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">แฟ็ก</label>
+                      <input type="text" class="form-control mx-sm-3" name="fax" maxlength="9" ngModel="{{items.fax}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">กำหนดสิทธิ์การใช้งาน</label>
+                      <select class="form-control mx-sm-3" name="privilege_id" ngModel="{{items.privilege_id}}">
+                        <option selected value="0">ยังไม่ได้อนุมัติ</option>
+                        <option value="1">แอดมิน</option>
+                        <option value="2">พนักงานคลัง</option>
+                        <option value="3">พนักงานตัดเกรด</option>
+                      </select>
+                      <input type="hidden" class="form-control" name="count_login" ngModel="1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">  ปิด  </button>
+                <button type="submit" value="submit" class="btn btn-success"><i class="fa fa-save"></i> บันทึก</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#modelEdit">Open Modal</button>
+      </div>

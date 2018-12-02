@@ -53,7 +53,7 @@ import { OrderT3Component } from './storehouse/page/menu2/order/order-t3/order-t
 import { OrderT4Component } from './storehouse/page/menu2/order/order-t4/order-t4.component';
 import { OrderT5Component } from './storehouse/page/menu2/order/order-t5/order-t5.component';
 import { Dashboard2Component } from './dashboard/dashboard2/dashboard2.component';
-
+import { PrivilegeComponent } from './dashboard/privilege/privilege.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +83,8 @@ import { Dashboard2Component } from './dashboard/dashboard2/dashboard2.component
     OrderT3Component,
     OrderT4Component,
     OrderT5Component,
-    Dashboard2Component
+    Dashboard2Component,
+    PrivilegeComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +100,9 @@ import { Dashboard2Component } from './dashboard/dashboard2/dashboard2.component
     AngularFireAuthModule,
     FormsModule,
     HttpModule,
-    PageRoutingModule
+    PageRoutingModule,
+
+
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },

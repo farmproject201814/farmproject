@@ -1,5 +1,5 @@
 <!-- ก่อน login -->
-<nav class="navbar navbar-expand-xl navbar-dark fixed-top" style="background-color: #003171;" [hidden]="isLogin">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top" style="background-color: #003171;" *ngIf="!isLogin">
     <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
     <div class="navbar-brand"><a routerLink="/" class="head">ระบบการจัดการสหกรณ์</a></div>
     <div class="collapse navbar-collapse inline-block">
@@ -43,7 +43,7 @@
             <button class="dropbtn" routerLink="/setting" routerLinkActive="active"><i class="fas fa-user"></i> คุณ {{user}} <i
                 class="fa fa-caret-down"></i></button>
             <div class="dropdown-content" style="width: 160px">
-              <a [hidden]="privilege_id === '2' || privilege_id === '3'"><i class="fas fa-user-cog"></i> ตั้งค่าสิทธิ์ผู้ใช้งาน</a>
+              <a routerLink="/privilege" [hidden]="privilege_id === '2' || privilege_id === '3'"><i class="fas fa-user-cog"></i> ตั้งค่าสิทธิ์ผู้ใช้งาน</a>
               <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
             </div>
           </div>
@@ -124,7 +124,7 @@
 <!-- หลัง login (คลัง) -->
 <nav class="navbar navbar-expand-xl navbar-dark fixed-top" [hidden]="!user2">
   <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
-  <div class="navbar-brand"><a class="head" (click)="test()">ระบบคลังชิ้นเนื้อ</a></div>
+  <div class="navbar-brand"><a routerLink="/dashboard2" class="head" (click)="test()">ระบบคลังชิ้นเนื้อ</a></div>
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
@@ -180,9 +180,9 @@
           <button class="dropbtn" routerLink="/setting" routerLinkActive="active"><i class="fas fa-user"></i> คุณ {{user}} <i
               class="fa fa-caret-down"></i></button>
           <div class="dropdown-content" style="width: 160px">
-            <a routerLink="/setting/edit-profile"><i class="fas fa-edit"></i> แก้ไขบัญชี</a>
-            <a routerLink="/setting/admin-only"><i class="fas fa-user-cog"></i> ตั้งค่าระบบ</a>
-            <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+            <a routerLink="/dashboard2"><i class='fas fa-chevron-left'></i>&nbsp;&nbsp;&nbsp;กลับหน้าหลัก</a>
+            <a routerLink="/setting/edit-profile"><i class="fas fa-edit"></i>&nbsp;แก้ไขบัญชี</a>
+            <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp;ออกจากระบบ</a>
           </div>
         </div>
       </div>
