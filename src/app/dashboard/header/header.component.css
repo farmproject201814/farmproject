@@ -36,12 +36,12 @@
   li a {
     display: block;
     color: white;
-    text-align: center;
+    /* text-align: center; */
     padding-top: 25px;
     padding-bottom: 25px;
     text-decoration: none;
     transition: all 0.5s ease;
-    vertical-align: 3px;
+    /* vertical-align: 3px; */
   }
 
   li a:hover {
@@ -61,7 +61,7 @@
     vertical-align: 20px;
     padding-top: 25px;
     padding-bottom: 25px;
-    text-align: center;
+    /* text-align: center; */
     border: none;
     cursor: pointer;
   }
@@ -88,7 +88,7 @@
     color: white;
     padding: 13px 20px;
     text-decoration: none;
-    text-align: center;
+    /* text-align: center; */
     /* width: auto; */
   }
 
@@ -179,12 +179,11 @@
   li a {
     display: block;
     color: white;
-    text-align: center;
+    /* text-align: center; */
     padding-top: 15px;
     padding-bottom: 15px;
     text-decoration: none;
     transition: all 0.5s ease;
-    vertical-align: 3px;
   }
 
   li a:hover {
@@ -204,7 +203,7 @@
     vertical-align: 20px;
     padding-top: 17px;
     padding-bottom: 17px;
-    text-align: center;
+    /* text-align: center; */
     border: none;
     cursor: pointer;
   }
@@ -231,7 +230,7 @@
     color: white;
     padding: 13px 20px;
     text-decoration: none;
-    text-align: center;
+    /* text-align: center; */
     /* width: auto; */
   }
 
@@ -277,5 +276,9 @@
   .material-icons{
     font-size: 1.25rem;
     vertical-align: -5px;
+  }
+
+  .active {
+    background-color: rgb(0, 110, 255) !important;
   }
 }

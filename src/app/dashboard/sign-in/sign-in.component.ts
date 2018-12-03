@@ -52,7 +52,7 @@ export class SignInComponent implements OnInit {
     if (this.checkp[c] === '0') {
       swal({
         title: 'ผิดพลาด!',
-        text: 'คุณยังไม่ได้รับสิทธิ์ในการเข้าใช้งาน',
+        text: 'คุณยังไม่ได้รับสิทธิ์ในการเข้าใช้งาน กรุณาติดต่อผู้ดูแลระบบ',
         type: 'error',
         confirmButtonText: 'ปิด'
       });

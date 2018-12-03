@@ -1,0 +1,106 @@
+.container {
+  max-width: 90%;
+  /* margin-left: 5%;
+  margin-right: 5%; */
+}
+
+.edit{
+  margin: 20px;
+  font-size: 24px;
+}
+
+.material-icons{
+  vertical-align: -6px;
+  font-size: 1.8rem;
+}
+
+.card {
+  margin-bottom: 10%;
+}
+
+.card-title {
+  margin-bottom: 25px;
+}
+
+.navbar-icon {
+  margin-bottom: 20px;
+  max-width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid #ddd;
+}
+
+h5 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.btn {
+  color: white;
+  font-size: 18px
+}
+
+#profile-image-upload {
+  font-size: 16px;
+}
+
+input, select, label {
+  font-size: 16px;
+  margin-bottom: -10px;
+}
+
+input {
+  height: 28px;
+}
+
+select {
+  height: 30px;
+}
+
+.modal-dialog {
+  width:100%;
+  margin:0 auto;
+}
+
+button {
+  font-size: 16px;
+}
+
+a {
+  height: 50px;
+  margin-left: 20px;
+}
+
+br {
+  line-height: 35px;
+}
+
+#mt {
+  margin-top: -8px;
+}
+
+#mg {
+  padding-left: 25px;
+}
+
+textarea:disabled {
+  height: 70px;
+  width: 136px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+  margin-bottom: -10px;
+}
+
+.textarea2 {
+  height: 90px;
+  width: 215px;
+  margin-left: 15px;
+  margin-bottom: -10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #495057;
+  padding-left: 12px;
+}

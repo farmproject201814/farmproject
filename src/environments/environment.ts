@@ -7,7 +7,7 @@ export const environment = {
 };
 
 export const api = {
-  url: 'http://10.94.8.156:4000'// url: 'http://localhost:4000'
+  url: 'http://localhost:4000'// url: 'http://localhost:4000'
 };
 
 /*

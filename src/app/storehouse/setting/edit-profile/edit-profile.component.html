@@ -1,0 +1,204 @@
+
+<div class="edit text-center" style="margin-top: 50px; padding-top: 20px">
+    <b>แก้ไขข้อมูลส่วนตัว</b>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="card jumsize2 shadow p">
+          <div class="card-body">
+            <h5 class="card-title">รูปโปรไฟล์</h5>
+            <!-- <img class="navbar-icon" src="/assets/1.png"> -->
+            <div class="custom-file">
+              <input id="profile-image-upload" class="hidden" type="file">
+              <div style="color:#999;margin-top: 5px;font-size: 14px">คลิกที่นี่เพื่อเปลี่ยนรูปโปรไฟล์</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card jumsize2 shadow p" *ngFor="let e of detail">
+          <div class="card-body">
+            <div class="card-title"><h5>รายละเอียดข้อมูลส่วนตัว</h5></div>
+            <div class="card-text">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">ชื่อผู้ใช้งาน (Username)</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.users}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">รหัสผ่าน (Password)</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="password" class="form-control" ngModel={{e.pass}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">คำถามกรณีเมื่อลืมรหัส</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.question}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">คำตอบกรณีเมื่อลืมรหัส</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.answer}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-form-label" id="mg">ชื่อจริง (ภาษาไทย)</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.fname}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">นามสกุล (ภาษาไทย)</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.lname}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">เพศ</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.gender}} readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">วัน/เดือน/ปีเกิด</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.day_of_birth}} readonly>
+                    </div>
+                  </div>
+                  <!-- <a>วัน/เดือน/ปีเกิด : {{e.day_of_birth | date: "dd/MM/yyyy"}}</a><br> -->
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">เลขบัตรประจำตัวประชาชน</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.id_code}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">อีเมล</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.email}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">ที่อยู่</label>
+                    <div class="col-sm-6 ml-auto">
+                      <textarea disabled>  {{e.address}}</textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">เบอร์โทรศัพท์</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.mobile}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">แฟ็ก</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.fax}} readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-success mt-4" style="margin-left: 25% ;width: 50%;margin-right: 25%;"
+              data-toggle="modal" data-target="#modelEdit" (click)="edit_profile(e.key,e.users,e.pass,e.question,e.answer,
+              e.fname,e.lname,e.gender,e.day_of_birth,e.id_code,
+              e.email,e.address,e.mobile,e.fax)">แก้ไขข้อมูลส่วนตัว</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Model แก้ไขข้อมูลส่วนตัว -->
+  <div class="modal fade" id="modelEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form (ngSubmit)="onEdit_profile(items.$key,data)" #data="ngForm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="font-size: 18px;font-weight: bold;margin-bottom: -15px">แก้ไขข้อมูลส่วนตัว</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">ชื่อผู้ใช้งาน (Username)</label>
+                  <input type="text" class="form-control mx-sm-3" name="users" ngModel="{{items.users}}" disabled>
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">รหัสผ่าน (Password)</label>
+                  <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}">
+                  <input type="checkbox" (click)="showPass()" class="mx-sm-3">
+                  <label style="margin-left: -10px;margin-top: 2px;">แสดงรหัสผ่าน</label>
+                  <!-- <a style="margin-left: 10px;margin-top: 2px;" routerLink="/change-password" (click)="navigate()">เปลี่ยนรหัสผ่าน</a> -->
+                </div>
+                <div class="form-group row"> <!--style="margin-top: -33px"-->
+                  <label class="mx-sm-3 mb-1">คำถามกรณีเมื่อลืมรหัส</label>
+                  <input type="text" class="form-control mx-sm-3" name="question" ngModel="{{items.question}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">คำตอบกรณีเมื่อลืมรหัส</label>
+                  <input type="text" class="form-control mx-sm-3" name="answer" ngModel="{{items.answer}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">ชื่อจริง (ภาษาไทย)</label>
+                  <input type="text" class="form-control mx-sm-3" name="fname" ngModel="{{items.fname}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">นามสกุล (ภาษาไทย)</label>
+                  <input type="text" class="form-control mx-sm-3" name="lname" ngModel="{{items.lname}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">เพศ</label>
+                  <select class="form-control mx-sm-3" name="gender" ngModel="{{items.gender}}">
+                    <option selected value="ชาย">ชาย</option>
+                    <option value="หญิง">หญิง</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">วัน/เดือน/ปีเกิด</label>
+                  <input type="date" class="form-control mx-sm-3" style="height: 38px;margin-top: -10px;" name="day_of_birth" ngModel="{{items.day_of_birth}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">เลขบัตรประจำตัวประชาชน</label>
+                  <input type="text" class="form-control mx-sm-3" name="id_code" maxlength="13" ngModel="{{items.id_code}}">
+                </div>
+                <div class="form-group row" style="margin-top: 49px">
+                  <label class="mx-sm-3 mb-1">อีเมล</label>
+                  <input type="text" class="form-control mx-sm-3" name="email" ngModel="{{items.email}}" disabled>
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">ที่อยู่</label>
+                  <textarea class="textarea2" name="address" ngModel="{{items.address}}"></textarea>
+                  <!-- <input type="text" class="form-control mx-sm-3" name="address" ngModel="{{items.address}}"> -->
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">เบอร์โทรศัพท์</label>
+                  <input type="text" class="form-control mx-sm-3" name="mobile" maxlength="10" ngModel="{{items.mobile}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">แฟ็ก</label>
+                  <input type="text" class="form-control mx-sm-3" name="fax" maxlength="9" ngModel="{{items.fax}}">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">  ปิด  </button>
+            <button type="submit" value="submit" class="btn btn-primary"><i class="fa fa-save"></i> บันทึก</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#modelEdit">Open Modal</button>
+  </div>

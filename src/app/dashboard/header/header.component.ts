@@ -33,20 +33,19 @@ export class HeaderComponent implements OnInit {
     this.user1 = false;
     this.user2 = false;
     this.auth.cookieAuth().subscribe(datas => {
-      console.log(datas);
       if (datas === true) {
       this.afAuth.authState.subscribe(data => {
         console.log(data);
         this.auth.showData(data.email).subscribe(s => {
-          console.log(s);
           const value = Object.keys(s).map(key => s[key]);
+          console.log(value);
           if (value[0].count_login === '0') {
             this.isLogin = false;
             this.auth.logout();
           } else {
             this.isLogin = datas;
             this.afterLogin = true;
-          this.user = value[0].fname + ' ' + value[0].lname;
+          this.user = value[0].fname; // this.user = value[0].fname + ' ' + value[0].lname;
               // this.global.setUser(element.users);
               this.privilege_id = value[0].privilege_id;
               this.check = value[0].check;
@@ -77,13 +76,17 @@ export class HeaderComponent implements OnInit {
       this.user2 = false;
     }
     });
+    // console.log( 'a: ' + this.afterLogin,
+    // 'b: ' + this.isLogin ,
+    // 'c: ' + this.user1,
+    // 'd: ' + this.user2 );
   }
 
   logout() {
     this.auth.logout();
     this.auth.updateUser(this.key, {check: '0'}).subscribe();
     this.ngOnInit();
-    location.reload();
+    setTimeout(() =>  location.reload());
   }
   test() {
       this.auth.updateUser(this.key, {check: '0'}).subscribe();
