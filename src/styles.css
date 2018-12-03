@@ -26,3 +26,13 @@
 .header{
   margin-top: 5%;
 }
+@media only screen and (max-width:1920px){
+  .font{
+    padding-top: 6%;
+  }
+}
+@media only screen and (max-width:1400px){
+  .header{
+  padding-top: 6%;
+  }
+}
