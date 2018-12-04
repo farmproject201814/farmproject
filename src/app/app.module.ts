@@ -15,17 +15,19 @@ import { LyButtonModule } from '@alyle/ui/button';
 import { LyToolbarModule } from '@alyle/ui/toolbar';
 import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-images';
 import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
+import { AppRoutingModule } from './app-routing.module';
 
 // mainpage
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthService } from './auth.service';
 
 // beefgrading
+import { BeefgradingRoutingModule } from './beefgrading/beefgrading-routing.module';
+import { BeefgradingModule } from './beefgrading/beefgrading.module';
 
 // storehouse
 import { StorehouseComponent } from './storehouse/storehouse.component';
-import { BeefgradingComponent } from './beefgrading/beefgrading.component';
-import { AppRoutingModule } from './app-routing.module';
 import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { PageComponent } from './storehouse/page/page.component';
 import { Menu1Component } from './storehouse/page/menu1/menu1.component';
@@ -34,7 +36,6 @@ import { SignUpComponent } from './dashboard/sign-up/sign-up.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { FooterComponent } from './dashboard/footer/footer.component';
 import { firebaseConfig } from 'src/environments/firebase.config';
-import { AuthService } from './auth.service';
 import { Menu2Component } from './storehouse/page/menu2/menu2.component';
 import { Menu3Component } from './storehouse/page/menu3/menu3.component';
 import { Menu4Component } from './storehouse/page/menu4/menu4.component';
@@ -62,12 +63,13 @@ import { InputDataComponent } from './storehouse/simulation/input-data/input-dat
 import { SimulationT1Component } from './storehouse/simulation/simulation-t1/simulation-t1.component';
 import { SimulationT2Component } from './storehouse/simulation/simulation-t2/simulation-t2.component';
 import { SimulationT3Component } from './storehouse/simulation/simulation-t3/simulation-t3.component';
+import { from } from 'rxjs';
+import { BeefgradingComponent } from './beefgrading/beefgrading.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     StorehouseComponent,
-    BeefgradingComponent,
     PageComponent,
     Menu1Component,
     SignInComponent,
@@ -99,7 +101,8 @@ import { SimulationT3Component } from './storehouse/simulation/simulation-t3/sim
     InputDataComponent,
     SimulationT1Component,
     SimulationT2Component,
-    SimulationT3Component
+    SimulationT3Component,
+    BeefgradingComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +119,8 @@ import { SimulationT3Component } from './storehouse/simulation/simulation-t3/sim
     FormsModule,
     HttpModule,
     PageRoutingModule,
-    StorehouseRoutingModule
+    StorehouseRoutingModule,
+    BeefgradingRoutingModule, BeefgradingModule
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },
