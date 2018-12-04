@@ -1,0 +1,104 @@
+<div class="backpage">
+  <div class="addcattle text-center" style="margin-top: 80px; padding-top: 20px">
+    <a>
+      <h2><b>ADD CATTLE</b></h2>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="addForm(datauser)" #datauser="ngForm">
+        <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">
+          <colgroup span="2"></colgroup>
+          <thead class="thead text-dark" style="background-color: #ffffff;">
+            <tr>
+              <td rowspan="2">รหัสโค</td>
+              <th colspan="2">บาร์โค้ด</th>
+              <td rowspan="2">วันที่เชือด</td>
+              <td rowspan="2">วันที่เข้าบ่ม</td>
+              <td rowspan="2">วันที่ตัดเกรด</td>
+              <th colspan="2">น้ำหนัก kg.</th>
+              <td rowspan="2">ห้องเย็น</td>
+              <td colspan="2">เจ้าของโค</td>
+              <td rowspan="2">สถานะ</td>
+            </tr>
+            <tr>
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+              <th scope="col">ชื่อ</th>
+              <th scope="col">สกุล</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" name="id" ngModel></td>
+              <td><input type="text" class="form-control" name="left" ngModel></td>
+              <td><input type="text" class="form-control" name="right" ngModel></td>
+              <td><input type="date" class="form-control" name="datekill" ngModel></td>
+              <td><input type="date" class="form-control" name="datedry" ngModel></td>
+              <td><input type="date" class="form-control" name="dateready" ngModel></td>
+              <!-- <td><input type="date" class="form-control" name="datecuted" ngModel></td> -->
+              <td><input type="text" class="form-control" name="wleft" ngModel></td>
+              <td><input type="text" class="form-control" name="wright" ngModel></td>
+              <td><input type="text" class="form-control" name="roomdry" ngModel></td>
+              <td><input type="text" class="form-control" name="firstown" ngModel></td>
+              <td><input type="text" class="form-control" name="lastown" ngModel></td>
+              <td><input type="text" class="form-control" name="status" ngModel></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="text" class="form-control" name="picture" value="" hidden ngModel>
+        <!-- <input type="text" class="form-control" name="datecuted" ngModel={{datecuted}}> -->
+        <button type="submit" class="btn btn-success mt-4" style="margin-left: 25% ;width: 50%;margin-right: 25%; margin-bottom: 35px"
+          (click)="sw_add()">
+          <b>เพิ่ม - - - - - - - - - - - - - - - - - - - - - - - - - - - - - เพิ่ม - - - - - - - - - - - - - - - - - - - - - - - - - - - - เพิ่ม</b>
+        </button>
+      </form>
+
+      <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">
+        <colgroup span="2"></colgroup>
+        <thead class="thead text-dark" style="background-color: #ffffff;">
+          <tr>
+            <td rowspan="2">ลำดับ</td>
+            <td rowspan="2">รหัสโค</td>
+            <th colspan="2">บาร์โค้ด</th>
+            <td rowspan="2">วันที่เชือด</td>
+            <td rowspan="2">วันที่เข้าบ่ม</td>
+            <td rowspan="2">วันที่ตัดเกรด</td>
+            <th colspan="2">น้ำหนัก kg.</th>
+            <td rowspan="2">ห้องเย็น</td>
+            <td rowspan="2">เจ้าของโค</td>
+            <td rowspan="2">สถานะ</td>
+          </tr>
+          <tr>
+            <th scope="col">ซากซ้าย</th>
+            <th scope="col">ซากขวา</th>
+
+            <th scope="col">ซากซ้าย</th>
+            <th scope="col">ซากขวา</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let ca of data;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{ca.id}}</td>
+            <td>{{ca.left}}</td>
+            <td>{{ca.right}}</td>
+            <td>{{ca.datekill | date: 'dd-MM-yyyy'}}</td>
+            <td>{{ca.datedry | date: 'dd-MM-yyyy'}}</td>
+            <td>{{ca.dateready | date: 'dd-MM-yyyy'}}</td>
+            <td>{{ca.wleft}}</td>
+            <td>{{ca.wright}}</td>
+            <td>{{ca.roomdry}}</td>
+            <td>{{ca.firstown}}&nbsp;&nbsp;{{ca.lastown}}</td>
+            <td>{{ca.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

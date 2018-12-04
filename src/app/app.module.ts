@@ -21,13 +21,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './auth.service';
+import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
+import { UploadService } from './service/uploads/shared/upload.service';
 
 // beefgrading
-
+import { BeefgradingRoutingModule, BeefgradingRoutingComponents } from './beefgrading/beefgrading-routing.module';
+import { BeefgradingComponent } from './beefgrading/beefgrading.component';
+import { AboutcattleComponent } from './beefgrading/page/aboutcattle/aboutcattle.component';
+import { GradingComponent } from './beefgrading/page/grading/grading.component';
+import { SumgradingComponent } from './beefgrading/page/sumgrading/sumgrading.component';
+import { SummedComponent } from './beefgrading/page/sumgrading/summed/summed.component';
+import { HistoryComponent } from './beefgrading/page/history/history.component';
+import { AddcattleComponent } from './beefgrading/page/setting/addcattle/addcattle.component';
 
 // storehouse
 import { StorehouseComponent } from './storehouse/storehouse.component';
-import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { PageComponent } from './storehouse/page/page.component';
 import { Menu1Component } from './storehouse/page/menu1/menu1.component';
 import { SignInComponent } from './dashboard/sign-in/sign-in.component';
@@ -63,7 +71,8 @@ import { SimulationT1Component } from './storehouse/simulation/simulation-t1/sim
 import { SimulationT2Component } from './storehouse/simulation/simulation-t2/simulation-t2.component';
 import { SimulationT3Component } from './storehouse/simulation/simulation-t3/simulation-t3.component';
 import { from } from 'rxjs';
-import { BeefgradingComponent } from './beefgrading/beefgrading.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +110,14 @@ import { BeefgradingComponent } from './beefgrading/beefgrading.component';
     SimulationT1Component,
     SimulationT2Component,
     SimulationT3Component,
-    BeefgradingComponent
+    BeefgradingComponent,
+    AboutcattleComponent,
+    GradingComponent,
+    BeefgradingRoutingComponents,
+    SumgradingComponent,
+    SummedComponent,
+    HistoryComponent,
+    AddcattleComponent
   ],
   imports: [
     BrowserModule,
@@ -119,11 +135,13 @@ import { BeefgradingComponent } from './beefgrading/beefgrading.component';
     HttpModule,
     PageRoutingModule,
     StorehouseRoutingModule,
+    BeefgradingRoutingModule
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },
     { provide: LY_THEME, useClass: MinimaDark, multi: true },
-    AuthService
+    AuthService,
+    UploadService,
   ],
   bootstrap: [AppComponent]
 })
