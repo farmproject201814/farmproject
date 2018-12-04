@@ -23,8 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './auth.service';
 
 // beefgrading
-import { BeefgradingRoutingModule } from './beefgrading/beefgrading-routing.module';
-import { BeefgradingModule } from './beefgrading/beefgrading.module';
+
 
 // storehouse
 import { StorehouseComponent } from './storehouse/storehouse.component';
@@ -120,7 +119,6 @@ import { BeefgradingComponent } from './beefgrading/beefgrading.component';
     HttpModule,
     PageRoutingModule,
     StorehouseRoutingModule,
-    BeefgradingRoutingModule, BeefgradingModule
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },
