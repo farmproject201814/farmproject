@@ -33,10 +33,11 @@ export class AddcattleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.api.showData().subscribe(data => {
-      this.data = Object.values(data);
-      for (let i = 0; i < Object.values(data).length; i++) {
-        this.data[i].key = Object.keys(data)[i];
+    this.api.showData().subscribe(datas => {
+      console.log(datas);
+      this.data = Object.values(datas);
+      for (let i = 0; i < Object.values(datas).length; i++) {
+        this.data[i].key = Object.keys(datas)[i];
       }
     });
   }

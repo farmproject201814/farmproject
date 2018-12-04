@@ -350,7 +350,7 @@ test() {
         }, 5000);
       },
       onClose: () => {
-        this.router.navigate(['/aboutcattle']);
+        this.router.navigate(['/listcattle']);
         // location.reload();
       }
     }).then(result => {
