@@ -1,3 +1,129 @@
-<p style="padding-top:5%">
-  history works!
-</p>
+<div class="AboutCattle text-center" style="margin-top: 70px; padding-top: 20px">
+  <a><i class="material-icons" style="margin-right: 5px">history</i><b>ประวัติการตัดเกรด</b></a>
+</div>
+<div class="backpage">
+  <div class="container-fluid">
+    <div class="card shadow p mb-5">
+      <div class="card-header" style="background-color: #007FFF;color: #ffffff">
+        <div class="row" style="width: 100%">
+          <div class="col-6"><h3><b>รายการประวัติการตัดเกรด</b></h3></div>
+          <div class="col">
+            <div style="margin-left:50%">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">ค้นหา</span>
+                </div>
+                <input type="text" class="form-control search-input" aria-label="">
+                <div class="input-group-append">
+                  <button class="btn btn-light btn-sm text-light" style="background-color: limegreen; width: 100px"><i class="material-icons text-center">search</i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">
+          <colgroup span="2"></colgroup>
+          <thead class="thead text-dark" style="background-color: #ffffff;">
+            <tr>
+              <td rowspan="2">
+                <label>
+                  <input type="checkbox" (click)="checkAll_list()">
+                  <span class="label-text">ลำดับ</span>
+                </label>
+              </td>
+              <td rowspan="2">รหัสโค</td>
+              <th colspan="2">บาร์โค้ด</th>
+              <td rowspan="2">วันที่ตัดเกรด</td>
+              <td rowspan="2">วันที่สรุปเกรด</td>
+              <th colspan="2">น้ำหนัก kg.</th>
+              <td rowspan="2">พนักงานตัดเกรด</td>
+              <td rowspan="2">ผู้เชี่ยวชาญ</td>
+              <td rowspan="2">เจ้าของโค</td>
+              <td rowspan="2">รูปภาพ</td>
+              <td rowspan="2">เกรด</td>
+              <td rowspan="2">รายงาน</td>
+            </tr>
+            <tr>
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of data ; let i = index">
+              <td>
+                <label>
+                  <input type="checkbox" (click)="selectMenu(data.key)" [checked]="c.check">
+                  <span class="label-text">{{i+1}}</span>
+                </label>
+              </td>
+              <td>{{data.id}}</td>
+              <td>{{data.left}}</td>
+              <td>{{data.right}}</td>
+              <td>{{data.datecuted | date: 'dd-MM-yyyy'}}</td>
+              <td>{{data.date_sum | date: 'dd-MM-yyyy'}}</td>
+              <td>{{data.wleft}}</td>
+              <td>{{data.wright}}</td>
+              <td>{{data.sys_grage_cut_fn}}&nbsp;&nbsp;{{data.sys_grage_cut_ln}}</td>
+              <td>
+                {{data.fn_ex1}}&nbsp;&nbsp;{{data.ln_ex1}}<br>
+                {{data.fn_ex2}}&nbsp;&nbsp;{{data.ln_ex2}}<br>
+                {{data.fn_ex3}}&nbsp;&nbsp;{{data.ln_ex3}}<br>
+                {{data.fn_ex4}}&nbsp;&nbsp;{{data.ln_ex4}}<br>
+                {{data.fn_ex5}}&nbsp;&nbsp;{{data.ln_ex5}}
+              </td>
+              <td>{{data.firstown}}&nbsp;&nbsp;{{data.lastown}}</td>
+              <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                  <h5><b>รูปภาพ</b></h5>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class=" text-center">
+                          <img
+                            class=" cardsize"
+                            style="border-radius: 5px"
+                            src="{{data.picture}}"
+                            width="cover"
+                            height="cover"
+                          />
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>{{data.grade_con}}</td>
+              <td>
+                <button routerLink="/report" type="button" class="btn button btn-success" style="background-color: limegreen"><b>ออกรายงาน</b></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
+        <div [className]="classes.root">
+          <button ly-button style="width:30px"><i class="material-icons" style="color:#bd0000;font-size: 2rem">delete_forever</i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

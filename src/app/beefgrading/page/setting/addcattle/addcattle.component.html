@@ -1,11 +1,12 @@
-<div class="backpage">
-  <div class="addcattle text-center" style="margin-top: 80px; padding-top: 20px">
+<app-navmanu></app-navmanu>
+<div class="container-fluid">
+  <div class="addcattle text-center" style="padding-top: 10px">
     <a>
       <h2><b>ADD CATTLE</b></h2>
     </a>
   </div>
 
-  <div class="card">
+  <div class="card shadow" style="margin-bottom:5%">
     <div class="card-body">
       <form (ngSubmit)="addForm(datauser)" #datauser="ngForm">
         <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">

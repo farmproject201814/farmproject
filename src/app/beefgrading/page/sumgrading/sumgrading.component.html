@@ -78,10 +78,10 @@
               <td>{{data.grade_ex}}</td>
               <td style="color:rgb(80, 80, 80)">{{data.status}}</td>
               <td>
-                <button [routerLink]="['/sumgraded',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: limegreen"
+                <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: limegreen"
                   [hidden]="data.status!='ไม่ได้สรุปเกรด'"><b>สรุปเกรด</b></button>
 
-                <button [routerLink]="['/sumgraded',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: gray"
+                <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: gray"
                   [hidden]="data.status=='ไม่ได้สรุปเกรด'" [disabled]="data.status!='ไม่ได้สรุปเกรด'"><b>สรุปเกรด</b></button>
 
                 <!-- <button routerLink="/sumgraded" type="button" class="btn btn-sm text-light" style="background-color: limegreen"><b>สรุปเกรด</b></button> -->

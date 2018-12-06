@@ -264,71 +264,69 @@ test() {
       onOpen: () => {
         swal.showLoading();
         setTimeout(() => {
-
-          storageRef
-            .child('uploads/' + this.name_pic + '/Original')
-            .getDownloadURL()
-            .then(datas => {
-              this.api
-              .editData(this.key, {
-                picture: datas,
-              })
-              .subscribe();
-            });
+            let picture: String;
+            let picCrop1: String;
+            let picCrop2: String;
+            let picCrop3: String;
+            let picCrop4: String;
+            let picCrop5: String;
             storageRef
-            .child('uploads/' + this.name_pic + ('/crop0'))
-            .getDownloadURL()
-            .then(datas => {
-                  this.api
-              .editData(this.key, {
-                picCrop1: datas,
-              })
-              .subscribe();
-            });
-            storageRef
-            .child('uploads/' + this.name_pic + ('/crop1'))
-            .getDownloadURL()
-            .then(datas => {
-                  this.api
-              .editData(this.key, {
-                picCrop2: datas,
-              })
-              .subscribe();
-            });
-            storageRef
-            .child('uploads/' + this.name_pic + ('/crop2'))
-            .getDownloadURL()
-            .then(datas => {
-                  this.api
-              .editData(this.key, {
-                picCrop3: datas,
-              })
-              .subscribe();
-            });
-            storageRef
-            .child('uploads/' + this.name_pic + ('/crop3'))
-            .getDownloadURL()
-            .then(datas => {
-                  this.api
-              .editData(this.key, {
-                picCrop4: datas,
-              })
-              .subscribe();
-            });
-            storageRef
-            .child('uploads/' + this.name_pic + ('/crop4'))
-            .getDownloadURL()
-            .then(datas => {
-                  this.api
-              .editData(this.key, {
+              .child('uploads/' + this.name_pic + '/Original')
+              .getDownloadURL()
+              .then(datas => {
+               picture = datas;
+              });
+              storageRef
+              .child('uploads/' + this.name_pic + ('/crop0'))
+              .getDownloadURL()
+              .then(datas => {
+                  picCrop1 = datas;
+              });
+              storageRef
+              .child('uploads/' + this.name_pic + ('/crop1'))
+              .getDownloadURL()
+              .then(datas => {
+                picCrop2 = datas;
+              });
+              storageRef
+              .child('uploads/' + this.name_pic + ('/crop2'))
+              .getDownloadURL()
+              .then(datas => {
+                picCrop3 = datas;
+              });
+              storageRef
+              .child('uploads/' + this.name_pic + ('/crop3'))
+              .getDownloadURL()
+              .then(datas => {
+                picCrop4 = datas;
+              });
+              storageRef
+              .child('uploads/' + this.name_pic + ('/crop4'))
+              .getDownloadURL()
+              .then(datas => {
+                picCrop5 = datas;
+                //     this.api
+                // .editData(this.key, {
+                //   status: this.grade,
+                //   grade_sys: this.grade,
+                //   datecuted: String(this.datecuted),
+                //   picCrop5: datas,
+                // })
+                // .subscribe();
+              });
+            setTimeout(() => {
+              const dataSave = {picture: picture,
+                picCrop1: picCrop1,
+                picCrop2: picCrop2,
+                picCrop3: picCrop3,
+                picCrop4: picCrop4,
+                picCrop5: picCrop5,
                 status: this.grade,
                 grade_sys: this.grade,
                 datecuted: String(this.datecuted),
-                picCrop5: datas,
-              })
-              .subscribe();
-            });
-            setTimeout(() => {
+              };
+              console.log(dataSave);
+              this.api.editData(this.key, dataSave).subscribe();
               storageRef
               .child('uploads/' + this.name_pic + '/Original')
               .getDownloadURL()

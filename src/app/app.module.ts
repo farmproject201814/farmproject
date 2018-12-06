@@ -33,6 +33,12 @@ import { SumgradingComponent } from './beefgrading/page/sumgrading/sumgrading.co
 import { SummedComponent } from './beefgrading/page/sumgrading/summed/summed.component';
 import { HistoryComponent } from './beefgrading/page/history/history.component';
 import { AddcattleComponent } from './beefgrading/page/setting/addcattle/addcattle.component';
+import { EditprofileComponent } from './beefgrading/page/setting/editprofile/editprofile.component';
+import { UserComponent } from './beefgrading/page/setting/config/user/user.component';
+import { SystemComponent } from './beefgrading/page/setting/config/system/system.component';
+import { NavmanuComponent } from './beefgrading/page/setting/navmanu/navmanu.component';
+import { GradeComponent } from './beefgrading/page/setting/config/grade/grade.component';
+import { NotificationComponent } from './beefgrading/page/setting/config/notification/notification.component';
 
 // storehouse
 import { StorehouseComponent } from './storehouse/storehouse.component';
@@ -117,7 +123,13 @@ import { from } from 'rxjs';
     SumgradingComponent,
     SummedComponent,
     HistoryComponent,
-    AddcattleComponent
+    AddcattleComponent,
+    EditprofileComponent,
+    UserComponent,
+    SystemComponent,
+    NavmanuComponent,
+    GradeComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
