@@ -15,7 +15,11 @@
                 </div>
                 <input type="text" class="form-control search-input" aria-label="">
                 <div class="input-group-append">
-                  <button class="btn btn-light btn-sm text-light" style="background-color: limegreen"><i class="material-icons text-center">search</i></button>
+                  <button
+                  class="btn btn-light btn-sm text-light"
+                  style="background-color: limegreen; height:43px">
+                    <i class="material-icons text-center">search</i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -23,6 +27,13 @@
         </div>
       </div>
       <div class="card-body">
+        <div [hidden]="d.Delete == false && c.check == false">
+          <div [className]="classes.root">
+            <button ly-button style="width:30px" (click)="checkdelete()">
+              <i class="material-icons" style="color:#bd0000;font-size: 1.5rem">delete_forever</i>
+            </button>
+          </div>
+        </div>
         <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">
           <colgroup span="2"></colgroup>
           <thead class="thead text-dark" style="background-color: #ffffff;">
@@ -77,7 +88,7 @@
               <td>{{data.grade_sys}}</td>
               <td>{{data.grade_ex}}</td>
               <td style="color:rgb(80, 80, 80)">{{data.status}}</td>
-              <td>
+              <td style="padding-top:10px">
                 <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: limegreen"
                   [hidden]="data.status!='ไม่ได้สรุปเกรด'"><b>สรุปเกรด</b></button>
 
@@ -92,7 +103,7 @@
       </div>
       <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
         <div [className]="classes.root">
-          <button ly-button style="width:30px"><i class="material-icons" style="color:#bd0000;font-size: 2rem">delete_forever</i></button>
+          <button ly-button style="width:30px" (click)="checkdelete()"><i class="material-icons" style="color:#bd0000;font-size: 2rem">delete_forever</i></button>
         </div>
       </div>
     </div>

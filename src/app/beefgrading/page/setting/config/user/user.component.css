@@ -1,0 +1,50 @@
+.jumbotron{
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.lists_user{
+  font-size: 2rem;
+  color: #003171;
+}
+
+.font{
+  font-size: 1.3em;
+}
+
+.btn{
+  font-size: 1.3rem;
+  /* width: 100px; */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btncon{
+  width: 200px;
+}
+
+.fa{
+  font-size: 1.2rem;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+  /* bottom: 2rem; */
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.material-icons{
+  vertical-align: -6px;
+  font-size: 1.8rem;
+}
+
+thead > tr > td{
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.search-input{
+  height: 43px;
+}

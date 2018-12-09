@@ -1,4 +1,88 @@
 <app-navmanu></app-navmanu>
-<p>
-  user works!
-</p>
+<div
+  class="lists_user text-center"
+  style="margin-top: 20px; padding-bottom: 20px"
+>
+  <a
+    ><i class="material-icons" style="margin-right: 5px">settings</i
+    ><b>บัญชีผู้ใช้งาน</b></a
+  >
+</div>
+<div class="backpage">
+  <div class="container">
+    <div class="card shadow p" style="margin-bottom: 5%">
+      <div class="card-header" style="background-color: #007FFF;color: #ffffff">
+        <div class="row" style="width: 100%">
+          <div class="col-6">
+            <h4><b>รายชื่อบัญชีผู้ใช้งาน</b></h4>
+          </div>
+          <div class="col">
+            <div style="margin-left:50%">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">ค้นหา</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control search-input"
+                  aria-label=""
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text"
+                    ><i class="material-icons">search</i></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <form>
+          <table
+            cellspacing="0"
+            cellpadding="0"
+            class="table table-bordered table-striped table-hover text-center"
+          >
+            <colgroup span="2"></colgroup>
+            <thead class="thead text-dark" style="background-color: #ffffff;">
+              <tr>
+                <td rowspan="1">ลำดับ</td>
+                <td rowspan="1">ชื่อ-นามสกุล</td>
+                <td rowspan="1">อีเมล</td>
+                <td rowspan="1">ชื่อผู้ใช้งาน/username</td>
+                <td rowspan="1">กำหนดสิทธิ์ผู้ใช้งาน</td>
+                <td rowspan="1">ลบบัญชี</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let data of data; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ data.fname }}&nbsp;&nbsp;{{ data.lname }}</td>
+                <td>{{ data.email }}</td>
+                <td>{{ data.users }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    style="background-color: limegreen">
+                    <b><i class="fa fa-edit"></i>กำหนดสิทธิ์</b>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger">
+                    <b><i class="material-icons">delete_forever</i></b>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

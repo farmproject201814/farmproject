@@ -12,8 +12,7 @@
     <div class="card shadow">
       <div class="card-header" style="background-color: #007FFF;color: #ffffff">
         <div class="row" style="width: 100%">
-          <div class="col-6">
-            <h4><b>รายการซากโค</b></h4>
+          <div class="col-6"><h3><b>รายการซากโค</b></h3>
           </div>
           <div class="col">
             <div style="margin-left:50%">
@@ -31,7 +30,7 @@
                 <div class="input-group-append">
                   <button
                     class="btn btn-light btn-sm text-light"
-                    style="background-color: limegreen"
+                    style="background-color: limegreen; height:43px"
                   >
                     <i class="material-icons text-center">search</i>
                   </button>
@@ -42,6 +41,13 @@
         </div>
       </div>
       <div class="card-body">
+        <div [hidden]="d.Delete == false && c.check == false">
+          <div [className]="classes.root">
+            <button ly-button style="width:30px" (click)="checkdelete()">
+              <i class="material-icons" style="color:#bd0000;font-size: 1.5rem">delete_forever</i>
+            </button>
+          </div>
+        </div>
         <table
           cellspacing="0"
           cellpadding="0"
@@ -115,9 +121,7 @@
                   <b>ตัดเกรด</b>
                 </button>
                 <button
-                  [routerLink]="[
-                    '/grading',
-                    { key: data.key, value: 'grading' }
+                  [routerLink]="['/grading',{ key: data.key, value: 'grading' }
                   ]"
                   type="button"
                   class="btn btn-sm text-light"
@@ -134,7 +138,7 @@
       </div>
       <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
         <div [className]="classes.root">
-          <button ly-button style="width:30px">
+          <button ly-button style="width:30px" (click)="checkdelete()">
             <i class="material-icons" style="color:#bd0000;font-size: 1.5rem"
               >delete_forever</i
             >

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { api } from './../../../../environments/environment';
 import { map } from 'rxjs/operators';
+import { keyframes } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,12 @@ export class GradingService {
   }
   getDataByKey(key) {
     return this.http.get(api.url + '/api/graded/show/' + key).pipe(map(res => res.json()));
+  }
+
+  send2matlab(data) {
+    return this.http.post(api.url + '/api/graded/matlab', data).pipe(map(res => res.json()));
+  }
+  frommatlab(data) {
+    return this.http.get(api.url + '/api/graded/matlab', data).pipe(map(res => res.json()));
   }
 }

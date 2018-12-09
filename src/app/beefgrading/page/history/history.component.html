@@ -3,7 +3,7 @@
 </div>
 <div class="backpage">
   <div class="container-fluid">
-    <div class="card shadow p mb-5">
+    <div class="card shadow" style="margin-bottom:5%">
       <div class="card-header" style="background-color: #007FFF;color: #ffffff">
         <div class="row" style="width: 100%">
           <div class="col-6"><h3><b>รายการประวัติการตัดเกรด</b></h3></div>
@@ -23,6 +23,13 @@
         </div>
       </div>
       <div class="card-body">
+        <div [hidden]="d.Delete == false && c.check == false">
+          <div [className]="classes.root">
+            <button ly-button style="width:30px" (click)="checkdelete()">
+              <i class="material-icons" style="color:#bd0000;font-size: 1.5rem">delete_forever</i>
+            </button>
+          </div>
+        </div>
         <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">
           <colgroup span="2"></colgroup>
           <thead class="thead text-dark" style="background-color: #ffffff;">
@@ -80,14 +87,23 @@
               <td>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
-                  <h5><b>รูปภาพ</b></h5>
+                  <b>รูปภาพ</b>
                 </button>
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
+                <div
+                class="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                      <div
+                      class="modal-header"
+                      style="background-color:#28a745;color: #ffffff"
+                      >
+                        <h4 class="modal-title"><b>รูปภาพซากโค</b></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -96,15 +112,13 @@
                         <div class=" text-center">
                           <img
                             class=" cardsize"
-                            style="border-radius: 5px"
+                            style="border-radius: 5px; width: auto; height: cover"
                             src="{{data.picture}}"
-                            width="cover"
-                            height="cover"
                           />
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>Close</b></button>
                         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                       </div>
                     </div>
@@ -121,7 +135,7 @@
       </div>
       <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
         <div [className]="classes.root">
-          <button ly-button style="width:30px"><i class="material-icons" style="color:#bd0000;font-size: 2rem">delete_forever</i></button>
+          <button ly-button style="width:30px" (click)="checkdelete()"><i class="material-icons" style="color:#bd0000;font-size: 2rem">delete_forever</i></button>
         </div>
       </div>
     </div>

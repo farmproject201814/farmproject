@@ -90,3 +90,12 @@ input[type="checkbox"]:not(:checked) + .label-text:before {
   color: #06a3e9;}
   100%  {transform: scale(0); opacity: 0;}
 }
+
+.modal-dialog{
+  width: 750px;
+  margin-left: 30%;
+  margin-top: 5%;
+}
+.modal-content{
+  width: 750px;
+}

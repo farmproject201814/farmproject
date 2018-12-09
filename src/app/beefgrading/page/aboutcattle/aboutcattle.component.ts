@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutcattleService } from './../../../service/API/beefgrading/aboutcattle.service';
 import { LyTheme2 } from '@alyle/ui';
+import swal from 'sweetalert2';
 
 const styles = () => ({
   root: {
@@ -34,10 +35,10 @@ export class AboutcattleComponent implements OnInit {
   d = {
     Delete: false
   };
-
   c = {
     check: false
   };
+  count;
 
   data: any;
   items = {
@@ -108,5 +109,33 @@ export class AboutcattleComponent implements OnInit {
       this.selectQuestions.push(k);
     }
     console.log('idcheck :', this.idcheck);
+  }
+
+  checkdelete() {
+    swal({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.api.removeData(this.idcheck).subscribe();
+        // this.api.showData().subscribe(data => {
+        //   this.data = Object.values(data);
+        //   for (let i = 0; i < Object.values(data).length; i++) {
+        //     this.data[i].key = Object.keys(data)[i];
+        //   }
+        // });
+        swal(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+        setTimeout(() => location.reload(), 500);
+      }
+    });
   }
 }

@@ -118,12 +118,12 @@ export class SummedComponent implements OnInit {
       console.log(this.grade_sys);
      this.grade_end = this.grade_sys;
 
-     this.apigrade.editData(this.key, {grade_ex: this.grade_sys});
+     this.apigrade.editData(this.key, {grade_ex: this.grade_sys}).subscribe();
     } else {
       console.log(this.grade_opt1);
       this.grade_end = this.grade_opt1;
 
-     this.apigrade.editData(this.key, {grade_ex: this.grade_opt1});
+     this.apigrade.editData(this.key, {grade_ex: this.grade_opt1}).subscribe();
     }
     swal({
       title: 'กำลังบันทึกผลการสรุปเกรด!',
