@@ -1,6 +1,6 @@
 @media only screen and (max-width:1920px){
   .navbar{
-    height: 75px;
+    height: 60px;
     font-weight: bold;
   }
   .navbar-icon{
@@ -37,8 +37,8 @@
     display: block;
     color: white;
     /* text-align: center; */
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     text-decoration: none;
     transition: all 0.5s ease;
     /* vertical-align: 3px; */
@@ -59,8 +59,8 @@
     color: white;
     width: 100%;
     vertical-align: 20px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     /* text-align: center; */
     border: none;
     cursor: pointer;
