@@ -1,152 +1,350 @@
-.text-center {
-  font-size: 24px;
+@media only screen and (max-width:1920px){
+  .text-center {
+    font-size: 24px;
+  }
+
+  label,
+  input[type="text"],
+  .btn {
+    font-size: 16px;
+  }
+
+  h5 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .card2 {
+    margin-left: 3%;
+    margin-right: 3%;
+    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+  }
+
+  .card-header {
+    background-color: #006dcc;
+    color: white;
+    padding: 0.1rem 1.5rem;
+  }
+
+  .card-body {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  table,
+  tr td {
+    border: 1px solid #ddd;
+  }
+
+  tbody {
+    display: block;
+    height: 200px; /* ความสูงของตาราง */
+    overflow: auto;
+  }
+
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  thead {
+    height: 40px;
+    width: calc(100% - 1eem);
+    border-bottom: 1px solid #ddd;
+  }
+
+  thead tr th {
+    border-right: 1px solid #ddd;
+  }
+
+  thead tr th:last-child {
+    border-right: 1px solid white;
+  }
+
+  tr td {
+    height: 30px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  table tbody tr:hover {
+    background-color: #e9e9e9;
+  }
+
+  .btn-danger {
+    padding-left: 0;
+    padding-right: 8px;
+  }
+
+  i {
+    vertical-align: -2px;
+  }
+
+  .material-icons {
+    vertical-align: -10px;
+    margin-left: 8px;
+  }
+
+
+  input, select, label {
+    font-size: 16px;
+    margin-bottom: -10px;
+  }
+
+  input {
+    height: 28px;
+  }
+
+  select {
+    height: 30px;
+  }
+
+  .modal-dialog {
+    width:100%;
+    margin:0 auto;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  a {
+    height: 50px;
+    margin-left: 20px;
+  }
+
+  br {
+    line-height: 35px;
+  }
+
+  textarea {
+    height: 83px;
+    width: 215px;
+    margin-left: 15px;
+    margin-bottom: -10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #495057;
+    padding-left: 12px;
+  }
+
+  .modal-title {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+
+/* ลำดับ */
+  .thg1{
+    width: 80px;
+  }
+/* แก้ไข */
+  .thg9{
+    width: 130px;
+  }
+/* ชื่อผู้ใช้งาน เบอร์โทร สิทธิ์ผู้ใช้งาน */
+  .thg4, .thg6, .thg8{
+    width: 150px;
+  }
+/* ชื่อ นามสกุล */
+  .thg2, .thg3{
+    width: 160px;
+  }
+/* ที่อยู่ */
+  .thg5{
+    width: 350px;
+  }
+/* อีเมล */
+  .thg7{
+    width: 300px;
+  }
 }
 
-label,
-input[type="text"],
-.btn {
-  font-size: 16px;
-}
 
-h5 {
-  font-size: 18px;
-  margin-top: 10px;
-}
+@media only screen and (max-width:1400px){
+  .text-center {
+    font-size: 24px;
+  }
 
-.card2 {
-  margin-left: 3%;
-  margin-right: 3%;
-  overflow: hidden;
-  border-radius: 20px 20px 0px 0px;
-}
+  label,
+  input[type="text"],
+  .btn {
+    font-size: 16px;
+  }
 
-.card-header {
-  background-color: #006dcc;
-  color: white;
-  padding: 0.1rem 1.5rem;
-}
+  h5 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
 
-.card-body {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
+  .card2 {
+    margin-left: 3%;
+    margin-right: 3%;
+    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+  }
 
-.row {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+  .card-header {
+    background-color: #006dcc;
+    color: white;
+    padding: 0.1rem 1.5rem;
+  }
 
-table,
-tr td {
-  border: 1px solid #ddd;
-}
+  .card-body {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 
-tbody {
-  display: block;
-  height: 200px; /* ความสูงของตาราง */
-  overflow: auto;
-}
+  .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
-thead,
-tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
+  table,
+  tr td {
+    border: 1px solid #ddd;
+  }
 
-thead {
-  height: 40px;
-  width: calc(100% - 1eem);
-  border-bottom: 1px solid #ddd;
-}
+  tbody {
+    display: block;
+    height: 200px; /* ความสูงของตาราง */
+    overflow: auto;
+  }
 
-thead tr th {
-  border-right: 1px solid #ddd;
-}
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
 
-thead tr th:last-child {
-  border-right: 1px solid white;
-}
+  thead {
+    height: 40px;
+    width: calc(100% - 1eem);
+    border-bottom: 1px solid #ddd;
+  }
 
-tr td {
-  height: 30px;
-}
+  thead tr th {
+    border-right: 1px solid #ddd;
+  }
 
-table {
-  width: 100%;
-}
+  thead tr th:last-child {
+    border-right: 1px solid white;
+  }
 
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+  tr td {
+    height: 30px;
+  }
 
-table tbody tr:hover {
-  background-color: #e9e9e9;
-}
+  table {
+    width: 100%;
+  }
 
-.btn-danger {
-  padding-left: 0;
-  padding-right: 8px;
-}
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 
-i {
-  vertical-align: -2px;
-}
+  table tbody tr:hover {
+    background-color: #e9e9e9;
+  }
 
-.material-icons {
-  vertical-align: -10px;
-  margin-left: 8px;
-}
+  .btn-danger {
+    padding-left: 0;
+    padding-right: 8px;
+  }
+
+  i {
+    vertical-align: -2px;
+  }
+
+  .material-icons {
+    vertical-align: -10px;
+    margin-left: 8px;
+  }
 
 
-input, select, label {
-  font-size: 16px;
-  margin-bottom: -10px;
-}
+  input, select, label {
+    font-size: 16px;
+    margin-bottom: -10px;
+  }
 
-input {
-  height: 28px;
-}
+  input {
+    height: 28px;
+  }
 
-select {
-  height: 30px;
-}
+  select {
+    height: 30px;
+  }
 
-.modal-dialog {
-  width:100%;
-  margin:0 auto;
-}
+  .modal-dialog {
+    width:100%;
+    margin:0 auto;
+  }
 
-button {
-  font-size: 16px;
-}
+  button {
+    font-size: 16px;
+  }
 
-a {
-  height: 50px;
-  margin-left: 20px;
-}
+  a {
+    height: 50px;
+    margin-left: 20px;
+  }
 
-br {
-  line-height: 35px;
-}
+  br {
+    line-height: 35px;
+  }
 
-textarea {
-  height: 83px;
-  width: 215px;
-  margin-left: 15px;
-  margin-bottom: -10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: #495057;
-  padding-left: 12px;
-}
+  textarea {
+    height: 83px;
+    width: 215px;
+    margin-left: 15px;
+    margin-bottom: -10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #495057;
+    padding-left: 12px;
+  }
 
-.modal-title {
-  margin-top: -5px;
-  margin-bottom: -5px;
+  .modal-title {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+  /* .sp {
+    margin-left: -10px;
+    margin-top: 2px;
+  } */
+
+  .ths1{
+    width: 50px;
+  }
+  .ths9{
+    width: 90px;
+  }
+  .ths4, .ths6, .ths8{
+    width: 120px;
+  }
+  .ths2, .ths3{
+    width: 140px;
+  }
+  .ths5{
+    width: 160px;
+  }
+  .ths7{
+    width: 210px;
+  }
 }
-/* .sp {
-  margin-left: -10px;
-  margin-top: 2px;
-} */

@@ -54,7 +54,7 @@ export class EditprofileComponent implements OnInit {
           this.email = element.email;
           this.fax = element.fax;
           this.id_code = element.id_code;
-          this.phone_num = element.phone_num;
+          this.phone_num = element.mobile;
           this.zip = element.zip;
           this.users = element.users;
           this.gender = element.gender;

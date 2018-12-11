@@ -99,3 +99,7 @@ input[type="checkbox"]:not(:checked) + .label-text:before {
 .modal-content{
   width: 750px;
 }
+
+.fas{
+  vertical-align: -8px;
+}

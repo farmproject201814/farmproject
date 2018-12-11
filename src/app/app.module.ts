@@ -19,8 +19,18 @@ import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
 // mainpage
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UploadService } from './service/uploads/shared/upload.service';
+import { Upload } from './service/uploads/shared/upload';
+import { UsersService } from './service/API/users.service';
+import { AboutcattleService } from './service/API/beefgrading/aboutcattle.service';
+import { CalculateGService } from './service/API/beefgrading/calculate-g.service';
+import { GradingService } from './service/API/beefgrading/grading.service';
+import { HistoryService } from './service/API/beefgrading/history.service';
+import { SumgradingService } from './service/API/beefgrading/sumgrading.service';
+import { AuthService } from './auth.service';
 
 // beefgrading
+import { BeefgradingRoutingModule } from './beefgrading/beefgrading-routing.module';
 import { AboutcattleComponent } from './beefgrading/page-grading/aboutcattle/aboutcattle.component';
 import { GradingComponent } from './beefgrading/page-grading/grading/grading.component';
 import { SumgradingComponent } from './beefgrading/page-grading/sumgrading/sumgrading.component';
@@ -46,7 +56,6 @@ import { SignUpComponent } from './dashboard/sign-up/sign-up.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { FooterComponent } from './dashboard/footer/footer.component';
 import { firebaseConfig } from 'src/environments/firebase.config';
-import { AuthService } from './auth.service';
 import { Menu2Component } from './storehouse/page/menu2/menu2.component';
 import { Menu3Component } from './storehouse/page/menu3/menu3.component';
 import { Menu4Component } from './storehouse/page/menu4/menu4.component';
@@ -177,12 +186,14 @@ import { NotificationT5Component } from './storehouse/page/menu6/notification/no
     FormsModule,
     HttpModule,
     PageRoutingModule,
-    StorehouseRoutingModule
+    StorehouseRoutingModule,
+    BeefgradingRoutingModule
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },
     { provide: LY_THEME, useClass: MinimaDark, multi: true },
-    AuthService
+    AuthService,
+    UploadService, UsersService, AboutcattleService, CalculateGService, GradingService, HistoryService, SumgradingService
   ],
   bootstrap: [AppComponent]
 })
