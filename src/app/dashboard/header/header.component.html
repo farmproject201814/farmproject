@@ -121,8 +121,8 @@
 
   <!-- หลัง login (ตัดเกรด) -->
 <nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!user1">
-  <a (click)="test()"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
-  <a (click)="test()" class="head nav-link" style="margin-right: 50px; color: white">ระบบการตัดเกรดเนื้อโค</a>
+  <a routerLink="/beefgrading"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+  <a routerLink="/beefgrading" class="head nav-link" style="margin-right: 50px; color: white">ระบบการตัดเกรดเนื้อโค</a>
 
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
@@ -174,6 +174,7 @@
           <i class="fa fa-caret-down" style="margin-left: 5px"></i>
         </button>
         <div class="dropdown-content" style="width: 180px">
+          <a routerLink="/dashboard2" (click)=test()><i class="fas fa-chevron-left" style="margin-right: 3px"></i>กลับสู่หน้าหลัก</a>
           <a routerLink="/editprofile"><i class="fas fa-user-edit" style="margin-right: 3px" ></i>ข้อมูลผู้ใช้งาน</a>
           <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 3px; vertical-align: -1px"></i>ออกจากระบบ</a>
         </div>

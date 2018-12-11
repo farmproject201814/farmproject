@@ -1,0 +1,16 @@
+.navbar{
+  width: 100%;
+}
+.btn{
+  width: 200px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.material-icons{
+  vertical-align: -8px;
+  font-size: 1.6rem;
+}
+.card {
+  width: 100%;
+  padding: -100px;
+}

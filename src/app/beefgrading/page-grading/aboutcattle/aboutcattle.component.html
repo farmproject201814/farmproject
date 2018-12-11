@@ -1,0 +1,150 @@
+<div
+  class="AboutCattle text-center"
+  style="margin-top: 70px; padding-top: 20px"
+>
+  <a
+    ><i class="material-icons" style="margin-right: 5px">format_list_bulleted</i
+    ><b>รายการซากโค</b></a
+  >
+</div>
+<div class="backpage">
+  <div class="container-fluid">
+    <div class="card shadow">
+      <div class="card-header" style="background-color: #007FFF;color: #ffffff">
+        <div class="row" style="width: 100%">
+          <div class="col-6"><h3><b>รายการซากโค</b></h3>
+          </div>
+          <div class="col">
+            <div style="margin-left:50%">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><b>ค้นหา</b></span
+                  >
+                </div>
+                <input
+                  type="text"
+                  class="form-control search-input"
+                  aria-label=""
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-light btn-sm text-light"
+                    style="background-color: limegreen; height:43px"
+                  >
+                    <i class="material-icons text-center">search</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div [hidden]="d.Delete == false && c.check == false">
+          <div [className]="classes.root">
+            <button ly-button style="width:30px" (click)="checkdelete()">
+              <i class="material-icons" style="color:#bd0000;font-size: 1.5rem">delete_forever</i>
+            </button>
+          </div>
+        </div>
+        <table
+          cellspacing="0"
+          cellpadding="0"
+          class="table table-bordered table-striped table-hover text-center"
+        >
+          <colgroup span="2"></colgroup>
+          <thead class="thead text-dark" style="background-color: #ffffff;">
+            <tr>
+              <td rowspan="2">
+                <label>
+                  <input type="checkbox" (click)="checkAll_list()" />
+                  <span class="label-text">ลำดับ</span>
+                </label>
+              </td>
+              <td rowspan="2">รหัสโค</td>
+              <th colspan="2">บาร์โค้ด</th>
+              <td rowspan="2">วันที่เชือด</td>
+              <td rowspan="2">วันที่เข้าบ่ม</td>
+              <td rowspan="2" colspan="1">
+                วันที่พร้อม<br />
+                ตัดเกรด
+              </td>
+              <td rowspan="2">วันที่ตัดเกรด</td>
+              <th colspan="2">น้ำหนัก kg.</th>
+              <td rowspan="2">ห้องเย็น</td>
+              <td rowspan="2">เจ้าของโค</td>
+              <td rowspan="2">สถานะ/เกรด</td>
+              <td rowspan="2">ตัดเกรด</td>
+              <!-- <td rowspan="2">ลบ</td> -->
+            </tr>
+            <tr>
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let data of data; let i = index">
+              <td>
+                <label>
+                  <input
+                    type="checkbox"
+                    (click)="selectMenu(data.key)"
+                    [checked]="c.check"
+                  />
+                  <span class="label-text">{{ i + 1 }}</span>
+                </label>
+              </td>
+              <td>{{ data.id }}</td>
+              <td>{{ data.left }}</td>
+              <td>{{ data.right }}</td>
+              <td>{{ data.datekill | date: "dd-MM-yyyy" }}</td>
+              <td>{{ data.datedry | date: "dd-MM-yyyy" }}</td>
+              <td>{{ data.dateready | date: "dd-MM-yyyy" }}</td>
+              <td>{{ data.datecuted | date: "dd-MM-yyyy" }}</td>
+              <td>{{ data.wleft }}</td>
+              <td>{{ data.wright }}</td>
+              <td>{{ data.roomdry }}</td>
+              <td>{{ data.firstown }}&nbsp;&nbsp;{{ data.lastown }}</td>
+              <td>{{ data.status }}</td>
+              <td style="padding-top:10px">
+                <button
+                  [routerLink]="['/grading', { key: data.key }]"
+                  type="button"
+                  class="btn btn-sm text-light btn-success"
+                  [hidden]="data.status != 'พร้อม'"
+                >
+                  <b>ตัดเกรด</b>
+                </button>
+                <button
+                  [routerLink]="['/grading',{ key: data.key, value: 'grading' }
+                  ]"
+                  type="button"
+                  class="btn btn-sm text-light"
+                  style="background-color: gray"
+                  [hidden]="data.status == 'พร้อม'"
+                  [disabled]="data.status != 'พร้อม'"
+                >
+                  <b>ตัดเกรด</b>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
+        <div [className]="classes.root">
+          <button ly-button style="width:30px" (click)="checkdelete()">
+            <i class="material-icons" style="color:#bd0000;font-size: 1.5rem"
+              >delete_forever</i
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

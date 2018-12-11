@@ -1,0 +1,119 @@
+.backpage{
+  background-color: #ffffff;
+  /*background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; */
+  width: 100%;
+  /* height: 100%; */
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+  top: .5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.fa{
+  font-size: 1.4rem;
+}
+
+.cardsize{
+  padding: 0%;
+  width: 400px;
+  height:400px;
+}
+
+.Grading{
+  font-size: 2rem;
+  color: #003171;
+}
+.Graded{
+  font-size: 2rem;
+  color: #003171;
+}
+
+.zone-left{
+  object-position: center;
+}
+
+.chooseimg{
+  object-position: center;
+}
+
+.jumbotron{
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.file{
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.jumimg{
+  color: rgb(131, 131, 131);
+  height: 300px;
+}
+.textimg{
+  vertical-align: -100px;
+}
+
+.btn{
+  font-size: 1.4em;
+  /* width: 150px; */
+  height: 100%;
+  padding-top: 15px;
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.tapside{
+  padding-left: 5%;
+  /* padding-right: 5%; */
+}
+
+.material-icons{
+  vertical-align: -6px;
+  font-size: 1.6rem;
+}
+
+input {
+  font-size: 1.2rem;
+  color: rgb(30, 30, 30);
+  /* font-weight: bold; */
+}
+label{
+  font-size: 1.4rem;
+  /* font-weight: bold; */
+}
+
+.gradetext{
+  font-family: 'Quark-Light', sans-serif;
+  font-size: 12rem;
+  /* height: 100px; */
+  /* width: 8rem; */
+}
+

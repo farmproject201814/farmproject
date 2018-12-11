@@ -1,0 +1,300 @@
+<div
+  class="backpage"
+  style="margin-top: 60px; padding-top: 20px; margin-bottom: 80px"
+>
+  <div class="sumshow text-center">
+    <a>
+      <h2>
+        <i class="material-icons" style="margin-right: 5px"
+          >assignment_turned_in</i
+        ><b>สรุปเกรด</b>
+      </h2>
+    </a>
+  </div>
+
+  <div class="container-fluid">
+    <div class="card shadow p mb-3">
+      <form (ngSubmit)="addUsers(dataForm)" #dataForm="ngForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <div style="color: #1560BD; margin-bottom: 20px">
+                <h4><b>รูปตัวอย่างซากเนื้อ</b></h4>
+              </div>
+              <div class=" text-center">
+                <img
+                  class=" cardsize"
+                  style="border-radius: 5px; width: auto; height: cover"
+                  src="{{Pic}}"
+                />
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label for="officer" style="color: #1560BD">
+                <h4><b>พนักงานตัดเกรด</b></h4>
+              </label>
+              <form>
+                <div class="form-row">
+                  <label for="Firstlastname" class="col-1.5 col-form-label ml-3"
+                    ><b>ชื่อ-นามสกุล</b></label
+                  >
+                  <div class="form-group col-sm-5 ">
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{userfirst}}&nbsp;&nbsp;{{userlast}}"
+                    />
+                  </div>
+                </div>
+              </form>
+              <label for="expert" style="color: #1560BD;margin-top: 5%">
+                <h4><b>ชื่อผู้เชี่ยวชาญ</b></h4>
+              </label>
+
+              <div class="form-row">
+                <label for="nameexpert1" class="col-sm-1 col-form-label"
+                  ><b>1</b></label
+                >
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameexpert1"
+                    placeholder="ชื่อ"
+                    name="fn_ex1"
+                    ngModel
+                  />
+                </div>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lnameexpert1"
+                    placeholder="นามสกุล"
+                    name="ln_ex1"
+                    ngModel
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="nameexpert2" class="col-sm-1 col-form-label"
+                  ><b>2</b></label
+                >
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameexpert2"
+                    placeholder="ชื่อ"
+                    name="fn_ex2"
+                    ngModel
+                  />
+                </div>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lnameexpert2"
+                    placeholder="นามสกุล"
+                    name="ln_ex2"
+                    ngModel
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="nameexpert3" class="col-sm-1 col-form-label"
+                  ><b>3</b></label
+                >
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameexpert3"
+                    placeholder="ชื่อ"
+                    name="fn_ex3"
+                    ngModel
+                  />
+                </div>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lnameexpert3"
+                    placeholder="นามสกุล"
+                    name="ln_ex3"
+                    ngModel
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="nameexpert4" class="col-sm-1 col-form-label"
+                  ><b>4</b></label
+                >
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameexpert4"
+                    placeholder="ชื่อ"
+                    name="fn_ex4"
+                    ngModel
+                  />
+                </div>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lnameexpert4"
+                    placeholder="นามสกุล"
+                    name="ln_ex4"
+                    ngModel
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="nameexpert5" class="col-sm-1 col-form-label"
+                  ><b>5</b>
+                </label>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameexpert5"
+                    placeholder="ชื่อ"
+                    name="fn_ex5"
+                    ngModel
+                  />
+                </div>
+                <div class="form-group col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lnameexpert5"
+                    placeholder="นามสกุล"
+                    name="ln_ex5"
+                    ngModel
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <a class="text-center" for="File1" style="color: #1560BD">
+                <h4><b>เกรดที่ได้</b></h4>
+              </a>
+              <div class="row">
+                <div class="col">
+                  <table class="table ta1 table-bordered col-sm-8 text-center">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col" style="color: #1560BD">
+                          <h4><b>พนักงานตัดเกรด</b></h4>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="gradetext" style="color: rgb(72, 255, 0)">
+                          <b>{{ grade_sys }}</b>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="col">
+                  <table class="table ta2 table-bordered col-sm-8 text-center">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col" style="color: #1560BD">
+                          <h4><b>ผู้เชี่ยวชาญ</b></h4>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="gradetext" style="color: rgb(72, 255, 0)">
+                          <b>{{ grade_ex }}</b>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="card mb-3" style="margin-left:15%; margin-right:11.5%">
+                <div class="card-body row">
+                  <div class="col">
+                    <div class="form-group text-center">
+                      <label for="exampleFormControlSelect1" style="color: #1560BD">
+                        <h4><b>เลือกเกรดผู้เชียวชาญ</b></h4>
+                      </label>
+                      <select
+                        class="form-control col-8 form-group font"
+                        id="exampleFormControlSelect1"
+                        style="margin-left:18%"
+                        name="grade_opt1"
+                        [(ngModel)]="grade_opt1"
+                        (change)="select_grade(grade_opt1)"
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>2.5</option>
+                        <option>3</option>
+                        <option>3.25</option>
+                        <option>3.5</option>
+                        <option>4</option>
+                        <option>4.5</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <a
+                    class="text-center"
+                    style="color: rgb(77, 77, 77); padding-top: 30px"
+                    ><h5><b>หรือ</b></h5></a
+                  >
+
+                  <div class="col">
+                    <a class="text-center" style="color: #1560BD">
+                      <h4><b>กรอกเกรดที่ต้องการ</b></h4>
+                    </a>
+                    <input
+                      class="form-control col-sm-8"
+                      style="margin-left:18%; margin-top: 15px"
+                      type="number"
+                      name="grade_opt2"
+                      [(ngModel)]="grade_opt2"
+                      (keyup)="select_grade_opt2($event)"
+                      max="5"
+                      min="1"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pull-right mb-3" style="margin-right:100px">
+          <button
+            routerLink="/sumgrade"
+            type="button"
+            class="btn btn-outline-danger pull-center"
+            style="vertical-align:middle ;margin-right: 10px; width: 150px"
+          >
+            <h4><b>ยกเลิก</b></h4>
+          </button>
+          <button
+            type="submit"
+            class="btn btn-success pull-center"
+            style="vertical-align:middle; width: 420px"
+          >
+            <h4><b>บันทึก</b></h4>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

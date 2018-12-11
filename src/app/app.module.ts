@@ -21,6 +21,18 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 // beefgrading
+import { AboutcattleComponent } from './beefgrading/page-grading/aboutcattle/aboutcattle.component';
+import { GradingComponent } from './beefgrading/page-grading/grading/grading.component';
+import { SumgradingComponent } from './beefgrading/page-grading/sumgrading/sumgrading.component';
+import { SummedComponent } from './beefgrading/page-grading/sumgrading/summed/summed.component';
+import { HistoryComponent } from './beefgrading/page-grading/history/history.component';
+import { AddcattleComponent } from './beefgrading/page-grading/setting/addcattle/addcattle.component';
+import { EditprofileComponent } from './beefgrading/page-grading/setting/editprofile/editprofile.component';
+import { UserComponent } from './beefgrading/page-grading/setting/config/user/user.component';
+import { SystemComponent } from './beefgrading/page-grading/setting/config/system/system.component';
+import { NavmanuComponent } from './beefgrading/page-grading/setting/navmanu/navmanu.component';
+import { GradeComponent } from './beefgrading/page-grading/setting/config/grade/grade.component';
+import { NotigradeComponent } from './beefgrading/page-grading/setting/config/notigrade/notigrade.component';
 
 // storehouse
 import { StorehouseComponent } from './storehouse/storehouse.component';
@@ -85,6 +97,22 @@ import { NotificationT5Component } from './storehouse/page/menu6/notification/no
     DashboardComponent,
     StorehouseComponent,
     BeefgradingComponent,
+
+    // grading --------------
+    AboutcattleComponent,
+    GradingComponent,
+    SumgradingComponent,
+    SummedComponent,
+    HistoryComponent,
+    AddcattleComponent,
+    EditprofileComponent,
+    UserComponent,
+    SystemComponent,
+    NavmanuComponent,
+    GradeComponent,
+    NotigradeComponent,
+
+    // storehouse------------
     PageComponent,
     Menu1Component,
     SignInComponent,
