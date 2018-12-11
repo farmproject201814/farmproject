@@ -1,3 +1,109 @@
+<div class="header">
+  <p class="text-center"><strong>ประเภทการนำเข้า</strong></p>
+  <div class="row r1 justify-content-center">
+    <div class="form-inline">
+      <label class="col-form-label"><b>ประเภทการนำเข้า</b></label>
+      <div class="dropdown mx-sm-3">
+        <button class="dropbtn">ซากเนื้อโค (ทั้งหมด) &nbsp;<i class="fa fa-caret-down" ></i></button>
+        <div class="dropdown-content">
+          <a routerLink="/menu2/import-t2">ซากเนื้อโค (ซ้าย-ขวา)</a>
+          <a routerLink="/menu2/import-t3">ซากเนื้อโค (บน-ล่าง)</a>
+          <a routerLink="/menu2/import-t4">ซากเนื้อโค (ก้อน)</a>
+          <a routerLink="/menu2/import-t5">ซากเนื้อโค (ส่วนอื่น)</a>
+        </div>
+      </div>
+      <label class="col-form-label"><b>ชนิดของซาก</b></label>
+      <div class="d1 ml-3">
+        <div class="input-group form-search">
+            <select class="form-control search-query fcsq1"> <!-- (change)="filter_1(t1)" ngModel="ทั้งหมด" #t1-->
+              <option value="ทั้งหมด">ทั้งหมด</option>
+            </select>
+          </div>
+      </div>
+      <label class="col-form-label ml-3"><b>ค้นหาโดย</b></label>
+      <div class="input-group form-search  ml-3">
+        <select class="form-control search-query fcsq2" (change)="dropdown_search(slt)" ngModel="1" #slt>
+          <option value="1">ชื่อเจ้าของ</option>
+          <option value="2">ชื่อผู้นำเข้า</option>
+          <option value="3">เบอร์โค</option>
+          <option value="4">รหัสซาก</option>
+          <option value="5">รหัสบาร์โค้ดซาก</option>
+          <option value="6">รหัสคิวอาร์โค้ดซาก</option>
+        </select>
+        <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
+        <!-- <div class="input-group-prepend">
+          <span class="input-group-text" style="height: 35px;" id="igt"> <i class="fa fa-search"></i></span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="row r2 justify-content-center">
+    <div class="input-group form-inline c2"></div>
+    <div class="input-group form-inline c1">
+      <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
+      <input type="date" class="form-control "id="fc1">
+      <div class="input-group-append">
+        <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+      </div>
+      <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
+        <input type="date" class="form-control "id="fc2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+        </div>
+        <button type="submit" class="btn search1 ml-3" >ค้นหา <i class="fa fa-search"></i></button>
+    </div>
+    <div class="input-group form-inline c3"></div>
+  </div>
+
+  <div class="card shadow p">
+    <div class="card-header">
+      <h5><i class="fa fa-table"></i> รายการนำเข้า</h5>
+    </div>
+    <div class="card-body">
+      <table id="tables">
+        <thead>
+          <tr>
+            <th width=50px>ลำดับ</th>
+            <th width=90px>วันที่นำเข้า</th>
+            <th width=70px>เวลา</th>
+            <th width=150px>เจ้าของซาก</th>
+            <th width=180px>ประเภทซาก</th>
+            <th width=70px>เบอร์โค</th>
+            <th width=70px>รหัสซาก</th>
+            <th width=120px>รหัสบาร์โค้ด</th>
+            <th width=120px>รหัสคิวอาร์โค้ด</th>
+            <th width=50px>ห้อง</th>
+            <th width=50px>ชั้น</th>
+            <th width=50px>ตะกร้า</th>
+            <th width=100px>สถานะ</th>
+            <th>ผู้นำเข้า</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let q of data;let i = index">
+            <td width=50px></td>
+            <td width=90px></td>
+            <td width=70px></td>
+            <td width=150px></td>
+            <td width=180px></td>
+            <td width=70px></td>
+            <td width=70px></td>
+            <td width=120px></td>
+            <td width=120px></td>
+            <td width=50px></td>
+            <td width=50px></td>
+            <td width=50px></td>
+            <td width=100px></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-right ml-auto">
+        <h6><strong>จำนวนซากเนื้อโค 0 รายการ</strong></h6>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

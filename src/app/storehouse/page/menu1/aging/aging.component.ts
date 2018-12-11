@@ -54,13 +54,6 @@ export class AgingComponent implements OnInit {
         this.weight_all.toFixed(2);
       });
     });
-    // this.api.showAging().subscribe(data => {
-    //   this.count = Object.values(data).length;        /* นับจำนวนรายการทั้งหมดในตาราง */
-    //   this.data = Object.values(data);                /* Qurey ข้อมูล */
-    //   for (let i = 0; i < Object.values(data).length; i++) {
-    //     this.data[i].key = Object.keys(data)[i];
-    //   }
-    // });
 
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้บ่ม */
       this.auth.showData(datas.email).subscribe(snap => {

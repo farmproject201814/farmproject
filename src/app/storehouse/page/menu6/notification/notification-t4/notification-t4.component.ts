@@ -38,6 +38,7 @@ export class NotificationT4Component implements OnInit {
    }
 
   ngOnInit() {
+    this.data = [];
     this.api.test().subscribe(d => {
       const values = Object.keys(d.data).map(key => d.data[key]);
       let c = 0;
@@ -183,6 +184,7 @@ export class NotificationT4Component implements OnInit {
   updateSplit() {
     console.log(this.numdata, this.keyUp);
     this.api.updateST1(this.numdata, this.keyUp).subscribe();
+    this.api.keepHistoryST1(this.show).subscribe();
     this.ngOnInit();
     swal({
       title: 'สำเร็จ!',

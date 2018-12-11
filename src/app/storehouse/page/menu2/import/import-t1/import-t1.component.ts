@@ -9,6 +9,7 @@ import { Menu2Service } from '../../menu2.service';
 export class ImportT1Component implements OnInit {
   count;
   data: any;
+  check = 3;
 
   constructor(private api: Menu2Service) { }
 
@@ -22,4 +23,39 @@ export class ImportT1Component implements OnInit {
     // });
   }
 
+  dropdown_search(v) {       /* เลือกประเภทการ search */
+    console.log(v.value);
+    if (v.value === '1') {
+      this.check = 3;
+    } else if (v.value === '2') {
+      this.check = 13;
+    } else if (v.value === '3') {
+      this.check = 5;
+    } else if (v.value === '4') {
+      this.check = 6;
+    } else if (v.value === '5') {
+      this.check = 7;
+    } else if (v.value === '6') {
+      this.check = 8;
+    }
+  }
+
+  searchTable() {         /* ช่อง search ตาราง */
+    let input, filter, table, tr, td, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    table = document.getElementById('tables');
+    tr = table.getElementsByTagName('tr');
+
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[this.check];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  }
 }
