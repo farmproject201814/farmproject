@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SumgradingService } from 'src/app/service/API/beefgrading/sumgrading.service';
 import { LyTheme2 } from '@alyle/ui';
 import swal from 'sweetalert2';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const styles = () => ({
   root: {
@@ -16,6 +19,8 @@ const styles = () => ({
     marginBottom: '.5em'
   }
 });
+
+
 
 @Component({
   selector: 'app-history',
@@ -80,7 +85,20 @@ export class HistoryComponent implements OnInit {
   constructor(
     private api: SumgradingService,
     private theme: LyTheme2) {
-
+      pdfMake.fonts = {
+        THNiramitAS: {
+          normal: 'TH Niramit AS.ttf',
+          bold: 'TH Niramit AS Bold.ttf',
+          italics: 'TH Niramit AS Italic.ttf',
+          bolditalics: 'TH Niramit AS Bold Italic.ttf'
+        },
+        Roboto: {
+          normal: 'Roboto-Regular.ttf',
+          bold: 'Roboto-Medium.ttf',
+          italics: 'Roboto-Italic.ttf',
+          bolditalics: 'Roboto-MediumItalic.ttf'
+        }
+      };
   }
 
   ngOnInit() {
@@ -159,6 +177,40 @@ export class HistoryComponent implements OnInit {
       }
     });
   }
+
+  printPDF() {
+    const docDefinition = {
+      content: [
+        {
+          columns: [
+            {
+              text: 'ใบรายงานผลการตัดเกรด', fontSize: 24, bold: true, alignment: 'center'
+            }
+          ]
+        },
+        {
+          columns: [
+            {
+              width: 100,
+              fontSize: 9,
+              text: ''
+            },
+            { text: [
+              'รหัสวัว',
+              'รหัสซากซ้าย',
+              'รหัสซากขาว',
+            ]
+            }
+          ]
+        }
+      ],
+      defaultStyle: {
+        font: 'THNiramitAS'
+      }
+    };
+    pdfMake.createPdf(docDefinition).open();
+  }
+
 }
 
 export class Listitemcattle {

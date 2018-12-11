@@ -132,6 +132,7 @@
                   <button routerLink="/report" type="button" class="btn button btn-success" style="background-color: limegreen"><b>ออกรายงาน</b></button>
                 -->
                 <button
+
                   type="button"
                   class="btn button btn-success"
                   style="background-color: limegreen"
@@ -230,9 +231,9 @@
         <div class="row">
           <div class="col">
             <button
-              routerLink="/report"
+              (click)="printPDF()"
               type="button"
-              class="btn button btn-success"
+              class="btn button btn-danger"
               style="background-color: #da282f; height:200px; font-size: 30px"
             >
               <b><i class="fa fa-file-pdf-o" style="margin-right: 5px; font-size: 30px"></i>PDF</b>
@@ -240,7 +241,6 @@
           </div>
           <div class="col">
             <button
-              routerLink="/report"
               type="button"
               class="btn button btn-success"
               style="background-color: #229954; height:200px; font-size: 30px"
