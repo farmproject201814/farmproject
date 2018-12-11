@@ -1,0 +1,102 @@
+<div class="header">
+  <p class="text-center"><strong>การแจ้งเตือน</strong></p>
+  <div class="row col r1">
+    <div class="t1 col-3">
+      <div class="card shadow p">
+        <div class="card-header">
+          <a><i class="material-icons">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
+        </div>
+        <div class="card-body c1">
+          <div class="row aa">
+            <button type="button" class="btn ml-1" routerLink="/menu6/notification-t1">วันใกล้หมดอายุ</button></div>
+           <div class="row aa">
+              <button type="button" class="btn ml-1"id="active" routerLink="/menu6/notification-t2">คำร้องขอเบิก</button>
+          </div>
+          <div class="row aa">
+              <button type="button" class="btn ml-1" routerLink="/menu6/notification-t3">ครบกำหนดวันบ่ม</button>
+          </div>
+          <div class="row aa">
+            <button type="button" class="btn ml-1" routerLink="/menu6/notification-t4">การนำเข้า</button>
+          </div>
+          <div class="row aa">
+            <button type="button" class="btn ml-1" routerLink="/menu6/notification-t5">การเบิกออก</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="t2 col-9">
+      <div class="card shadow p">
+        <div class="card-header">
+          <a>&nbsp;&nbsp;รายการคำร้องขอเบิก</a>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead>
+              <tr>
+                <th width="40px">ลำดับ</th>
+                <th width="100px">วันที่ร้องขอ</th>
+                <th width="60px">เวลา</th>
+                <th width="60px">จำนวนรายการ</th>
+                <th width="100px">ผู้ขอเบิก</th>
+                <th width="50px">รายละเอียด</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr *ngFor="let d of data;let i = index">
+                  <td width="40px">{{ i+1 }}</td>
+                  <td width="100px">{{ d.date | date: 'dd-MM-yyyy' }}</td>
+                  <td width="60px">{{ d.date | date: 'HH:mm น.' }}</td>
+                  <td width="60px">{{ d.counts }}</td>
+                  <td width="100px">{{ d.take_name }}</td>
+                  <td width="50px">
+                      <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="model_detail(i)"><i class="fa">&#xf101;</i></button>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="notifi"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><b>รายละเอียดรายการ</b></div>
+      <button class="close" data-dismiss="modal" aria-label="Close" style="font-size: 30px"></button>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th width="60px">ลำดับ</th>
+              <th width="100px">รายการที่ขอเบิก</th>
+              <th width="60px">น้ำหนัก (กก.)</th>
+              <th width="60px">ระดับเกรดซาก</th>
+              <th width="100px">ผู้ขอเบิก</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of show;let i = index">
+              <td width="60px">{{ i+1 }}</td>
+              <td width="100px">{{ d.type }}</td>
+              <td width="60px">{{ d.weight }}</td>
+              <td width="60px">{{ d.grade }}</td>
+              <td width="100px">{{ d.take_name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nav_button" style="margin-bottom: 15px" >
+        <button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> พิมพ์รายการ </button>
+    </div>
+    </div>
+  </div>
+</div>

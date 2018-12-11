@@ -1,0 +1,148 @@
+.text-center {
+  font-size: 24px;
+}
+
+.card{
+  overflow: hidden;
+  border-radius: 20px 20px 0px 0px;
+  margin-bottom: 10px;
+}
+
+.card-header{
+  background-color: #006dcc;
+  color: white;
+  padding: 0.1rem 1.5rem;
+}
+
+.m {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.a {
+  margin-bottom: 10px;
+}
+
+h5 {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 20px;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+#r {
+  text-align: left;
+  margin-top: 5px;
+  font-weight: bold;
+  /* font-size: 20px;
+  text-decoration: underline; */
+}
+
+button[type=button] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+}
+
+table ,tr td{
+  border: 1px solid #ddd;
+}
+tbody {
+  display: block;
+  height: 210px;         /* ความสูงของตาราง */
+  overflow: auto;
+}
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+thead {
+  height: 40px;
+  width: calc( 100% - 1eem );
+  border-bottom: 1px solid #ddd;
+}
+thead tr th {
+  border-right: 1px solid #ddd;
+}
+thead tr th:last-child {
+  border-right: 1px solid white;
+}
+table {
+  width: 100%;
+  text-align: center;
+}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+table tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+.dg {
+  height: 38px;
+}
+
+.dropbtn{
+  background-color: white;
+  width: 100%;
+  height: 38px;
+  padding: 5px 20px;
+  font-size: 16px;
+  text-align: left;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: #495057;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 163px;
+  height: 35px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 135px;
+  z-index: 1;
+  width: 160px;
+}
+
+.dropdown-content a {
+  display: block;
+  color: #495057;
+  font-size: 16px;
+  padding: 5px 20px;
+  text-decoration: none;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+.dropdown-content a:first-child {
+  border-top: 1px solid #ddd;
+}
+.dropdown-content a:last-child {
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  transition: all 0.3s ease;
+}

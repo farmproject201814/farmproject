@@ -1,3 +1,333 @@
-<p>
-  input-data works!
-</p>
+<div class="header">
+  <p class="text-center font"><strong>หน้าสำหรับเพิ่มข้อมูล</strong></p>
+<!----------------- Menu1 - aging -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu1Aging(c1)" #c1="ngForm">
+        <h5><b>Menu1</b><font>เพิ่มข้อมูลตารางบ่มซากเนื้อโค (aging)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner3" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu1 - history-order -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu1HistoryOrder(c2)" #c2="ngForm">
+        <h5><b>Menu1</b><font>เพิ่มข้อมูลตารางประวัติการนำเข้า (history-order)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner3" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu2 - import-t2 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu2ImportT2(d2)" #d2="ngForm">
+        <h5><b>Menu2</b><font>เพิ่มข้อมูลตารางนำเข้า2ซากซ้าย-ขวา (import-t2)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ประเภทซาก</label>
+            <input type="text" class="form-control" name="type" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>เบอร์โค</label>
+            <input type="text" class="form-control" name="cow_code" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>รหัสซาก</label>
+            <input type="text" class="form-control" name="code" ngModel />
+          </div>
+          <div class="col-sm-2 mb-2">
+            <label>รหัสบาร์โค้ดซาก</label>
+            <input type="text" class="form-control" name="barcode" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>รหัสคิวอาร์โค้ด</label>
+            <input type="text" class="form-control" name="qr_code" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ห้อง</label>
+            <input type="text" class="form-control" name="room" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ชั้น</label>
+            <input type="text" class="form-control" name="class" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ตะกร้า</label>
+            <input type="text" class="form-control" name="bucket" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>สถานะ</label>
+            <input type="text" class="form-control" name="status" ngModel="เชือดแล้ว"/>
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ผู้นำเข้า</label>
+            <input type="text" class="form-control" name="import_name" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu2 - import-t3 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu2ImportT3(d3)" #d3="ngForm">
+        <h5><b>Menu2</b><font>เพิ่มข้อมูลตารางนำเข้า4ซากบน-ล่าง (import-t3)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner3" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu2 - import-t4 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu2ImportT4(d4)" #d4="ngForm">
+        <h5><b>Menu2</b><font>เพิ่มข้อมูลตารางนำเข้ากซากก้อน (import-t4)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ประเภทซาก</label>
+            <input type="text" class="form-control" name="type" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>เบอร์โค</label>
+            <input type="text" class="form-control" name="cow_code" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>รหัสซาก</label>
+            <input type="text" class="form-control" name="code" ngModel />
+          </div>
+          <div class="col-sm-2 mb-2">
+            <label>รหัสบาร์โค้ดซาก</label>
+            <input type="text" class="form-control" name="barcode" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>รหัสคิวอาร์โค้ด</label>
+            <input type="text" class="form-control" name="qr_code" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ห้อง</label>
+            <input type="text" class="form-control" name="room" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ชั้น</label>
+            <input type="text" class="form-control" name="class" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ตะกร้า</label>
+            <input type="text" class="form-control" name="bucket" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>สถานะ</label>
+            <input type="text" class="form-control" name="status" ngModel="เชือดแล้ว"/>
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ผู้นำเข้า</label>
+            <input type="text" class="form-control" name="import_name" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu2 - import-t5 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu2ImportT5(d5)" #d5="ngForm">
+        <h5><b>Menu2</b><font>เพิ่มข้อมูลตารางนำเข้าซากส่วนอื่น (import-t5)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ประเภทซาก</label>
+            <input type="text" class="form-control" name="type" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>เบอร์โค</label>
+            <input type="text" class="form-control" name="cow_code" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>รหัสซาก</label>
+            <input type="text" class="form-control" name="code" ngModel />
+          </div>
+          <div class="col-sm-2 mb-2">
+            <label>รหัสบาร์โค้ดซาก</label>
+            <input type="text" class="form-control" name="barcode" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>รหัสคิวอาร์โค้ด</label>
+            <input type="text" class="form-control" name="qr_code" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ห้อง</label>
+            <input type="text" class="form-control" name="room" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ชั้น</label>
+            <input type="text" class="form-control" name="class" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ตะกร้า</label>
+            <input type="text" class="form-control" name="bucket" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>สถานะ</label>
+            <input type="text" class="form-control" name="status" ngModel="เชือดแล้ว"/>
+          </div>
+          <div class="col-sm-1 mb-2">
+            <label>ผู้นำเข้า</label>
+            <input type="text" class="form-control" name="import_name" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu3 - order-t2 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu3OrderT2(e2)" #e2="ngForm">
+        <h5><b>Menu3</b><font>เพิ่มข้อมูลตารางเบิกออก2ซากซ้าย-ขวา (order-t2)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu3 - order-t3 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu3OrderT3(e3)" #e3="ngForm">
+        <h5><b>Menu3</b><font>เพิ่มข้อมูลตารางเบิกออก4ซากบน-ล่าง (order-t3)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu3 - order-t4 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu3OrderT4(e4)" #e4="ngForm">
+        <h5><b>Menu3</b><font>เพิ่มข้อมูลตารางเบิกออกซากก้อน (order-t4)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+<!----------------- Menu3 - order-t5 -------------------------------------------------------------->
+    <div class="row">
+      <form (ngSubmit)="addMenu3OrderT5(e5)" #e5="ngForm">
+        <h5><b>Menu3</b><font>เพิ่มข้อมูลตารางเบิกออกซากส่วนอื่น (order-t5)</font></h5>
+        <div class="form-row">
+          <div class="col-sm-1 mb-2">
+            <label>เจ้าของ</label>
+            <input type="text" class="form-control" name="owner" ngModel />
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>ตัวนับอายุข้อมูล</label>
+            <input type="text" class="form-control" name="count_day" ngModel/>
+          </div>
+          <div class="col-sm-1 mb-2" hidden>
+            <label>วันที่เพิ่มข้อมูล</label>
+            <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+      </form>
+    </div>
+</div>

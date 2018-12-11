@@ -5,13 +5,15 @@ import { SimulationT1Component } from './simulation/simulation-t1/simulation-t1.
 import { SimulationT2Component } from './simulation/simulation-t2/simulation-t2.component';
 import { SimulationT3Component } from './simulation/simulation-t3/simulation-t3.component';
 import { InputDataComponent } from './simulation/input-data/input-data.component';
+import { SimulationT1Import1Component } from './simulation/simulation-t1/simulation-t1-import1/simulation-t1-import1.component';
 
 const routes: Routes = [
   { path: 'setting/edit-profile', component: EditProfileComponent },
   { path: 'simulation-t1', component: SimulationT1Component},
   { path: 'simulation-t2', component: SimulationT2Component},
   { path: 'simulation-t3', component: SimulationT3Component},
-  { path: 'input-data', component: InputDataComponent}
+  { path: 'input-data', component: InputDataComponent},
+  { path: 'simulation-t1-import1', component: SimulationT1Import1Component},
 ];
 
 @NgModule({

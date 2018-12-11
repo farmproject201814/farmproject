@@ -1,0 +1,90 @@
+<div class="header">
+  <p class="text-center"><strong>ประวัติการบ่มซากเนื้อโค</strong></p>
+  <div class="row r1 justify-content-center">
+    <div class="form-inline">
+      <label class="col-form-label"><b>ชนิดของซาก</b></label>
+      <div class="d1 ml-3">
+        <div class="input-group form-search">
+            <select class="form-control search-query fcsq1">
+              <option value="">ทั้งหมด</option>
+              <option value="">ซากซ้าย</option>
+              <option value="">ซากขวา</option>
+            </select>
+          </div>
+      </div>
+      <label class="col-form-label ml-3"><b>ค้นหาโดย</b></label>
+      <div class="input-group form-search  ml-3">
+        <select class="form-control search-query fcsq2" (change)="dropdown_search(slt)" ngModel="1" #slt>
+          <option value="1">ชื่อผู้บ่มซาก</option>
+          <option value="2">เบอร์โค</option>
+          <option value="3">รหัสซาก</option>
+          <option value="4">รหัสบาร์โค้ดซาก</option>
+          <option value="5">รหัสคิวอาร์โค้ดซาก</option>
+        </select>
+        <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
+      </div>
+    </div>
+  </div>
+  <div class="row r2 justify-content-center">
+    <div class="input-group form-inline c2"></div>
+    <div class="input-group form-inline c1">
+      <label class="label mr-3 mt-2 test"><b>วันที่บ่มเสร็จ</b></label>
+      <input type="date" class="form-control "id="fc1">
+      <div class="input-group-append">
+        <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+      </div>
+      <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
+        <input type="date" class="form-control "id="fc2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+        </div>
+        <button type="submit" class="btn ml-3 search1" >ค้นหา <i class="fa fa-search"></i></button>
+    </div>
+    <div class="input-group form-inline c3"></div>
+  </div>
+
+  <div class="card shadow p">
+    <div class="card-header">
+      <h5><i class="fa fa-table"></i> รายการบ่มซากเนื้อโค</h5>
+    </div>
+    <div class="card-body">
+      <table id="tables">
+        <thead>
+          <tr>
+            <th width=50px>ลำดับ</th>
+            <th width=90px>วันที่บ่มเสร็จ</th>
+            <th width=70px>เวลา</th>
+            <th width=70px>จำนวนวันบ่ม</th>
+            <th width=100px>ประเภทซาก</th>
+            <th width=90px>เบอร์โค</th>
+            <th width=90px>รหัสซาก</th>
+            <th width=150px>รหัสบาร์โค้ดซาก</th>
+            <th width=150px>รหัสคิวอาร์โค้ดซาก</th>
+            <th width=50px>ห้อง</th>
+            <th width=100px>สถานะ</th>
+            <th>ผู้บ่มซาก</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width=50px>1</td>
+            <td width=90px>วว-ดด-ปปปป</td>
+            <td width=70px>00.00 น.</td>
+            <td width=70px>00</td>
+            <td width=100px>ประเภทซากเนื้อโค</td>
+            <td width=90px>000000</td>
+            <td width=90px>000000</td>
+            <td width=150px>0000000000000000</td>
+            <td width=150px>0000000000000000</td>
+            <td width=50px>0</td>
+            <td width=100px>สถานะของซาก</td>
+            <td>ทศวรรษ อาวาส</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-right ml-auto">
+        <h6><strong>จำนวน 0 รายการ  น้ำหนัก 0.00 กิโลกรัม</strong></h6>
+      </div>
+    </div>
+  </div>
+</div>

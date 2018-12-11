@@ -1,0 +1,253 @@
+<div class="header">
+    <p class="text-center"><strong>จำลองการเพิ่มข้อมูล</strong></p>
+
+    <div class="row m">
+      <div class="col-2">
+        <div class="card jumsize2 shadow p">
+          <div class="card-header">
+            <h5>ประเภทการจำลอง</h5>
+          </div>
+          <div class="card-body">
+            <div class="row a">
+              <button type="button" id="b1" class="btn btn-primary"  routerLink="/simulation-t1-import1"
+              style="height: 50px">การนำเข้า</button>
+            </div>
+            <div class="row a">
+              <button type="button" id="b1" class="btn btn-success" routerLink="/simulation-t2"
+              style="height: 50px;margin-bottom: 36px">การร้องขอเบิก</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-10">
+        <div class="card shadow p">
+          <div class="card-header">
+            <h6>เพิ่มข้อมูลซากเนื้อโค (ซ้าย-ขวา)</h6>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="addDataST1(t)" #t="ngForm">
+                  <div class="form-row">
+                    <div class="col-sm-2 mb-2">
+                      <label>ชนิดซาก</label>
+                      <select class="form-control" (change)="changeType(slt)" [value]="1" #slt>
+                        <option value="1">ซากเนื้อโค (ซ้าย-ขวา)</option>
+                        <option value="2">ซากเนื้อโค (บน-ล่าง)</option>
+                        <option value="3">ซากเนื้อโค (ก้อน)</option>
+                        <option value="4">ซากเนื้อโค (ส่วนอื่น)</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 1">
+                      <label>ประเภทซาก</label>
+                      <select class="form-control" name="type" ngModel>
+                        <option value="ซากซ้าย">ซากซ้าย</option>
+                        <option value="ซากขวา">ซากขวา</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 2">
+                      <label>ประเภทซาก</label>
+                      <select class="form-control" name="type" ngModel>
+                        <option value="ซากบนซ้าย">ซากบนซ้าย</option>
+                        <option value="ซากบนขวา">ซากบนขวา</option>
+                        <option value="ซากล่างซ้าย">ซากล่างซ้าย</option>
+                        <option value="ซากล่างขวา">ซากล่างขวา</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 3">
+                    <label>ประเภทซาก</label>
+                    <select class="form-control" name="type" ngModel>
+                      <option value="ทั้งหมด">ทั้งหมด</option>
+                      <option value="เนื้อน่อง">เนื้อน่อง</option>
+                      <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
+                      <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
+                      <option value="เนื้อทีโบน">เนื้อทีโบน</option>
+                      <option value="เนื้อสันสะโพก">เนื้อสันสะโพก</option>
+                      <option value="เนื้อหางสันสะโพก">เนื้อหางสันสะโพก</option>
+                      <option value="เนื้อสันนอก">เนื้อสันนอก</option>
+                      <option value="เนื้อใบบัวสเต๊ก">เนื้อใบบัวสเต๊ก</option>
+                      <option value="เนื้อสะโพกใน">เนื้อสะโพกใน</option>
+                      <option value="เนื้อสันใน">เนื้อสันใน</option>
+                      <option value="เนื้อสันกลางถอดกระดูก">เนื้อสันกลางถอดกระดูก</option>
+                      <option value="เนื้อซี่โครงติดกระดูก">เนื้อซี่โครงติดกระดูก</option>
+                      <option value="เนื้อใบพาย">เนื้อใบพาย</option>
+                      <option value="เนื้อปลาช่อน">เนื้อปลาช่อน</option>
+                      <option value="เนื้อเสือร้องไห้">เนื้อเสือร้องไห้</option>
+                      <option value="เนื้อรักบี้">เนื้อรักบี้</option>
+                      <option value="เนื้อสันไหล่">เนื้อสันไหล่</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2 mb-2" [hidden]="hid != 4">
+                    <label>ประเภทซาก</label>
+                    <select class="form-control" name="type" ngModel>
+                      <option value="เครื่องใน">เครื่องใน</option>
+                      <option value="หัว">หัว</option>
+                      <option value="หนัง">หนัง</option>
+                      <option value="หาง">หาง</option>
+                      <option value="ขา">ขา</option>
+                      <option value="ไขมัน">ไขมัน</option>
+                      <option value="อองเร">อองเร</option>
+                    </select>
+                  </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>เจ้าของ</label>
+                      <input type="text" class="form-control" name="owner" ngModel />
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>เบอร์โค</label>
+                      <input type="text" class="form-control" name="cow_code" ngModel />
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>รหัสซาก</label>
+                      <input type="text" class="form-control" name="code" ngModel />
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>รหัสบาร์โค้ดซาก</label>
+                      <input type="text" class="form-control" name="barcode" ngModel />
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>รหัสคิวอาร์โค้ด</label>
+                      <input type="text" class="form-control" name="qr_code" ngModel />
+                    </div>
+                    <div class="col-sm-1 mb-2">
+                      <label>น้ำหนัก (กก.)</label>
+                      <input type="text" class="form-control" name="weight" maxlength=6 ngModel />
+                    </div>
+                    <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">
+                      <label>อายุ (วัน)</label>
+                      <input type="text" class="form-control" name="age" ngModel />
+                    </div>
+                    <div class="col-sm-1 mb-2">
+                      <label>ห้อง</label>
+                      <select class="form-control" name="room" ngModel="1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">
+                      <label>ชั้น</label>
+                      <select class="form-control" name="class" ngModel="1" >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">
+                      <label>ตะกร้า</label>
+                      <select class="form-control" name="bucket" ngModel="1" >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 1">
+                      <label>สถานะ</label>
+                      <select class="form-control" name="status" ngModel>
+                        <option value="เชือดแล้ว">เชือดแล้ว</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 2">
+                      <label>สถานะ</label>
+                      <select class="form-control" name="status" ngModel>
+                        <option value="ตัดแต่ง (บน-ล่าง) แล้ว">ตัดแต่ง (บน-ล่าง) แล้ว</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 3">
+                      <label>สถานะ</label>
+                      <select class="form-control" name="status" ngModel>
+                        <option value="ตัดแต่ง (ก้อน) แล้ว">ตัดแต่ง (ก้อน) แล้ว</option>
+                        <option value="ซากเหลือ">ซากเหลือ</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 4">
+                      <label>สถานะ</label>
+                      <select class="form-control" name="status" ngModel>
+                        <option value="คงคลัง">คงคลัง</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>ผู้นำเข้า</label>
+                      <input type="text" class="form-control" name="import_name" ngModel/>
+                    </div>
+                    <div class="col-sm-1 mb-2" hidden>
+                      <label>ตัวนับอายุข้อมูล</label>
+                      <input type="text" class="form-control" name="count_day" ngModel/>
+                    </div>
+                    <div class="col-sm-1 mb-2" hidden>
+                      <label>วันที่เพิ่มข้อมูล</label>
+                      <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+                    </div>
+                    <input name="test" ngModel="0" hidden />    <!--ตัวแปรใช้เพื่อซ่อนข้อมูลเมื่อกดนำเข้าคลัง-->
+                    <select class="form-control" name="class" ngModel="-" hidden>ชั้น</select>
+                    <select class="form-control" name="bucket" ngModel="-" hidden>ตะกร้า</select>
+                    <select class="form-control" name="age" ngModel="1" hidden>อายุซาก</select>
+                    <select class="form-control" name="split" ngModel="0" hidden>ไว้แยกประเภทซากเข้าคลัง</select>
+                    <select class="form-control" name="hidden" ngModel="0" hidden>ซ่อน/แสดงข้อมูลในแจ้งเตือนt4</select>
+                    <div class="col-sm-1 mb-2">
+                      <label>เพิ่มรายการ</label>
+                      <button type="submit" class="btn btn-primary">เพิ่มรายการ</button>
+                    </div>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row n">
+      <div class="col">
+        <div class="card shadow p">
+          <div class="card-header">
+            <h6>ตารางข้อมูลซากเนื้อโค (ซ้าย-ขวา)</h6>
+          </div>
+          <div class="card-body">
+            <table id="tables">
+              <thead>
+                <tr>
+                  <th width=40px>ลำดับ</th>
+                  <th width=110px>เจ้าของ</th>
+                  <th width=120px>ประเภทซาก</th>
+                  <th width=90px>เบอร์โค</th>
+                  <th width=90px>รหัสซาก</th>
+                  <th width=130px>รหัสบาร์โค้ดซาก</th>
+                  <th width=120px>รหัสคิวอาร์โค้ด</th>
+                  <th width=60px>น้ำหนัก</th>
+                  <th width=60px>อายุ</th>
+                  <th width=40px>ห้อง</th>
+                  <th width=40px>ชั้น</th>
+                  <th width=40px>ตะกร้า</th>
+                  <th width=120px>สถานะ</th>
+                  <th width=120px>ผู้นำเข้า</th>
+                  <th>ลบ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let d of detail;let i = index" [hidden]="d.test === 1">
+                    <td width=40px>{{ i+1 }}</td>
+                    <td width=110px>{{ d.owner }}</td>
+                    <td width=120px>{{ d.type }}</td>
+                    <td width=90px>{{ d.cow_code }}</td>
+                    <td width=90px>{{ d.code }}</td>
+                    <td width=130px>{{ d.barcode }}</td>
+                    <td width=120px>{{ d.qr_code }}</td>
+                    <td width=60px>{{ d.weight }}</td>
+                    <td width=60px>{{ d.age }}</td>
+                    <td width=40px>{{ d.room }}</td>
+                    <td width=40px>{{ d.class }}</td>
+                    <td width=40px>{{ d.bucket }}</td>
+                    <td width=120px>{{ d.status }}</td>
+                    <td width=120px>{{ d.import_name }}</td>
+                    <td>
+                      <button class="btn btn-danger dg" (click)="removeData(i)"><i class="material-icons">delete_forever</i></button>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 5%;text-align: center">
+      <button class="btn btn-primary" (click)="sendData()">นำเข้าคลัง</button>
+    </div>
+  </div>
+
+

@@ -62,6 +62,23 @@ import { InputDataComponent } from './storehouse/simulation/input-data/input-dat
 import { SimulationT1Component } from './storehouse/simulation/simulation-t1/simulation-t1.component';
 import { SimulationT2Component } from './storehouse/simulation/simulation-t2/simulation-t2.component';
 import { SimulationT3Component } from './storehouse/simulation/simulation-t3/simulation-t3.component';
+import { Menu6Component } from './storehouse/page/menu6/menu6.component';
+import { AgingComponent } from './storehouse/page/menu1/aging/aging.component';
+import { HistoryOrderComponent } from './storehouse/page/menu1/history-order/history-order.component';
+import { StoreComponent } from './storehouse/page/menu4/store/store.component';
+import { StoreT1Component } from './storehouse/page/menu4/store/store-t1/store-t1.component';
+import { StoreT2Component } from './storehouse/page/menu4/store/store-t2/store-t2.component';
+import { StoreT3Component } from './storehouse/page/menu4/store/store-t3/store-t3.component';
+import { StoreT4Component } from './storehouse/page/menu4/store/store-t4/store-t4.component';
+import { StoreT5Component } from './storehouse/page/menu4/store/store-t5/store-t5.component';
+import { SimulationT1Import1Component } from './storehouse/simulation/simulation-t1/simulation-t1-import1/simulation-t1-import1.component';
+import { NotificationComponent } from './storehouse/page/menu6/notification/notification.component';
+import { NotificationT1Component } from './storehouse/page/menu6/notification/notification-t1/notification-t1.component';
+import { NotificationT2Component } from './storehouse/page/menu6/notification/notification-t2/notification-t2.component';
+import { NotificationT3Component } from './storehouse/page/menu6/notification/notification-t3/notification-t3.component';
+import { NotificationT4Component } from './storehouse/page/menu6/notification/notification-t4/notification-t4.component';
+import { NotificationT5Component } from './storehouse/page/menu6/notification/notification-t5/notification-t5.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +116,23 @@ import { SimulationT3Component } from './storehouse/simulation/simulation-t3/sim
     InputDataComponent,
     SimulationT1Component,
     SimulationT2Component,
-    SimulationT3Component
+    SimulationT3Component,
+    Menu6Component,
+    AgingComponent,
+    HistoryOrderComponent,
+    StoreComponent,
+    StoreT1Component,
+    StoreT2Component,
+    StoreT3Component,
+    StoreT4Component,
+    StoreT5Component,
+    SimulationT1Import1Component,
+    NotificationComponent,
+    NotificationT1Component,
+    NotificationT2Component,
+    NotificationT3Component,
+    NotificationT4Component,
+    NotificationT5Component
   ],
   imports: [
     BrowserModule,

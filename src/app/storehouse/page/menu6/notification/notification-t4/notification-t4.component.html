@@ -1,0 +1,327 @@
+<div class="header">
+  <p class="text-center"><strong>การแจ้งเตือน</strong></p>
+
+  <div class="row col r1">
+    <div class="t1 col-3">
+      <div class="card shadow p">
+        <div class="card-header">
+          <a><i class="material-icons">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
+        </div>
+        <div class="card-body c1">
+          <div class="row aa">
+            <button type="button" class="btn ml-1" routerLink="/menu6/notification-t1">วันใกล้หมดอายุ</button>
+          </div>
+          <div class="row aa">
+            <button type="button" class="btn ml-1" routerLink="/menu6/notification-t2">คำร้องขอเบิก</button>
+        </div>
+        <div class="row aa">
+            <button type="button" class="btn  ml-1" routerLink="/menu6/notification-t3">ครบกำหนดวันบ่ม</button>
+        </div>
+          <div class="row aa">
+            <button type="button" class="btn ml-1" id="active" routerLink="/menu6/notification-t4">การนำเข้า</button>
+          </div>
+          <div class="row aa">
+            <button type="button" class="btn ml-1" routerLink="/menu6/notification-t5">การเบิกออก</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t2 col-9">
+      <div class="card shadow p">
+        <div class="card-header"><a>&nbsp;&nbsp;รายการนำเข้า<button routerLink="/simulation-t1-import1"><<<</button></a></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="text-center2"><label><b>รายการนำเข้าปัจจุบัน</b></label></div>
+              <table>
+                <thead>
+                  <tr>
+                    <th width=40>ลำดับ</th>
+                    <th width=80>วันนำเข้า</th>
+                    <th width=80>เวลานำเข้า</th>
+                    <th width=50>จำนวน</th>
+                    <th width=120>ผู้นำเข้า</th>
+                    <th>รายละเอียด</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let d of data;let i = index">
+                    <td width=40>{{i+1}}</td>
+                    <td width=80>{{ d.date | date: 'dd-MM-yyyy' }}</td>
+                    <td width=80>{{ d.date | date: 'HH:mm น.' }}</td>
+                    <td width=50>{{ d.counts }}</td>
+                    <td width=120>{{ d.import_name }}</td>
+                    <td>
+                      <button class="btn bt1" data-toggle="modal" data-target="#notifi"
+                      (click)="model_detail(i)"><i class="fa">&#xf101;</i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+<div
+  class="modal fade"
+  id="notifi"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="font-size: 18px"><b>รายละเอียดเพิ่มเติม</b>
+        <button class="close" data-dismiss="modal" aria-label="Close" style="font-size: 30px">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th width=40px>ลำดับ</th>
+              <th width=110px>เจ้าของ</th>
+              <th width=120px>ประเภทซาก</th>
+              <th width=90px>เบอร์โค</th>
+              <th width=90px>รหัสซาก</th>
+              <th width=130px>รหัสบาร์โค้ดซาก</th>
+              <th width=120px>รหัสคิวอาร์โค้ด</th>
+              <th width=60px>น้ำหนัก</th>
+              <th width=60px>อายุ</th>
+              <th width=40px>ห้อง</th>
+              <th width=40px>ชั้น</th>
+              <th width=40px>ตะกร้า</th>
+              <th width=120px>สถานะ</th>
+              <th>ลบ</th>
+            </tr>
+          </thead>
+          <tbody class="tt">
+            <tr *ngFor="let d of show;let i = index">
+              <td width=40px>{{ i+1 }}</td>
+              <td width=110px>{{ d.owner }}</td>
+              <td width=120px>{{ d.type }}</td>
+              <td width=90px>{{ d.cow_code }}</td>
+              <td width=90px>{{ d.code }}</td>
+              <td width=130px>{{ d.barcode }}</td>
+              <td width=120px>{{ d.qr_code }}</td>
+              <td width=60px>{{ d.weight }}</td>
+              <td width=60px>{{ d.age }}</td>
+              <td width=40px>{{ d.room }}</td>
+              <td width=40px>{{ d.class }}</td>
+              <td width=40px>{{ d.bucket }}</td>
+              <td width=120px>{{ d.status }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteList(d.num, d.key)"><i class="material-icons">delete_forever</i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bc">
+          <button class="btn btn-success" (click)="updateSplit()">จัดเก็บ&nbsp;<i class='fas fa-file-import'></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <div class="col">
+                <div class="text-center2"><label><b>สถิติการนำเข้า</b></label></div>
+                <table id="tables">
+                  <thead>
+                    <tr>
+                      <th width=50>ลำดับ</th>
+                      <th width=180>ประเภท</th>
+                      <th width=90>จำนวนนำเข้า</th>
+                      <th >น้ำหนักซาก (กก.)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td width=50>1</td>
+                      <td width=180>ซากเนื้อโคซ้าย</td>
+                      <td width=90>{{n.n1}}</td>
+                      <td>{{w.w1}}</td>
+                    </tr>
+                    <tr>
+                      <td width=50>2</td>
+                      <td width=180>ซากเนื้อโคขวา</td>
+                      <td width=90>{{n.n2}}</td>
+                      <td>{{w.w2}}</td>
+                    </tr>
+                    <tr>
+                      <td width=50>3</td>
+                      <td width=180>ซากเนื้อโคซ้ายบน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>4</td>
+                      <td width=180>ซากเนื้อโคซ้ายล่าง</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>5</td>
+                      <td width=180>ซากเนื้อโคขวาบน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>6</td>
+                      <td width=180>ซากเนื้อโคขวาล่าง</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>7</td>
+                      <td width=180>เนื้อน่อง</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>8</td>
+                      <td width=180>เนื้อสะโพกนอก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>9</td>
+                      <td width=180>เนื้อลูกมะพร้าว</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>10</td>
+                      <td width=180>เนื้อทีโบน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>11</td>
+                      <td width=180>เนื้อสันสะโพก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>12</td>
+                      <td width=180>เนื้อหางสันสะโพก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>13</td>
+                      <td width=180>เนื้อสันนอก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>14</td>
+                      <td width=180>เนื้อใบบัวสเต๊ก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>15</td>
+                      <td width=180>เนื้อสะโพกใน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>16</td>
+                      <td width=180>เนื้อสันใน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>17</td>
+                      <td width=180>เนื้อสันกลางถอดกระดูก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>18</td>
+                      <td width=180>เนื้อซี่โครงติดกระดูก</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>19</td>
+                      <td width=180>เนื้อใบพาย</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>20</td>
+                      <td width=180>เนื้อปลาช่อน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>21</td>
+                      <td width=180>เนื้อเสือร้องไห้</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>22</td>
+                      <td width=180>เนื้อรักบี้</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>23</td>
+                      <td width=180>เนื้อสันไหล่</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>24</td>
+                      <td width=180>เครื่องใน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>25</td>
+                      <td width=180>หัว</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>26</td>
+                      <td width=180>หาง</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>27</td>
+                      <td width=180>หนัง</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>28</td>
+                      <td width=180>ขา</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>29</td>
+                      <td width=180>ไขมัน</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                    <tr>
+                      <td width=50>30</td>
+                      <td width=180>อองเร</td>
+                      <td width=90>0</td>
+                      <td >000.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#notifi">Open Modal</button>

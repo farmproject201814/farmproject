@@ -1,3 +1,171 @@
-<p>
-  simulation-t2 works!
-</p>
+
+<div class="header">
+    <p class="text-center"><strong>จำลองการเพิ่มข้อมูล</strong></p>
+
+    <div class="row m">
+      <div class="col-2">
+        <div class="card jumsize2 shadow p">
+          <div class="card-header">
+            <h5>ประเภทการจำลอง</h5>
+          </div>
+          <div class="card-body">
+            <div class="row a">
+              <button type="button" id="b1" class="btn btn-primary"  routerLink="/simulation-t1-import1"
+              style="height: 50px">การนำเข้า</button>
+            </div>
+            <div class="row a">
+              <button type="button" id="b1" class="btn btn-success" routerLink="/simulation-t2"
+              style="height: 50px">การร้องขอเบิก</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-10">
+        <div class="card shadow p">
+          <div class="card-header">
+            <h6>เพิ่มข้อมูลซากเนื้อโค</h6>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="addDataST2(t)" #t="ngForm">
+                  <div class="form-row">
+                    <div class="col-sm-2 mb-2">
+                      <label>ชนิดซาก</label>
+                      <select class="form-control" (change)="changeType(slt)" [value]="1" #slt>
+                        <option value="1">ซากเนื้อโค (ซ้าย-ขวา)</option>
+                        <option value="2">ซากเนื้อโค (บน-ล่าง)</option>
+                        <option value="3">ซากเนื้อโค (ก้อน)</option>
+                        <option value="4">ซากเนื้อโค (ส่วนอื่น)</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 1">
+                      <label>รายการที่ขอเบิก</label>
+                      <select class="form-control" name="type" ngModel>
+                        <option value="ซากซ้าย">ซากซ้าย</option>
+                        <option value="ซากขวา">ซากขวา</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 2">
+                      <label>รายการที่ขอเบิก</label>
+                      <select class="form-control" name="type" ngModel>
+                        <option value="ซากบนซ้าย">ซากบนซ้าย</option>
+                        <option value="ซากบนขวา">ซากบนขวา</option>
+                        <option value="ซากล่างซ้าย">ซากล่างซ้าย</option>
+                        <option value="ซากล่างขวา">ซากล่างขวา</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2" [hidden]="hid != 3">
+                    <label>รายการที่ขอเบิก</label>
+                    <select class="form-control" name="type" ngModel>
+                      <option value="ทั้งหมด">ทั้งหมด</option>
+                      <option value="เนื้อน่อง">เนื้อน่อง</option>
+                      <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
+                      <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
+                      <option value="เนื้อทีโบน">เนื้อทีโบน</option>
+                      <option value="เนื้อสันสะโพก">เนื้อสันสะโพก</option>
+                      <option value="เนื้อหางสันสะโพก">เนื้อหางสันสะโพก</option>
+                      <option value="เนื้อสันนอก">เนื้อสันนอก</option>
+                      <option value="เนื้อใบบัวสเต๊ก">เนื้อใบบัวสเต๊ก</option>
+                      <option value="เนื้อสะโพกใน">เนื้อสะโพกใน</option>
+                      <option value="เนื้อสันใน">เนื้อสันใน</option>
+                      <option value="เนื้อสันกลางถอดกระดูก">เนื้อสันกลางถอดกระดูก</option>
+                      <option value="เนื้อซี่โครงติดกระดูก">เนื้อซี่โครงติดกระดูก</option>
+                      <option value="เนื้อใบพาย">เนื้อใบพาย</option>
+                      <option value="เนื้อปลาช่อน">เนื้อปลาช่อน</option>
+                      <option value="เนื้อเสือร้องไห้">เนื้อเสือร้องไห้</option>
+                      <option value="เนื้อรักบี้">เนื้อรักบี้</option>
+                      <option value="เนื้อสันไหล่">เนื้อสันไหล่</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2 mb-2" [hidden]="hid != 4">
+                    <label>รายการที่ขอเบิก</label>
+                    <select class="form-control" name="type" ngModel>
+                      <option value="เครื่องใน">เครื่องใน</option>
+                      <option value="หัว">หัว</option>
+                      <option value="หนัง">หนัง</option>
+                      <option value="หาง">หาง</option>
+                      <option value="ขา">ขา</option>
+                      <option value="ไขมัน">ไขมัน</option>
+                      <option value="อองเร">อองเร</option>
+                    </select>
+                  </div>
+                    <div class="col-sm-1 mb-2">
+                      <label>น้ำหนัก (กก.)</label>
+                      <input type="text" class="form-control" name="weight" maxlength=7 ngModel />
+                    </div>
+                    <div class="col-sm-1 mb-2">
+                      <label>เกรด</label>
+                      <select class="form-control" name="grade" ngModel="2.0">
+                        <option value="2.0">2.0</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3.0">3.0</option>
+                        <option value="3.25">3.25</option>
+                        <option value="3.5">3.5</option>
+                        <option value="4.0">4.0</option>
+                        <option value="4.5">4.5</option>
+                        <option value="5.0">5.0</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>ผู้ขอเบิก</label>
+                      <input type="text" class="form-control" name="take_name" ngModel />
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                      <label>หมายเหตุ</label>
+                      <input type="text" class="form-control" name="note" ngModel/>
+                    </div>
+                    <div class="col-sm-1 mb-2" hidden>
+                      <label>วันที่เพิ่มข้อมูล</label>
+                      <input type="text" class="form-control" name="date" ngModel="{{date}}"/>
+                    </div>
+                    <input name="test" ngModel="0" hidden />    <!--ตัวแปรใช้เพื่อซ่อนข้อมูลเมื่อกดนำเข้าคลัง-->
+                    <div class="col-sm-1 mb-2">
+                      <label>เพิ่มรายการ</label>
+                      <button type="submit" class="btn btn-primary" style="margin-bottom: 45px">เพิ่มรายการ</button>
+                    </div>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row n">
+        <div class="col">
+          <div class="card shadow p">
+            <div class="card-header">
+              <h6>ตารางข้อมูลซากเนื้อโค</h6>
+            </div>
+            <div class="card-body">
+              <table id="tables">
+                <thead>
+                  <tr>
+                    <th>ลำดับ</th>
+                    <th>รายการที่ขอเบิก</th>
+                    <th>น้ำหนัก (กก.)</th>
+                    <th>เกรด</th>
+                    <th>ผู้ขอเบิก</th>
+                    <th>ลบ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let d of detail;let i = index" [hidden]="d.test === 1">
+                      <td>{{ i+1 }}</td>
+                      <td>{{ d.type }}</td>
+                      <td>{{ d.weight }}</td>
+                      <td>{{ d.grade }}</td>
+                      <td>{{ d.take_name }}</td>
+                      <td>
+                        <button class="btn btn-danger dg" (click)="removeData(i)"><i class="material-icons">delete_forever</i></button>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom: 5%;text-align: center">
+        <button class="btn btn-primary" (click)="sendData()">ร้องขอเบิก</button>
+      </div>
+  </div>
+
+
