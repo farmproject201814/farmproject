@@ -190,12 +190,12 @@
               <div class="text-center mt-3">
                 <button
                   type="button"
-                  class="btn btn-success"
-                  style="vertical-align:middle"
+                  class="btn"
+                  style="vertical-align:middle; background-color: #f6bb43"
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
                 >
-                  <b>แก้ไขข้อมูล</b>
+                  <b><i class="material-icons" style="margin-right: 5px">mode_edit</i>แก้ไขข้อมูล</b>
                 </button>
               </div>
 
@@ -212,7 +212,7 @@
                   <div class="modal-content">
                     <div
                       class="modal-header"
-                      style="background-color:#28a745;color: #ffffff"
+                      style="background-color:#3bafda;color: #ffffff"
                     >
                       <!--
                         <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
@@ -380,7 +380,7 @@
                               <textarea
                                 type="text"
                                 class="form-control"
-                                value="{{address}}&nbsp;&nbsp;อำเภอ{{city}}&nbsp;&nbsp;จังหวัด{{State}}&nbsp;{{zip}}"
+                                value="{{address}}"
                               >
                               </textarea>
                             </div>
@@ -415,13 +415,14 @@
                     <div class="modal-footer" style="margin-right:39%">
                       <button
                         type="button"
-                        class="btn btn-secondary"
+                        class="btn"
+                        style="background-color:#da4553; color: #ffffff"
                         data-dismiss="modal"
                       >
-                        <b>ปิด</b>
+                        <b><i class="material-icons" style="margin-right: 3px">arrow_back</i>ย้อนกลับ</b>
                       </button>
-                      <button type="button" class="btn btn-primary">
-                        <b>บันทึกข้อมูล</b>
+                      <button type="button" class="btn" style="background-color:#87bf4b; color: #ffffff">
+                        <b><i class="material-icons" style="margin-right: 3px">save</i>บันทึกข้อมูล</b>
                       </button>
                     </div>
                   </div>
