@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SumgradingService } from 'src/app/service/API/beefgrading/sumgrading.service';
 import { LyTheme2 } from '@alyle/ui';
 import swal from 'sweetalert2';
@@ -82,8 +83,12 @@ export class HistoryComponent implements OnInit {
     check: false
   };
 
+  pdfimage;
+  key;
+
   constructor(
     private api: SumgradingService,
+    private _route: ActivatedRoute,
     private theme: LyTheme2) {
       pdfMake.fonts = {
         THNiramitAS: {
@@ -99,6 +104,10 @@ export class HistoryComponent implements OnInit {
           bolditalics: 'Roboto-MediumItalic.ttf'
         }
       };
+
+      this._route.params.subscribe(params => {
+        this.key = params['key'];
+      });
   }
 
   ngOnInit() {
@@ -179,6 +188,29 @@ export class HistoryComponent implements OnInit {
   }
 
   printPDF() {
+    function getDataUri(url, callback) {
+      const image = new Image();
+
+      image.onload = function () {
+          const canvas = document.createElement('canvas');
+          canvas.width = image.width; // or 'width' if you want a special/scaled size
+          canvas.height = image.height; // or 'height' if you want a special/scaled size
+
+          canvas.getContext('2d').drawImage(image, 0, 0);
+
+          // Get raw image data
+          callback(canvas.toDataURL('image/png').replace(/^data:image\/(png|jpg);base64,/, ''));
+
+      };
+
+      image.src = url;
+  }
+
+  // Usage
+  getDataUri('/logo.png', function(dataUri) {
+      // Do whatever you'd like with the Data URI!
+  });
+
     const docDefinition = {
       content: [
         {
@@ -191,15 +223,9 @@ export class HistoryComponent implements OnInit {
         {
           columns: [
             {
-              width: 100,
-              fontSize: 9,
-              text: ''
-            },
-            { text: [
-              'รหัสวัว',
-              'รหัสซากซ้าย',
-              'รหัสซากขาว',
-            ]
+              image: this.pdfimage,
+              width: 50,
+              height: 50,
             }
           ]
         }
@@ -213,37 +239,3 @@ export class HistoryComponent implements OnInit {
 
 }
 
-export class Listitemcattle {
-  id: string;
-  left: string;
-  right: string;
-  datekil: string;
-  datedry: string;
-  dateready: string;
-  wleft: string;
-  wright: string;
-  roomdry: string;
-  owncattle: string;
-  status: string;
-  picture: string;
-
-  date_sum: string;
-  datecuted: string;
-  grade_ex: string;
-  grade_sys: string;
-  grade_con: string;
-
-  fn_ex1: string;
-  fn_ex2: string;
-  fn_ex3: string;
-  fn_ex4: string;
-  fn_ex5: string;
-  ln_ex1: string;
-  ln_ex2: string;
-  ln_ex3: string;
-  ln_ex4: string;
-  ln_ex5: string;
-
-  sys_grage_sum_fn: string;
-  sys_grage_sum_ln: string;
-}

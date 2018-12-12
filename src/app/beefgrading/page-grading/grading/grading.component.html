@@ -15,10 +15,10 @@
           <div class="col-sm-7">
             <div class="row">
               <div class="col">
-                <label for="File1" style="color: #1560BD">
+                <label for="File1" style="color: #1f1f1f">
                   <h4><b>เลือกรูปซากโคที่ต้องการ</b></h4>
                 </label>
-                <label for="File1" style="color: #1560BD; margin-left: 460px">
+                <label for="File1" style="color: #1f1f1f; margin-left: 460px">
                   <h4><b>รูปซากโคที่ถูกเลือก</b></h4>
                 </label>
 
@@ -53,7 +53,7 @@
                     </div>
 
                     <div [className]="classes.actions">
-                      <button class="btn btn-success mt-3" (click)="_fileInput.click()" style="width: 100%">
+                      <button class="btn text-light mt-3" (click)="_fileInput.click()" style="width: 100%; background-color: #87bf4b">
                         <i class="material-icons" style="margin-right: 5px">image</i>
                         <span>เลือกรูปซากโคที่ต้องการ</span>
                       </button>
@@ -64,7 +64,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <button *ngIf="cropping.isLoaded" color="white" (click)="cropping.crop()" ly-button raised bg="primary" style="width: 100%">
+                    <button *ngIf="cropping.isLoaded" color="white" (click)="cropping.crop()" ly-button raised bg="primary" style="width: 100%; background-color: #3498db">
                       <i class="material-icons" style="margin-right: 5px">crop</i><h4 style="padding-top: 8px"><b>crop</b></h4>
                     </button>
                     <div class="row">
@@ -143,7 +143,7 @@
           </div>
 
           <div class="col-sm-5">
-            <div style="color: #1560BD; margin-bottom: 20px">
+            <div style="color: #1f1f1f; margin-bottom: 20px">
               <h4><b>ข้อมูลโค</b></h4>
             </div>
             <form *ngFor="let item of data">
@@ -296,18 +296,18 @@
               <button
                 routerLink="/listcattle"
                 type="button"
-                class="btn btn-outline-secondary"
-                style="vertical-align:middle ; margin-right: 10px; width: 18%"
+                class="btn text-light"
+                style="vertical-align:middle ; margin-right: 10px; width: 18%; background-color: #da4553"
               >
-                <h4><b>ย้อนกลับ</b></h4>
+                <h4><b><i class="material-icons" style="margin-right: 3px">arrow_back</i>ย้อนกลับ</b></h4>
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
-                style="vertical-align:middle; width: 78%"
+                class="btn text-light"
+                style="vertical-align:middle; width: 78%; background-color: #55c7dd"
                 (click)="switch(false)"
               >
-              <span><h4><b>ประมวลผล</b></h4></span>
+              <span><h4><b><i class="material-icons" style="margin-right: 3px">exit_to_app</i>ประมวลผล</b></h4></span>
               </button>
             </div>
           </div>
@@ -340,7 +340,7 @@
             <div class="col-sm-7">
               <div class="row">
                 <div class="col-sm-8">
-                  <label style="color: #1560BD">
+                  <label style="color: #1f1f1f">
                     <h4><b>รูปซากโคที่ถูกเลือก</b></h4>
                   </label>
                   <div class="text-center">
@@ -379,7 +379,7 @@
                 <div class="col-sm-4">
                   <div class="row mb-3">
                     <div class="col">
-                      <label for="File1" style="color: #1560BD">
+                      <label for="File1" style="color: #1f1f1f">
                         <h4><b>เกรดที่ได้</b></h4>
                       </label>
                       <div class="card">
@@ -397,7 +397,7 @@
 
                   <div class="row">
                     <div class="col">
-                      <label for="File1" style="color: #1560BD">
+                      <label for="File1" style="color: #1f1f1f">
                         <h4><b>ชื่อพนักงานตัดเกรด</b></h4>
                       </label>
                       <form>
@@ -428,7 +428,7 @@
 
             <div class="col-sm-5">
               <div class="container">
-                <div style="color: #1560BD; margin-bottom: 20px">
+                <div style="color: #1f1f1f; margin-bottom: 20px">
                   <h4><b>ข้อมูลโค</b></h4>
                 </div>
                 <form *ngFor="let item of data">
@@ -584,18 +584,18 @@
                     <button
                       (click)="switch(true)"
                       type="button"
-                      class="btn btn-outline-secondary pull-center"
-                      style="vertical-align:middle ;margin-right: 10px; width: 19%"
+                      class="btn pull-center text-light"
+                      style="vertical-align:middle ;margin-right: 10px; width: 19%; background-color: #da4553"
                     >
-                      <h4><b>ย้อนกลับ</b></h4>
+                      <h4><b><i class="material-icons" style="margin-right: 3px">arrow_back</i>ย้อนกลับ</b></h4>
                     </button>
                     <button
                       type="button"
-                      class="btn btn-success pull-center"
-                      style="vertical-align:middle; width: 79%"
+                      class="btn pull-center text-light"
+                      style="vertical-align:middle; width: 79%; background-color: #87bf4b"
                       (click)="greaded()"
                     >
-                      <h4><b>บันทึก</b></h4>
+                      <h4><b><i class="material-icons" style="margin-right: 3px">save</i>บันทึก</b></h4>
                     </button>
                   </div>
                 </div>

@@ -4,7 +4,7 @@
 <div class="backpage">
   <div class="container-fluid">
     <div class="card shadow p mb-3">
-      <div class="card-header" style="background-color: #007FFF;color: #ffffff">
+      <div class="card-header" style="background-color: #3bafda;color: #ffffff">
         <div class="row" style="width: 100%">
           <div class="col-6"><h3><b>รายการซากโค</b></h3></div>
           <div class="col">
@@ -17,7 +17,7 @@
                 <div class="input-group-append">
                   <button
                   class="btn btn-light btn-sm text-light"
-                  style="background-color: limegreen; height:43px">
+                  style="background-color: #87bf4b; height:43px">
                     <i class="material-icons text-center">search</i>
                   </button>
                 </div>
@@ -30,7 +30,7 @@
         <div [hidden]="d.Delete == false && c.check == false">
           <div [className]="classes.root">
             <button ly-button style="width:30px" (click)="checkdelete()">
-              <i class="material-icons" style="color:#bd0000;font-size: 1.5rem">delete_forever</i>
+              <i class="material-icons" style="color:#da4151;font-size: 1.5rem">delete_forever</i>
             </button>
           </div>
         </div>
@@ -89,7 +89,7 @@
               <td>{{data.grade_ex}}</td>
               <td style="color:rgb(80, 80, 80)">{{data.status}}</td>
               <td style="padding-top:10px">
-                <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: limegreen"
+                <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: #87bf4b"
                   [hidden]="data.status!='ไม่ได้สรุปเกรด'"><b>สรุปเกรด</b></button>
 
                 <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: gray"
@@ -103,7 +103,7 @@
       </div>
       <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
         <div [className]="classes.root">
-          <button ly-button style="width:30px" (click)="checkdelete()"><i class="material-icons" style="color:#bd0000;font-size: 2rem">delete_forever</i></button>
+          <button ly-button style="width:30px" (click)="checkdelete()"><i class="material-icons" style="color:#da4151;font-size: 2rem">delete_forever</i></button>
         </div>
       </div>
     </div>
