@@ -118,6 +118,7 @@
               <td>
                 <!-- Button trigger modal -->
                 <button
+                  (click)="viwepicture(i)"
                   type="button"
                   class="btn btn-warning"
                   data-toggle="modal"
@@ -132,13 +133,14 @@
                   <button routerLink="/report" type="button" class="btn button btn-success" style="background-color: limegreen"><b>ออกรายงาน</b></button>
                 -->
                 <button
-
+                  (click)="selectData(i)"
                   type="button"
                   class="btn button btn-success"
                   style="background-color: #87bf4b"
                   data-toggle="modal"
                   data-target="#reportModalCenter"
-                >
+
+                  >
                   <b>ออกรายงาน</b>
                 </button>
               </td>
@@ -181,12 +183,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" *ngFor="let data of data">
+      <div class="modal-body">
         <div class=" text-center">
           <img
             class=" cardsize"
             style="border-radius: 5px; width: auto; height: cover"
-            src="{{data.picture}}"
+            src="{{viwepic}}"
           />
         </div>
       </div>

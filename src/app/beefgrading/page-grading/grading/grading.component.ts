@@ -199,12 +199,12 @@ export class GradingComponent implements OnInit {
     console.log(this.key);
   }
 
-test() {
-  console.log('asdasd');
-  this.croppedImage = [];
-  this.count = 0;
-  this.picName = '';
-}
+  test() {
+    console.log('asdasd');
+    this.croppedImage = [];
+    this.count = 0;
+    this.picName = '';
+  }
 
   onCropped(e: ImgCropperEvent) {
 
@@ -326,31 +326,36 @@ test() {
                 datecuted: String(this.datecuted),
               };
               console.log(dataSave);
-              this.api.editData(this.key, dataSave).subscribe();
-              storageRef
-              .child('uploads/' + this.name_pic + '/Original')
-              .getDownloadURL()
-              .then(datas => {
-                this.api.getDataByKey(this.key).subscribe(data1 => {
-                  const value = Object.keys(data1).map(key => data1[key]);
-                  value[0].picture = datas;
-                  value[0].status = 'ไม่ได้สรุปเกรด';
-                  value[0].date_sum = '';
-                  value[0].grade_sys = this.grade;
-                  value[0].datecuted = String(this.datecuted);
-                  value[0].sys_grage_cut_fn = this.userfirst;
-                  value[0].sys_grage_cut_ln = this.userlast;
-                  console.log(value[0]);
-                  this.apigrade.addData(value[0]).subscribe();
-                });
+              this.api.editData(this.key, dataSave).subscribe(d => {
+                console.log(d);
+                if (d.status === 'OK') {
+                  storageRef
+                  .child('uploads/' + this.name_pic + '/Original')
+                  .getDownloadURL()
+                  .then(datas => {
+                    this.api.getDataByKey(this.key).subscribe(data1 => {
+                      const value = Object.keys(data1).map(key => data1[key]);
+                      value[0].picture = datas;
+                      value[0].status = 'ไม่ได้สรุปเกรด';
+                      value[0].date_sum = '';
+                      value[0].grade_sys = this.grade;
+                      value[0].datecuted = String(this.datecuted);
+                      value[0].sys_grage_cut_fn = this.userfirst;
+                      value[0].sys_grage_cut_ln = this.userlast;
+                      console.log(value[0]);
+                      this.apigrade.addData(value[0]).subscribe(d1 => {
+                        console.log(d1);
+                        if (d1.status === 'OK') {
+                          this.router.navigate(['/listcattle']);
+                        }
+                      });
+                    });
+                  });
+                }
               });
           }, 5000);
         }, 5000);
       },
-      onClose: () => {
-        this.router.navigate(['/listcattle']);
-        // location.reload();
-      }
     }).then(result => {
       if (
         // Read more about handling dismissals

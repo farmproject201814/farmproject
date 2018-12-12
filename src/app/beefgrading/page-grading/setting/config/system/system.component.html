@@ -1,4 +1,147 @@
 <app-navmanu></app-navmanu>
-<p>
-  system works!
-</p>
+<div
+  class="edit-profile text-center"
+  style="margin-top: 10px; padding-bottom: 20px"
+>
+  <a
+    ><i class="material-icons" style="margin-right: 5px">settings</i
+    ><b>ตั้งค่าระบบ</b></a
+  >
+</div>
+<div class="backpage">
+  <div class="container">
+    <div class="card shadow">
+      <form>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <label
+                ><h4><b>ตั้งค่าทั่วไป</b></h4></label
+              >
+              <div class="row">
+                <div class="col">
+                  <label><h5>ชื่อสหกรณ์</h5></label>
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      value=""
+                    />
+                    <div class="input-group-append">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        style="height: 38px; padding-top: 2px"
+                        data-toggle="modal"
+                        data-target="#configname"
+                      >
+                        <b
+                          ><i class="material-icons" style="margin-right: 5px"
+                            >mode_edit</i
+                          >แก้ไขข้อมูล</b
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <label
+                ><h4><b>ตั้งค่าการแจ้งเตือน</b></h4></label
+              >
+              <div class="row">
+                <div class="col">
+                  <label><h5>กำหนดจำนวนวันแจ้งเตือนการตัดเกรด</h5></label>
+                  <div class="input-group">
+                    <select
+                      class="custom-select"
+                      id="inputGroup"
+                      aria-label="Example select with button addon"
+                    >
+                      <option selected>เลือก...</option>
+                      <option value="1"> 7 วัน</option>
+                      <option value="2"> 14 วัน</option>
+                      <option value="3"> 21 วัน</option>
+                    </select>
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-primary"
+                        style="height: 38px; padding-top: 2px"
+                        type="button"
+                      >
+                        <i
+                          class="material-icons"
+                          style="margin-right: 3px; vertical-align: -8px"
+                          >save</i
+                        >บันทึกข้อมูล
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="configname"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="confignameTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#3bafda;color: #ffffff">
+        <h3 class="modal-title" id="confignameTitle">
+          <b>แก้ไขชื่อสหกรณ์</b>
+        </h3>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">ใส่ชื่อสหกรณ์</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" value="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn"
+          style="background-color:#da4553; color: #ffffff"
+          data-dismiss="modal"
+        >
+          <b><i
+              class="material-icons"
+              style="margin-right: 3px; vertical-align: -8px"
+              >arrow_back</i
+            >ย้อนกลับ</b>
+        </button>
+        <button
+          type="button"
+          class="btn"
+          style="background-color:#87bf4b; color: #ffffff"
+        ><b><i
+            class="material-icons"
+            style="margin-right: 3px; vertical-align: -8px">
+            save</i>
+            บันทึกข้อมูล</b>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
