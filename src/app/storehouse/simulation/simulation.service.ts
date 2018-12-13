@@ -71,9 +71,6 @@ export class SimulationService {
   test() {
     return this.http.get(api.url + '/api/store/simulation/simulation-t1/allCount').pipe(map(res => res.json()));
   }
-  keepHistoryST1(data) {
-    return this.http.post(api.url + '/api/store/simulation/copy/simulation/simulation-t1-copy' , data).pipe(map(res => res.json()));
-  }
 
   /* -------- simulation-t2 ------------------------------------------------------- */
   addST2(data, num) {

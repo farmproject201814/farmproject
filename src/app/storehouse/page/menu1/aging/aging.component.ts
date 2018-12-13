@@ -15,7 +15,7 @@ import * as firebase from 'firebase';
 })
 export class AgingComponent implements OnInit {
   count = 0;
-  data: any;
+  data: any = [];
   date;
   name: any;
   /*--- ตัวแปรในฟังก์ชัน selectMenu() ---*/
@@ -31,29 +31,42 @@ export class AgingComponent implements OnInit {
   check = 3;
   weight_all = 0;
   detailData: any = [];
-  constructor(private api: SimulationService, private authAf: AngularFireAuth, private auth: AuthService) {
+  detailFilter = [];
+  constructor(private api: Menu1Service, private authAf: AngularFireAuth, private auth: AuthService) {
     this.date = new Date();
    }
 
   ngOnInit() {
-    let c = 0;
-    this.api.test().subscribe(d => {
-      const values = Object.keys(d.data).map(key => d.data[key]);
-      values.forEach(d1 => {
-        const s2 = Object.keys(d1).map(key => d1[key]);
-        for (let i = 0 ; i < s2.length ; i ++ ) {
-          if (s2[i].split === 1 && s2[i].type === 'ซากซ้าย' || s2[i].type === 'ซากขวา') {
-            this.detailData.push(s2[i]);
-            this.detailData[c].key = Object.keys(d1)[i];
-            this.weight_all += Number(s2[i].weight);
-            this.count ++;
-            c++;
-          }
-        }
+    this.api.showAging().subscribe(data => {
+      const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+      for (let i = 0; i < a2.length; i++) {
+        this.data.push(a2[i]);
+        // this.datas[i].key = Object.keys(data)[i];
+        this.weight_all += Number(a2[i].weight);
+        this.count++;
+        this.detailFilter.push(a2[i]);
+      }
         document.getElementById('w').innerHTML =
         this.weight_all.toFixed(2);
-      });
     });
+    // let c = 0;
+    // this.api.test().subscribe(d => {
+    //   const values = Object.keys(d.data).map(key => d.data[key]);
+    //   values.forEach(d1 => {
+    //     const s2 = Object.keys(d1).map(key => d1[key]);
+    //     for (let i = 0 ; i < s2.length ; i ++ ) {
+    //       if (s2[i].split === 1 && s2[i].type === 'ซากซ้าย' || s2[i].type === 'ซากขวา') {
+    //         this.detailData.push(s2[i]);
+    //         this.detailData[c].key = Object.keys(d1)[i];
+    //         this.weight_all += Number(s2[i].weight);
+    //         this.count ++;
+    //         c++;
+    //       }
+    //     }
+    //     document.getElementById('w').innerHTML =
+    //     this.weight_all.toFixed(2);
+    //   });
+    // });
 
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้บ่ม */
       this.auth.showData(datas.email).subscribe(snap => {

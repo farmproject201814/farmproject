@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SimulationService } from 'src/app/storehouse/simulation/simulation.service';
+import { Menu2Service } from '../../menu2.service';
 
 @Component({
   selector: 'app-import-t2',
@@ -8,31 +8,23 @@ import { SimulationService } from 'src/app/storehouse/simulation/simulation.serv
 })
 export class ImportT2Component implements OnInit {
   count = 0;
-  data: any;
+  datas: any = [];
   check = 3;
   weight_all = 0;
-  detailData: any = [];
-
-  constructor(private api: SimulationService) { }
+  detailFilter = [];
+  constructor(private api: Menu2Service) { }
 
   ngOnInit() {
-    let c = 0;
-    this.api.test().subscribe(d => {
-      const values = Object.keys(d.data).map(key => d.data[key]);
-      values.forEach(d1 => {
-        const s2 = Object.keys(d1).map(key => d1[key]);
-        for (let i = 0 ; i < s2.length ; i ++ ) {
-          if (s2[i].split === 1 && s2[i].type === 'ซากซ้าย' || s2[i].type === 'ซากขวา') {
-            this.detailData.push(s2[i]);
-            this.detailData[c].key = Object.keys(d1)[i];
-            this.weight_all += Number(s2[i].weight);
-            this.count ++;
-            c++;
-          }
+      this.api.showHistory_Import().subscribe(data => {
+      const a = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+      for (let i = 0; i < a.length; i++) {
+        if (a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา') {
+          this.datas.push(a[i]);
+          // this.datas[i].key = Object.keys(data)[i];
+          this.count++;
+          this.detailFilter.push(a[i]);
         }
-        // document.getElementById('w').innerHTML =
-        // this.weight_all.toFixed(2);
-      });
+      }
     });
   }
 
@@ -69,6 +61,23 @@ export class ImportT2Component implements OnInit {
           tr[i].style.display = 'none';
         }
       }
+    }
+  }
+
+  filter_1(e1) {
+    this.datas = [];
+    this.count = 0;
+    console.log(e1.value);
+    if (e1.value === 'ทั้งหมด') {
+      this.datas = this.detailFilter;
+      this.count = this.detailFilter.length;
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.type === e1.value) {
+          this.datas.push(a);
+          this.count ++;
+        }
+      });
     }
   }
 }

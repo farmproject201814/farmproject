@@ -22,7 +22,7 @@
       <div class="col-10">
         <div class="card shadow p">
           <div class="card-header">
-            <h6>เพิ่มข้อมูลซากเนื้อโค (ซ้าย-ขวา)</h6>
+            <h6>เพิ่มข้อมูลซากเนื้อโค</h6>
           </div>
           <div class="card-body">
             <form (ngSubmit)="addDataST1(t)" #t="ngForm">
@@ -46,10 +46,10 @@
                     <div class="col-sm-2 mb-2" [hidden]="hid != 2">
                       <label>ประเภทซาก</label>
                       <select class="form-control" name="type" ngModel>
-                        <option value="ซากซ้ายบน">ซากบนซ้าย</option>
-                        <option value="ซากขวาบน">ซากบนขวา</option>
-                        <option value="ซากซ้ายล่าง">ซากล่างซ้าย</option>
-                        <option value="ซากขวาล่าง">ซากล่างขวา</option>
+                        <option value="ซากซ้ายบน">ซากซ้ายบน</option>
+                        <option value="ซากซ้ายล่าง">ซากซ้ายล่าง</option>
+                        <option value="ซากขวาบน">ซากขวาบน</option>
+                        <option value="ซากขวาล่าง">ซากขวาล่าง</option>
                       </select>
                     </div>
                     <div class="col-sm-2 mb-2" [hidden]="hid != 3">
@@ -180,6 +180,9 @@
                     <select class="form-control" name="class" ngModel="-" hidden>ชั้น</select>
                     <select class="form-control" name="bucket" ngModel="-" hidden>ตะกร้า</select>
                     <select class="form-control" name="age" ngModel="1" hidden>อายุซาก</select>
+                    <select class="form-control" name="weight_c" ngModel="-" hidden>หมายเหตุ</select>
+                    <select class="form-control" name="note" ngModel="-" hidden>หมายเหตุ</select>
+                    <select class="form-control" name="grade" ngModel="-" hidden>เกรด</select>
                     <select class="form-control" name="split" ngModel="0" hidden>ไว้แยกประเภทซากเข้าคลัง</select>
                     <select class="form-control" name="hidden" ngModel="0" hidden>ซ่อน/แสดงข้อมูลในแจ้งเตือนt4</select>
                     <div class="col-sm-1 mb-2">
@@ -196,7 +199,7 @@
       <div class="col">
         <div class="card shadow p">
           <div class="card-header">
-            <h6>ตารางข้อมูลซากเนื้อโค (ซ้าย-ขวา)</h6>
+            <h6>ตารางข้อมูลซากเนื้อโค</h6>
           </div>
           <div class="card-body">
             <table id="tables">

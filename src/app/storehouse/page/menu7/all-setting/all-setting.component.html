@@ -1,0 +1,23 @@
+<div class="header">
+  <div class="row">
+    <form (ngSubmit)="add_settingRoom(t, room.key)" #t="ngForm">
+      <label>ตั้งค่าห้อง</label>
+      <input name="s_room" ngModel="{{room.s_room}}" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="row">
+    <form (ngSubmit)="add_settingClass(t2, class.key)" #t2="ngForm">
+      <label>ตั้งค่าชั้น</label>
+      <input name="s_class" ngModel="{{class.s_class}}" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="row">
+    <form (ngSubmit)="add_settingBucket(t3, bucket.key)" #t3="ngForm">
+      <label>ตั้งค่าตะกร้า</label>
+      <input name="s_bucket" ngModel="{{bucket.s_bucket}}" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

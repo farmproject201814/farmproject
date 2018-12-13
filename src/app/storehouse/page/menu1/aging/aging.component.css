@@ -1,7 +1,11 @@
-
 .text-center {
+  background-color: #da4453;
+  color: rgb(255, 255, 255);
+  margin-left: 45%;
+  margin-right: 45%;
   font-size: 24px;
   margin-bottom: 15px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .card{
@@ -266,7 +270,7 @@ input[type=checkbox]{
 }
 
 .search1{
-  background-color: #31C9CB;
+  background-color: #48cfad;
   color: #FBFCFC;
 }
 

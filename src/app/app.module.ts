@@ -78,6 +78,8 @@ import { NotificationT2Component } from './storehouse/page/menu6/notification/no
 import { NotificationT3Component } from './storehouse/page/menu6/notification/notification-t3/notification-t3.component';
 import { NotificationT4Component } from './storehouse/page/menu6/notification/notification-t4/notification-t4.component';
 import { NotificationT5Component } from './storehouse/page/menu6/notification/notification-t5/notification-t5.component';
+import { Menu7Component } from './storehouse/page/menu7/menu7.component';
+import { AllSettingComponent } from './storehouse/page/menu7/all-setting/all-setting.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +134,9 @@ import { NotificationT5Component } from './storehouse/page/menu6/notification/no
     NotificationT2Component,
     NotificationT3Component,
     NotificationT4Component,
-    NotificationT5Component
+    NotificationT5Component,
+    Menu7Component,
+    AllSettingComponent
   ],
   imports: [
     BrowserModule,

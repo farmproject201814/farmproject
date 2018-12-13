@@ -43,10 +43,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let d of detailData ;let i = index">
+          <tr *ngFor="let d of data ;let i = index">
             <td width=50px>{{ i+1 }}</td>
             <td width=90px>{{ d.date | date: 'dd-MM-yyyy' }}</td>
-            <td width=70px>{{ d.date | date: 'HH:mm' }}</td>
+            <td width=70px>{{ d.date | date: 'HH:mm น.' }}</td>
             <td width=120px>{{ d.type }}</td>
             <td width=90px>{{ d.cow_code }}</td>
             <td width=90px>{{ d.code }}</td>
@@ -122,126 +122,3 @@
       </div>
       <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#exampleModal">Open Modal</button>
 </div>
-
-
-
-<!-- <div class="header">
-  <p class="text-center"><strong>บ่มซากเนื้อโค</strong></p>
-  <div class="row r2 justify-content-center">
-    <div class="input-group form-inline c2"></div>
-    <div class="input-group form-inline c1">
-      <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
-      <input type="date" class="form-control "id="fc1">
-      <div class="input-group-append">
-        <span class="input-group-text" id="igt" style="height: 38px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
-      </div>
-      <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
-        <input type="date" class="form-control "id="fc2">
-        <div class="input-group-append">
-          <span class="input-group-text" id="igt" style="height: 38px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
-        </div>
-        <button type="submit" class="search1 btn ml-3" >ค้นหา <i class="fa fa-search"></i></button>
-    </div>
-    <div class="input-group form-inline c3"></div>
-  </div>
-
-  <div class="card shadow p">
-    <div class="card-header">
-      <h5><i class="fa fa-table"></i> รายการซากเนื้อโค</h5>
-    </div>
-    <div class="card-body">
-      <table id="tables">
-        <thead>
-          <tr>
-            <th width=50px>ลำดับ</th>
-            <th width=90px>วันที่นำเข้า</th>
-            <th width=70px>เวลา</th>
-            <th width=120px>ประเภทซาก</th>
-            <th width=90px>เบอร์โค</th>
-            <th width=90px>รหัสซาก</th>
-            <th width=150px>รหัสบาร์โค้ดซาก</th>
-            <th width=150px>รหัสคิวอาร์โค้ดซาก</th>
-            <th width=80px>น้ำหนักอุ่น</th>
-            <th width=50px>ห้อง</th>
-            <th width=130px>สถานะ</th>
-            <th><input type="checkbox" (click)="checkAll_list()" id="checkAll">&nbsp;เลือก</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let d of detailData ;let i = index">
-            <td width=50px>{{ i+1 }}</td>
-            <td width=90px>{{ d.date | date: 'dd-MM-yyyy' }}</td>
-            <td width=70px>{{ d.date | date: 'HH:mm' }}</td>
-            <td width=120px>{{ d.type }}</td>
-            <td width=90px>{{ d.cow_code }}</td>
-            <td width=90px>{{ d.code }}</td>
-            <td width=150px>{{ d.barcode }}</td>
-            <td width=150px>{{ d.qr_code }}</td>
-            <td width=80px>{{ d.weight }}</td>
-            <td width=50px>{{ d.room }}</td>
-            <td width=130px>{{ d.status }}</td>
-            <td>
-              <input type="checkbox" name="chk" (click)="selectMenu(d)" [checked]="c.check">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-right ml-auto">
-        <h6><strong>จำนวน {{ count }} รายการ  น้ำหนัก {{ weight_all }} กิโลกรัม</strong></h6>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="nav_button">
-        <button type="button" data-toggle="modal" data-target="#exampleModal"
-        class="btn bt1" style="margin-bottom: 5%">ดำเนินการ <i class="fa fa-chevron-right"></i></button>
-</div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <b>กำหนดรายละเอียดบ่ม</b>
-          </div>
-          <div class="modal-body">
-            <div class="form-group row mx-sm-2">
-              <b>ชื่อผู้ทำการบ่ม</b>
-              <input id="sz" class="form-control col-6 ml-auto" placeholder="{{name}}" disabled>
-            </div>
-            <div class="form-group row mx-sm-2">
-              <b>วันที่และเวลาเริ่มบ่ม</b>
-              <input id="sz" class="form-control col-6 ml-auto" placeholder="{{date | date: 'dd-MM-yyyy เวลา HH:mm น.'}}" disabled>
-            </div>
-            <div class="form-group row mx-sm-2">
-              <div class="input-group form-search mb-4">
-                <b>ระยะเวลาบ่ม</b>
-                <select class="form-control search-query col-6 ml-auto" ngModel="7" style="border-radius: 4px">
-                  <option value="1">1 วัน</option>
-                  <option value="2">2 วัน</option>
-                  <option value="3">3 วัน</option>
-                  <option value="4">4 วัน</option>
-                  <option value="5">5 วัน</option>
-                  <option value="6">6 วัน</option>
-                  <option value="7">7 วัน (มาตรฐาน)</option>
-                  <option value="8">8 วัน</option>
-                  <option value="9">9 วัน</option>
-                  <option value="10">10 วัน</option>
-                  <option value="11">11 วัน</option>
-                  <option value="12">12 วัน</option>
-                  <option value="13">13 วัน</option>
-                  <option value="14">14 วัน</option>
-                  <option value="15">15 วัน</option>
-                </select>
-              </div>
-              <label><b>จำนวนการบ่มทั้งหมด {{idcheck.length}} รายการ</b></label>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn bt2" data-dismiss="modal"><i class="fa fa-chevron-left"></i> กลับ</button>
-              <button type="button" class="btn bt3">บันทึก <i class="fa fa-check"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#exampleModal">Open Modal</button>
-</div> -->

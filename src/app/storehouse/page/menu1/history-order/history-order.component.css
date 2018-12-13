@@ -1,13 +1,18 @@
 .text-center {
+  background-color: #da4453;
+  color: rgb(255, 255, 255);
+  margin-left: 42%;
+  margin-right: 42%;
   font-size: 24px;
   margin-bottom: 15px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .card{
   height: 370px;
   margin-top: 0px;
-  margin-left: 6%;
-  margin-right: 6%;
+  margin-left: 7%;
+  margin-right: 7%;
   overflow: hidden;
   border-radius: 20px 20px 0px 0px;
 }
@@ -25,12 +30,14 @@
 }
 
 .r1 {
+
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 0px;
+  margin-bottom: 3px;
 }
 
 .r2 {
+
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 5px;
@@ -41,7 +48,7 @@ table ,tr td{
 }
 tbody {
   display: block;
-  height: 205px;         /* ความสูงของตาราง */
+  height: 195px;         /* ความสูงของตาราง */
   overflow: auto;
 }
 thead, tbody tr {
@@ -84,9 +91,10 @@ table tbody tr:hover {
 }
 
 .btn {
-  font-size: 18px;
+  padding-top: 5px;
+  background-color: #48cfad;
+  color: #FBFCFC;
   height: 33px;
-  width: 80px;
 }
 
 .modal-dialog {
@@ -228,7 +236,8 @@ h5{
 }
 
 #igt{
-  background-color: #47B7E5;
+  padding-top: 6px;
+  background-color: #1e90ff;
   border-radius: 0px 5px 5px 0px;
 }
 
@@ -248,8 +257,13 @@ h5{
 }
 
 .search1{
-  background-color: #31C9CB;
+  padding-top: 4px;
+  background-color: #48cfad;
   color: #FBFCFC;
+}
+
+select, select option {
+  font-size: 16px;
 }
 
 

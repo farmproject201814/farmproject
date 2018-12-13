@@ -91,7 +91,7 @@
               <th width=40px>ชั้น</th>
               <th width=40px>ตะกร้า</th>
               <th width=120px>สถานะ</th>
-              <th>ลบ</th>
+              <th [hidden]="hid == 1">ลบ</th>
             </tr>
           </thead>
           <tbody class="tt">
@@ -109,7 +109,7 @@
               <td width=40px>{{ d.class }}</td>
               <td width=40px>{{ d.bucket }}</td>
               <td width=120px>{{ d.status }}</td>
-              <td>
+              <td [hidden]="hid == 1">
                 <button class="btn btn-danger" (click)="deleteList(d.num, d.key)"><i class="material-icons">delete_forever</i></button>
               </td>
             </tr>
@@ -117,7 +117,8 @@
         </table>
       </div>
       <div class="bc">
-          <button class="btn btn-success" (click)="updateSplit()">จัดเก็บ&nbsp;<i class='fas fa-file-import'></i></button>
+          <button class="btn btn-success" (click)="updateSplit()" [hidden]="hid == 1">จัดเก็บ&nbsp;<i class='fas fa-file-import'></i></button>
+          <button class="btn btn-secondary" [hidden]="hid == 0" disabled>จัดเก็บแล้ว&nbsp;<i class='fas fa-check'></i></button>
       </div>
     </div>
   </div>
@@ -131,7 +132,7 @@
                       <th width=50>ลำดับ</th>
                       <th width=180>ประเภท</th>
                       <th width=90>จำนวนนำเข้า</th>
-                      <th >น้ำหนักซาก (กก.)</th>
+                      <th>น้ำหนักซาก (กก.)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -139,181 +140,181 @@
                       <td width=50>1</td>
                       <td width=180>ซากเนื้อโคซ้าย</td>
                       <td width=90>{{n.n1}}</td>
-                      <td>{{w.w1}}</td>
+                      <td id="w1">{{w.w1}}</td>
                     </tr>
                     <tr>
                       <td width=50>2</td>
                       <td width=180>ซากเนื้อโคขวา</td>
                       <td width=90>{{n.n2}}</td>
-                      <td>{{w.w2}}</td>
+                      <td id="w2">{{w.w2}}</td>
                     </tr>
                     <tr>
                       <td width=50>3</td>
                       <td width=180>ซากเนื้อโคซ้ายบน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n3}}</td>
+                      <td id="w3">{{w.w3}}</td>
                     </tr>
                     <tr>
                       <td width=50>4</td>
                       <td width=180>ซากเนื้อโคซ้ายล่าง</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n4}}</td>
+                      <td id="w4">{{w.w4}}</td>
                     </tr>
                     <tr>
                       <td width=50>5</td>
                       <td width=180>ซากเนื้อโคขวาบน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n5}}</td>
+                      <td id="w5">{{w.w5}}</td>
                     </tr>
                     <tr>
                       <td width=50>6</td>
                       <td width=180>ซากเนื้อโคขวาล่าง</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n6}}</td>
+                      <td id="w6">{{w.w6}}</td>
                     </tr>
                     <tr>
                       <td width=50>7</td>
                       <td width=180>เนื้อน่อง</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n7}}</td>
+                      <td id="w7">{{w.w7}}</td>
                     </tr>
                     <tr>
                       <td width=50>8</td>
                       <td width=180>เนื้อสะโพกนอก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n8}}</td>
+                      <td id="w8">{{w.w8}}</td>
                     </tr>
                     <tr>
                       <td width=50>9</td>
                       <td width=180>เนื้อลูกมะพร้าว</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n9}}</td>
+                      <td id="w9">{{w.w9}}</td>
                     </tr>
                     <tr>
                       <td width=50>10</td>
                       <td width=180>เนื้อทีโบน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n10}}</td>
+                      <td id="w10">{{w.w10}}</td>
                     </tr>
                     <tr>
                       <td width=50>11</td>
                       <td width=180>เนื้อสันสะโพก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n11}}</td>
+                      <td id="w11">{{w.w11}}</td>
                     </tr>
                     <tr>
                       <td width=50>12</td>
                       <td width=180>เนื้อหางสันสะโพก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n12}}</td>
+                      <td id="w12">{{w.w12}}</td>
                     </tr>
                     <tr>
                       <td width=50>13</td>
                       <td width=180>เนื้อสันนอก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n13}}</td>
+                      <td id="w13">{{w.w13}}</td>
                     </tr>
                     <tr>
                       <td width=50>14</td>
                       <td width=180>เนื้อใบบัวสเต๊ก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n14}}</td>
+                      <td id="w14">{{w.w14}}</td>
                     </tr>
                     <tr>
                       <td width=50>15</td>
                       <td width=180>เนื้อสะโพกใน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n15}}</td>
+                      <td id="w15">{{w.w15}}</td>
                     </tr>
                     <tr>
                       <td width=50>16</td>
                       <td width=180>เนื้อสันใน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n16}}</td>
+                      <td id="w16">{{w.w16}}</td>
                     </tr>
                     <tr>
                       <td width=50>17</td>
                       <td width=180>เนื้อสันกลางถอดกระดูก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n17}}</td>
+                      <td id="w17">{{w.w17}}</td>
                     </tr>
                     <tr>
                       <td width=50>18</td>
                       <td width=180>เนื้อซี่โครงติดกระดูก</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n18}}</td>
+                      <td id="w18">{{w.w18}}</td>
                     </tr>
                     <tr>
                       <td width=50>19</td>
                       <td width=180>เนื้อใบพาย</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n19}}</td>
+                      <td id="w19">{{w.w19}}</td>
                     </tr>
                     <tr>
                       <td width=50>20</td>
                       <td width=180>เนื้อปลาช่อน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n20}}</td>
+                      <td id="w20">{{w.w20}}</td>
                     </tr>
                     <tr>
                       <td width=50>21</td>
                       <td width=180>เนื้อเสือร้องไห้</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n21}}</td>
+                      <td id="w21">{{w.w21}}</td>
                     </tr>
                     <tr>
                       <td width=50>22</td>
                       <td width=180>เนื้อรักบี้</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n22}}</td>
+                      <td id="w22">{{w.w22}}</td>
                     </tr>
                     <tr>
                       <td width=50>23</td>
                       <td width=180>เนื้อสันไหล่</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n23}}</td>
+                      <td id="w23">{{w.w23}}</td>
                     </tr>
                     <tr>
                       <td width=50>24</td>
                       <td width=180>เครื่องใน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n24}}</td>
+                      <td id="w24">{{w.w24}}</td>
                     </tr>
                     <tr>
                       <td width=50>25</td>
                       <td width=180>หัว</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n25}}</td>
+                      <td id="w25">{{w.w25}}</td>
                     </tr>
                     <tr>
                       <td width=50>26</td>
                       <td width=180>หาง</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n26}}</td>
+                      <td id="w26">{{w.w26}}</td>
                     </tr>
                     <tr>
                       <td width=50>27</td>
                       <td width=180>หนัง</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n27}}</td>
+                      <td id="w27">{{w.w27}}</td>
                     </tr>
                     <tr>
                       <td width=50>28</td>
                       <td width=180>ขา</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n28}}</td>
+                      <td id="w28">{{w.w28}}</td>
                     </tr>
                     <tr>
                       <td width=50>29</td>
                       <td width=180>ไขมัน</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n29}}</td>
+                      <td id="w29">{{w.w29}}</td>
                     </tr>
                     <tr>
                       <td width=50>30</td>
                       <td width=180>อองเร</td>
-                      <td width=90>0</td>
-                      <td >000.00</td>
+                      <td width=90>{{n.n30}}</td>
+                      <td id="w30">{{w.w30}}</td>
                     </tr>
                   </tbody>
                 </table>

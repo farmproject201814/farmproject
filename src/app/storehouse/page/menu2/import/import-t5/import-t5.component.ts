@@ -7,18 +7,25 @@ import { Menu2Service } from '../../menu2.service';
   styleUrls: ['./import-t5.component.css']
 })
 export class ImportT5Component implements OnInit {
-  count;
-  data: any;
+  count = 0;
+  datas: any = [];
   check = 3;
-
+  weight_all = 0;
+  detailFilter = [];
   constructor(private api: Menu2Service) { }
 
   ngOnInit() {
-    this.api.showImportT5().subscribe(data => {
-      this.count = Object.values(data).length;        /* นับจำนวนรายการทั้งหมดในตาราง */
-      this.data = Object.values(data);                /* Qurey ข้อมูล */
-      for (let i = 0; i < Object.values(data).length; i++) {
-        this.data[i].key = Object.keys(data)[i];
+      this.api.showHistory_Import().subscribe(data => {
+      const a = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+      for (let i = 0; i < a.length; i++) {
+        if (a[i].type === 'เครื่องใน' || a[i].type === 'หัว' || a[i].type === 'หนัง'
+        || a[i].type === 'หาง' || a[i].type === 'ขา' || a[i].type === 'ไขมัน' || a[i].type === 'อองเร') {
+          this.datas.push(a[i]);
+          // this.datas[i].key = Object.keys(data)[i];
+          this.count++;
+          console.log(this.count);
+          this.detailFilter.push(a[i]);
+        }
       }
     });
   }
@@ -56,6 +63,23 @@ export class ImportT5Component implements OnInit {
           tr[i].style.display = 'none';
         }
       }
+    }
+  }
+
+  filter_1(e1) {
+    this.datas = [];
+    this.count = 0;
+    console.log(e1.value);
+    if (e1.value === 'ทั้งหมด') {
+      this.datas = this.detailFilter;
+      this.count = this.detailFilter.length;
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.type === e1.value) {
+          this.datas.push(a);
+          this.count ++;
+        }
+      });
     }
   }
 }

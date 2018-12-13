@@ -13,9 +13,9 @@
         </div>
       </div>
       <label class="col-form-label"><b>ชนิดของซาก</b></label>
-      <div class="d1 ml-3">
+      <div class="ml-3">
         <div class="input-group form-search">
-            <select class="form-control search-query fcsq1"> <!-- (change)="filter_1(t1)" ngModel="ทั้งหมด" #t1-->
+            <select class="form-control search-query fcsq1" (change)="filter_1(t1)" ngModel="ทั้งหมด" #t1>
               <option value="ทั้งหมด">ทั้งหมด</option>
               <option value="ซากซ้าย">ซากซ้าย</option>
               <option value="ซากขวา">ซากขวา</option>
@@ -42,17 +42,17 @@
   <div class="row r2 justify-content-center">
     <div class="input-group form-inline c2"></div>
     <div class="input-group form-inline c1">
-      <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
+      <label class="label mr-3"><b>วันที่นำเข้า</b></label>
       <input type="date" class="form-control "id="fc1">
       <div class="input-group-append">
         <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
       </div>
-      <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
+      <label class="label ml-3 mr-3"><b>ถึงวันที่</b></label>
         <input type="date" class="form-control "id="fc2">
         <div class="input-group-append">
           <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
         </div>
-        <button type="submit" class="btn search1 ml-3">ค้นหา <i class="fa fa-search"></i></button>
+        <button type="submit" class="btn ml-3">ค้นหา <i class="fa fa-search"></i></button>
     </div>
     <div class="input-group form-inline c3"></div>
   </div>
@@ -77,28 +77,12 @@
             <th width=50px>ห้อง</th>
             <th width=50px>ชั้น</th>
             <th width=50px>ตะกร้า</th>
-            <th width=100px>สถานะ</th>
+            <th width=120px>สถานะ</th>
             <th>ผู้นำเข้า</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td width=50px>1</td>
-            <td width=90px>2</td>
-            <td width=70px>3</td>
-            <td width=150px>4</td>
-            <td width=180px>5</td>
-            <td width=70px>6</td>
-            <td width=70px>7</td>
-            <td width=120px>8</td>
-            <td width=120px>9</td>
-            <td width=50px>10</td>
-            <td width=50px>11</td>
-            <td width=50px>12</td>
-            <td width=100px>13</td>
-            <td>14</td>
-          </tr> -->
-          <tr *ngFor="let d of detailData ;let i = index">
+          <tr *ngFor="let d of datas ;let i = index">
             <td width=50px>{{ i+1 }}</td>
             <td width=90px>{{ d.date | date: 'dd-MM-yyyy' }}</td>
             <td width=70px>{{ d.date | date: 'HH:mm' }}</td>
@@ -111,7 +95,7 @@
             <td width=50px>{{ d.room }}</td>
             <td width=50px>{{ d.class }}</td>
             <td width=50px>{{ d.bucket }}</td>
-            <td width=100px>{{ d.status }}</td>
+            <td width=120px>{{ d.status }}</td>
             <td>{{ d.import_name }}</td>
           </tr>
         </tbody>

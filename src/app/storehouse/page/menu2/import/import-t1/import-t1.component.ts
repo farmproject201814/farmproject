@@ -7,20 +7,23 @@ import { Menu2Service } from '../../menu2.service';
   styleUrls: ['./import-t1.component.css']
 })
 export class ImportT1Component implements OnInit {
-  count;
-  data: any;
+  count = 0;
+  datas: any = [];
   check = 3;
-
+  weight_all = 0;
+  detailFilter = [];
   constructor(private api: Menu2Service) { }
 
   ngOnInit() {
-    // this.api.showImportT2().subscribe(data => {
-    //   this.count = Object.values(data).length;        /* นับจำนวนรายการทั้งหมดในตาราง */
-    //   this.data = Object.values(data);                /* Qurey ข้อมูล */
-    //   for (let i = 0; i < Object.values(data).length; i++) {
-    //     this.data[i].key = Object.keys(data)[i];
-    //   }
-    // });
+      this.api.showHistory_Import().subscribe(data => {
+      const a = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+      for (let i = 0; i < a.length; i++) {
+        this.datas.push(a[i]);
+        // this.datas[i].key = Object.keys(data)[i];
+        this.count++;
+        this.detailFilter.push(a[i]);
+      }
+    });
   }
 
   dropdown_search(v) {       /* เลือกประเภทการ search */

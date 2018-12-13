@@ -28,6 +28,7 @@ import { NotificationT2Component } from './menu6/notification/notification-t2/no
 import { NotificationT3Component } from './menu6/notification/notification-t3/notification-t3.component';
 import { NotificationT4Component } from './menu6/notification/notification-t4/notification-t4.component';
 import { NotificationT5Component } from './menu6/notification/notification-t5/notification-t5.component';
+import { AllSettingComponent } from './menu7/all-setting/all-setting.component';
 
 const routes: Routes = [
   /* Menu1 */
@@ -58,6 +59,9 @@ const routes: Routes = [
   { path: 'menu6/notification-t3', component: NotificationT3Component },
   { path: 'menu6/notification-t4', component: NotificationT4Component },
   { path: 'menu6/notification-t5', component: NotificationT5Component },
+
+  /* Menu7 */
+  { path: 'menu7/all-setting', component: AllSettingComponent },
 ];
 
 @NgModule({

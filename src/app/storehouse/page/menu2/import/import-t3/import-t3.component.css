@@ -1,6 +1,11 @@
 .text-center {
+  background-color: #da4453;
+  color: rgb(255, 255, 255);
+  margin-left: 43%;
+  margin-right: 43%;
   font-size: 24px;
   margin-bottom: 15px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .card{
@@ -84,9 +89,10 @@ table tbody tr:hover {
 }
 
 .btn {
-  font-size: 18px;
+  padding-top: 5px;
+  background-color: #48cfad;
+  color: #FBFCFC;
   height: 33px;
-  width: 80px;
 }
 
 .modal-dialog {
@@ -180,10 +186,6 @@ h6 {
   font-size: 18px;
 }
 
-select, option {
-  font-size: 18px;
-}
-
 .input-group-text{
   height: 38px;
 }
@@ -218,9 +220,6 @@ select, option {
   width: 30px;
   border-radius: 5px 0px 0px 5px;
 }
-.test{
-  align-self: center;
-}
 
 h5{
   font-weight: normal;
@@ -233,13 +232,12 @@ h5{
 }
 
 .fcsq1{
-
+  font-size: 16px;
   height: 33px;
-  width: 120px;
 }
 
 .fcsq2{
-
+  font-size: 16px;
   height: 33px;
 }
 
@@ -250,4 +248,8 @@ h5{
 
 .far{
   color: #FBFCFC;
+}
+
+select option {
+  font-size: 16px;
 }
