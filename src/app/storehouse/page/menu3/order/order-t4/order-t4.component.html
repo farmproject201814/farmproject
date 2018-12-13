@@ -15,7 +15,7 @@
       <label class="col-form-label"><b>ชนิดซาก</b></label>
       <div class="ml-3">
         <div class="input-group form-search">
-            <select class="form-control search-query fcsq1">
+            <select class="form-control search-query fcsq1" (change)="filter_1(t1)" ngModel="ทั้งหมด" #t1>
               <option value="ทั้งหมด">ทั้งหมด</option>
               <option value="เนื้อน่อง">เนื้อน่อง</option>
               <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
@@ -39,15 +39,15 @@
       </div>
       <label class="col-form-label ml-3"><b>ค้นหา</b></label>
       <div class="input-group form-search  ml-3">
-        <select class="form-control search-query fcsq2"> <!-- (change)="selectMenu(slt)" ngModel="ขอเบิกออก" #slt-->
-          <option value="ขอเบิกออก">ชื่อขอเบิกออก</option>
-          <option value="ผู้เบิกออก">ชื่อผู้เบิกออก</option>
-          <option value="เบอร์โค">เบอร์โค</option>
-          <option value="รหัสซาก">รหัสซาก</option>
-          <option value="รหัสบาร์โค้ด">รหัสบาร์โค้ด</option>
-          <option value="รหัสคิวอาร์โค้ด">รหัสคิวอาร์โค้ด</option>
+        <select class="form-control search-query fcsq2" (change)="dropdown_search(slt)" ngModel="1" #slt>
+          <option value="1">ชื่อขอเบิกออก</option>
+          <option value="2">ชื่อผู้เบิกออก</option>
+          <option value="3">เบอร์โค</option>
+          <option value="4">รหัสซาก</option>
+          <option value="5">รหัสบาร์โค้ด</option>
+          <option value="6">รหัสคิวอาร์โค้ด</option>
         </select>
-        <input type="text" class="form-control search-query" id="myInput" ngModel style="height: 33px"/> <!--(keyup)="searchTable()"-->
+        <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
       </div>
     </div>
   </div>
@@ -88,32 +88,32 @@
                 <th width=50px>ห้อง</th>
                 <th width=50px>ชั้น</th>
                 <th width=50px>ตะกร้า</th>
-                <th width=100px>สถานะ</th>
+                <th width=110px>สถานะ</th>
                 <th width=130px>ผู้ขอเบิก</th>
                 <th>ผู้เบิกออก</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let q of data;let i = index">
-                <td width=50px></td>
-                <td width=90px></td>
-                <td width=70px></td>
-                <td width=120px></td>
-                <td width=70px></td>
-                <td width=70px></td>
-                <td width=120px></td>
-                <td width=120px></td>
-                <td width=50px></td>
-                <td width=50px></td>
-                <td width=50px></td>
-                <td width=100px></td>
-                <td width=130px></td>
-                <td></td>
+              <tr *ngFor="let d of datas ;let i = index">
+                <td width=50px>{{ i+1 }}</td>
+                <td width=90px>{{ d.date | date: 'dd-MM-yyyy' }}</td>
+                <td width=70px>{{ d.date | date: 'HH:mm น.' }}</td>
+                <td width=120px>{{ d.type }}</td>
+                <td width=70px>{{ d.cow_code }}</td>
+                <td width=70px>{{ d.code }}</td>
+                <td width=120px>{{ d.barcode }}</td>
+                <td width=120px>{{ d.qr_code }}</td>
+                <td width=50px>{{ d.room }}</td>
+                <td width=50px>{{ d.class }}</td>
+                <td width=50px>{{ d.bucket }}</td>
+                <td width=110px>{{ d.status }}</td>
+                <td width=130px>{{ d.take_name }}</td>
+                <td>{{ d.import_name }}</td>
               </tr>
             </tbody>
           </table>
           <div class="text-right ml-auto">
-            <h6><strong>จำนวนซากเนื้อโคเบิกออก 0 รายการ</strong></h6>
+            <h6><strong>จำนวนซากเนื้อโคเบิกออก {{ count }} รายการ</strong></h6>
           </div>
         </div>
       </div>

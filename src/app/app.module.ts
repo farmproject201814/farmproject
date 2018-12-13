@@ -80,6 +80,25 @@ import { NotificationT4Component } from './storehouse/page/menu6/notification/no
 import { NotificationT5Component } from './storehouse/page/menu6/notification/notification-t5/notification-t5.component';
 import { Menu7Component } from './storehouse/page/menu7/menu7.component';
 import { AllSettingComponent } from './storehouse/page/menu7/all-setting/all-setting.component';
+import { Report1Component } from './storehouse/page/menu5/report1/report1.component';
+import { Report2Component } from './storehouse/page/menu5/report2/report2.component';
+import { Report3Component } from './storehouse/page/menu5/report3/report3.component';
+import { Report4Component } from './storehouse/page/menu5/report4/report4.component';
+import { Report1T1Component } from './storehouse/page/menu5/report1/report1-t1/report1-t1.component';
+import { Report1T2Component } from './storehouse/page/menu5/report1/report1-t2/report1-t2.component';
+import { Report1T3Component } from './storehouse/page/menu5/report1/report1-t3/report1-t3.component';
+import { Report1T4Component } from './storehouse/page/menu5/report1/report1-t4/report1-t4.component';
+import { Report1T5Component } from './storehouse/page/menu5/report1/report1-t5/report1-t5.component';
+import { Report2T1Component } from './storehouse/page/menu5/report2/report2-t1/report2-t1.component';
+import { Report2T2Component } from './storehouse/page/menu5/report2/report2-t2/report2-t2.component';
+import { Report2T3Component } from './storehouse/page/menu5/report2/report2-t3/report2-t3.component';
+import { Report2T4Component } from './storehouse/page/menu5/report2/report2-t4/report2-t4.component';
+import { Report2T5Component } from './storehouse/page/menu5/report2/report2-t5/report2-t5.component';
+import { Report4T1Component } from './storehouse/page/menu5/report4/report4-t1/report4-t1.component';
+import { Report4T2Component } from './storehouse/page/menu5/report4/report4-t2/report4-t2.component';
+import { Report4T3Component } from './storehouse/page/menu5/report4/report4-t3/report4-t3.component';
+import { Report4T4Component } from './storehouse/page/menu5/report4/report4-t4/report4-t4.component';
+import { Report4T5Component } from './storehouse/page/menu5/report4/report4-t5/report4-t5.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +155,26 @@ import { AllSettingComponent } from './storehouse/page/menu7/all-setting/all-set
     NotificationT4Component,
     NotificationT5Component,
     Menu7Component,
-    AllSettingComponent
+    AllSettingComponent,
+    Report1Component,
+    Report2Component,
+    Report3Component,
+    Report4Component,
+    Report1T1Component,
+    Report1T2Component,
+    Report1T3Component,
+    Report1T4Component,
+    Report1T5Component,
+    Report2T1Component,
+    Report2T2Component,
+    Report2T3Component,
+    Report2T4Component,
+    Report2T5Component,
+    Report4T1Component,
+    Report4T2Component,
+    Report4T3Component,
+    Report4T4Component,
+    Report4T5Component
   ],
   imports: [
     BrowserModule,
