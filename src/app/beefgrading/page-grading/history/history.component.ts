@@ -7,6 +7,7 @@ import { LyTheme2 } from '@alyle/ui';
 import swal from 'sweetalert2';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { resolve } from 'q';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const styles = () => ({
@@ -85,7 +86,7 @@ export class HistoryComponent implements OnInit {
     check: false
   };
 
-  pdfimage;
+  pdfimage: any;
   key;
   checkReport;
   checkviwe;
@@ -93,13 +94,6 @@ export class HistoryComponent implements OnInit {
   public userfirst;
   public userlast;
 
-  dayget;
-  mountget;
-  yearget;
-  day;
-  mount;
-  year;
-  dateget;
 
   constructor(
     private db: AngularFireDatabase,
@@ -227,6 +221,9 @@ export class HistoryComponent implements OnInit {
     console.log(this.data[a]);
     console.log(a);
   }
+
+
+
   printPDF() {
     this.api.showData().subscribe(data => {
       this.data = Object.values(data);
@@ -236,277 +233,311 @@ export class HistoryComponent implements OnInit {
     });
     console.log('data:', this.data);
 
+    function convertToDataURLviaCanvas(url) {
+      // tslint:disable-next-line:no-shadowed-variable
+      return new Promise( (resolve, reject) => {
+        const img = new Image();
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.src = url;
+        img.onload = function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+    const dataURL = canvas.toDataURL('image/png');
+          resolve(dataURL);
+        };
+        img.src = url;
+      });
+    }
 
-    const d = new Date(this.data[this.checkReport].datecuted);
-    const datecut = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
+    convertToDataURLviaCanvas(this.data[this.checkReport].picture).then(data => {
+      this.pdfimage = data;
+      const d = new Date(this.data[this.checkReport].datecuted);
+      const datecut = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
 
-    const e = new Date(this.data[this.checkReport].datekill);
-    const datekiw = e.getDate() + '-' + e.getMonth() + '-' + e.getFullYear();
+      const e = new Date(this.data[this.checkReport].datekill);
+      const datekiw = e.getDate() + '-' + e.getMonth() + '-' + e.getFullYear();
 
-    const f = new Date(this.data[this.checkReport].datedry);
-    const datedii = f.getDate() + '-' + f.getMonth() + '-' + f.getFullYear();
+      const f = new Date(this.data[this.checkReport].datedry);
+      const datedii = f.getDate() + '-' + f.getMonth() + '-' + f.getFullYear();
 
-    const docDefinition = {
-      content: [
-        {
-          columns: [
-            {text: '\nใบรายงานผลการตัดเกรด\n\n', fontSize: 24, bold: true, alignment: 'center'}
-          ]
+
+      const docDefinition = {
+        content: [
+          {
+            columns: [
+              {text: '\nใบรายงานผลการตัดเกรด\n\n', fontSize: 24, bold: true, alignment: 'center'}
+            ]
+          },
+          {
+            columns: [
+              {
+                width: 135,
+                text: ' '
+              },
+              {
+                image: this.pdfimage,
+                width: 250,
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 90,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'ข้อมูลโค', style: 'header'
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'รหัสโค', bold: true
+              },
+              {
+                width: 200,
+                text: this.data[this.checkReport].id
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'รหัสซากซ้าย', bold: true
+              },
+              {
+                width: 200,
+                text: this.data[this.checkReport].left
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'รหัสซากขวา', bold: true
+              },
+              {
+                width: 200,
+                text: this.data[this.checkReport].right
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'น้ำหนักซากซ้าย', bold: true
+              },
+              {
+                width: 30,
+                text: this.data[this.checkReport].wleft
+              },
+              {
+                width: 75,
+                text: 'กิโลกรัม.'
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'น้ำหนักซากขวา', bold: true
+              },
+              {
+                width: 30,
+                text: this.data[this.checkReport].wright
+              },
+              {
+                width: 75,
+                text: 'กิโลกรัม.'
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'วันที่เข้าเชือด', bold: true
+              },
+              {
+                width: 200,
+                text: datekiw
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'วันที่เข้าบ่ม', bold: true
+              },
+              {
+                width: 200,
+                text: datedii
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'วันที่ตัดเกรด', bold: true
+              },
+              {
+                width: 200,
+                text: datecut
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'ชื่อเจ้าของโค', bold: true
+              },
+              {
+                width: 200,
+                text: this.data[this.checkReport].firstown + ' ' + this.data[this.checkReport].lastown
+              },
+            ]
+          },
+          {text: '\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'เกรดของซากโค', bold: true
+              },
+              {
+                width: 200,
+                text: this.data[this.checkReport].grade_con
+              },
+            ]
+          },
+          {text: '\n\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 125,
+                text: 'ออกรายงานผลการตัดเกรดโดย', bold: true
+              },
+              {
+                width: 200,
+                text: this.userfirst + ' ' + this.userlast
+              },
+            ]
+          },
+          {text: '\n\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 50,
+                text: 'ลายเซนท์', bold: true
+              },
+              {
+                width: 200,
+                text: '...........................................'
+              },
+            ]
+          },
+          {text: '\n\n'},
+          {
+            columns: [
+              {
+                width: 100,
+                text: ' '
+              },
+              {
+                width: 75,
+                text: 'สหกรณ์', bold: true
+              },
+              {
+                width: 200,
+                text: 'value11'
+              },
+            ]
+          },
+        ],
+        styles: {
+          header: {
+            bold: true,
+            fontSize: 15
+          }
         },
-        {
-          columns: [
-            {
-              width: 80,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'ข้อมูลโค', style: 'header'
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'รหัสโค', bold: true
-            },
-            {
-              width: 200,
-              text: this.data[this.checkReport].id
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'รหัสซากซ้าย', bold: true
-            },
-            {
-              width: 200,
-              text: this.data[this.checkReport].left
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'รหัสซากขวา', bold: true
-            },
-            {
-              width: 200,
-              text: this.data[this.checkReport].right
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'น้ำหนักซากซ้าย', bold: true
-            },
-            {
-              width: 30,
-              text: this.data[this.checkReport].wleft
-            },
-            {
-              width: 75,
-              text: 'กิโลกรัม.'
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'น้ำหนักซากขวา', bold: true
-            },
-            {
-              width: 30,
-              text: this.data[this.checkReport].wright
-            },
-            {
-              width: 75,
-              text: 'กิโลกรัม.'
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'วันที่เข้าเชือด', bold: true
-            },
-            {
-              width: 200,
-              text: datekiw
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'วันที่เข้าบ่ม', bold: true
-            },
-            {
-              width: 200,
-              text: datedii
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'วันที่ตัดเกรด', bold: true
-            },
-            {
-              width: 200,
-              text: datecut
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'ชื่อเจ้าของโค', bold: true
-            },
-            {
-              width: 200,
-              text: this.data[this.checkReport].firstown + ' ' + this.data[this.checkReport].lastown
-            },
-          ]
-        },
-        {text: '\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'เกรดของซากโค', bold: true
-            },
-            {
-              width: 200,
-              text: this.data[this.checkReport].grade_con
-            },
-          ]
-        },
-        {text: '\n\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 125,
-              text: 'ออกรายงานผลการตัดเกรดโดย', bold: true
-            },
-            {
-              width: 200,
-              text: this.userfirst + ' ' + this.userlast
-            },
-          ]
-        },
-        {text: '\n\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 50,
-              text: 'ลายเซนท์', bold: true
-            },
-            {
-              width: 200,
-              text: '...........................................'
-            },
-          ]
-        },
-        {text: '\n\n'},
-        {
-          columns: [
-            {
-              width: 100,
-              text: ' '
-            },
-            {
-              width: 75,
-              text: 'สหกรณ์', bold: true
-            },
-            {
-              width: 200,
-              text: 'value11'
-            },
-          ]
-        },
-      ],
-      styles: {
-        header: {
-          bold: true,
-          fontSize: 15
+        defaultStyle: {
+          font: 'THNiramitAS'
         }
-      },
-      defaultStyle: {
-        font: 'THNiramitAS'
-      }
-    };
-    pdfMake.createPdf(docDefinition).open();
+      };
+      pdfMake.createPdf(docDefinition).open();
+   });
   }
-
 }
 
