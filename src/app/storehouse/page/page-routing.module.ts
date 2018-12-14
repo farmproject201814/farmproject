@@ -39,8 +39,11 @@ import { Report2T2Component } from './menu5/report2/report2-t2/report2-t2.compon
 import { Report2T3Component } from './menu5/report2/report2-t3/report2-t3.component';
 import { Report2T4Component } from './menu5/report2/report2-t4/report2-t4.component';
 import { Report2T5Component } from './menu5/report2/report2-t5/report2-t5.component';
+import { PageComponent } from './page.component';
 
 const routes: Routes = [
+  /* Dashboarad */
+  { path: 'dashboard_store', component: PageComponent},
   /* Menu1 */
   { path: 'menu1/aging', component: AgingComponent },
   { path: 'menu1/history-order', component: HistoryOrderComponent},

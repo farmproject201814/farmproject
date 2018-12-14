@@ -100,12 +100,12 @@ export class HeaderComponent implements OnInit {
     // console.log(this.privilege_id);
     if (this.privilege_id === '1') {
       this.auth.updateUser(this.key, {check: '1'}).subscribe();
-      this.router.navigate([('/store')]);
+      this.router.navigate([('/dashboard_store')]);
       this.ngOnInit();
     } else {
       if (this.privilege_id === '2') {
         this.auth.updateUser(this.key, {check: '1'}).subscribe();
-        this.router.navigate([('/store')]);
+        this.router.navigate([('/dashboard_store')]);
         this.ngOnInit();
       } else {
         swal({

@@ -22,6 +22,8 @@ export class SimulationT1Import1Component implements OnInit {
   hid = 1;
   constructor(private api: SimulationService) {
     this.date = new Date();
+    this.date = Number(this.date);
+
     this.test1();
    }
 
@@ -49,8 +51,9 @@ export class SimulationT1Import1Component implements OnInit {
 
   addDataST1(a: NgForm) {
     console.log(this.keyUpdate);
+    a.value.date = Number(this.date);
+    console.log(a.value);
     this.detail.push(a.value);
-   // this.api.addST1(a.value, this.num).subscribe();
     this.ngOnInit();
   }
 

@@ -1,7 +1,12 @@
-.text-center{
+.text-center {
+  background-color: #da4453;
+  color: rgb(255, 255, 255);
+  margin-left: 45%;
+  margin-right: 45%;
   font-size: 24px;
+  margin-bottom: 15px;
+  border-radius: 5px 5px 5px 5px;
 }
-
 .r1{
   margin: auto;
   height: 450px;
@@ -48,14 +53,14 @@ table tbody tr:hover {
 .card {
   width: 100%;
   overflow: hidden;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
   height: 450px;
-
 }
 
 .card-header {
-  background-color: #148AE1;
-  color: white;
+  background-color: #3bafda;
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1.5rem;
 }
 
 .far{
@@ -64,7 +69,7 @@ table tbody tr:hover {
 }
 
 button[type=button] {
-  background-color: #82E0AA;
+  background-color: #ccffff;
   color: #2980B9;
 display: block;
 height: 100%;
@@ -80,10 +85,10 @@ height: 59px;
 width: 400px;
 }
 a{
-font-size: 18px;
+font-size: 20px;
 }
 
-.material-icons{
+#oo{
 vertical-align: -25%;
 }
 
@@ -91,22 +96,17 @@ vertical-align: -25%;
 vertical-align: -10%;
 }
 
-/* .card2,.card1{
-height: 450px;
-border-radius: 20px 20px 0px 0px;
-} */
-
 .header {
   margin-bottom: 5%;
 }
 
-/* tr button {
+tr button {
   height: 30px;
-} */
+}
 
 #active {
-  background-color: #148AE1;
-    border-color: #148AE1;
+  background-color: #3bafda;
+    background-color: #3bafda;
     outline: none;
     color: #FBFCFC;
 }
@@ -119,11 +119,12 @@ border-radius: 20px 20px 0px 0px;
 }
 
 .modal-lg {
-  max-width: 90%;
+  max-width: 87%;
 }
 
 .nav_button{
   margin-left: 45%;
+  margin-bottom: 10px;
 }
 
 .tt{
@@ -134,18 +135,34 @@ border-radius: 20px 20px 0px 0px;
 
 .bt1 {
   color: #FBFCFC;
-  background-color: #F1C40F;
+  background-color: #f6bb43;
   padding: 2px;
   font-size: 18px;
   height: 30px;
   width: 35px;
 }
 
-.fas{
-  vertical-align: -2%;
+#btn2 {
+  background-color: #87bf4b;
+  color: #FBFCFC;
+  font-size: 18px;
+  height: 33px;
+  width: 90px;
+  margin-top: 10px;
 }
 
-.bc {
-  text-align: center;
-  margin-bottom: 15px;
+#btn3 {
+  background-color: #da4151;
+  border: 1px solid #da4151;
+  color: #FBFCFC;
+  font-size: 18px;
+  height: 30px;
+  width: 35px;
+  margin-left: 20px;
+  padding-top: 2px;
+  padding-left: 5px;
+}
+
+.fas{
+  vertical-align: -10%;
 }

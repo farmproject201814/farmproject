@@ -5,7 +5,7 @@
     <div class="t1 col-3">
       <div class="card shadow p">
         <div class="card-header">
-          <a><i class="material-icons">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
+          <a><i class="material-icons" id="oo">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
         </div>
         <div class="card-body c1">
           <div class="row aa">
@@ -28,7 +28,7 @@
     </div>
     <div class="t2 col-9">
       <div class="card shadow p">
-        <div class="card-header"><a>&nbsp;&nbsp;รายการนำเข้า<button routerLink="/simulation-t1-import1"><<<</button></a></div>
+        <div class="card-header"><a>&nbsp;รายการนำเข้า<button routerLink="/simulation-t1-import1"><<<</button></a></div>
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -53,7 +53,7 @@
                     <td width=120>{{ d.import_name }}</td>
                     <td>
                       <button class="btn bt1" data-toggle="modal" data-target="#notifi"
-                      (click)="model_detail(i)"><i class="fa">&#xf101;</i></button>
+                      (click)="model_detail(d.num)"><i class='fas'>&#xf002;</i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -110,15 +110,17 @@
               <td width=40px>{{ d.bucket }}</td>
               <td width=120px>{{ d.status }}</td>
               <td [hidden]="hid == 1">
-                <button class="btn btn-danger" (click)="deleteList(d.num, d.key)"><i class="material-icons">delete_forever</i></button>
+                <button class="btn btn-danger" (click)="deleteList(d.num, d.key)" id="btn3"><i class="material-icons" id="mi">&#xe872;</i></button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="bc">
-          <button class="btn btn-success" (click)="updateSplit()" [hidden]="hid == 1">จัดเก็บ&nbsp;<i class='fas fa-file-import'></i></button>
-          <button class="btn btn-secondary" [hidden]="hid == 0" disabled>จัดเก็บแล้ว&nbsp;<i class='fas fa-check'></i></button>
+      <div class="row ">
+          <div class="nav_button">
+            <button type="button" class="btn" id="btn2" (click)="updateSplit()" [hidden]="hid == 1">จัดเก็บ&nbsp;<i class='fas'>&#xf0c7;</i></button>
+            <button class="btn btn-secondary" [hidden]="hid == 0" disabled>จัดเก็บแล้ว&nbsp;<i class='fas fa-check'></i></button>
+          </div>
       </div>
     </div>
   </div>
@@ -132,7 +134,7 @@
                       <th width=50>ลำดับ</th>
                       <th width=180>ประเภท</th>
                       <th width=90>จำนวนนำเข้า</th>
-                      <th>น้ำหนักซาก (กก.)</th>
+                      <th>น้ำหนัก (อุ่น/เย็น)</th>
                     </tr>
                   </thead>
                   <tbody>

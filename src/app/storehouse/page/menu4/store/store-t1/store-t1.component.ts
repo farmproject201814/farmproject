@@ -55,8 +55,9 @@ export class StoreT1Component implements OnInit {
         this.table1 = [];
         this.table2 = [];
       const a = Object.keys(datas).map(key => datas[key]);       /* Qurey ข้อมูล */
+      console.log(a);
       for (let i = 0; i < a.length; i++) {
-        if (a[i].hidden === 0) {
+        if (Number(a[i].hidden) === 0) {
           this.count_weight += Number(a[i].weight);
           this.count_weight_c += Number(a[i].weight_c);
           this.table1.push(a[i]);
@@ -66,6 +67,7 @@ export class StoreT1Component implements OnInit {
           if (a[i].weight_c === '-') {
             this.count_weight_c = 0;
           }
+
         } else {
           this.count_weight2 += Number(a[i].weight);
           this.count_weight_c2 += Number(a[i].weight_c);

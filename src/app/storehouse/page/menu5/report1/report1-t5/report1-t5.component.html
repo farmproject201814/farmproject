@@ -1,3 +1,111 @@
-<p>
-  report1-t5 works!
-</p>
+<div class="header">
+  <p class="text-center"><strong>ออกรายงานนำเข้า</strong></p>
+  <div class="row r1 justify-content-center">
+      <div class="form-inline">
+        <label class="col-form-label"><b>ประเภทซาก</b></label>
+        <div class="dropdown mx-sm-3">
+          <button class="dropbtn">ซากเนื้อโค (ส่วนอื่น) &nbsp;<i class="fa fa-caret-down" ></i></button>
+          <div class="dropdown-content">
+            <a routerLink="/menu5/report1-t1">ซากเนื้อโค (ทั้งหมด)</a>
+            <a routerLink="/menu5/report1-t2">ซากเนื้อโค (ซ้าย-ขวา)</a>
+            <a routerLink="/menu5/report1-t3">ซากเนื้อโค (บน-ล่าง)</a>
+            <a routerLink="/menu5/report1-t4">ซากเนื้อโค (ก้อน)</a>
+          </div>
+        </div>
+        <label class="col-form-label"><b>ชนิดซาก</b></label>
+        <div class="d1 ml-3">
+          <div class="input-group form-search">
+              <select class="form-control search-query fcsq1">
+            <option value="ทั้งหมด">ทั้งหมด</option>
+            <option value="เครื่องใน">เครื่องใน</option>
+            <option value="หัว">หัว</option>
+            <option value="หนัง">หนัง</option>
+            <option value="หาง">หาง</option>
+            <option value="ขา">ขา</option>
+            <option value="ไขมัน">ไขมัน</option>
+            <option value="อองเร">อองเร</option>
+              </select>
+            </div>
+        </div>
+        <label class="col-form-label ml-3"><b>ค้นหา</b></label>
+        <div class="input-group form-search  ml-3">
+          <select class="form-control search-query fcsq2" (change)="selectMenu(slt)" ngModel="เจ้าของ" #slt>
+            <option value="เจ้าของ">ชื่อเจ้าของ</option>
+            <option value="ผู้นำเข้า">ชื่อผู้นำเข้า</option>
+            <option value="เบอร์โค">เบอร์โค</option>
+            <option value="รหัสซาก">รหัสซาก</option>
+            <option value="รหัสบาร์โค้ด">รหัสบาร์โค้ด</option>
+            <option value="รหัสคิวอาร์โค้ด">รหัสคิวอาร์โค้ด</option>
+          </select>
+          <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
+        </div>
+      </div>
+    </div>
+    <div class="row r2 justify-content-center">
+        <div class="input-group form-inline c2"></div>
+        <div class="input-group form-inline c1">
+          <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
+          <input type="date" class="form-control "id="fc1">
+          <div class="input-group-append">
+            <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+          </div>
+          <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
+            <input type="date" class="form-control "id="fc2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+            </div>
+            <button type="submit" class="btn ml-3" id="btn1">ค้นหา <i class="fa fa-search"></i></button>
+        </div>
+        <div class="input-group form-inline c3"></div>
+    </div>
+
+        <div class="card shadow p">
+            <div class="card-header">
+              <h5><i class="fa fa-table"></i> รายการที่ค้นหา</h5>
+            </div>
+            <div class="card-body">
+              <table id="tables">
+                  <thead>
+                      <tr>
+                          <th width=50px>ลำดับ</th>
+                          <th width=90px>วันที่นำเข้า</th>
+                          <th width=70px>เวลา</th>
+                          <th width=120px>เจ้าของซาก</th>
+                          <th width=120px>ประเภทซาก</th>
+                          <th width=90px>เบอร์โค</th>
+                          <th width=90px>รหัสซาก</th>
+                          <th width=130px>รหัสบาร์โค้ด</th>
+                          <th width=130px>รหัสคิวอาร์โค้ด</th>
+                          <th width=70px>น้ำหนักอุ่น</th>
+                          <th width=70px>น้ำหนักเย็น</th>
+                          <th>ผู้นำเข้า</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td width=50px></td>
+                        <td width=90px></td>
+                        <td width=70px></td>
+                        <td width=120px></td>
+                        <td width=120px></td>
+                        <td width=90px></td>
+                        <td width=90px></td>
+                        <td width=130px></td>
+                        <td width=130px></td>
+                        <td width=70px></td>
+                        <td width=70px></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+              <div class="text-right ml-auto">
+                <h6><strong>จำนวนซากเนื้อโค 0 รายการ</strong></h6>
+                <h6><strong>น้ำหนักอุ่น 0.00 น้ำหนักเย็น 0.00 กิโลกรัม</strong></h6>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+              <div class="nav_button"><button type="button" class="btn mr-3" id="btn3" ><i class="fa fa-print"></i> รายงานสรุป </button></div>
+              <div class="nav_button"><button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> รายงานปกติ </button></div>
+            </div>
+  </div>

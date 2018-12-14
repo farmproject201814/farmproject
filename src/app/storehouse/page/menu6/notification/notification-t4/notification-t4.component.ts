@@ -50,8 +50,10 @@ export class NotificationT4Component implements OnInit {
     this.w.w25 = 0, this.w.w26 = 0, this.w.w27 = 0, this.w.w28 = 0, this.w.w29 = 0, this.w.w30 = 0;
     this.data = [];
     this.api.test().subscribe(d => {
+      console.log(Object.keys(d.data));
       const values = Object.keys(d.data).map(key => d.data[key]);
       let c = 0;
+      const num = Object.keys(d.data);
       values.forEach(a => {
         console.log(a);
         let i = 0;
@@ -212,6 +214,7 @@ export class NotificationT4Component implements OnInit {
          if (i === 0) {
           this.data.push(b);
           this.data[c].counts = Object.values(a).length;
+          this.data[c].num = num[c];
           i ++;
          }
        });
@@ -222,6 +225,7 @@ export class NotificationT4Component implements OnInit {
   }
 
   model_detail(q) {
+    this.keyUp = [];
     console.log(q);
     this.numdata = q;
       this.api.showST1(q).subscribe(data => {
@@ -243,30 +247,33 @@ export class NotificationT4Component implements OnInit {
   }
   updateSplit() {
     console.log(this.numdata, this.keyUp);
-    this.api.updateST1(this.numdata, this.keyUp).subscribe();
-    console.log(this.show);
-    const aa = [];
-
-    this.show.forEach(e => {
-      delete e.key;
-      if (e.type === 'ซากซ้าย' || e.type === 'ซากขวา') {
-        aa.push(e);
+    this.api.updateST1(this.numdata, this.keyUp).subscribe(d1 => {
+      if (d1.status === 'OK') {
+        console.log(this.show);
+        const aa = [];
+        this.show.forEach(e => {
+          delete e.key;
+          if (e.type === 'ซากซ้าย' || e.type === 'ซากขวา') {
+            aa.push(e);
+          }
+        });
+        this.api_menu1.addAging(aa).subscribe();                      /* copy ข้อมูลเข้าหน้า menu1 */
+        this.api_menu2.keepHistory_Import(this.show).subscribe();     /* copy ข้อมูลเข้าหน้า menu2 */
+        this.api_menu4.addStore(this.show).subscribe();               /* copy ข้อมูลเข้าหน้า menu4 */
+        this.ngOnInit();
+        swal({
+          title: 'สำเร็จ!',
+          text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
+          type: 'success',
+          confirmButtonText: 'ปิด'
+        });
+        document.getElementById('openModalButton').click();
       }
     });
-    this.api_menu1.addAging(aa).subscribe();                      /* copy ข้อมูลเข้าหน้า menu1 */
-    this.api_menu2.keepHistory_Import(this.show).subscribe();     /* copy ข้อมูลเข้าหน้า menu2 */
-    this.api_menu4.addStore(this.show).subscribe();               /* copy ข้อมูลเข้าหน้า menu4 */
-    this.ngOnInit();
-    swal({
-      title: 'สำเร็จ!',
-      text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
-      type: 'success',
-      confirmButtonText: 'ปิด'
-    });
-    document.getElementById('openModalButton').click();
   }
 
   deleteList(num, key) {
+    console.log(this.count);
     console.log(num, key);
     swal({
       title: 'ยืนยัน!',
@@ -277,14 +284,21 @@ export class NotificationT4Component implements OnInit {
       cancelButtonText: 'กลับ'
     }).then((result) => {
       if (result.value) {
-        this.api_noti4.removeNotification_T4(num, key).subscribe();
-        this.model_detail(num);     /* เข้าฟังก์ชันเพื่อลบแบบทันที */
-        this.ngOnInit();
-        swal({
-          title: 'สำเร็จ!',
-          text: 'ลบข้อมูลสำเร็จ!',
-          type: 'success',
-          confirmButtonText: 'ปิด'
+        this.api_noti4.removeNotification_T4(num, key).subscribe(d2 => {
+          if (d2.status === 'OK') {
+            if (this.count === 1 ) {
+              document.getElementById('openModalButton').click();
+            } else {
+              this.model_detail(num);
+            }
+            this.ngOnInit();
+            swal({
+              title: 'สำเร็จ!',
+              text: 'ลบข้อมูลสำเร็จ!',
+              type: 'success',
+              confirmButtonText: 'ปิด'
+            });
+          }
         });
       }
     });
