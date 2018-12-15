@@ -1,0 +1,107 @@
+<div class="header">
+  <p class="text-center"><strong>การแจ้งเตือน</strong></p>
+  <div class="row col r1">
+    <div class="t1 col-3">
+      <div class="card shadow p">
+        <div class="card-header">
+          <a><i class="material-icons">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
+        </div>
+        <div class="card-body c1">
+            <div class="row aa">
+              <button type="button" class="btn  ml-1"  routerLink="/menu6/notification-t1">วันใกล้หมดอายุ</button></div>
+             <div class="row aa">
+                <button type="button" class="btn  ml-1" routerLink="/menu6/notification-t2">คำร้องขอเบิก</button>
+            </div>
+            <div class="row aa">
+                <button type="button" class="btn  ml-1" id="active"routerLink="/menu6/notification-t3">ครบกำหนดวันบ่ม</button>
+            </div>
+            <div class="row aa">
+              <button type="button" class="btn  ml-1" routerLink="/menu6/notification-t4">การนำเข้า</button>
+            </div>
+            <div class="row aa">
+              <button type="button" class="btn  ml-1" routerLink="/menu6/notification-t5">การเบิกออก</button>
+            </div>
+
+          </div>
+      </div>
+    </div>
+    <div class="t2 col-9">
+      <div class="card shadow p">
+        <div class="card-header">
+          <a><i class="fa fa-table"></i>&nbsp;รายการครบกำหนดวันบ่ม</a>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead>
+              <tr>
+                <th width="40px">ลำดับ</th>
+                <th width="70px">วันที่บ่มเสร็จ</th>
+                <th width="70px">เวลา</th>
+                <th width="60px">จำนวนวันบ่ม</th>
+                <th width="60px">จำนวนรายการ</th>
+                <th width="120px">ผู้บ่มซาก</th>
+                <th width="50px">รายละเอียด</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td width="40px">1</td>
+                  <td width="70px">วว-ดด-ปปปป</td>
+                  <td width="70px">00.00 น.</td>
+                  <td width="60px">00</td>
+                  <td width="60px">00</td>
+                  <td width="120px">ทศวรรษ อาวาส</td>
+                  <td width="50px">
+                      <button class="btn bt1" data-toggle="modal" data-target="#notifi"><i class='fas'>&#xf002;</i></button>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="notifi"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><b>รายละเอียดเพิ่มเติม</b></div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th width="60px">ลำดับ</th>
+              <th width="100px">ประเภทซาก</th>
+              <th width="80px">เบอร์โค</th>
+              <th width="80px">รหัสซาก</th>
+              <th width="120px">รหัสบาร์โค้ด</th>
+              <th width="120px">รหัสคิวอาร์โค้ด</th>
+              <th width="50px">ห้อง</th>
+              <th width="100px">สถานะ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="60px">1</td>
+              <td width="100px">-</td>
+              <td width="80px">000000</td>
+              <td width="80px">000000</td>
+              <td width="120px">000000000000000</td>
+              <td width="120px">000000000000000</td>
+              <td width="50px">-</td>
+              <td width="100px">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

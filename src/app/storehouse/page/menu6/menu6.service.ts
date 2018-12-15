@@ -15,4 +15,8 @@ export class Menu6Service {
     // tslint:disable-next-line:max-line-length
     return this.http.delete(api.url + '/api/store/simulation/remove/simulation/simulation-t1/' + num + '/' + key).pipe(map(res => res.json()));
   }
+
+  showNotificationT5(num) {
+    return this.http.get(api.url + '/api/store/simulation/show/simulation/simulation-t5/' + num).pipe(map(res => res.json()));
+  }
 }

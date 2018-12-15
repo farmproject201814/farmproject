@@ -40,6 +40,12 @@ import { Report2T3Component } from './menu5/report2/report2-t3/report2-t3.compon
 import { Report2T4Component } from './menu5/report2/report2-t4/report2-t4.component';
 import { Report2T5Component } from './menu5/report2/report2-t5/report2-t5.component';
 import { PageComponent } from './page.component';
+import { Report3Component } from './menu5/report3/report3.component';
+import { Report4T1Component } from './menu5/report4/report4-t1/report4-t1.component';
+import { Report4T2Component } from './menu5/report4/report4-t2/report4-t2.component';
+import { Report4T3Component } from './menu5/report4/report4-t3/report4-t3.component';
+import { Report4T4Component } from './menu5/report4/report4-t4/report4-t4.component';
+import { Report4T5Component } from './menu5/report4/report4-t5/report4-t5.component';
 
 const routes: Routes = [
   /* Dashboarad */
@@ -76,6 +82,12 @@ const routes: Routes = [
   { path: 'menu5/report2-t3', component: Report2T3Component },
   { path: 'menu5/report2-t4', component: Report2T4Component },
   { path: 'menu5/report2-t5', component: Report2T5Component },
+  { path: 'menu5/report3', component: Report3Component },
+  { path: 'menu5/report4-t1', component: Report4T1Component },
+  { path: 'menu5/report4-t2', component: Report4T2Component },
+  { path: 'menu5/report4-t3', component: Report4T3Component },
+  { path: 'menu5/report4-t4', component: Report4T4Component },
+  { path: 'menu5/report4-t5', component: Report4T5Component },
   /* Menu6 */
   { path: 'menu6/notification-t1', component: NotificationT1Component },
   { path: 'menu6/notification-t2', component: NotificationT2Component },

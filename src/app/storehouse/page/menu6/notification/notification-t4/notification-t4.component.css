@@ -166,3 +166,7 @@ tr button {
 .fas{
   vertical-align: -10%;
 }
+
+.card-header a {
+  font-size: 18px;
+}

@@ -84,6 +84,10 @@ export class StoreT1Component implements OnInit {
       this.count_weight.toFixed(2);
       document.getElementById('w2').innerHTML =
       this.count_weight_c.toFixed(2);
+      document.getElementById('w3').innerHTML =
+      this.count_weight2.toFixed(2);
+      document.getElementById('w4').innerHTML =
+      this.count_weight_c2.toFixed(2);
     });
 
       this.api_menu7.showSetting_room().subscribe(data => {        /* แสดงจำนวนห้องตามที่ตั้งค่า */
@@ -322,7 +326,7 @@ export class StoreT1Component implements OnInit {
         this.api.copyToOrder(this.statusUpdate).subscribe(d1 => {
           console.log(d1);
           if (d1.status === 'OK') {
-            this.api.copyToNotificationT5(this.statusUpdate).subscribe(d2 => {
+            this.api.copyToNotificationT5(w3).subscribe(d2 => {
               console.log(d2);
               if (d2.status === 'OK') {
                 swal({

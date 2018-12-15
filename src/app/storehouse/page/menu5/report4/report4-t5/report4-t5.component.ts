@@ -11,5 +11,19 @@ export class Report4T5Component implements OnInit {
 
   ngOnInit() {
   }
+  selectMenu() {
 
+  }
+  searchTable() {
+
+  }
+  filter_4() {
+
+  }
+  filter_2() {
+
+  }
+  filter_3() {
+
+  }
 }

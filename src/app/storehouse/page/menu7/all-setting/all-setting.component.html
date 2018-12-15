@@ -1,4 +1,156 @@
 <div class="header">
+  <p class="text-center"><strong>ตั้งค่าระบบ</strong></p>
+  <div class="row r1">
+    <div class="col-4">
+      <form>
+            <div class="card shadow p c1">
+                    <div class="card-header">
+                        <h5><i class='far'id="oo">&#xf073;</i> วันบ่มซากเนื้อโค</h5>
+                    </div>
+                  <div class="card-body cd">
+                      <div class="row r111">
+                          <label class="col-form-label"><b>ระบุวันบ่มมาตรฐาน</b></label>
+                      </div>
+                      <div class="row r112">
+                          <input type="text" class="form-control search-query" ngModel style="width: 200px;height: 30px">
+                          <label class="rr112"><b>วัน</b></label>
+                      </div>
+                      <div class="row r113">
+                            <label class="col-form-label"><b>ระบุลิมิตวันบ่ม</b></label>
+                        </div>
+                        <div class="row r112">
+                                <input type="text" class="form-control search-query" ngModel style="width: 200px;height: 30px">
+                                <label class="rr112"><b>วัน</b></label>
+                            </div>
+                      <div class="row r213 justify-content-center">
+                          <button type="button" class="btn" id="bt3" (click)="sw_alert()"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+                      </div>
+                  </div>
+            </div>
+            </form>
+    </div>
+    <div class="col-4">
+      <form>
+            <div class="card shadow p c1">
+                    <div class="card-header">
+                        <h5><i class='far' id="oo">&#xf017;</i> วันใกล้หมดอายุ</h5>
+                    </div>
+                  <div class="card-body cd">
+                      <div class="row r111">
+                          <label class="col-form-label"><b>ระบุวันใกล้หมดอายุ</b></label>
+                      </div>
+                      <div class="row r112">
+                          <input type="text" class="form-control search-query" style="width: 200px;height: 30px">
+                          <label class="rr112"><b>วัน</b></label>
+                      </div>
+                      <div class="row r113">
+                            <label class="col-form-label"><b>ระบุลิมิตอายุซาก</b></label>
+                        </div>
+                        <div class="row r112">
+                                <input type="text" class="form-control search-query"style="width: 200px;height: 30px">
+                                <label class="rr112"><b>วัน</b></label>
+                            </div>
+                      <div class="row r213 justify-content-center">
+                          <button type="button" class="btn" id="bt3" (click)="sw_alert2()"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+                      </div>
+                  </div>
+            </div>
+            </form>
+    </div>
+    <div class="col-4">
+      <form>
+            <div class="card shadow p c1">
+                    <div class="card-header">
+                        <h5><i class="fa" id="oo">&#xf15c;</i> ล้างรายการ</h5>
+                    </div>
+                    <div class="card-body cd">
+                        <div class="row r00">
+                            <label class="col-form-label "><b>ประเภทรายการที่บันทึก</b></label>
+                        </div>
+                        <div class="row r01">
+                            <label class="col-form-label "><b>รายการนำเข้า :</b></label>
+                            <div class="col cc">
+                                <button type="button" class="btn" id="bt4" (click)="sw_alert6()">ล้าง</button>
+                            </div>
+                        </div>
+                        <div class="row r01">
+                            <label class="col-form-label "><b>รายการเบิกออก :</b></label>
+                            <div class="col cc">
+                                <button type="button" class="btn" id="bt4" (click)="sw_alert7()">ล้าง</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </form>
+    </div>
+  </div>
+  <div class="row r2">
+      <div class="col-4">
+          <form (ngSubmit)="add_settingRoom(t, room.key)" #t="ngForm">
+        <div class="card shadow p c2">
+          <div class="card-header" style="padding-top: 8px">
+              <h5><img class="navbar-icon" src="/assets/03.png" style="vertical-align: -25%;"> ห้องเก็บ</h5>
+          </div>
+        <div class="card-body cd">
+            <div class="row r211">
+                <label class="col-form-label"><b>ระบุจำนวนห้องในคลัง</b></label>
+            </div>
+            <div class="row r212">
+                <input type="text" class="form-control search-query" name="s_room" ngModel="{{room.s_room}}" style="width: 200px;height: 30px">
+                <label class="rr212"><b>ห้อง</b></label>
+            </div>
+            <div class="row r213 justify-content-center">
+                <button type="submit" class="btn" id="bt3"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+            </div>
+        </div>
+      </div>
+    </form>
+      </div>
+      <div class="col-4">
+        <form (ngSubmit)="add_settingClass(t2, class.key)" #t2="ngForm">
+            <div class="card shadow p c2">
+                    <div class="card-header" style="padding-top: 2px">
+                        <h5><img class="navbar-icon na1" src="/assets/02.png" style="vertical-align: -40%;">ชั้นเก็บ</h5>
+                    </div>
+                  <div class="card-body cd">
+                      <div class="row r211">
+                          <label class="col-form-label"><b>ระบุจำนวนชั้นในคลัง</b></label>
+                      </div>
+                      <div class="row r212">
+                          <input type="text" class="form-control search-query" name="s_class" ngModel="{{class.s_class}}" style="width: 200px;height: 30px">
+                          <label class="rr212"><b>ชั้น</b></label>
+                      </div>
+                      <div class="row r213 justify-content-center">
+                          <button type="submit" class="btn" id="bt3"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+                      </div>
+                  </div>
+                </div>
+                </form>
+      </div>
+      <div class="col-4">
+        <form (ngSubmit)="add_settingBucket(t3, bucket.key)" #t3="ngForm">
+            <div class="card shadow p c2">
+                    <div class="card-header" style="padding-top: 8px">
+                        <h5><img class="navbar-icon" src="/assets/01.png" style="vertical-align: -25%;"> ตะกร้าเก็บ</h5>
+                    </div>
+                  <div class="card-body cd">
+                      <div class="row r211">
+                          <label class="col-form-label"><b>ระบุจำนวนตะกร้าในคลัง</b></label>
+                      </div>
+                      <div class="row r212">
+                          <input type="text" class="form-control search-query" name="s_bucket" ngModel="{{bucket.s_bucket}}" style="width: 190px;height: 30px">
+                          <label class="rr212"><b>ตะกร้า</b></label>
+                      </div>
+                      <div class="row r213 justify-content-center">
+                          <button type="submit" class="btn" id="bt3"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+                      </div>
+                  </div>
+                </div>
+              </form>
+      </div>
+    </div>
+</div>
+<!-- <div class="header">
   <div class="row">
     <form (ngSubmit)="add_settingRoom(t, room.key)" #t="ngForm">
       <label>ตั้งค่าห้อง</label>
@@ -20,4 +172,4 @@
       <button type="submit">Submit</button>
     </form>
   </div>
-</div>
+</div> -->

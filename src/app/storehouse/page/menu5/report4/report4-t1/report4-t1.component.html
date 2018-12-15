@@ -1,3 +1,212 @@
-<p>
-  report4-t1 works!
-</p>
+<div class="header">
+  <p class="text-center"><strong>ออกรายงานคงคลัง</strong></p>
+  <div class="row r1 justify-content-center">
+    <div class="form-inline">
+      <label class="col-form-label"><b>ประเภทซาก</b></label>
+      <div class="dropdown mx-sm-3">
+        <button class="dropbtn">ซากเนื้อโค (ทั้งหมด) &nbsp;<i class="fa fa-caret-down" ></i></button>
+        <div class="dropdown-content">
+          <a routerLink="/menu5/report4-t2">ซากเนื้อโค (ซ้าย-ขวา)</a>
+          <a routerLink="/menu5/report4-t3">ซากเนื้อโค (บน-ล่าง)</a>
+          <a routerLink="/menu5/report4-t4">ซากเนื้อโค (ก้อน)</a>
+          <a routerLink="/menu5/report4-t5">ซากเนื้อโค (ส่วนอื่น)</a>
+        </div>
+      </div>
+      <label class="col-form-label"><b>ชนิดซาก</b></label>
+      <div class="d1 ml-3">
+        <div class="input-group form-search">
+            <select class="form-control search-query fcsq1">
+                <option value="ทั้งหมด">ทั้งหมด</option>
+              </select>
+          </div>
+      </div>
+      <label class="col-form-label ml-3"><b>ค้นหา</b></label>
+      <div class="input-group form-search  ml-3">
+        <select class="form-control search-query fcsq2" (change)="selectMenu(slt)" ngModel="เบอร์โค" #slt>
+          <option value="เบอร์โค">เบอร์โค</option>
+          <option value="รหัสซาก">รหัสซาก</option>
+          <option value="รหัสบาร์โค้ด">รหัสบาร์โค้ด</option>
+          <option value="รหัสคิวอาร์โค้ด">รหัสคิวอาร์โค้ด</option>
+        </select>
+        <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
+      </div>
+    </div>
+  </div>
+  <div class="row r2 justify-content-center">
+    <label class="col-form-label mr-3"><b>น้ำหนัก</b></label>
+      <div class="input-group form-search c2">
+        <select class="form-control search-query "id="fcsq5" (change)="selectMenu(slt)" ngModel="น้ำหนักอุ่น" #slt>
+          <option value="น้ำหนักอุ่น">น้ำหนักอุ่น</option>
+          <option value="น้ำหนักเย็น">น้ำหนักเย็น</option>
+        </select>
+        <input type="text" class="form-control search-query" id="myInput2"(keyup)="searchTable()" ngModel style="height: 33px"/>
+      </div>
+    <label class="col-form-label ml-3"><b>อายุ</b></label>
+    <div class="form-inline">
+      <div class="input-group form-search ml-3">
+        <select class="form-control search-query fcsq31" (change)="filter_2(t2)" ngModel="ทั้งหมด" #t2>
+          <option value="ทั้งหมด">ทั้งหมด</option>
+          <option value="1">1 วัน</option>
+          <option value="2">2 วัน</option>
+          <option value="3">3 วัน</option>
+          <option value="4">4 วัน</option>
+          <option value="5">5 วัน</option>
+          <option value="6">6 วัน</option>
+          <option value="7">7 วัน</option>
+          <option value="8">8 วัน</option>
+          <option value="9">9 วัน</option>
+          <option value="10">10 วัน</option>
+          <option value="11">11 วัน</option>
+          <option value="12">12 วัน</option>
+          <option value="13">13 วัน</option>
+          <option value="14">14 วัน</option>
+          <option value="15">15 วัน</option>
+          <option value="16">16 วัน</option>
+          <option value="17">17 วัน</option>
+          <option value="18">18 วัน</option>
+          <option value="19">19 วัน</option>
+          <option value="20">20 วัน</option>
+          <option value="21">21 วัน</option>
+          <option value="22">22 วัน</option>
+          <option value="23">23 วัน</option>
+          <option value="24">24 วัน</option>
+          <option value="25">25 วัน</option>
+          <option value="26">26 วัน</option>
+          <option value="27">27 วัน</option>
+          <option value="28">28 วัน</option>
+          <option value="29">29 วัน</option>
+          <option value="30">30 วัน</option>
+          <option value="31">31 วัน</option>
+        </select>
+      </div>
+    </div>
+    <label class="col-form-label ml-3 mr-3"><b>เกรด</b></label>
+    <div class="form-inline">
+      <div class="input-group form-search ml-auto">
+        <select class="form-control search-query fcsq31" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+          <option value="ทั้งหมด">ทั้งหมด</option>
+          <option value="2.0">2.0</option>
+          <option value="2.5">2.5</option>
+          <option value="3.0">3.0</option>
+          <option value="3.25">3.25</option>
+          <option value="3.5">3.5</option>
+          <option value="4.0">4.0</option>
+          <option value="4.5">4.5</option>
+          <option value="5.0">5.0</option>
+        </select>
+      </div>
+    </div>
+    <label class="col-form-label ml-3 mr-3"><b>ตำแหน่ง</b></label>
+    <div class="form-inline">
+      <div class="input-group form-search ml-auto">
+        <select class="form-control search-query fcsq32" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+          <option value="ทั้งหมด">ห้อง</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+    </div>
+    <!-- <label class="col-form-label ml-3 mr-3"><b>ชั้น</b></label> -->
+    <div class="form-inline">
+      <div class="input-group form-search ml-auto">
+        <select class="form-control search-query fcsq33" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+          <option value="ทั้งหมด">ชั้น</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+    </div>
+    <!-- <label class="col-form-label ml-3 mr-3"><b>ตะกร้า</b></label> -->
+    <div class="form-inline">
+      <div class="input-group form-search ml-auto">
+        <select class="form-control search-query fcsq34" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+          <option value="ทั้งหมด">ตะกร้า</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+    </div>
+    <label class="col-form-label ml-3 mr-3"><b>สถานะ</b></label>
+    <div class="form-inline">
+      <div class="input-group form-search">
+        <select class="form-control search-query fcsq3" (change)="filter_3(t3)" ngModel="ทั้งหมด" #t3>
+            <option value="ทั้งหมด">ทั้งหมด</option>
+            <option value="เชือดแล้ว">เชือดแล้ว</option>
+            <option value="กำลังบ่ม">กำลังบ่ม</option>
+            <option value="บ่มแล้ว">บ่มแล้ว</option>
+            <option value="ตัดเกรดแล้ว">ตัดเกรดแล้ว</option>
+            <option value="เบิกตัดแต่ง (บน-ล่าง)">เบิกตัดแต่ง (บน-ล่าง)</option>
+            <option value="ตัดแต่ง (บน-ล่าง) แล้ว">ตัดแต่ง (บน-ล่าง) แล้ว</option>
+            <option value="เบิกตัดแต่ง (ก้อน)">เบิกตัดแต่ง (ก้อน)</option>
+            <option value="ตัดแต่ง (ก้อน) แล้ว">ตัดแต่ง (ก้อน) แล้ว</option>
+            <option value="เบิกตัดขาย">เบิกตัดขาย</option>
+            <option value="ซากเหลือ">ซากเหลือ</option>
+            <option value="คงคลัง">คงคลัง</option>
+            <option value="เบิกจำหน่าย">เบิกจำหน่าย</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow p aa">
+    <div class="card-header">
+      <h5><i class="fa fa-table"></i> รายการที่ต้องการ</h5>
+    </div>
+    <div class="card-body">
+      <table id="tables">
+        <thead>
+          <tr>
+            <th width=50px>ลำดับ</th>
+            <th width=140px>ประเภทซาก</th>
+            <th width=70px>เบอร์โค</th>
+            <th width=70px>รหัสซาก</th>
+            <th width=120px>รหัสบาร์โค้ด</th>
+            <th width=120px>รหัสคิวอาร์โค้ด</th>
+            <th width=70px>น้ำหนักอุ่น</th>
+            <th width=70px>น้ำหนักเย็น</th>
+            <th width=50px>อายุ</th>
+            <th width=50px>เกรด</th>
+            <th width=40px>ห้อง</th>
+            <th width=40px>ชั้น</th>
+            <th width=40px>ตะกร้า</th>
+            <th width=120px>สถานะ</th>
+            <th>หมายเหตุ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width="50px"></td>
+            <td width="140px"></td>
+            <td width="70px"></td>
+            <td width="70px"></td>
+            <td width="120px"></td>
+            <td width="120px"></td>
+            <td width="70px"></td>
+            <td width="70px"></td>
+            <td width="50px"></td>
+            <td width="50px"></td>
+            <td width="40px"></td>
+            <td width="40px"></td>
+            <td width="40px"></td>
+            <td width="120px"></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-right ml-auto">
+        <h6><strong>จำนวนซากเนื้อโค 0 รายการ</strong></h6>
+        <h6><strong>น้ำหนักอุ่น 0.00 น้ำหนักเย็น 0.00 กิโลกรัม</strong></h6>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+      <div class="nav_button"><button type="button" class="btn mr-3" id="btn3" ><i class="fa fa-print"></i> รายงานสรุป </button></div>
+      <div class="nav_button"><button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> รายงานปกติ </button></div>
+    </div>
+

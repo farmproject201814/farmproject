@@ -1,5 +1,5 @@
 <div class="header">
-  <p class="text-center"><strong>ซากคงคลัง</strong></p>
+  <p class="text-center"><strong>ยอดคงคลัง</strong></p>
   <div class="row justify-content-center" id="r1">
     <div class="form-inline">
       <label class="col-form-label"><b>ประเภทซาก</b></label>
@@ -104,7 +104,6 @@
         <select class="form-control search-query fcsq32" (change)="filter_room(t1)" ngModel="ทั้งหมด" #t1>
           <option value="ทั้งหมด">ห้อง</option>
           <option value="{{a}}" *ngFor="let a of room">{{a}}</option>
-
         </select>
       </div>
     </div>
@@ -175,7 +174,7 @@
             <td width="120px">{{ q.barcode }}</td>
             <td width="120px">{{ q.qr_code }}</td>
             <td width="70px">{{ q.weight }}</td>
-            <td width="70px">-</td>
+            <td width="70px">{{ q.weight_c }}</td>
             <td width="50px">{{ q.age }}</td>
             <td width="50px">{{ q.grade }}</td>
             <td width="40px">{{ q.room }}</td>
@@ -190,8 +189,8 @@
         </tbody>
       </table>
       <div class="text-right ml-auto">
-        <h6><strong>จำนวนซากเนื้อโค {{ count }} รายการ</strong></h6>
-        <h6><strong>น้ำหนักอุ่น </strong> <strong   >{{ count_weight }}</strong>
+        <h6><strong>จำนวนซากเนื้อโค <strong>{{ count }}</strong> รายการ</strong></h6>
+        <h6><strong>น้ำหนักอุ่น </strong> <strong id="w1">{{ count_weight }}</strong>
           น้ำหนักเย็น <strong id="w2">{{ count_weight_c }}</strong><strong> กิโลกรัม</strong></h6>
       </div>
     </div>
@@ -234,7 +233,7 @@
                 <td width="120px">{{ q.barcode }}</td>
                 <td width="120px">{{ q.qr_code }}</td>
                 <td width="70px">{{ q.weight }}</td>
-                <td width="70px">-</td>
+                <td width="70px">{{ q.weight_c }}</td>
                 <td width="50px">{{ q.age }}</td>
                 <td width="50px">{{ q.grade }}</td>
                 <td width="40px">{{ q.room }}</td>
@@ -262,8 +261,8 @@
         </table>
         <div class="text-right ml-auto">
           <h6><strong>จำนวนซากเนื้อโค {{ count2 }} รายการ</strong></h6>
-          <h6><strong>น้ำหนักอุ่น </strong> <strong id="w1">{{ count_weight2 }}</strong>
-            น้ำหนักเย็น <strong id="w2">{{ count_weight_c2 }}</strong><strong> กิโลกรัม</strong></h6>
+          <h6><strong>น้ำหนักอุ่น </strong> <strong id="w3">{{ count_weight2 }}</strong>
+            น้ำหนักเย็น <strong id="w4">{{ count_weight_c2 }}</strong><strong> กิโลกรัม</strong></h6>
         </div>
       </div>
     </div>

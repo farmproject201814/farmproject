@@ -5,7 +5,7 @@
     <div class="t1 col-3">
       <div class="card shadow p">
         <div class="card-header">
-          <a><i class="material-icons">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
+          <a><i class="material-icons" id="oo">&#xe7f7;</i>&nbsp;ประเภทการแจ้งเตือน</a>
         </div>
         <div class="card-body c1">
           <div class="row aa">
@@ -28,7 +28,7 @@
     </div>
     <div class="t2 col-9">
       <div class="card shadow p">
-        <div class="card-header"><a>&nbsp;&nbsp;รายการเบิกออก</a></div>
+        <div class="card-header"><a><i class="fa fa-table"></i>&nbsp;รายการเบิกออก</a></div>
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -45,14 +45,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td width=40>1</td>
-                        <td width=80>วว-ดด-ปปปป</td>
-                        <td width=80>00.00 น.</td>
+                      <tr *ngFor="let d of datas;let i = index">
+                        <td width=40>{{i+1}}</td>
+                        <td width=80>{{ d.date | date: 'dd-MM-yyyy' }}</td>
+                        <td width=80>{{ d.date | date: 'HH:mm น.' }}.</td>
                         <td width=50>1</td>
-                        <td width=120>-</td>
+                        <td width=120>{{ d.take_name }}</td>
                         <td>
-                            <button class="btn bt1" data-toggle="modal" data-target="#notifi"><i class="fa">&#xf101;</i></button>
+                          <button class="btn bt1" data-toggle="modal" data-target="#notifi"><i class='fas'>&#xf002;</i></button>
                         </td>
                       </tr>
                 </tbody>
@@ -77,13 +77,14 @@
               <th width="160px">ประเภทซาก</th>
               <th width="95px">เบอร์โค</th>
               <th width="95px">รหัสซาก</th>
-              <th width="115px">รหัสบาร์โค้ดซาก</th>
+              <th width="115px">รหัสบาร์โค้ด</th>
               <th width="115px">รหัสคิวอาร์โค้ด</th>
               <th width="50px">ห้อง</th>
               <th width="50px">ชั้น</th>
               <th width="50px">ตะกร้า</th>
               <th width="140px">ผู้ขอเบิก</th>
-              <th>สถานะ</th>
+              <th width="100px">สถานะ</th>
+              <th >ลบ</th>
             </tr>
           </thead>
           <tbody class="tt">
@@ -98,10 +99,14 @@
               <td width="50px">-</td>
               <td width="50px">-</td>
               <td width="140px">-</td>
-              <td>-</td>
+              <td width="100px">-</td>
+              <td ><button class="btn btn-danger" id="btn3"><i class="material-icons" id="mi">&#xe872;</i></button></td>
             </tr>
           </tbody>
         </table>
+        <div class="row ">
+            <div class="nav_button"><button type="button" class="btn" id="btn2"><i class='fas'>&#xf0c7;</i> จัดเก็บ</button></div>
+        </div>
       </div>
     </div>
   </div>
@@ -115,43 +120,43 @@
                       <th width=50>ลำดับ</th>
                       <th width=180>ประเภท</th>
                       <th width=90>จำนวนเบิกออก</th>
-                      <th >น้ำหนักซาก (กก.)</th>
+                      <th >น้ำหนัก (อุ่น/เย็น)</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td width=50>1</td>
-                      <td width=180>ซากเนื้อโคซ้าย</td>
+                      <td width=180>ซากซ้าย</td>
                       <td width=90>0</td>
                       <td >000.00</td>
                     </tr>
                     <tr>
                       <td width=50>2</td>
-                      <td width=180>ซากเนื้อโคขวา</td>
+                      <td width=180>ซากขวา</td>
                       <td width=90>0</td>
                       <td >000.00</td>
                     </tr>
                     <tr>
                       <td width=50>3</td>
-                      <td width=180>ซากเนื้อโคซ้ายบน</td>
+                      <td width=180>ซากซ้ายบน</td>
                       <td width=90>0</td>
                       <td >000.00</td>
                     </tr>
                     <tr>
                       <td width=50>4</td>
-                      <td width=180>ซากเนื้อโคซ้ายล่าง</td>
+                      <td width=180>ซากซ้ายล่าง</td>
                       <td width=90>0</td>
                       <td >000.00</td>
                     </tr>
                     <tr>
                       <td width=50>5</td>
-                      <td width=180>ซากเนื้อโคขวาบน</td>
+                      <td width=180>ซากขวาบน</td>
                       <td width=90>0</td>
                       <td >000.00</td>
                     </tr>
                     <tr>
                       <td width=50>6</td>
-                      <td width=180>ซากเนื้อโคขวาล่าง</td>
+                      <td width=180>ซากขวาล่าง</td>
                       <td width=90>0</td>
                       <td >000.00</td>
                     </tr>

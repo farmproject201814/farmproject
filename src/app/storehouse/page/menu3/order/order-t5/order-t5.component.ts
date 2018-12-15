@@ -18,7 +18,8 @@ export class OrderT5Component implements OnInit {
       this.api.showHistory_Order().subscribe(data => {
       const a = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
       for (let i = 0; i < a.length; i++) {
-        if (a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา') {
+        if (a[i].type === 'เครื่องใน' || a[i].type === 'หัว' || a[i].type === 'หนัง'
+        || a[i].type === 'หาง' || a[i].type === 'ขา' || a[i].type === 'ไขมัน' || a[i].type === 'อองเร') {
           this.datas.push(a[i]);
           // this.datas[i].key = Object.keys(data)[i];
           this.count++;

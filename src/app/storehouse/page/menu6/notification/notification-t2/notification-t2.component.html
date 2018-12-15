@@ -28,7 +28,7 @@
     <div class="t2 col-9">
       <div class="card shadow p">
         <div class="card-header">
-          <a>&nbsp;&nbsp;รายการคำร้องขอเบิก</a>
+          <a><i class="fa fa-table"></i>&nbsp;รายการคำร้องขอเบิก</a>
         </div>
         <div class="card-body">
           <table>
@@ -50,7 +50,7 @@
                   <td width="60px">{{ d.counts }}</td>
                   <td width="100px">{{ d.take_name }}</td>
                   <td width="50px">
-                      <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="model_detail(i)"><i class="fa">&#xf101;</i></button>
+                      <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="model_detail(i)"><i class='fas'>&#xf002;</i> </button>
                   </td>
                 </tr>
               </tbody>
@@ -79,7 +79,8 @@
               <th width="60px">ลำดับ</th>
               <th width="100px">รายการที่ขอเบิก</th>
               <th width="60px">น้ำหนัก (กก.)</th>
-              <th width="60px">ระดับเกรดซาก</th>
+              <th width="80px">ระดับเกรดซาก</th>
+              <th width="120px">หมายเหตุ</th>
               <th width="100px">ผู้ขอเบิก</th>
             </tr>
           </thead>
@@ -88,7 +89,8 @@
               <td width="60px">{{ i+1 }}</td>
               <td width="100px">{{ d.type }}</td>
               <td width="60px">{{ d.weight }}</td>
-              <td width="60px">{{ d.grade }}</td>
+              <td width="80px">{{ d.grade }}</td>
+              <td width="120px">{{ d.note }}</td>
               <td width="100px">{{ d.take_name }}</td>
             </tr>
           </tbody>

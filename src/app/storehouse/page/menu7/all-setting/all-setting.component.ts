@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu7Service } from '../menu7.service';
 import { NgForm } from '@angular/forms';
+import swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 
 @Component({
   selector: 'app-all-setting',
@@ -39,11 +41,80 @@ export class AllSettingComponent implements OnInit {
 
   add_settingRoom(a: NgForm, key) {
     this.api_menu7.addSetting_room(a.value, key).subscribe();
+    swal({
+      title: 'บันทึกจำนวนห้องเก็บ',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
   }
   add_settingClass(b: NgForm, key) {
     this.api_menu7.addSetting_class(b.value, key).subscribe();
+    swal({
+      title: 'บันทึกจำนวนชั้นเก็บ',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
   }
   add_settingBucket(c: NgForm, key) {
     this.api_menu7.addSetting_bucket(c.value, key).subscribe();
+    swal({
+      title: 'บันทึกจำนวนตะกร้าเก็บ',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
   }
+
+  sw_alert() {
+    swal({
+      title: 'บันทึกวันบ่มซากเนื้อโค',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
+  }
+
+  sw_alert2() {
+    swal({
+      title: 'บันทึกวันใกล้หมดอายุ',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
+  }
+
+  sw_alert6() {
+    swal({
+      title: 'ล้างรายการนำเข้า',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
+  }
+
+  sw_alert7() {
+    swal({
+      title: 'ล้างรายการเบิกออก',
+      text: 'เรียบร้อยแล้ว',
+      type: 'success',
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#da4151'
+      // showConfirmButton: false
+    });
+  }
+
 }

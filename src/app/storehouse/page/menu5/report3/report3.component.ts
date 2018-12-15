@@ -11,5 +11,11 @@ export class Report3Component implements OnInit {
 
   ngOnInit() {
   }
+  selectMenu() {
 
+  }
+
+  searchTable() {
+
+  }
 }

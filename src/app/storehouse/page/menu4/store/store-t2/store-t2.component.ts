@@ -56,7 +56,8 @@ export class StoreT2Component implements OnInit {
         this.table2 = [];
       const a = Object.keys(datas).map(key => datas[key]);       /* Qurey ข้อมูล */
       for (let i = 0; i < a.length; i++) {
-        if (((a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา')) && a[i].hidden === 0) {
+        console.log(a[i]);
+        if ((a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา') && Number(a[i].hidden) === 0) {
           this.count_weight += Number(a[i].weight);
           this.count_weight_c += Number(a[i].weight_c);
           this.table1.push(a[i]);
@@ -66,7 +67,7 @@ export class StoreT2Component implements OnInit {
           if (a[i].weight_c === '-') {
             this.count_weight_c = 0;
           }
-        } else if (((a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา')) && a[i].hidden === 1) {
+        } else if ((a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา') && Number(a[i].hidden) === 1) {
           this.count_weight2 += Number(a[i].weight);
           this.count_weight_c2 += Number(a[i].weight_c);
           this.table2.push(a[i]);
@@ -82,6 +83,10 @@ export class StoreT2Component implements OnInit {
       this.count_weight.toFixed(2);
       document.getElementById('w2').innerHTML =
       this.count_weight_c.toFixed(2);
+      document.getElementById('w3').innerHTML =
+      this.count_weight2.toFixed(2);
+      document.getElementById('w4').innerHTML =
+      this.count_weight_c2.toFixed(2);
     });
 
       this.api_menu7.showSetting_room().subscribe(data => {        /* แสดงจำนวนห้องตามที่ตั้งค่า */

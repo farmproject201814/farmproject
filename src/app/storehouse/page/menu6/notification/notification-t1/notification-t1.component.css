@@ -1,5 +1,11 @@
-.text-center{
+.text-center {
+  background-color: #E74C3C;
+  color: rgb(255, 255, 255);
+  margin-left: 45%;
+  margin-right: 45%;
   font-size: 24px;
+  margin-bottom: 15px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .r1{
@@ -48,14 +54,15 @@ table tbody tr:hover {
 .card {
   width: 100%;
   overflow: hidden;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
   height: 450px;
 
 }
 
 .card-header {
-  background-color: #148AE1;
-  color: white;
+  background-color: #3bafda;
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1.5rem;
 }
 
 .far{
@@ -64,12 +71,12 @@ table tbody tr:hover {
 }
 
 button[type=button] {
-  background-color: #82E0AA;
-    color: #2980B9;
-display: block;
-height: 100%;
-width: 70%;
-font-size: 18px;
+  background-color: #ccffff;
+  color: #2980B9;
+  display: block;
+  height: 100%;
+  width: 70%;
+  font-size: 18px;
 }
 
 .aa {
@@ -81,11 +88,11 @@ width: 400px;
 }
 
 a{
-font-size: 18px;
+font-size: 20px;
 }
 
 .material-icons{
-vertical-align: -25%;
+  vertical-align: -25%;
 }
 
 .fa{
@@ -101,19 +108,19 @@ tr button {
 }
 
 #active {
-  background-color: #148AE1;
-    border-color: #148AE1;
+    background-color: #3bafda;
+    background-color: #3bafda;
     outline: none;
     color: #FBFCFC;
 }
 
 .modal-lg {
-  max-width: 70%;
+  max-width: 90%;
 }
 
 .bt1 {
   color: #FBFCFC;
-  background-color: #F1C40F;
+  background-color: #f6bb43;
   padding: 2px;
   font-size: 18px;
   height: 30px;
@@ -121,7 +128,7 @@ tr button {
 }
 
 #btn2 {
-  background-color: #2ECC71;
+  background-color: #87bf4b;
   color: #FBFCFC;
   font-size: 18px;
   height: 33px;
@@ -134,4 +141,8 @@ tr button {
 
 .fas{
   vertical-align: -10%;
+}
+
+.card-header a {
+  font-size: 18px;
 }

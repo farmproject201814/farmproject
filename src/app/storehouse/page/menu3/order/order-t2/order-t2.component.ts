@@ -20,15 +20,6 @@ export class OrderT2Component implements OnInit {
   year;
   time;
   constructor(private api: Menu3Service) {
-    // this.date = new Date();
-    // this.day = new Array ('อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัส', 'ศุกร์', 'เสาร์');
-    // this.month = new Array ('มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', ' พฤษภาคม', 'มิถุนายน',
-    // 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม');
-    // this.day_thai = this.day[this.date.getDay()];
-    // this.day = this.date.getDate();
-    // this.month_thai = this.month[this.date.getMonth()];
-    // this.year = this.date.getFullYear() + 543;
-    // this.time = this.date.getTime();
    }
 
   ngOnInit() {

@@ -32,6 +32,6 @@ export class Menu4Service {
     return this.http.post(api.url + '/api/store/menu4/update-status/store-t1', data).pipe(map(res => res.json()));
   }
   copyToNotificationT5(data) {
-    return this.http.post(api.url + '/api/store/menu6/history/order', data).pipe(map(res => res.json()));
+    return this.http.post(api.url + '/api/store/menu6/history/order' , data).pipe(map(res => res.json()));
   }
 }
