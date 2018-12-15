@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AboutcattleService } from './../../../../service/API/beefgrading/aboutcattle.service';
 import { NgForm } from '@angular/forms';
 import swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
+import { setRootDomAdapter } from '@angular/platform-browser/src/dom/dom_adapter';
 
 @Component({
   selector: 'app-addcattle',
@@ -9,7 +11,10 @@ import swal from 'sweetalert2';
   styleUrls: ['./addcattle.component.css']
 })
 export class AddcattleComponent implements OnInit {
-
+  datekill;
+  datedry;
+  dateready;
+  ready;
   data: any;
   items = {
     $key: '',
@@ -28,8 +33,12 @@ export class AddcattleComponent implements OnInit {
     picture: ''
   };
 
-  constructor(private api: AboutcattleService) {
-
+  constructor(private api: AboutcattleService, private router: Router) {
+    this.datekill = new Date();
+    this.datedry = new Date();
+    const day = new Date();
+    day.setDate(day.getDate() + 7);
+    this.dateready = day;
   }
 
   ngOnInit() {
@@ -40,16 +49,35 @@ export class AddcattleComponent implements OnInit {
         this.data[i].key = Object.keys(datas)[i];
       }
     });
+
+
   }
   add(data: NgForm) {
     console.log(data.value);
-    this.api.addData(data.value).subscribe();
+    this.api.addData(data.value).subscribe(d1 => {
+      console.log(d1);
+      if (d1.status === 'OK') {
+        this.router.navigate(['/listcattle']);
+      }
+    });
    this.ngOnInit();
   }
 
   addForm(d: NgForm) {
+    const current = new Date();
+    d.value.datekill = current;
+    d.value.datedry = current;
+    const day = new Date();
+    day.setDate(day.getDate() + 7);
+    console.log(day);
+    d.value.dateready = day;
     console.log(d.value);
-    this.api.addDataform(d.value).subscribe();
+    this.api.addDataform(d.value).subscribe(d2 => {
+      console.log(d2);
+      if (d2.status === 'OK') {
+        this.router.navigate(['/listcattle']);
+      }
+    });
     this.ngOnInit();
   }
 

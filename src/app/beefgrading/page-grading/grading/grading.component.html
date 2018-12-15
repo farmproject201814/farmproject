@@ -25,120 +25,204 @@
                 <div class="row">
                   <div class="col-7">
                     <div *ngIf="cropping.isLoaded">
-                        <button (click)="cropping.zoomIn()" ly-button><i class="material-icons" style="margin-right: 5px">zoom_in</i></button>
-                        <button (click)="cropping.zoomOut()" ly-button><i class="material-icons" style="margin-right: 5px">zoom_out</i></button>
-                        <button (click)="cropping.center()" ly-button><i class="material-icons" style="margin-right: 5px">filter_center_focus</i></button>
-                        <button (click)="cropping.rotate(-90)" ly-button><i class="material-icons" style="margin-right: 5px">rotate_90_degrees_ccw</i></button>
-                        <!-- <button (click)="cropping.fit()" ly-button><h4>fit</h4></button> -->
-                        <button (click)="cropping.fitToScreen()" ly-button style="vertical-align: 5px"><h4>เต็มหน้าจอ</h4></button>
-                      <!-- <button (click)="cropping.setScale(1)" ly-button><h4>1:1</h4></button> -->
-                        <button (click)="cropping.clean();test()" ly-button style="vertical-align: 5px"><h4>ลบภาพ</h4></button>
+                      <button (click)="cropping.zoomIn()" ly-button>
+                        <i class="material-icons" style="margin-right: 5px"
+                          >zoom_in</i
+                        >
+                      </button>
+                      <button (click)="cropping.zoomOut()" ly-button>
+                        <i class="material-icons" style="margin-right: 5px"
+                          >zoom_out</i
+                        >
+                      </button>
+                      <button (click)="cropping.center()" ly-button>
+                        <i class="material-icons" style="margin-right: 5px"
+                          >filter_center_focus</i
+                        >
+                      </button>
+                      <button (click)="cropping.rotate(-90)" ly-button>
+                        <i class="material-icons" style="margin-right: 5px"
+                          >rotate_90_degrees_ccw</i
+                        >
+                      </button>
+                      <!--
+                        <button (click)="cropping.fit()" ly-button><h4>fit</h4></button>
+                      -->
+                      <button
+                        (click)="cropping.fitToScreen()"
+                        ly-button
+                        style="vertical-align: 5px"
+                      >
+                        <h4>เต็มหน้าจอ</h4>
+                      </button>
+                      <!--
+                        <button (click)="cropping.setScale(1)" ly-button><h4>1:1</h4></button>
+                      -->
+                      <button
+                        (click)="cropping.clean(); test()"
+                        ly-button
+                        style="vertical-align: 5px"
+                      >
+                        <h4>ลบภาพ</h4>
+                      </button>
                     </div>
                     <div class="card">
                       <div class="card-body" style="padding:0%">
                         <ly-cropping
-                          [withClass]="classes.cropping" #cropping
+                          [withClass]="classes.cropping"
+                          #cropping
                           [config]="myConfig"
                           [(scale)]="scale"
                           (cropped)="onCropped($event)"
                           (loaded)="onloaded($event)"
-                          (error)="onerror($event)">
-                          <span class="text-center"><h4>คลิกเลือกรูป</h4><br><h6>หรือ</h6><br><h4>ลากรูปมาวาง</h4></span>
+                          (error)="onerror($event)"
+                        >
+                          <span class="text-center"
+                            ><h4>คลิกเลือกรูป</h4>
+                            <br />
+                            <h6>หรือ</h6>
+                            <br />
+                            <h4>ลากรูปมาวาง</h4></span
+                          >
                         </ly-cropping>
                       </div>
                     </div>
 
                     <div *ngIf="cropping.isLoaded" [className]="classes.range">
-                      <input type="range" [className]="classes.rangeInput" [attr.min]="cropping.minScale" max="1" [(ngModel)]="scale" step="any">
+                      <input
+                        type="range"
+                        [className]="classes.rangeInput"
+                        [attr.min]="cropping.minScale"
+                        max="1"
+                        [(ngModel)]="scale"
+                        step="any"
+                      />
                     </div>
 
                     <div [className]="classes.actions">
-                      <button class="btn text-light mt-3" (click)="_fileInput.click()" style="width: 100%; background-color: #87bf4b">
-                        <i class="material-icons" style="margin-right: 5px">image</i>
+                      <button
+                        class="btn text-light mt-3"
+                        (click)="_fileInput.click()"
+                        style="width: 100%; background-color: #87bf4b"
+                      >
+                        <i class="material-icons" style="margin-right: 5px"
+                          >image</i
+                        >
                         <span>เลือกรูปซากโคที่ต้องการ</span>
                       </button>
                       <span [className]="classes.flex"></span>
                       <!-- Hidden input -->
-                      <input #_fileInput type="file" (change)="cropping.selectInputEvent($event)" accept="image/*" hidden>
-                      <!-- <button raised ly-button bg="accent" *ngIf="cropping.isCropped">Upload</button> -->
+                      <input
+                        #_fileInput
+                        type="file"
+                        (change)="cropping.selectInputEvent($event)"
+                        accept="image/*"
+                        hidden
+                      />
+                      <!--
+                        <button raised ly-button bg="accent" *ngIf="cropping.isCropped">Upload</button>
+                      -->
                     </div>
                   </div>
                   <div class="col">
-                    <button *ngIf="cropping.isLoaded" color="white" (click)="cropping.crop()" ly-button raised bg="primary" style="width: 100%; background-color: #3498db">
-                      <i class="material-icons" style="margin-right: 5px">crop</i><h4 style="padding-top: 8px"><b>crop</b></h4>
+                    <button
+                      *ngIf="cropping.isLoaded"
+                      color="white"
+                      (click)="cropping.crop()"
+                      ly-button
+                      raised
+                      bg="primary"
+                      style="width: 100%; background-color: #3498db"
+                    >
+                      <i class="material-icons" style="margin-right: 5px"
+                        >crop</i
+                      >
+                      <h4 style="padding-top: 8px"><b>crop</b></h4>
                     </button>
                     <div class="row">
                       <div class="col" style="width: 175px">
-                        <div style="margin-top:15px"><img [hidden]="count<=0" [src]="croppedImage[0]"></div>
-                        <div style="margin-top:15px"><img [hidden]="count<=2" [src]="croppedImage[2]"></div>
-                        <div style="margin-top:15px"><img [hidden]="count<=4" [src]="croppedImage[4]"></div>
+                        <div style="margin-top:15px">
+                          <img [hidden]="count <= 0" [src]="croppedImage[0]" />
+                        </div>
+                        <div style="margin-top:15px">
+                          <img [hidden]="count <= 2" [src]="croppedImage[2]" />
+                        </div>
+                        <div style="margin-top:15px">
+                          <img [hidden]="count <= 4" [src]="croppedImage[4]" />
+                        </div>
                       </div>
                       <div class="col">
-                        <div style="margin-top:15px"><img [hidden]="count<=1" [src]="croppedImage[1]"></div>
-                        <div style="margin-top:15px"><img [hidden]="count<=3" [src]="croppedImage[3]"></div>
+                        <div style="margin-top:15px">
+                          <img [hidden]="count <= 1" [src]="croppedImage[1]" />
+                        </div>
+                        <div style="margin-top:15px">
+                          <img [hidden]="count <= 3" [src]="croppedImage[3]" />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- <div class="col-sm-3">
-                <label for="File1" style="color: #1560BD">
-                  <h4><b>เลือกเกณฑ์การตัดเกรด</b></h4>
-                </label>
-                <div class="custom-control form-control-lg custom-checkbox">
-                  <input
-                    type="checkbox"
-                    class="custom-control-input"
-                    id="customCheck1"
-                  />
-                  <label class="custom-control-label" for="customCheck1"
-                    >ลายเนื้อ</label
-                  >
+              <!--
+                <div class="col-sm-3">
+                  <label for="File1" style="color: #1560BD">
+                    <h4><b>เลือกเกณฑ์การตัดเกรด</b></h4>
+                  </label>
+                  <div class="custom-control form-control-lg custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheck1"
+                    />
+                    <label class="custom-control-label" for="customCheck1"
+                      >ลายเนื้อ</label
+                    >
+                  </div>
+                  <fieldset disabled>
+                    <div class="custom-control form-control-lg custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck2"
+                      />
+                      <label class="custom-control-label" for="customCheck2"
+                        >สีเนื้อ</label
+                      >
+                    </div>
+                    <div class="custom-control form-control-lg custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck3"
+                      />
+                      <label class="custom-control-label" for="customCheck3"
+                        >สีไขมัน</label
+                      >
+                    </div>
+                    <div class="custom-control form-control-lg custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck4"
+                      />
+                      <label class="custom-control-label" for="customCheck4"
+                        >ค่า pH</label
+                      >
+                    </div>
+                    <div class="custom-control form-control-lg custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck5"
+                      />
+                      <label class="custom-control-label" for="customCheck5"
+                        >ความกว้างหน้าเนื้อ</label
+                      >
+                    </div>
+                  </fieldset>
                 </div>
-                <fieldset disabled>
-                  <div class="custom-control form-control-lg custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck2"
-                    />
-                    <label class="custom-control-label" for="customCheck2"
-                      >สีเนื้อ</label
-                    >
-                  </div>
-                  <div class="custom-control form-control-lg custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck3"
-                    />
-                    <label class="custom-control-label" for="customCheck3"
-                      >สีไขมัน</label
-                    >
-                  </div>
-                  <div class="custom-control form-control-lg custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck4"
-                    />
-                    <label class="custom-control-label" for="customCheck4"
-                      >ค่า pH</label
-                    >
-                  </div>
-                  <div class="custom-control form-control-lg custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck5"
-                    />
-                    <label class="custom-control-label" for="customCheck5"
-                      >ความกว้างหน้าเนื้อ</label
-                    >
-                  </div>
-                </fieldset>
-              </div> -->
+              -->
             </div>
           </div>
 
@@ -299,7 +383,13 @@
                 class="btn text-light"
                 style="vertical-align:middle ; margin-right: 10px; width: 18%; background-color: #da4553"
               >
-                <h4><b><i class="material-icons" style="margin-right: 3px">arrow_back</i>ย้อนกลับ</b></h4>
+                <h4>
+                  <b
+                    ><i class="material-icons" style="margin-right: 3px"
+                      >arrow_back</i
+                    >ย้อนกลับ</b
+                  >
+                </h4>
               </button>
               <button
                 type="button"
@@ -307,7 +397,15 @@
                 style="vertical-align:middle; width: 78%; background-color: #55c7dd"
                 (click)="switch(false)"
               >
-              <span><h4><b><i class="material-icons" style="margin-right: 3px">exit_to_app</i>ประมวลผล</b></h4></span>
+                <span
+                  ><h4>
+                    <b
+                      ><i class="material-icons" style="margin-right: 3px"
+                        >exit_to_app</i
+                      >ประมวลผล</b
+                    >
+                  </h4></span
+                >
               </button>
             </div>
           </div>
@@ -344,32 +442,61 @@
                     <h4><b>รูปซากโคที่ถูกเลือก</b></h4>
                   </label>
                   <div class="text-center">
-                    <!-- <img *ngIf="cropping.isCropped"
+                    <!--
+                      <img *ngIf="cropping.isCropped"
                       [src]="croppedImage[0]"
                       class="cardsize"
                       style="border-radius: 5px"
-                      > -->
-                    <!-- <img
-                      class="card-body cardsize"
-                      style="border-radius: 5px"
-                      src="{{picName}}"
-                      width="cover"
-                      height="500"
-                    /> -->
+                      >
+                    -->
+                    <!--
+                      <img
+                        class="card-body cardsize"
+                        style="border-radius: 5px"
+                        src="{{picName}}"
+                        width="cover"
+                        height="500"
+                      />
+                    -->
                     <div class="col">
                       <div class="row">
                         <div class="col" style="width: 175px">
-                          <div style="margin-top:15px"><img [hidden]="count<=0" [src]="croppedImage[0]"></div>
-                          <div style="margin-top:15px"><img [hidden]="count<=2" [src]="croppedImage[2]"></div>
+                          <div style="margin-top:15px">
+                            <img
+                              [hidden]="count <= 0"
+                              [src]="croppedImage[0]"
+                            />
+                          </div>
+                          <div style="margin-top:15px">
+                            <img
+                              [hidden]="count <= 2"
+                              [src]="croppedImage[2]"
+                            />
+                          </div>
                         </div>
                         <div class="col">
-                          <div style="margin-top:15px"><img [hidden]="count<=1" [src]="croppedImage[1]"></div>
-                          <div style="margin-top:15px"><img [hidden]="count<=3" [src]="croppedImage[3]"></div>
+                          <div style="margin-top:15px">
+                            <img
+                              [hidden]="count <= 1"
+                              [src]="croppedImage[1]"
+                            />
+                          </div>
+                          <div style="margin-top:15px">
+                            <img
+                              [hidden]="count <= 3"
+                              [src]="croppedImage[3]"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col text-center">
-                          <div style="margin-top:15px"><img [hidden]="count<=4" [src]="croppedImage[4]"></div>
+                          <div style="margin-top:15px">
+                            <img
+                              [hidden]="count <= 4"
+                              [src]="croppedImage[4]"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -382,16 +509,41 @@
                       <label for="File1" style="color: #1f1f1f">
                         <h4><b>เกรดที่ได้</b></h4>
                       </label>
-                      <div class="card">
-                        <div class="card-body text-center">
-                          <label
-                            class="gradetext"
-                            for="File2"
-                            style="color:rgb(72, 255, 0)"
-                            ><b>{{ grade }}</b></label
-                          >
+                      <table class="table table-bordered text-center">
+                        <thead>
+                          <tr>
+                            <th
+                              scope="col"
+                              style="background-color:#3498db; color:#ffffff"
+                            >
+                              <label style="font-size:2rem">เกรด</label>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <label
+                                for="File2"
+                                style="color:rgb(72, 255, 0); font-size:12rem"
+                                ><b>{{ grade }}</b></label
+                              >
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!--
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <label
+                              class="gradetext"
+                              for="File2"
+                              style="color:rgb(72, 255, 0)"
+                              ><b>{{ grade }}</b></label
+                            >
+                          </div>
                         </div>
-                      </div>
+                      -->
                     </div>
                   </div>
 
@@ -410,14 +562,16 @@
                               value="{{userfirst}}&nbsp;&nbsp;{{userlast}}"
                             />
                           </div>
-                          <!-- <div class="form-group col">
-                            <label for="Lastname">นามสกุล</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              value="{{userlast}}"
-                            />
-                          </div> -->
+                          <!--
+                            <div class="form-group col">
+                              <label for="Lastname">นามสกุล</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{userlast}}"
+                              />
+                            </div>
+                          -->
                         </div>
                       </form>
                     </div>
@@ -587,7 +741,13 @@
                       class="btn pull-center text-light"
                       style="vertical-align:middle ;margin-right: 10px; width: 19%; background-color: #da4553"
                     >
-                      <h4><b><i class="material-icons" style="margin-right: 3px">arrow_back</i>ย้อนกลับ</b></h4>
+                      <h4>
+                        <b
+                          ><i class="material-icons" style="margin-right: 3px"
+                            >arrow_back</i
+                          >ย้อนกลับ</b
+                        >
+                      </h4>
                     </button>
                     <button
                       type="button"
@@ -595,7 +755,13 @@
                       style="vertical-align:middle; width: 79%; background-color: #87bf4b"
                       (click)="greaded()"
                     >
-                      <h4><b><i class="material-icons" style="margin-right: 3px">save</i>บันทึก</b></h4>
+                      <h4>
+                        <b
+                          ><i class="material-icons" style="margin-right: 3px"
+                            >save</i
+                          >บันทึก</b
+                        >
+                      </h4>
                     </button>
                   </div>
                 </div>
@@ -604,24 +770,26 @@
           </div>
         </div>
       </form>
-      <!-- <div class="text-center mb-3">
-        <button
-          (click)="test(true)"
-          type="button"
-          class="btn btn-outline-secondary pull-center"
-          style="vertical-align:middle ;margin-right: 10px"
-        >
-          <h4><b>ย้อนกลับ</b></h4>
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary pull-center"
-          style="vertical-align:middle"
-          (click)="greaded()"
-        >
-          <h4><b>บันทึก</b></h4>
-        </button>
-      </div> -->
+      <!--
+        <div class="text-center mb-3">
+          <button
+            (click)="test(true)"
+            type="button"
+            class="btn btn-outline-secondary pull-center"
+            style="vertical-align:middle ;margin-right: 10px"
+          >
+            <h4><b>ย้อนกลับ</b></h4>
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary pull-center"
+            style="vertical-align:middle"
+            (click)="greaded()"
+          >
+            <h4><b>บันทึก</b></h4>
+          </button>
+        </div>
+      -->
     </div>
   </div>
 </div>

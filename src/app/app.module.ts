@@ -15,6 +15,8 @@ import { LyButtonModule } from '@alyle/ui/button';
 import { LyToolbarModule } from '@alyle/ui/toolbar';
 import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-images';
 import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
+import { CommonModule } from '@angular/common';
+import { LyRadioModule } from '@alyle/ui/radio';
 
 // mainpage
 import { AppComponent } from './app.component';
@@ -169,7 +171,7 @@ import { NotificationT5Component } from './storehouse/page/menu6/notification/no
     NotificationT2Component,
     NotificationT3Component,
     NotificationT4Component,
-    NotificationT5Component
+    NotificationT5Component,
   ],
   imports: [
     BrowserModule,
@@ -187,7 +189,9 @@ import { NotificationT5Component } from './storehouse/page/menu6/notification/no
     HttpModule,
     PageRoutingModule,
     StorehouseRoutingModule,
-    BeefgradingRoutingModule
+    BeefgradingRoutingModule,
+    CommonModule,
+    LyRadioModule
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },

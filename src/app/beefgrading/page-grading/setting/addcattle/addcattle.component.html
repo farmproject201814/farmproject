@@ -38,9 +38,9 @@
               <td><input type="text" class="form-control" name="id" ngModel></td>
               <td><input type="text" class="form-control" name="left" ngModel></td>
               <td><input type="text" class="form-control" name="right" ngModel></td>
-              <td><input type="date" class="form-control" name="datekill" ngModel></td>
-              <td><input type="date" class="form-control" name="datedry" ngModel></td>
-              <td><input type="date" class="form-control" name="dateready" ngModel></td>
+              <td><input type="text" class="form-control" name="datekill" ngModel="{{datekill | date: 'dd-MM-yyyy'}}" disabled></td>
+              <td><input type="text" class="form-control" name="datedry" ngModel="{{datedry  | date: 'dd-MM-yyyy'}}"  disabled></td>
+              <td><input type="text" class="form-control" name="dateready" ngModel="{{dateready  | date: 'dd-MM-yyyy'}}" disabled></td>
               <!-- <td><input type="date" class="form-control" name="datecuted" ngModel></td> -->
               <td><input type="text" class="form-control" name="wleft" ngModel></td>
               <td><input type="text" class="form-control" name="wright" ngModel></td>

@@ -133,7 +133,7 @@ export class GradingComponent implements OnInit {
   i;
   picName = 'เลือกไฟล์รูปภาพ';
   file;
-  grade = '3';
+  grade = '3.25';
   key;
   datecuted;
   selectedFiles: FileList;

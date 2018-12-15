@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-editprofile',
@@ -11,6 +12,26 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class EditprofileComponent implements OnInit {
   key;
+
+  items = {
+    key: '',
+    users: '',
+    pass: '',
+    question: '',
+    answer: '',
+    fname: '',
+    lname: '',
+    gender: '',
+    day_of_birth: '',
+    id_code: '',
+    email: '',
+    address: '',
+    mobile: '',
+    fax: '',
+    privilege_id: '',
+    count_login: ''
+  };
+
   datalist: AngularFireList<any>;
   datauser: any[];
   data: Observable<any[]>;
@@ -35,6 +56,7 @@ export class EditprofileComponent implements OnInit {
   constructor(
     private db: AngularFireDatabase,
     private afAuth: AngularFireAuth,
+    private auth: AuthService
   ) {
     this.afAuth.authState.subscribe(data => {
       this.detail = this.db
@@ -62,15 +84,6 @@ export class EditprofileComponent implements OnInit {
       });
     });
 
-    this.datauser = [];
-    this.datalist = db.list('/cattle');
-    this.datalist.snapshotChanges().subscribe(actions => {
-      actions.forEach(action => {
-        const y  = action.payload.toJSON();
-        y['key'] = action.key;
-        this.datauser.push(y as Listitemuser);
-      });
-    });
   }
 
   ngOnInit() {
@@ -78,24 +91,4 @@ export class EditprofileComponent implements OnInit {
 
 }
 
-export class Listitemuser {
-  State: string;
-  address: string;
-  answer: string;
-  city: string;
-  day_of_birth: string;
-  efname: string;
-  elname: string;
-  email: string;
-  fax: string;
-  fname: string;
-  gender: string;
-  id_code: string;
-  lname: string;
-  phone_num: string;
-  privilege_id: string;
-  question: string;
-  users: string;
-  zip: string;
-}
 
