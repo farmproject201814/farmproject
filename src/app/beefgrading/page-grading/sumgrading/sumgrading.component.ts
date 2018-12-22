@@ -125,13 +125,10 @@ export class SumgradingComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this.api.removeData(this.idcheck).subscribe();
-        // this.api.showData().subscribe(data => {
-        //   this.data = Object.values(data);
-        //   for (let i = 0; i < Object.values(data).length; i++) {
-        //     this.data[i].key = Object.keys(data)[i];
-        //   }
-        // });
+        for (let i = 0; i < this.idcheck.length; i++) {
+          console.log(this.idcheck[i]);
+          this.api.removeData(this.idcheck[i]).subscribe();
+        }
         swal(
           'Deleted!',
           'Your file has been deleted.',

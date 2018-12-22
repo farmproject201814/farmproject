@@ -1,5 +1,10 @@
-<div class="sumgragd text-center" style="margin-top: 70px; padding-top: 20px">
-  <a><i class="material-icons" style="margin-right: 5px">assignment_turned_in</i><b>สรุปเกรด</b></a>
+<div
+  class="AboutCattle text-center card"
+  style="margin-left:42%; margin-top: 80px; margin-bottom:15px; width:300px; background:#da4151"
+>
+  <div class="card-body sumgragd" style="color:#ffffff">
+    <a><i class="material-icons" style="margin-right: 5px">assignment_turned_in</i><b>สรุปเกรด</b></a>
+  </div>
 </div>
 <div class="backpage">
   <div class="container-fluid">
@@ -70,10 +75,15 @@
           <tbody>
             <tr *ngFor="let data of data;let i = index">
               <td>
-                <label>
-                  <input type="checkbox" (click)="selectMenu(data.key)" [checked]="c.check">
-                  <span class="label-text">{{i+1}}</span>
+                <label [hidden]="data.status == 'ไม่ได้สรุปเกรด'">
+                  <input
+                    type="checkbox"
+                    (click)="selectMenu(data.key)"
+                    [checked]="c.check"
+                  />
+                  <span class="label-text">{{ i + 1 }}</span>
                 </label>
+                <label [hidden]="data.status != 'ไม่ได้สรุปเกรด'">{{ i + 1 }}</label>
               </td>
               <td>{{data.id}}</td>
               <td>{{data.left}}</td>

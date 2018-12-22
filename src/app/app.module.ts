@@ -32,6 +32,7 @@ import { SumgradingService } from './service/API/beefgrading/sumgrading.service'
 import { AuthService } from './auth.service';
 
 // beefgrading
+import { HttpClientModule } from '@angular/common/http';
 import { BeefgradingRoutingModule } from './beefgrading/beefgrading-routing.module';
 import { AboutcattleComponent } from './beefgrading/page-grading/aboutcattle/aboutcattle.component';
 import { GradingComponent } from './beefgrading/page-grading/grading/grading.component';
@@ -191,7 +192,8 @@ import { NotificationT5Component } from './storehouse/page/menu6/notification/no
     StorehouseRoutingModule,
     BeefgradingRoutingModule,
     CommonModule,
-    LyRadioModule
+    LyRadioModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LY_THEME, useClass: MinimaLight, multi: true },

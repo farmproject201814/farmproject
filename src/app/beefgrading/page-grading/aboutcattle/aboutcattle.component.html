@@ -1,11 +1,12 @@
 <div
-  class="AboutCattle text-center"
-  style="margin-top: 70px; padding-top: 20px"
+  class="AboutCattle text-center card"
+  style="margin-left:42%; margin-top: 80px; width:300px; background:#da4151"
 >
-  <a
-    ><i class="material-icons" style="margin-right: 5px">format_list_bulleted</i
-    ><b>รายการซากโค</b></a
-  >
+  <div class="card-body" style="color:#ffffff">
+    <a>
+      <i class="material-icons" style="margin-right: 5px">format_list_bulleted</i>
+    <b>รายการซากโค</b></a>
+  </div>
 </div>
 <div class="backpage">
   <div class="container-fluid">
@@ -26,6 +27,9 @@
                   type="text"
                   class="form-control search-input"
                   aria-label=""
+                  id="myInput"
+                  placeholder=""
+                  (keyup)="myFunction()"
                 />
                 <div class="input-group-append">
                   <button
@@ -52,13 +56,14 @@
           cellspacing="0"
           cellpadding="0"
           class="table table-bordered table-striped table-hover text-center"
+
         >
           <colgroup span="2"></colgroup>
           <thead class="thead text-dark" style="background-color: #ffffff;">
             <tr>
               <td rowspan="2">
                 <label>
-                  <input type="checkbox" (click)="checkAll_list()" />
+                  <input type="checkbox" (click)="checkAll_list()">
                   <span class="label-text">ลำดับ</span>
                 </label>
               </td>
@@ -87,10 +92,10 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="myUL">
             <tr *ngFor="let data of data; let i = index">
               <td>
-                <label>
+                <label [hidden]="data.status == 'พร้อม'">
                   <input
                     type="checkbox"
                     (click)="selectMenu(data.key)"
@@ -98,6 +103,7 @@
                   />
                   <span class="label-text">{{ i + 1 }}</span>
                 </label>
+                <label [hidden]="data.status != 'พร้อม'">{{ i + 1 }}</label>
               </td>
               <td>{{ data.id }}</td>
               <td>{{ data.left }}</td>

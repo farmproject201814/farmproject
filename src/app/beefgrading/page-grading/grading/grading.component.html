@@ -1,15 +1,18 @@
 <div class="backpage" [hidden]="!checkProcess">
-  <div class="Grading text-center" style="margin-top: 70px; padding-top: 20px">
+  <div
+  class="AboutCattle text-center card"
+  style="margin-left:41%; margin-top: 80px; margin-bottom:15px; width:300px; background:#da4151"
+>
+  <div class="card-body Grading" style="color:#ffffff">
     <a>
-      <h2>
         <i class="material-icons" style="margin-right: 5px">assignment</i
         ><b>ตัดเกรด</b>
-      </h2>
     </a>
+  </div>
   </div>
 
   <div class="container-fluid">
-    <div class="card shadow p mb-3 ">
+    <div class="card shadow" style="margin-bottom:5%">
       <div class="card-body">
         <div class="row">
           <div class="col-sm-7">
@@ -395,7 +398,7 @@
                 type="button"
                 class="btn text-light"
                 style="vertical-align:middle; width: 78%; background-color: #55c7dd"
-                (click)="switch(false)"
+                (click)="processimage()"
               >
                 <span
                   ><h4>
@@ -421,17 +424,20 @@
 -->
 
 <div class="backpage" [hidden]="checkProcess">
-  <div class="Graded text-center" style="margin-top: 70px; padding-top: 20px">
+  <div
+  class="AboutCattle text-center card"
+  style="margin-left:41%; margin-top: 80px; margin-bottom:15px; width:300px; background:#da4151"
+>
+  <div class="card-body Graded" style="color:#ffffff">
     <a>
-      <h2>
         <i class="material-icons" style="margin-right: 5px">save</i
         ><b>บันทึกเกรด</b>
-      </h2>
     </a>
+  </div>
   </div>
 
   <div class="container-fluid">
-    <div class="card shadow p mb-3">
+    <div class="card shadow" style="margin-bottom:5%">
       <form>
         <div class="card-body">
           <div class="row">

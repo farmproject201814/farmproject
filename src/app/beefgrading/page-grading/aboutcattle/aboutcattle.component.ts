@@ -71,6 +71,23 @@ export class AboutcattleComponent implements OnInit {
     });
   }
 
+  myFunction() {
+    let input, filter, tbody, tr, td, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    tbody = document.getElementById('myUL');
+    tr = tbody.getElementsByTagName('tr');
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[0];
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+    }
+  }
+
   checkAll_list() {
   /* checkbox ทั้งหมด */
     console.log(this.a);
@@ -122,13 +139,10 @@ export class AboutcattleComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this.api.removeData(this.idcheck).subscribe();
-        // this.api.showData().subscribe(data => {
-        //   this.data = Object.values(data);
-        //   for (let i = 0; i < Object.values(data).length; i++) {
-        //     this.data[i].key = Object.keys(data)[i];
-        //   }
-        // });
+        for (let i = 0; i < this.idcheck.length; i++) {
+          console.log(this.idcheck[i]);
+          this.api.removeData(this.idcheck[i]).subscribe();
+        }
         swal(
           'Deleted!',
           'Your file has been deleted.',

@@ -192,14 +192,15 @@ export class HistoryComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.value) {
-        this.api.removeData(this.idcheck).subscribe();
-        // this.api.showData().subscribe(data => {
-        //   this.data = Object.values(data);
-        //   for (let i = 0; i < Object.values(data).length; i++) {
-        //     this.data[i].key = Object.keys(data)[i];
-        //   }
-        // });
-        swal('Deleted!', 'Your file has been deleted.', 'success');
+        for (let i = 0; i < this.idcheck.length; i++) {
+          console.log(this.idcheck[i]);
+          this.api.removeData(this.idcheck[i]).subscribe();
+        }
+        swal(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
         setTimeout(() => location.reload(), 500);
       }
     });
@@ -529,48 +530,31 @@ export class HistoryComponent implements OnInit {
                 }
               ]
             },
-            { text: '\n\n' },
+            // { text: '\n' },
+            // {
+            //   columns: [
+            //     {
+            //       width: 100,
+            //       text: ' '
+            //     },
+            //     {
+            //       width: 125,
+            //       text: 'ออกรายงานผลการตัดเกรดโดย',
+            //       bold: true
+            //     }
+            //   ]
+            // },
+            { text: '\n\n\n\n' },
             {
               columns: [
                 {
-                  width: 100,
+                  width: 300,
                   text: ' '
                 },
                 {
-                  width: 125,
-                  text: 'ออกรายงานผลการตัดเกรดโดย',
-                  bold: true
-                }
-              ]
-            },
-            { text: '\n\n' },
-            {
-              columns: [
-                {
-                  width: 200,
-                  text: ' '
-                },
-                {
-                  width: 200,
-                  text: this.userfirst + ' ' + this.userlast
-                }
-              ]
-            },
-            { text: '\n' },
-            {
-              columns: [
-                {
-                  width: 140,
-                  text: ' '
-                },
-                {
-                  width: 40,
-                  text: 'ลายเซนท์',
-                  bold: true
-                },
-                {
-                  width: 200,
-                  text: '................................................'
+                  width: 220,
+                  text: '................................................',
+                  alignment: 'center'
                 }
               ]
             },
@@ -578,13 +562,42 @@ export class HistoryComponent implements OnInit {
             {
               columns: [
                 {
-                  width: 200,
+                  width: 300,
+                  text: ' '
+                },
+                {
+                  width: 220,
+                  text: '( ' + this.userfirst + ' ' + this.userlast + ' )',
+                  alignment: 'center'
+                }
+              ]
+            },
+            {
+              columns: [
+                {
+                  width: 300,
+                  text: ' '
+                },
+                {
+                  width: 220,
+                  text: 'ผู้ออกรายงาน',
+                  bold: true,
+                  alignment: 'center'
+                }
+              ]
+            },
+            { text: '\n' },
+            {
+              columns: [
+                {
+                  width: 300,
                   text: ' '
                 },
                 {
                   width: 220,
                   text: this.datasys[this.checkReport].name,
-                  bold: true
+                  bold: true,
+                  alignment: 'center'
                 }
               ]
             }

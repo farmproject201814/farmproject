@@ -11,6 +11,11 @@ import { GradingService } from './../../../service/API/beefgrading/grading.servi
 import swal from 'sweetalert2';
 import { LyResizingCroppingImages, ImgCropperConfig, ImgCropperEvent} from '@alyle/ui/resizing-cropping-images';
 import { LyTheme2, ThemeVariables} from '@alyle/ui';
+import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
+import { CalculateGService } from 'src/app/service/API/beefgrading/calculate-g.service';
+
 
 const styles = (theme: ThemeVariables) => ({
   actions: {
@@ -128,21 +133,14 @@ const styles = (theme: ThemeVariables) => ({
   styleUrls: ['./grading.component.css']
 })
 export class GradingComponent implements OnInit {
-  checkProcess = true;
-  switch_cap = true;
-  i;
-  picName = 'เลือกไฟล์รูปภาพ';
-  file;
-  grade = '3.25';
-  key;
-  datecuted;
+  [x: string]: any;
+  checkProcess = true; switch_cap = true;
+  i; picName = 'เลือกไฟล์รูปภาพ'; file; // grade = '3.25';
+  key; datecuted;
   selectedFiles: FileList;
   currentUpload: Upload;
-  data: any;
-  datas: any;
-  public userfirst;
-  public userlast;
-  detail;
+  data: any; datas: any;
+  public userfirst; public userlast; detail;
   items = {
     $key: '',
     id: '',
@@ -161,15 +159,12 @@ export class GradingComponent implements OnInit {
     datecuted: '',
     grade_sys: ''
   };
-  event;
-  count = 0;
-  private basePath = '/uploads';
+  event; count = 0; private basePath = '/uploads';
 
   classes = this.theme.addStyleSheet(styles);
   croppedImage = [];
 
-  result: string;
-  scale: number;
+  result: string; scale: number;
   myConfig: ImgCropperConfig = {
     width: 250, // Default `250`
     height: 250, // Default `200`,
@@ -178,10 +173,17 @@ export class GradingComponent implements OnInit {
       height: 200
     }
   };
-  name_pic;
-  originalPic;
-  LinkOrginal: any;
-  LinkCrop = [];
+  name_pic; originalPic; LinkOrginal: any; LinkCrop = [];
+
+  serverData: JSON; employeeData: JSON; employee: JSON; grade: JSON; imageblob: JSON;
+
+  decodepic: any;
+  files: any;
+  filestring: string;
+
+  datatest = 321151;
+  // tslint:disable-next-line:max-line-length
+  img = 'https://firebasestorage.googleapis.com/v0/b/farmproject-831d7.appspot.com/o/uploads%2FDSC_8829.JPG%2Fcrop0?alt=media&token=2631b11e-df82-4d41-8392-c886dd37fd42';
 
   constructor(
     private db: AngularFireDatabase,
@@ -191,7 +193,10 @@ export class GradingComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private apigrade: GradingService,
     private router: Router,
-    private theme: LyTheme2
+    private theme: LyTheme2,
+    private httpClient: HttpClient,
+    private http: Http,
+    private apicalgrade: CalculateGService
   ) {
     this._route.params.subscribe(params => {
       this.key = params['key'];
@@ -243,12 +248,58 @@ export class GradingComponent implements OnInit {
       });
     });
     this.datecuted = new Date();
+
   }
 
   onFileChanged(event) {
     this.event = event;
     this.file = event.target.files[0];
     this.picName = this.file.name;
+  }
+
+  getFiles(event) {
+    this.files = event.target.files;
+    const reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsBinaryString(this.files[0]);
+  }
+
+  _handleReaderLoaded(readerEvt) {
+      const binaryString = readerEvt.target.result;
+      this.filestring = btoa(binaryString);  // Converting binary string data.
+  }
+
+
+  processimage() {
+    // this.upload.pushImageByBase64(this.name_pic, this.originalPic, 'Original');
+    // for (let i = 0; i < this.croppedImage.length; i++) {
+    //   this.upload.pushImageByBase64(this.name_pic, this.croppedImage[i], 'crop' + i);
+    // }
+
+    swal({
+      title: 'กำลังประมวณผลเกรด!',
+      timer: 1000,
+      onOpen: () => {
+        swal.showLoading();
+        // this.apicalgrade.createContact(this.datatest).subscribe((response) => {
+        //   console.log(response);
+        // });
+        // this.http.post('http://127.0.0.1:8000/calgrade/', this.datatest).pipe(map(res => res.json()));
+        this.httpClient.get('http://127.0.0.1:8000/calgrade/' + 'get').subscribe(datas => {
+        this.grade = datas as JSON;
+        console.log('param back :', this.grade);
+        });
+      },
+      onClose: () => {
+        this.switch(false);
+      }
+    }).then(result => {
+      if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.timer
+      ) {
+      }
+    });
   }
 
   greaded(_data: NgForm) {
@@ -369,28 +420,10 @@ export class GradingComponent implements OnInit {
   switch(c) {
     console.log('page: ', c);
     if (c === false) {
-      swal({
-        title: 'กำลังประมวณผลเกรด!',
-        timer: 5000,
-        onOpen: () => {
-          swal.showLoading();
-
-        },
-        onClose: () => {
-          this.checkProcess = c;
-        }
-      }).then(result => {
-        if (
-          // Read more about handling dismissals
-          result.dismiss === swal.DismissReason.timer
-        ) {
-        }
-      });
+      this.checkProcess = c;
     } else {
       this.checkProcess = c;
     }
   }
-  chang_cap(chang) {
-    this.switch_cap = chang;
-  }
+
 }
