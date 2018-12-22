@@ -1,0 +1,28 @@
+.edit-profile{
+  font-size: 2rem;
+  color: #1f1f1f;
+}
+.material-icons{
+  vertical-align: -6px;
+  font-size: 1.8rem;
+}
+
+.form-group{
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+label{
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+div input, textarea{
+  font-size: 1.4rem;
+}
+
+.btn{
+  font-size: 1.4em;
+  width: 150px;
+  height: 100%;
+  /* padding-top: 15px; */
+}

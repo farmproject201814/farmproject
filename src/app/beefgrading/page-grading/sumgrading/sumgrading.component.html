@@ -1,0 +1,121 @@
+<div
+  class="AboutCattle text-center card"
+  style="margin-left:42%; margin-top: 80px; margin-bottom:15px; width:300px; background:#da4151"
+>
+  <div class="card-body sumgragd" style="color:#ffffff">
+    <a><i class="material-icons" style="margin-right: 5px">assignment_turned_in</i><b>สรุปเกรด</b></a>
+  </div>
+</div>
+<div class="backpage">
+  <div class="container-fluid">
+    <div class="card shadow p mb-3">
+      <div class="card-header" style="background-color: #3bafda;color: #ffffff">
+        <div class="row" style="width: 100%">
+          <div class="col-6"><h3><b>รายการซากโค</b></h3></div>
+          <div class="col">
+            <div style="margin-left:50%">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">ค้นหา</span>
+                </div>
+                <input type="text" class="form-control search-input" aria-label="">
+                <div class="input-group-append">
+                  <button
+                  class="btn btn-light btn-sm text-light"
+                  style="background-color: #87bf4b; height:43px">
+                    <i class="material-icons text-center">search</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div [hidden]="d.Delete == false && c.check == false">
+          <div [className]="classes.root">
+            <button ly-button style="width:30px" (click)="checkdelete()">
+              <i class="material-icons" style="color:#da4151;font-size: 1.5rem">delete_forever</i>
+            </button>
+          </div>
+        </div>
+        <table cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover text-center">
+          <colgroup span="2"></colgroup>
+          <thead class="thead text-dark" style="background-color: #ffffff;">
+            <tr>
+              <td rowspan="2">
+                <label>
+                  <input type="checkbox" (click)="checkAll_list()">
+                  <span class="label-text">ลำดับ</span>
+                </label>
+              </td>
+              <td rowspan="2">รหัสโค</td>
+              <th colspan="2">บาร์โค้ด</th>
+              <td rowspan="2">วันที่เชือด</td>
+              <td rowspan="2">วันที่เข้าบ่ม</td>
+              <td rowspan="2">วันที่ตัดเกรด</td>
+              <td rowspan="2">วันที่สรุปเกรด</td>
+              <th colspan="2">น้ำหนัก kg.</th>
+              <td rowspan="2">ห้องเย็น</td>
+              <th colspan="2">เกรด</th>
+              <td rowspan="2" colspan="2">การสรุปเกรด</td>
+            </tr>
+            <tr>
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+
+              <th scope="col">พนักงาน</th>
+              <th scope="col">ผู้เชี่ยวชาญ</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let data of data;let i = index">
+              <td>
+                <label [hidden]="data.status == 'ไม่ได้สรุปเกรด'">
+                  <input
+                    type="checkbox"
+                    (click)="selectMenu(data.key)"
+                    [checked]="c.check"
+                  />
+                  <span class="label-text">{{ i + 1 }}</span>
+                </label>
+                <label [hidden]="data.status != 'ไม่ได้สรุปเกรด'">{{ i + 1 }}</label>
+              </td>
+              <td>{{data.id}}</td>
+              <td>{{data.left}}</td>
+              <td>{{data.right}}</td>
+              <td>{{data.datekill | date: 'dd-MM-yyyy'}}</td>
+              <td>{{data.datedry | date: 'dd-MM-yyyy'}}</td>
+              <td>{{data.datecuted | date: 'dd-MM-yyyy'}}</td>
+              <td>{{data.date_sum | date: 'dd-MM-yyyy'}}</td>
+              <td>{{data.wleft}}</td>
+              <td>{{data.wright}}</td>
+              <td>{{data.roomdry}}</td>
+              <td>{{data.grade_sys}}</td>
+              <td>{{data.grade_ex}}</td>
+              <td style="color:rgb(80, 80, 80)">{{data.status}}</td>
+              <td style="padding-top:10px">
+                <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: #87bf4b"
+                  [hidden]="data.status!='ไม่ได้สรุปเกรด'"><b>สรุปเกรด</b></button>
+
+                <button [routerLink]="['/summed',{key: data.key}]" type="button" class="btn btn-sm text-light" style="background-color: gray"
+                  [hidden]="data.status=='ไม่ได้สรุปเกรด'" [disabled]="data.status!='ไม่ได้สรุปเกรด'"><b>สรุปเกรด</b></button>
+
+                <!-- <button routerLink="/sumgraded" type="button" class="btn btn-sm text-light" style="background-color: limegreen"><b>สรุปเกรด</b></button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
+        <div [className]="classes.root">
+          <button ly-button style="width:30px" (click)="checkdelete()"><i class="material-icons" style="color:#da4151;font-size: 2rem">delete_forever</i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

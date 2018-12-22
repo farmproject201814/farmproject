@@ -1,0 +1,95 @@
+.sumshow{
+  margin: 20px;
+  font-size: 2rem;
+  color: #1f1f1f;
+}
+
+.jumbotron{
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.jumgrade{
+  height: 10%;
+  width: 5%;
+}
+
+.cardsize{
+  padding: 0%;
+  width: 400px;
+  height:400px;
+}
+
+.gradetext{
+  font-family: 'Quark-Light', sans-serif;
+  font-size: 8rem;
+  /* height: 100px; */
+  /* width: 8rem; */
+}
+.ta1{
+  margin-left: 40%;
+  height: 300px
+}
+.ta2{
+  height: 300px
+}
+
+.btn{
+  font-size: 1.4em;
+  /* width: 150px; */
+  height: 100%;
+  padding-top: 15px;
+}
+
+.font{
+  font-size: 1.2rem;
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.material-icons{
+  vertical-align: -6px;
+  font-size: 1.8rem;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+  top: .5rem;
+  width: 1rem;
+  height: 1rem;
+}
+.chbox1{
+  margin-left: 28%;
+}
+
+input {
+  font-size: 1.2rem;
+  color: rgb(30, 30, 30);
+  font-weight: bold;
+}
+label{
+  font-size: 1.2rem;
+}

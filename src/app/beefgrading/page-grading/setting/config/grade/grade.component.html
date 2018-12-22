@@ -1,0 +1,71 @@
+<app-navmanu></app-navmanu>
+<div
+  class="text-center card"
+  style="margin-left:40%; margin-bottom:15px; width:350px; background:#da4151"
+>
+  <div class="card-body edit-profile" style="color:#ffffff">
+  <a
+    ><i class="material-icons" style="margin-right: 5px">settings</i
+    ><b>ตั้งค่าเกณฑ์การตัดเกรด</b></a
+  >
+</div></div>
+<div class="backpage">
+  <div class="container">
+    <div class="card shadow">
+      <form>
+        <div class="card-body">
+          <label style="color:#1f1f1f">กำหนดสถานะการใช้เกณฑ์ตัดเกรด</label>
+          <table class="table">
+            <!--
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+            -->
+            <tbody>
+              <tr>
+                <td style="width:75%">
+                  <label style="color:#1f1f1f">ลายไขมัน (Marbling)</label>
+                </td>
+                <td>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      id="customRadioInline1"
+                      name="customRadioInline1"
+                      class="custom-control-input"
+                      name="marbling" value="0" ngModel="{{marbling}}"
+                    />
+                    <label class="custom-control-label" for="customRadioInline1"
+                      >ปิดใช้งาน</label
+                    >
+                  </div>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      id="customRadioInline2"
+                      name="customRadioInline1"
+                      class="custom-control-input"
+                      name="marbling" value="1" ngModel="{{marbling}}" checked
+                    />
+                    <label class="custom-control-label" for="customRadioInline2"
+                      >เปิดใช้งาน</label
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,261 @@
+<div
+  class="AboutCattle text-center card"
+  style="margin-left:42%; margin-top: 80px; width:300px; background:#da4151"
+>
+  <div class="card-body" style="color:#ffffff">
+    <a
+      ><i class="material-icons" style="margin-right: 5px">history</i
+      ><b>ประวัติการตัดเกรด</b></a
+    >
+  </div>
+</div>
+<div class="backpage">
+  <div class="container-fluid">
+    <div class="card shadow" style="margin-bottom:5%">
+      <div class="card-header" style="background-color: #3dafda;color: #ffffff">
+        <div class="row" style="width: 100%">
+          <div class="col-6">
+            <h3><b>รายการประวัติการตัดเกรด</b></h3>
+          </div>
+          <div class="col">
+            <div style="margin-left:50%">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">ค้นหา</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control search-input"
+                  aria-label=""
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-light btn-sm text-light"
+                    style="background-color: #87bf4b; width: 100px"
+                  >
+                    <i class="material-icons text-center">search</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div [hidden]="d.Delete == false && c.check == false">
+          <div [className]="classes.root">
+            <button ly-button style="width:30px" (click)="checkdelete()">
+              <i class="material-icons" style="color:#da4151;font-size: 1.5rem"
+                >delete_forever</i
+              >
+            </button>
+          </div>
+        </div>
+        <table
+          cellspacing="0"
+          cellpadding="0"
+          class="table table-bordered table-striped table-hover text-center"
+        >
+          <colgroup span="2"></colgroup>
+          <thead class="thead text-dark" style="background-color: #ffffff;">
+            <tr>
+              <td rowspan="2">
+                <label>
+                  <input type="checkbox" (click)="checkAll_list()" />
+                  <span class="label-text">ลำดับ</span>
+                </label>
+              </td>
+              <td rowspan="2">รหัสโค</td>
+              <th colspan="2">บาร์โค้ด</th>
+              <td rowspan="2">วันที่ตัดเกรด</td>
+              <td rowspan="2">วันที่สรุปเกรด</td>
+              <th colspan="2">น้ำหนัก kg.</th>
+              <td rowspan="2">พนักงานตัดเกรด</td>
+              <td rowspan="2">ผู้เชี่ยวชาญ</td>
+              <td rowspan="2">เจ้าของโค</td>
+              <td rowspan="2">รูปภาพ</td>
+              <td rowspan="2">เกรด</td>
+              <td rowspan="2">รายงาน</td>
+            </tr>
+            <tr>
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+
+              <th scope="col">ซากซ้าย</th>
+              <th scope="col">ซากขวา</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of data; let i = index">
+              <td>
+                <label>
+                  <input
+                    type="checkbox"
+                    (click)="selectMenu(data.key)"
+                    [checked]="c.check"
+                  />
+                  <span class="label-text">{{ i + 1 }}</span>
+                </label>
+              </td>
+              <td>{{ data.id }}</td>
+              <td>{{ data.left }}</td>
+              <td>{{ data.right }}</td>
+              <td>{{ data.datecuted | date: "dd-MM-yyyy" }}</td>
+              <td>{{ data.date_sum | date: "dd-MM-yyyy" }}</td>
+              <td>{{ data.wleft }}</td>
+              <td>{{ data.wright }}</td>
+              <td>
+                {{ data.sys_grage_cut_fn }}&nbsp;&nbsp;{{
+                  data.sys_grage_cut_ln
+                }}
+              </td>
+              <td>
+                {{ data.fn_ex1 }}&nbsp;&nbsp;{{ data.ln_ex1 }}<br />
+                {{ data.fn_ex2 }}&nbsp;&nbsp;{{ data.ln_ex2 }}<br />
+                {{ data.fn_ex3 }}&nbsp;&nbsp;{{ data.ln_ex3 }}<br />
+                {{ data.fn_ex4 }}&nbsp;&nbsp;{{ data.ln_ex4 }}<br />
+                {{ data.fn_ex5 }}&nbsp;&nbsp;{{ data.ln_ex5 }}
+              </td>
+              <td>{{ data.firstown }}&nbsp;&nbsp;{{ data.lastown }}</td>
+              <td>
+                <!-- Button trigger modal -->
+                <button
+                  (click)="viwepicture(i)"
+                  type="button"
+                  class="btn btn-warning"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  <b>รูปภาพ</b>
+                </button>
+              </td>
+              <td>{{ data.grade_con }}</td>
+              <td>
+                <!--
+                  <button routerLink="/report" type="button" class="btn button btn-success" style="background-color: limegreen"><b>ออกรายงาน</b></button>
+                -->
+                <button
+                  (click)="selectData(i)"
+                  type="button"
+                  class="btn button btn-success"
+                  style="background-color: #87bf4b"
+                  data-toggle="modal"
+                  data-target="#reportModalCenter"
+
+                  >
+                  <b>ออกรายงาน</b>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer" [hidden]="d.Delete == false && c.check == false">
+        <div [className]="classes.root">
+          <button ly-button style="width:30px" (click)="checkdelete()">
+            <i class="material-icons" style="color:#da4151;font-size: 2rem"
+              >delete_forever</i
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#3dafda;color: #ffffff">
+        <h4 class="modal-title"><b>รูปภาพซากโค</b></h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class=" text-center">
+          <img
+            class=" cardsize"
+            style="border-radius: 5px; width: auto; height: cover"
+            src="{{viwepic}}"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <b>Close</b>
+        </button>
+        <!--
+          <button type="button" class="btn btn-primary">Save changes</button>
+        -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="reportModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog"
+    role="document"
+    style="margin-top: 12%"
+  >
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#3dafda;color: #ffffff">
+        <h4 class="modal-title"><b>รูปภาพซากโค</b></h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <label><b>ออกรายงานแบบ PDF</b></label>
+            <button
+              (click)="printPDF()"
+              type="button"
+              class="btn button btn-danger"
+              style="background-color: #da282f; height:200px; font-size: 30px"
+            >
+              <b><i class="fa fa-file-pdf-o" style="margin-right: 5px; font-size: 30px"></i>PDF</b>
+            </button>
+          </div>
+          <!-- <div class="col">
+            <label><b>ออกรายงานแบบ Excel</b></label>
+            <button
+              type="button"
+              class="btn button btn-success disable"
+              style="background-color: #229954; height:200px; font-size: 30px"
+            >
+              <b><i class="fa fa-file-excel-o" style="margin-right: 5px; font-size: 30px"></i>Excel</b>
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

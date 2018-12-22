@@ -1,0 +1,436 @@
+<app-navmanu></app-navmanu>
+<div
+  class="text-center card"
+  style="margin-left:42%; margin-bottom:15px; width:300px; background:#da4151"
+>
+  <div class="card-body edit-profile" style="color:#ffffff">
+    <a><i class="material-icons" style="margin-right: 5px">assignment</i
+    ><b>ข้อมูลผู้ใช้งาน</b></a>
+</div></div>
+<div class="backpage">
+  <div class="container">
+    <div class="card shadow">
+      <form>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <label for="File1">
+                <h4><b>รูปโปรไฟล์</b></h4>
+              </label>
+              <div
+                class="jumbotron jumimg text-center"
+                [hidden]="picName != 'เลือกไฟล์รูปภาพ'"
+                style="height: 90%"
+              >
+                <label class="textimg" style="vertical-align: -160px"
+                  ><h5>ไม่มีรูปโปรไฟล์</h5></label
+                >
+              </div>
+              <div
+                class="card text-center"
+                [hidden]="picName == 'เลือกไฟล์รูปภาพ'"
+              >
+                <img
+                  class="card-body cardsize"
+                  style="
+                    background-position: center;
+                    background-size: cover"
+                  src="{{picName}}"
+                />
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label"
+                  >ชื่อผู้ใช้งาน</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{users}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="flname" class="col-sm-4 col-form-label"
+                  >ชื่อ-นามสกุล</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{userfirst}}&nbsp;&nbsp;{{userlast}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="eflname" class="col-sm-4 col-form-label"
+                  >ชื่อ-นามสกุล (อังกฤษ)</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{efname}}&nbsp;&nbsp;{{elname}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label">อีเมล</label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{email}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label"
+                  >วัน/เดือน/ปี เกิด</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;วันที่ {{day_of_birth|date: 'dd'}}  เดือน {{day_of_birth|date: 'MM'}}  ปี {{day_of_birth|date: 'yyyy'}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label">เพศ</label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{gender}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label"
+                  >เลขบัตรประชาชน</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{id_code}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label"
+                  >ที่อยู่</label
+                >
+                <div class="col-sm-8">
+                  <textarea
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{address}}"
+                  >
+                  </textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label"
+                  >เบอร์โทรศัพท์</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{phone_num}}"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="users" class="col-sm-4 col-form-label"
+                  >เบอร์แฟ็ก</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    value=":&nbsp;{{fax}}"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <!--
+                <div class="text-center mt-3">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    style="vertical-align:middle"
+                    (click)="test(false)"
+                  >
+                    <h4><b>แก้ไขข้อมูล</b></h4>
+                  </button>
+                </div>
+              -->
+              <!-- Button trigger modal -->
+              <div class="text-center mt-3">
+                <!-- <button
+                  type="button"
+                  class="btn"
+                  style="vertical-align:middle; background-color: #f6bb43"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  <b><i class="material-icons" style="margin-right: 5px">mode_edit</i>แก้ไขข้อมูล</b>
+                </button> -->
+              </div>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div
+                      class="modal-header"
+                      style="background-color:#3bafda;color: #ffffff"
+                    >
+                      <!--
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                      -->
+                      <label for="File1" style="padding-left:47%">
+                        <h4>
+                          <i class="material-icons" style="margin-right: 5px"
+                            >settings</i
+                          ><b>แก้ไขข้อมูล</b>
+                        </h4>
+                      </label>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-6">
+                          <label for="File1">
+                            <h4><b>รูปโปรไฟล์</b></h4>
+                          </label>
+                          <div
+                            class="jumbotron jumimg text-center"
+                            [hidden]="picName != 'เลือกไฟล์รูปภาพ'"
+                            style="height: 80%"
+                          >
+                            <label
+                              class="textimg"
+                              style="vertical-align: -140px"
+                              ><h5>เลือกรูปโปรไฟล์</h5></label
+                            >
+                          </div>
+                          <div
+                            class="card text-center"
+                            [hidden]="picName == 'เลือกไฟล์รูปภาพ'"
+                          >
+                            <img
+                              class="card-body cardsize"
+                              style="
+                              background-position: center;
+                              background-size: cover"
+                              src="{{picName}}"
+                            />
+                          </div>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span
+                                class="input-group-text"
+                                id="inputGroupFileAddon01"
+                                >อัพโหลดรูป</span
+                              >
+                            </div>
+                            <div class="custom-file">
+                              <input
+                                type="file"
+                                class="custom-file-input"
+                                id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01"
+                              />
+                              <label
+                                class="custom-file-label"
+                                for="inputGroupFile01"
+                              >
+                                <h5>{{ picName }}</h5>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-6">
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >ชื่อผู้ใช้งาน</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{users}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="flname" class="col-sm-4 col-form-label"
+                              >ชื่อ-นามสกุล</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{userfirst}}&nbsp;&nbsp;{{userlast}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="eflname" class="col-sm-4 col-form-label"
+                              >ชื่อ-นามสกุล (อังกฤษ)</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{efname}}&nbsp;&nbsp;{{elname}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >อีเมล</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{email}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >วัน/เดือน/ปี เกิด</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="วันที่ {{day_of_birth|date: 'dd'}}  เดือน {{day_of_birth|date: 'MM'}}  ปี {{day_of_birth|date: 'yyyy'}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >เพศ</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{gender}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >เลขบัตรประชาชน</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{id_code}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >ที่อยู่</label
+                            >
+                            <div class="col-sm-8 mb-2">
+                              <textarea
+                                type="text"
+                                class="form-control"
+                                value="{{address}}"
+                              >
+                              </textarea>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >เบอร์โทรศัพท์</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{phone_num}}"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="users" class="col-sm-4 col-form-label"
+                              >เบอร์แฟ็ก</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="{{fax}}"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer" style="margin-right:39%">
+                      <button
+                        type="button"
+                        class="btn"
+                        style="background-color:#da4553; color: #ffffff"
+                        data-dismiss="modal"
+                      >
+                        <b><i class="material-icons" style="margin-right: 3px; vertical-align: -8px">arrow_back</i>ย้อนกลับ</b>
+                      </button>
+                      <button type="button" class="btn" style="background-color:#87bf4b; color: #ffffff">
+                        <b><i class="material-icons" style="margin-right: 3px; vertical-align: -8px">save</i>บันทึกข้อมูล</b>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

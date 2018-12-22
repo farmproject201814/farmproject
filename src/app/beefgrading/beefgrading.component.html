@@ -1,3 +1,21 @@
-<p>
-  beefgrading works!
-</p>
+<body>
+  <div class="main" style="padding-top:30%">
+    <!-- <div class="container-fluid text-right">
+      <p><img class="imgiconbrand" style="margin-top:6%" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></p>
+    </div> -->
+    <div class="container jumbotron jumdash text-center">
+      <form>
+        <div class="form-group">
+          <h1 class="textbrand"><b>Beef Quality Grading System</b></h1>
+          <h4 class="textbrandth"><b>ระบบการตัดเกรดเนื้อโค</b></h4>
+          <button routerLink="/login" type="button" class="btn btn-light" *ngIf="!isLogin">
+            <h3><b>Start Grading</b><i class="fa fa-arrow-circle-right" style="margin-left: 5px; vertical-align: -2px"></i></h3>
+          </button>
+          <button routerLink="/listcattle" type="button" class="btn btn-light" *ngIf="isLogin">
+            <h3><b>Start Grading</b><i class="fa fa-arrow-circle-right" style="margin-left: 5px; vertical-align: -2px"></i></h3>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

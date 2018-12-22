@@ -1,5 +1,5 @@
 <div class="header">
-  <p class="text-center"><strong>ตั้งค่าสิทธิ์ผู้ใช้งาน (Admin Only)</strong></p>
+  <p class="text-center font"><strong>ตั้งค่าสิทธิ์ผู้ใช้งาน (Admin Only)</strong></p>
 
   <div class="card2 shadow p">
     <div class="card-header">
@@ -9,29 +9,29 @@
           <table id="tables">
             <thead>
               <tr>
-                <th width=50>ลำดับ</th>
-                <th width=140>ชื่อ</th>
-                <th width=140>นามสกุล</th>
-                <th width=120>ชื่อผู้ใช้งาน</th>
-                <th width=210>ที่อยู่</th>
-                <th width=120>เบอร์โทร</th>
-                <th width=160>อีเมล</th>
-                <th width=120>สิทธิ์ผู้ใช้งาน</th>
-                <th width=90>แก้ไข</th>
+                <th class="ths1 thg1">ลำดับ</th>
+                <th class="ths2 thg2">ชื่อ</th>
+                <th class="ths3 thg3">นามสกุล</th>
+                <th class="ths4 thg4">ชื่อผู้ใช้งาน</th>
+                <th class="ths5 thg5">ที่อยู่</th>
+                <th class="ths6 thg6">เบอร์โทร</th>
+                <th class="ths7 thg7">อีเมล</th>
+                <th class="ths8 thg8">สิทธิ์ผู้ใช้งาน</th>
+                <th class="ths9 thg9">แก้ไข</th>
                 <th>ลบ</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let e of datas;let i = index">
-                <td width=50>{{i+1}}</td>
-                <td width=140>{{e.fname}}</td>
-                <td width=140>{{e.lname}}</td>
-                <td width=120>{{e.users}}</td>
-                <td width=210>{{e.address}}</td>
-                <td width=120>{{e.mobile}}</td>
-                <td width=160>{{e.email}}</td>
-                <td width=120>{{e.privilege}}</td>
-                <td width=90>
+                <td class="ths1 thg1">{{i+1}}</td>
+                <td class="ths2 thg2">{{e.fname}}</td>
+                <td class="ths3 thg3">{{e.lname}}</td>
+                <td class="ths4 thg4">{{e.users}}</td>
+                <td class="ths5 thg5">{{e.address}}</td>
+                <td class="ths6 thg6">{{e.mobile}}</td>
+                <td class="ths7 thg7">{{e.email}}</td>
+                <td class="ths8 thg8">{{e.privilege}}</td>
+                <td class="ths9 thg9">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modelEdit"
                   (click)="editMember(e)"><i class="fas fa-edit"></i></button>
                 </td>
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="modal fade" id="modelEdit" tabindex="-1" role="dialog">
+      <div class="modal fade font" id="modelEdit" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <form (ngSubmit)="onEditMember(items.key,data)" #data="ngForm">
             <div class="modal-content">
