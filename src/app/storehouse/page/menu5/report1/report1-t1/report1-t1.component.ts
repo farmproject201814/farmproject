@@ -698,7 +698,7 @@ searchDate() {
     if (data.val() != null) {
       this.datass = Object.keys(data.val()).map(key => data.val()[key]);
       console.log(data.val().lenght);
-      for (let i = 0 ; i < data.val().length ; i++) {
+      for (let i = 0 ; i < this.datass.lenght ; i++) {
         this.data_import[i].key = Object.keys(data.val());
         this.datass[i].key = Object.keys(data.val());
         console.log('aaaaaa');
