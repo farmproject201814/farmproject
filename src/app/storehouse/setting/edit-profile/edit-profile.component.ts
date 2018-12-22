@@ -27,7 +27,9 @@ export class EditProfileComponent implements OnInit {
     email: '',
     address: '',
     mobile: '',
-    fax: ''
+    phone_num: '',
+    fax: '',
+    id_member: ''
   };
 
   constructor(private afAuth: AngularFireAuth, private auth: AuthService, private router: Router) {
@@ -43,8 +45,8 @@ export class EditProfileComponent implements OnInit {
   });
   }
 
-  edit_profile($key, users, pass, question, answer, fname,
-    lname, gender, day_of_birth, id_code, email, address, mobile, fax) {
+  edit_profile($key, users, pass, question, answer, fname, lname, gender,
+     day_of_birth, id_code, email, address, mobile, phone_num, fax, id_member) {
       this.items.$key = $key;
       this.items.users = users;
       this.items.pass = pass;
@@ -58,7 +60,9 @@ export class EditProfileComponent implements OnInit {
       this.items.email = email;
       this.items.address = address;
       this.items.mobile = mobile;
+      this.items.phone_num = phone_num;
       this.items.fax = fax;
+      this.items.id_member = id_member;
   }
 
   onEdit_profile(key, dd: NgForm) {

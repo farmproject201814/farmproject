@@ -15,10 +15,12 @@ export class SignUpComponent implements OnInit {
   user: any;
   checkuser = true;
   checkpass = true;
-
+  count;
+  count_id: any;
   constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
+    this.count = 0;
     this.auth.showMember().subscribe(data => {
     if (data === null) {
       this.user = [];
@@ -26,10 +28,30 @@ export class SignUpComponent implements OnInit {
       this.user = Object.values(data);
     }
      });
+
+     const p1 = '00';
+     const p2 = '0';
+     this.auth.showMember().subscribe(d => {
+       const value = Object.keys(d);
+       for (let i = 0; i < value.length ; i++) {
+         const le = value.length + 1;
+         this.count = le;
+       }
+       this.count = this.count - 2;
+       if (this.count < 10) {
+         this.count_id = p1 + this.count;
+       } else if (this.count < 100) {
+         this.count_id = p2 + this.count;
+       } else {
+         this.count_id = this.count;
+       }
+       console.log(this.count_id);
+   });
   }
 
   addUsers(datas: NgForm) {
     console.log(this.user.length);
+
   if (datas.value.users === '' || datas.value.pass === '' || datas.value.question === ''
     || datas.value.answer === '' || datas.value.fname === '' || datas.value.lname === ''
     || datas.value.day_of_birth === '' || datas.value.id_card === '' || datas.value.email === ''
@@ -71,7 +93,7 @@ export class SignUpComponent implements OnInit {
       this.auth.registerMember(datas.value).subscribe();
       swal({
         title: 'สำเร็จ!',
-        text: 'สมัครสมาชิกสำเร็จ ปิดหน้าต่างนี้เพื่อเข้าสู่ระบบ',
+        text: 'สมัครสมาชิกสำเร็จ',
         type: 'success',
         confirmButtonText: 'ปิด'
       });

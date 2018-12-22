@@ -36,6 +36,7 @@ export class StoreT1Component implements OnInit {
   date;
   statusUpdate = [];
   take;
+
   constructor(private api: Menu4Service, private api_menu7: Menu7Service,
     private authAf: AngularFireAuth, private auth: AuthService) {
       this.date = new Date();
@@ -129,7 +130,7 @@ export class StoreT1Component implements OnInit {
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้เบิกออก */
       this.auth.showData(datas.email).subscribe(snap => {
         const values = Object.keys(snap).map(key => snap[key]);
-        this.name = values[0].fname; /* + ' ' + values[0].lname */
+        this.name = values[0].id_member + ' ' + values[0].fname;
       });
     });
     console.log(this.date);
@@ -151,7 +152,7 @@ export class StoreT1Component implements OnInit {
 
       });
     } else {
-      this.detailFilter.forEach( a => {
+      this.detailFilter.forEach(a => {
         if (a.type === e1.value) {
           console.log(a.weight);
           this.count_weight += Number(a.weight);
@@ -348,11 +349,26 @@ export class StoreT1Component implements OnInit {
 
   update_hidden1(key) {
     console.log(key);
-    this.api.updateHidden1(key).subscribe(d => {
-      if (d.status === 'OK') {
-        this.ngOnInit();
+    this.api.showStore().subscribe(datas => {
+      const a = Object.keys(datas).map(keys => datas[keys]);
+      for (let i = 0; i < a.length; i++) {
+        if (a[i].status === 'กำลังบ่ม') {
+          console.log('aaaaa');
+          console.log(a[i]);
+          // swal({
+          //   title: 'ผิดพลาด!',
+          //   text: 'ไมสามารถเบิกได้ เนื่องจากรายการนี้กำลังบ่มอยู่!',
+          //   type: 'error',
+          //   confirmButtonText: 'ตกลง'
+          // });
+        }
       }
     });
+    // this.api.updateHidden1(key).subscribe(d => {
+    //   if (d.status === 'OK') {
+    //     this.ngOnInit();
+    //   }
+    // });
   }
   update_hidden0(key) {
     console.log(key);

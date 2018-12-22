@@ -1,8 +1,8 @@
 <div class="header">
-    <p class="text-center"><strong>จำลองการเพิ่มข้อมูล</strong></p>
+    <p class="text-center"><strong>จำลองการนำเข้าจากแผนกแปรรูปโค</strong></p>
 
     <div class="row m">
-      <div class="col-2">
+      <!-- <div class="col-2">
         <div class="card jumsize2 shadow p">
           <div class="card-header">
             <h5>ประเภทการจำลอง</h5>
@@ -18,8 +18,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-10">
+      </div> -->
+      <div class="col"> <!--<div class="col-10">-->
         <div class="card shadow p">
           <div class="card-header">
             <h6>เพิ่มข้อมูลซากเนื้อโค</h6>
@@ -28,93 +28,76 @@
             <form (ngSubmit)="addDataST1(t)" #t="ngForm">
                   <div class="form-row">
                     <div class="col-sm-2 mb-2">
-                      <label>ชนิดซาก</label>
-                      <select class="form-control" (change)="changeType(slt)" [value]="1" #slt>
-                        <option value="1">ซากเนื้อโค (ซ้าย-ขวา)</option>
-                        <option value="2">ซากเนื้อโค (บน-ล่าง)</option>
-                        <option value="3">ซากเนื้อโค (ก้อน)</option>
-                        <option value="4">ซากเนื้อโค (ส่วนอื่น)</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 1">
                       <label>ประเภทซาก</label>
-                      <select class="form-control" name="type" ngModel>
-                        <option value="ซากซ้าย">ซากซ้าย</option>
-                        <option value="ซากขวา">ซากขวา</option>
+                      <select class="form-control" (change)="changeType(slt)" [value]="0" #slt>
+                        <option selected disabled value="0">เลือกประเภทซาก..</option>
+                        <option value="ซากซ้าย">ซากเนื้อโคซีกซ้าย</option>
+                        <option value="ซากขวา">ซากเนื้อโคซีกขวา</option>
+                        <option value="ซากซ้ายบน">ซากเนื้อโคซีกซ้ายส่วนบน</option>
+                        <option value="ซากซ้ายล่าง">ซากเนื้อโคซีกซ้ายส่วนล่าง</option>
+                        <option value="ซากขวาบน">ซากเนื้อโคซีกขวาส่วนบน</option>
+                        <option value="ซากขวาล่าง">ซากเนื้อโคซีกขวาส่วนล่าง</option>
+                        <option value="เนื้อน่อง">เนื้อน่อง</option>
+                        <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
+                        <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
+                        <option value="เนื้อทีโบน">เนื้อทีโบน</option>
+                        <option value="เนื้อสันสะโพก">เนื้อสันสะโพก</option>
+                        <option value="เนื้อหางสันสะโพก">เนื้อหางสันสะโพก</option>
+                        <option value="เนื้อสันนอก">เนื้อสันนอก</option>
+                        <option value="เนื้อใบบัวสเต๊ก">เนื้อใบบัวสเต๊ก</option>
+                        <option value="เนื้อสะโพกใน">เนื้อสะโพกใน</option>
+                        <option value="เนื้อสันใน">เนื้อสันใน</option>
+                        <option value="เนื้อสันกลางถอดกระดูก">เนื้อสันกลางถอดกระดูก</option>
+                        <option value="เนื้อซี่โครงติดกระดูก">เนื้อซี่โครงติดกระดูก</option>
+                        <option value="เนื้อใบพาย">เนื้อใบพาย</option>
+                        <option value="เนื้อปลาช่อน">เนื้อปลาช่อน</option>
+                        <option value="เนื้อเสือร้องไห้">เนื้อเสือร้องไห้</option>
+                        <option value="เนื้อรักบี้">เนื้อรักบี้</option>
+                        <option value="เนื้อสันไหล่">เนื้อสันไหล่</option>
+                        <option value="เครื่องใน">เครื่องใน</option>
+                        <option value="หัว">หัว</option>
+                        <option value="หนัง">หนัง</option>
+                        <option value="หาง">หาง</option>
+                        <option value="ขา">ขา</option>
+                        <option value="ไขมัน">ไขมัน</option>
+                        <option value="อองเร">อองเร</option>
                       </select>
                     </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 2">
+                    <div class="col-sm-2 mb-2" hidden>
                       <label>ประเภทซาก</label>
-                      <select class="form-control" name="type" ngModel>
-                        <option value="ซากซ้ายบน">ซากซ้ายบน</option>
-                        <option value="ซากซ้ายล่าง">ซากซ้ายล่าง</option>
-                        <option value="ซากขวาบน">ซากขวาบน</option>
-                        <option value="ซากขวาล่าง">ซากขวาล่าง</option>
+                      <select class="form-control" name="type" ngModel="{{add}}">
+                        <option value="{{add}}"></option>
                       </select>
                     </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 3">
-                    <label>ประเภทซาก</label>
-                    <select class="form-control" name="type" ngModel>
-                      <option value="เนื้อน่อง">เนื้อน่อง</option>
-                      <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
-                      <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
-                      <option value="เนื้อทีโบน">เนื้อทีโบน</option>
-                      <option value="เนื้อสันสะโพก">เนื้อสันสะโพก</option>
-                      <option value="เนื้อหางสันสะโพก">เนื้อหางสันสะโพก</option>
-                      <option value="เนื้อสันนอก">เนื้อสันนอก</option>
-                      <option value="เนื้อใบบัวสเต๊ก">เนื้อใบบัวสเต๊ก</option>
-                      <option value="เนื้อสะโพกใน">เนื้อสะโพกใน</option>
-                      <option value="เนื้อสันใน">เนื้อสันใน</option>
-                      <option value="เนื้อสันกลางถอดกระดูก">เนื้อสันกลางถอดกระดูก</option>
-                      <option value="เนื้อซี่โครงติดกระดูก">เนื้อซี่โครงติดกระดูก</option>
-                      <option value="เนื้อใบพาย">เนื้อใบพาย</option>
-                      <option value="เนื้อปลาช่อน">เนื้อปลาช่อน</option>
-                      <option value="เนื้อเสือร้องไห้">เนื้อเสือร้องไห้</option>
-                      <option value="เนื้อรักบี้">เนื้อรักบี้</option>
-                      <option value="เนื้อสันไหล่">เนื้อสันไหล่</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-2 mb-2" [hidden]="hid != 4">
-                    <label>ประเภทซาก</label>
-                    <select class="form-control" name="type" ngModel>
-                      <option value="เครื่องใน">เครื่องใน</option>
-                      <option value="หัว">หัว</option>
-                      <option value="หนัง">หนัง</option>
-                      <option value="หาง">หาง</option>
-                      <option value="ขา">ขา</option>
-                      <option value="ไขมัน">ไขมัน</option>
-                      <option value="อองเร">อองเร</option>
-                    </select>
-                  </div>
-                    <div class="col-sm-2 mb-2">
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>เจ้าของ</label>
                       <input type="text" class="form-control" name="owner" ngModel />
                     </div>
-                    <div class="col-sm-2 mb-2">
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>เบอร์โค</label>
                       <input type="text" class="form-control" name="cow_code" ngModel />
                     </div>
-                    <div class="col-sm-2 mb-2">
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>รหัสซาก</label>
                       <input type="text" class="form-control" name="code" ngModel />
                     </div>
-                    <div class="col-sm-2 mb-2">
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>รหัสบาร์โค้ดซาก</label>
                       <input type="text" class="form-control" name="barcode" ngModel />
                     </div>
-                    <div class="col-sm-2 mb-2">
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>รหัสคิวอาร์โค้ด</label>
                       <input type="text" class="form-control" name="qr_code" ngModel />
                     </div>
-                    <div class="col-sm-1 mb-2">
+                    <div class="col-sm-1 mb-2" [hidden]="hid == undefined">
                       <label>น้ำหนัก (กก.)</label>
                       <input type="text" class="form-control" name="weight" maxlength=6 ngModel />
                     </div>
-                    <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">
+                    <div class="col-sm-1 mb-2" [hidden]="hid == undefined || hid == 1">
                       <label>อายุ (วัน)</label>
                       <input type="text" class="form-control" name="age" ngModel />
                     </div>
-                    <div class="col-sm-1 mb-2">
+                    <div class="col-sm-1 mb-2" [hidden]="hid == undefined">
                       <label>ห้อง</label>
                       <select class="form-control" name="room" ngModel="1" >
                         <option value="1">1</option>
@@ -123,16 +106,16 @@
                         <option value="4">4</option>
                       </select>
                     </div>
-                    <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">
+                    <div class="col-sm-1 mb-2" [hidden]="hid == undefined || hid == 1">
                       <label>ชั้น</label>
-                      <select class="form-control" name="class" ngModel="1" >
+                      <select class="form-control" name="class" [value]="1" ngModel="1" >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                       </select>
                     </div>
-                    <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">
+                    <div class="col-sm-1 mb-2" [hidden]="hid == undefined || hid == 1">
                       <label>ตะกร้า</label>
                       <select class="form-control" name="bucket" ngModel="1" >
                         <option value="1">1</option>
@@ -140,34 +123,25 @@
                         <option value="3">3</option>
                       </select>
                     </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 1">
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>สถานะ</label>
-                      <select class="form-control" name="status" ngModel>
-                        <option value="เชือดแล้ว">เชือดแล้ว</option>
+                      <select class="form-control" name="status"  ngModel>
+                        <option [hidden]="hid == undefined || hid != 1" value="เชือดแล้ว">เชือดแล้ว</option>
+                        <option [hidden]="hid == undefined || hid != 2" value="ตัดแต่ง (บน-ล่าง) แล้ว">ตัดแต่ง (บน-ล่าง) แล้ว</option>
+                        <option [hidden]="hid == undefined || hid != 3" value="ตัดแต่ง (ก้อน) แล้ว">ตัดแต่ง (ก้อน) แล้ว</option>
+                        <option [hidden]="hid == undefined || hid != 3" value="ซากเหลือ">ซากเหลือ</option>
+                        <option [hidden]="hid == undefined || hid != 4" value="คงคลัง">คงคลัง</option>
                       </select>
                     </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 2">
-                      <label>สถานะ</label>
-                      <select class="form-control" name="status" ngModel>
-                        <option value="ตัดแต่ง (บน-ล่าง) แล้ว">ตัดแต่ง (บน-ล่าง) แล้ว</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 3">
-                      <label>สถานะ</label>
-                      <select class="form-control" name="status" ngModel>
-                        <option value="ตัดแต่ง (ก้อน) แล้ว">ตัดแต่ง (ก้อน) แล้ว</option>
-                        <option value="ซากเหลือ">ซากเหลือ</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-2 mb-2" [hidden]="hid != 4">
-                      <label>สถานะ</label>
-                      <select class="form-control" name="status" ngModel>
-                        <option value="คงคลัง">คงคลัง</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-2 mb-2">
+                    <!-- <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
                       <label>ผู้นำเข้า</label>
                       <input type="text" class="form-control" name="import_name" ngModel/>
+                    </div> -->
+                    <div class="col-sm-2 mb-2" [hidden]="hid == undefined">
+                      <label>ผู้นำเข้า</label>
+                      <select class="form-control" name="import_name"  ngModel>
+                        <option value="{{a}}" *ngFor="let a of id_member_name">{{a}}</option>
+                      </select>
                     </div>
                     <div class="col-sm-1 mb-2" hidden>
                       <label>ตัวนับอายุข้อมูล</label>
@@ -254,4 +228,33 @@
     </div>
   </div>
 
-
+  <!-- <option value="ซากซ้าย">ซากเนื้อโคซีกซ้าย</option>
+  <option value="ซากขวา">ซากเนื้อโคซีกซ้าย</option>
+  <option value="ซากซ้ายบน">ซากเนื้อโคซีกซ้ายส่วนบน</option>
+  <option value="ซากซ้ายล่าง">ซากเนื้อโคซีกซ้ายส่วนล่าง</option>
+  <option value="ซากขวาบน">ซากเนื้อโคซีกซ้ายส่วนบน</option>
+  <option value="ซากขวาล่าง">ซากเนื้อโคซีกซ้ายส่วนล่าง</option>
+  <option value="เนื้อน่อง">เนื้อน่อง</option>
+  <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
+  <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
+  <option value="เนื้อทีโบน">เนื้อทีโบน</option>
+  <option value="เนื้อสันสะโพก">เนื้อสันสะโพก</option>
+  <option value="เนื้อหางสันสะโพก">เนื้อหางสันสะโพก</option>
+  <option value="เนื้อสันนอก">เนื้อสันนอก</option>
+  <option value="เนื้อใบบัวสเต๊ก">เนื้อใบบัวสเต๊ก</option>
+  <option value="เนื้อสะโพกใน">เนื้อสะโพกใน</option>
+  <option value="เนื้อสันใน">เนื้อสันใน</option>
+  <option value="เนื้อสันกลางถอดกระดูก">เนื้อสันกลางถอดกระดูก</option>
+  <option value="เนื้อซี่โครงติดกระดูก">เนื้อซี่โครงติดกระดูก</option>
+  <option value="เนื้อใบพาย">เนื้อใบพาย</option>
+  <option value="เนื้อปลาช่อน">เนื้อปลาช่อน</option>
+  <option value="เนื้อเสือร้องไห้">เนื้อเสือร้องไห้</option>
+  <option value="เนื้อรักบี้">เนื้อรักบี้</option>
+  <option value="เนื้อสันไหล่">เนื้อสันไหล่</option>
+  <option value="เครื่องใน">เครื่องใน</option>
+  <option value="หัว">หัว</option>
+  <option value="หนัง">หนัง</option>
+  <option value="หาง">หาง</option>
+  <option value="ขา">ขา</option>
+  <option value="ไขมัน">ไขมัน</option>
+  <option value="อองเร">อองเร</option> -->

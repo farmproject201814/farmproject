@@ -93,23 +93,9 @@
             <div class="form-group row mx-sm-2">
               <div class="input-group form-search mb-4">
                 <b>ระยะเวลาบ่ม</b>
-                <select class="form-control search-query col-6 ml-auto" ngModel="7" style="border-radius: 4px"
-                (change)="sendDate(a1)" ngModel="7" #a1>
-                  <option value="1">1 วัน</option>
-                  <option value="2">2 วัน</option>
-                  <option value="3">3 วัน</option>
-                  <option value="4">4 วัน</option>
-                  <option value="5">5 วัน</option>
-                  <option value="6">6 วัน</option>
-                  <option value="7">7 วัน (มาตรฐาน)</option>
-                  <option value="8">8 วัน</option>
-                  <option value="9">9 วัน</option>
-                  <option value="10">10 วัน</option>
-                  <option value="11">11 วัน</option>
-                  <option value="12">12 วัน</option>
-                  <option value="13">13 วัน</option>
-                  <option value="14">14 วัน</option>
-                  <option value="15">15 วัน</option>
+                <select class="form-control search-query col-6 ml-auto" style="border-radius: 4px"
+                (change)="sendDate(a1)" ngModel={{day_aging_sd}} #a1>
+                  <option value="{{y}}" *ngFor="let y of lim_day_aging">{{y}} วัน</option>
                 </select>
               </div>
               <label><b>จำนวนการบ่มทั้งหมด {{idcheck.length}} รายการ</b></label>

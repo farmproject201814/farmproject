@@ -26,9 +26,11 @@ export class PrivilegeComponent implements OnInit {
     email: '',
     address: '',
     mobile: '',
+    phone_num: '',
     fax: '',
     privilege_id: '',
-    count_login: ''
+    count_login: '',
+    id_member: ''
   };
   date;
   datas: any;
@@ -54,9 +56,13 @@ export class PrivilegeComponent implements OnInit {
         } else if (value[i].privilege_id === '3') {
           this.datas[i].privilege = 'แผนกตัดเกรด';
         } else if (value[i].privilege_id === '4') {
-          this.datas[i].privilege = 'แผนกเชือด-ตัดแต่ง';
+          this.datas[i].privilege = 'แผนกแปรรูปโค';
         } else if (value[i].privilege_id === '5') {
           this.datas[i].privilege = 'แผนกจำหน่าย';
+        } else if (value[i].privilege_id === '6') {
+          this.datas[i].privilege = 'แผนกสหกรณ์';
+        } else if (value[i].privilege_id === '7') {
+          this.datas[i].privilege = 'แผนกนำเข้าโค';
         }
       }
       console.log(value[0].privilege_id);
@@ -88,7 +94,7 @@ export class PrivilegeComponent implements OnInit {
     this.ngOnInit();
     swal({
       title: 'สำเร็จ!',
-      text: 'บันทึกการเปลี่ยนแปลงข้อมูลส่วนตัวสำเร็จ',
+      text: 'บันทึกการเปลี่ยนแปลงข้อมูลผู้ใช้งานสำเร็จ',
       type: 'success',
       confirmButtonText: 'ปิด',
       // showConfirmButton: false

@@ -21,6 +21,11 @@ export class ImportT1Component implements OnInit {
   constructor(private api: Menu2Service) { }
 
   ngOnInit() {
+      this.count = 0;
+      this.start = '';
+      this.end =  '';
+      this.startvalue = '';
+      this.endvalue = '';
       this.api.showHistory_Import().subscribe(data => {
       const a = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
       for (let i = 0; i < a.length; i++) {
@@ -28,6 +33,9 @@ export class ImportT1Component implements OnInit {
         // this.datas[i].key = Object.keys(data)[i];
         this.count++;
         this.detailFilter.push(a[i]);
+        console.log('วัน');
+        a[i].date = new Date(a[i].date);
+        console.log(a[i].date);
       }
     });
   }
@@ -110,21 +118,49 @@ export class ImportT1Component implements OnInit {
   }
 
   searchDate() {
-
+    this.count = 0;
+    this.startvalue = new Date(this.startvalue);
+    this.endvalue = new Date(this.endvalue);
     console.log(this.startvalue);
     console.log(this.endvalue);
     // tslint:disable-next-line:max-line-length
     firebase.database().ref().child('/store/menu2/import').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
       if (data.val() != null) {
+        console.log('aaabbb');
+        console.log(this.count);
         this.datas = Object.keys(data.val()).map(key => data.val()[key]);
-        for (let i = 0 ; i < data.val().length ; i++) {
+        for (let i = 0 ; i < this.datas.length ; i++) {
           this.datas[i].key = Object.keys(data.val());
+          this.count++;
+          console.log('pppp');
+          console.log(this.count);
         }
+        console.log('aaa');
+        console.log(this.count);
         console.log(this.datas);
       } else {
         this.datas = [];
+        this.count = 0;
+        console.log('bbb');
       }
 
     });
+  }
+
+  filter_type(e1) {
+    this.datas = [];
+    this.count = 0;
+    console.log(e1.value);
+    if (e1.value === 'ทั้งหมด') {
+      this.datas = this.detailFilter;
+      this.count = this.detailFilter.length;
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.type === e1.value) {
+          this.datas.push(a);
+          this.count ++;
+        }
+      });
+    }
   }
 }

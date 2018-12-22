@@ -55,27 +55,21 @@
           </div>
           <div class="col">
             <div class="form-row">
-              <div class="form-group col">
+              <div class="form-group col-2">
                 <label>เพศ<font>*</font></label>
                 <select class="form-control" name="gender" ngModel="ชาย">
                   <option selected value="ชาย">ชาย</option>
                   <option value="หญิง">หญิง</option>
                 </select>
               </div>
-              <div class="form-group col">
+              <div class="form-group col-4">
                 <label>วัน/เดือน/ปีเกิด<font>*</font></label>
-                <input type="date" class="form-control" name="day_of_birth" ngModel style="height: 35px">
+                <input type="date" class="form-control" name="day_of_birth" ngModel style="height: 35px;margin-top: -3px">
               </div>
-            </div>
-            <div class="form-row">
               <div class="form-group col">
                 <label>เลขบัตรประจำตัวประชาชน<font>*</font></label>
                 <input type="text" class="form-control" placeholder="เลขบัตรประจำตัวประชาชน 13 หลัก" maxlength="13"
                   name="id_code" ngModel>
-              </div>
-              <div class="form_group col">
-                <label>อีเมล<font>*</font></label>
-                <input type="email" class="form-control" placeholder="เช่น example@hotmail.com" name="email" ngModel>
               </div>
             </div>
             <div class="form-row">
@@ -85,15 +79,27 @@
                   ngModel></textarea>
               </div>
               <div class="form_group col">
-                <label>เบอร์โทรศัพท์<font>*</font></label>
+                <label>อีเมล<font>*</font></label>
+                <input type="email" class="form-control" placeholder="เช่น example@hotmail.com" name="email" ngModel>
+                <label style="margin-top: 20px">เบอร์โทรศัพท์<font>*</font></label>
                 <input type="text" class="form-control mb-2" placeholder="กรอกเบอร์โทรศัพท์ที่สามารถติดต่อได้"
                   maxlength="10" name="mobile" ngModel>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form_group col" style="margin: 4px">
+                <label>เบอร์โทรศัพท์บ้าน</label>
+                <input type="text" class="form-control mb-2" placeholder="กรอกเบอร์โทรศัพท์บ้านที่สามารถติดต่อได้"
+                  maxlength="9" name="phone_num" ngModel>
+              </div>
+              <div class="form_group col" style="margin: 4px">
                 <label>แฟ็ก (Fax)</label>
                 <input type="text" class="form-control" placeholder="กรอกแฟ็กที่สามารถติดต่อได้" maxlength="9" name="fax"
                   ngModel>
               </div>
             </div>
           </div>
+          <input type="text" class="form-control" name="id_member" ngModel={{count_id}} hidden>
           <div class="form-group row" hidden>     <!-- ตัวกำหนดสิทธิ์ผู้ใช้งาน -->
             <label class="mx-sm-3">ตัวกำหนดสิทธิ์ผู้ใช้งาน</label>
             <div class="col-8 ml-auto">

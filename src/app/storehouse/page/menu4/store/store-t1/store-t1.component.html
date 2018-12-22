@@ -2,7 +2,7 @@
   <p class="text-center"><strong>ยอดคงคลัง</strong></p>
   <div class="row justify-content-center" id="r1">
     <div class="form-inline">
-      <label class="col-form-label"><b>ประเภทซาก</b></label>
+      <!-- <label class="col-form-label"><b>ประเภทซาก</b></label>
       <div class="dropdown mx-sm-3">
         <button class="dropbtn">ซากเนื้อโค (ทั้งหมด) &nbsp;<i class="fa fa-caret-down" ></i></button>
         <div class="dropdown-content">
@@ -11,12 +11,42 @@
           <a routerLink="/menu4/store-t4">ซากเนื้อโค (ก้อน)</a>
           <a routerLink="/menu4/store-t5">ซากเนื้อโค (ส่วนอื่น)</a>
         </div>
-      </div>
-      <label class="col-form-label"><b>ชนิดซาก</b></label>
+      </div> -->
+      <label class="col-form-label"><b>ประเภทซาก</b></label>
       <div class="d1 ml-3">
         <div class="input-group form-search">
-            <select class="form-control search-query fcsq1">
+            <select class="form-control search-query fcsq1" (change)="filter_type(t)" ngModel="ทั้งหมด" #t>
                 <option value="ทั้งหมด">ทั้งหมด</option>
+                <option value="ซากซ้าย">ซากเนื้อโคซีกซ้าย</option>
+                <option value="ซากขวา">ซากเนื้อโคซีกขวา</option>
+                <option value="ซากซ้ายบน">ซากเนื้อโคซีกซ้ายส่วนบน</option>
+                <option value="ซากซ้ายล่าง">ซากเนื้อโคซีกซ้ายส่วนล่าง</option>
+                <option value="ซากขวาบน">ซากเนื้อโคซีกขวาส่วนบน</option>
+                <option value="ซากขวาล่าง">ซากเนื้อโคซีกขวาส่วนล่าง</option>
+                <option value="เนื้อน่อง">เนื้อน่อง</option>
+                <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
+                <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
+                <option value="เนื้อทีโบน">เนื้อทีโบน</option>
+                <option value="เนื้อสันสะโพก">เนื้อสันสะโพก</option>
+                <option value="เนื้อหางสันสะโพก">เนื้อหางสันสะโพก</option>
+                <option value="เนื้อสันนอก">เนื้อสันนอก</option>
+                <option value="เนื้อใบบัวสเต๊ก">เนื้อใบบัวสเต๊ก</option>
+                <option value="เนื้อสะโพกใน">เนื้อสะโพกใน</option>
+                <option value="เนื้อสันใน">เนื้อสันใน</option>
+                <option value="เนื้อสันกลางถอดกระดูก">เนื้อสันกลางถอดกระดูก</option>
+                <option value="เนื้อซี่โครงติดกระดูก">เนื้อซี่โครงติดกระดูก</option>
+                <option value="เนื้อใบพาย">เนื้อใบพาย</option>
+                <option value="เนื้อปลาช่อน">เนื้อปลาช่อน</option>
+                <option value="เนื้อเสือร้องไห้">เนื้อเสือร้องไห้</option>
+                <option value="เนื้อรักบี้">เนื้อรักบี้</option>
+                <option value="เนื้อสันไหล่">เนื้อสันไหล่</option>
+                <option value="เครื่องใน">เครื่องใน</option>
+                <option value="หัว">หัว</option>
+                <option value="หนัง">หนัง</option>
+                <option value="หาง">หาง</option>
+                <option value="ขา">ขา</option>
+                <option value="ไขมัน">ไขมัน</option>
+                <option value="อองเร">อองเร</option>
               </select>
           </div>
       </div>
