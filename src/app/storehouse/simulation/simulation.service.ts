@@ -87,7 +87,10 @@ export class SimulationService {
   }
 
 
-  countNum_dashboard() {
+  countNum_dashboard() {        // นับ dashboard รายการนำเข้า
     return this.http.get(api.url + '/api/store/count-num-dashboard').pipe(map(res => res.json()));
+  }
+  countNum_dashboard2() {        // นับ dashboard รายการเบิกออก
+    return this.http.get(api.url + '/api/store/count-num-dashboard2').pipe(map(res => res.json()));
   }
 }

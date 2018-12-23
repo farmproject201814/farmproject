@@ -17,6 +17,8 @@ export class AllSettingComponent implements OnInit {
   class: any;
   bucket: any;
   lim_age: any;
+  lim_day_aging: any;
+  day_aging_sd: any;
 
   constructor(private api_menu7: Menu7Service) { }
 
@@ -44,6 +46,18 @@ export class AllSettingComponent implements OnInit {
       console.log(let4);
       this.lim_age = let4[0];
       this.lim_age.key = Object.keys(data4)[0];
+    });
+    this.api_menu7.showSetting_limit_day_Aging().subscribe(data5 => {        /* แสดงจำนวนลิมิตวันบ่มตามที่ตั้งค่า */
+      const let5 = Object.keys(data5).map(a5 => data5[a5]);
+      console.log(let5);
+      this.lim_day_aging = let5[0];
+      this.lim_day_aging.key = Object.keys(data5)[0];
+    });
+    this.api_menu7.showSetting_day_aging_Sd().subscribe(data6 => {        /* แสดงจำนวนลิมิตวันบ่มตามที่ตั้งค่า */
+      const let6 = Object.keys(data6).map(a6 => data6[a6]);
+      console.log(let6);
+      this.day_aging_sd = let6[0];
+      this.day_aging_sd.key = Object.keys(data6)[0];
     });
   }
 
@@ -130,32 +144,50 @@ export class AllSettingComponent implements OnInit {
           // showConfirmButton: false
         });
        }
-
   }
 
-  sw_alert() {
-    swal({
-      title: 'บันทึกวันบ่มซากเนื้อโค',
-      text: 'เรียบร้อยแล้ว',
-      type: 'success',
-      confirmButtonText: 'ปิด',
-      confirmButtonColor: '#da4151'
-      // showConfirmButton: false
-    });
-  }
+  add_settingLimit_day_aging(rq: NgForm, key, key2) {
+    console.log(rq.value, key);
+    if (rq.value.limit_day_aging === '0' || rq.value.limit_day_aging < '0') {
+      swal({
+        title: 'ผิดพลาด!',
+        text: 'กำหนดลิมิตวันบ่มไม่ถูกต้อง',
+        type: 'error',
+        confirmButtonText: 'ตกลง',
+        // confirmButtonColor: '#da4151'
+        // showConfirmButton: false
+      });
+     } else {
+      this.api_menu7.addSetting_limit_day_Aging({limit_day_aging: rq.value.limit_day_aging}, key).subscribe();
+      swal({
+        title: 'สำเร็จ!',
+        text: 'บันทึกลิมิตวันบ่มสำเร็จ',
+        type: 'success',
+        confirmButtonText: 'ตกลง',
+        // showConfirmButton: false
+      });
+     }
 
-  sw_alert2() {
-    swal({
-      title: 'บันทึกวันใกล้หมดอายุ',
-      text: 'เรียบร้อยแล้ว',
-      type: 'success',
-      confirmButtonText: 'ปิด',
-      confirmButtonColor: '#da4151'
-      // showConfirmButton: false
-    });
-  }
-
-
+     if (rq.value.day_aging_sd === '0' || rq.value.day_aging_sd < '0') {
+      swal({
+        title: 'ผิดพลาด!',
+        text: 'กำหนดวันบ่มมาตรฐานไม่ถูกต้อง',
+        type: 'error',
+        confirmButtonText: 'ตกลง',
+        // confirmButtonColor: '#da4151'
+        // showConfirmButton: false
+      });
+     } else {
+      this.api_menu7.addSetting_day_aging_Sd({day_aging_sd: rq.value.day_aging_sd}, key2).subscribe();
+      swal({
+        title: 'สำเร็จ!',
+        text: 'บันทึกวันบ่มมาตรฐานสำเร็จ',
+        type: 'success',
+        confirmButtonText: 'ตกลง',
+        // showConfirmButton: false
+      });
+     }
+}
 
   onDelete_import() {     // ล้างรายการนำเข้า
     swal({
@@ -203,6 +235,9 @@ export class AllSettingComponent implements OnInit {
     });
   }
 
+  //     add_day_limit_sd(p: NgForm) {
+  //   this.api_menu7.add_day_aging_Sd(p.value).subscribe();
+  // }
   //   addd(p: NgForm) {
   //   this.api_menu7.add_lastAge(p.value).subscribe();
   // }
@@ -212,7 +247,10 @@ export class AllSettingComponent implements OnInit {
   // add_b(q: NgForm) {
   //   this.api_menu7.addb(q.value).subscribe();
   // }
-    // add_limit_age(r: NgForm) {
-    //   this.api_menu7.add_limitAge(r.value).subscribe();
+  // add_limit_age(r: NgForm) {
+  //   this.api_menu7.add_limitAge(r.value).subscribe();
+  // }
+    //     add_limit_day_aging(r: NgForm) {
+    //   this.api_menu7.add_limit_day_Aging(r.value).subscribe();
     // }
 }

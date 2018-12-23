@@ -6,8 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from 'src/app/auth.service';
 import { SimulationService } from 'src/app/storehouse/simulation/simulation.service';
 import * as firebase from 'firebase';
-import { d } from '@angular/core/src/render3';
 import { Menu4Service } from '../../menu4/menu4.service';
+import { Menu7Service } from '../../menu7/menu7.service';
 
 @Component({
   selector: 'app-aging',
@@ -40,8 +40,12 @@ export class AgingComponent implements OnInit {
   endvalue: any = '';
   key_store;
   num_date = 7;
+  id_member;
+  lim_day_aging = [];
+  day_aging_sd;
+
   constructor(private api: Menu1Service, private authAf: AngularFireAuth, private auth: AuthService,
-    private api_4: Menu4Service) {
+    private api_4: Menu4Service, private api_menu7: Menu7Service) {
     this.date = new Date();
    }
 
@@ -72,13 +76,28 @@ export class AgingComponent implements OnInit {
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้บ่ม */
       this.auth.showData(datas.email).subscribe(snap => {
         const values = Object.keys(snap).map(key => snap[key]);
-        this.name = values[0].fname; /* + ' ' + values[0].lname */
+        this.name = values[0].id_member + ' ' + values[0].fname;
       });
     });
 
     this.api_4.showStore().subscribe(data => {
       const a = Object.keys(data); /* Qurey ข้อมูล */
       console.log(data);
+    });
+
+    this.api_menu7.showSetting_limit_day_Aging().subscribe(data => {        /* แสดงจำนวนลิมิตอายุซากตามที่ตั้งค่า */
+      const let4 = Object.keys(data).map(a => data[a]);
+      console.log(let4);
+      for (let i = 0 ; i < Number(let4[0].limit_day_aging) ; i++) {
+        this.lim_day_aging.push(i + 1);
+        this.day_aging_sd = let4[0].day_aging_sd;
+      }
+    });
+
+    this.api_menu7.showSetting_day_aging_Sd().subscribe(data => {        /* แสดงจำนวนลิมิตอายุซากตามที่ตั้งค่า */
+      const let5 = Object.keys(data).map(a => data[a]);
+      console.log(let5);
+        this.day_aging_sd = let5[0].day_aging_sd;
     });
   }
 

@@ -31,19 +31,26 @@
 <nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!afterLogin">
   <a routerLink="/dashboard2"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
   <a routerLink="/dashboard2" class="head nav-link" style="margin-right: 50px">ระบบการจัดการสหกรณ์</a>
-
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
       <ul>
         <li class="nav-item">
-          <a class="text-light nav-link" (click)="goSystem1()">
-            <i class="fas fa-file-import" style="margin-right: 5px"></i>ระบบคลังชิ้นเนื้อ
-          </a>
+          <a class="text-light nav-link">ระบบสหกรณ์</a>  <!--<i class="fas fa-file-import" style="margin-right: 5px"></i>-->
         </li>
         <li class="nav-item">
-          <a class="text-light nav-link" (click)="goSystem2()">
-            <i class="fas fa-file-import" style="margin-right: 5px"></i>ระบบการตัดเกรดเนื้อโค
-          </a>
+          <a class="text-light nav-link">ระบบนำเข้าโค</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" (click)="goSystem_test1()">ระบบแปรรูปโค</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" (click)="goSystem1()">ระบบคลังชิ้นเนื้อ</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" (click)="goSystem2()">ระบบการตัดเกรดเนื้อโค</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-light nav-link" (click)="goSystem_test2()">ระบบจำหน่าย</a>
         </li>
       </ul>
     </div>
@@ -55,7 +62,7 @@
             <i class="fas fa-user"></i>&nbsp;คุณ {{user}}&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
           </button>
           <div class="dropdown-content" style="width: 150px">
-            <a routerLink="/privilege" [hidden]="privilege_id === '2' || privilege_id === '3'"><i class="fas fa-user-cog"></i> ตั้งค่าสิทธิ์ผู้ใช้งาน</a>
+            <a routerLink="/privilege" [hidden]="privilege_id !== '1'"><i class="fas fa-user-cog"></i> ตั้งค่าสิทธิ์ผู้ใช้งาน</a>
             <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
           </div>
         </div>
@@ -200,3 +207,57 @@
     </div>
   </div>
 </nav>
+
+<nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!user_test1">
+    <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+    <a class="head nav-link" style="margin-right: 50px;color: white">ระบบแปรรูปโค</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <ul>
+          <li class="nav-item">
+            <a class="text-light nav-link">จำลองการนำเข้าจากแผนกแปรรูปโค</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="navbar-expand ml-auto navbar-nav">
+      <div class="navbar-nav">
+        <div class="dropdown">
+            <button class="dropbtn" routerLink="/setting" routerLinkActive="active">
+              <i class="fas fa-user"></i>&nbsp;คุณ {{user}}&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
+            </button>
+            <div class="dropdown-content" style="width: 150px">
+              <a routerLink="/dashboard2" (click)=test()><i class='fas fa-chevron-left'></i>&nbsp;กลับสู่หน้าหลัก</a>
+              <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!user_test2">
+      <a><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+      <a class="head nav-link" style="margin-right: 50px;color: white">ระบบจำหน่าย</a>
+      <div class="navbar-expand mr-auto">
+        <div class="navbar-nav">
+          <ul>
+            <li class="nav-item">
+              <a class="text-light nav-link">จำลองการส่งคำร้องของแผนกจำหน่าย</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-expand ml-auto navbar-nav">
+        <div class="navbar-nav">
+          <div class="dropdown">
+              <button class="dropbtn" routerLink="/setting" routerLinkActive="active">
+                <i class="fas fa-user"></i>&nbsp;คุณ {{user}}&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
+              </button>
+              <div class="dropdown-content" style="width: 150px">
+                <a routerLink="/dashboard2" (click)=test()><i class='fas fa-chevron-left'></i>&nbsp;กลับสู่หน้าหลัก</a>
+                <a routerLink="/dashboard" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </nav>

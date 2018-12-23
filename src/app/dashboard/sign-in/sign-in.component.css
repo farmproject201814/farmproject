@@ -1,5 +1,11 @@
 .text-center {
+  background-color: #da4453;
+  color: rgb(255, 255, 255);
+  margin-left: 45%;
+  margin-right: 45%;
   font-size: 24px;
+  margin-bottom: 15px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .btn{
@@ -31,4 +37,10 @@ input {
 a {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.text-center2 {
+  width:100% ;
+  font-size: 17px;
+  font-weight: normal;
 }

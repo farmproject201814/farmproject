@@ -16,7 +16,7 @@ export class Report1T1Component implements OnInit {
   name;
   count = 0;
   datas: any = [];
-  datass = [];
+  datass: any = [];
   check = 3;
   weight_all = 0;
   detailFilter = [];
@@ -694,11 +694,26 @@ searchDate() {
   console.log(this.endvalue);
   // tslint:disable-next-line:max-line-length
   firebase.database().ref().child('/store/menu2/import').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+    console.log(data.val());
     if (data.val() != null) {
+      this.datass = Object.keys(data.val()).map(key => data.val()[key]);
+      console.log(data.val().lenght);
       for (let i = 0 ; i < data.val().length ; i++) {
         this.data_import[i].key = Object.keys(data.val());
         this.datass[i].key = Object.keys(data.val());
+        console.log('aaaaaa');
+        console.log(this.datass);
+        console.log(this.count);
+        console.log(this.count_weight);
+        console.log(this.count_weight_c);
+        this.count ++;
+        this.count_weight += Number(this.datass[i].weight);
+        this.count_weight_c += Number(this.datass[i].weight_c);
       }
+      // document.getElementById('w1').innerHTML =
+      //   this.count_weight.toFixed(2);
+      //   document.getElementById('w2').innerHTML =
+      //   this.count_weight_c.toFixed(2);
       // this.data_import = Object.keys(data.val()).map(key => data.val()[key]);
       // for (let i = 0 ; i < data.val().length ; i++) {
       //   this.data_import[i].key = Object.keys(data.val());
@@ -709,6 +724,7 @@ searchDate() {
       // }
       console.log(this.datas);
     } else {
+      this.count = 0;
       this.datass = [];
       this.data_import = [];
       this.countReport = 0;
@@ -729,6 +745,10 @@ searchDate() {
       this.t25_num = 0; this.t25_w = 0; this.t25_wc = 0; this.t26_num = 0; this.t26_w = 0; this.t26_wc = 0;
       this.t27_num = 0; this.t27_w = 0; this.t27_wc = 0; this.t28_num = 0; this.t28_w = 0; this.t28_wc = 0;
       this.t29_num = 0; this.t29_w = 0; this.t29_wc = 0; this.t30_num = 0; this.t30_w = 0; this.t30_wc = 0;
+      document.getElementById('w1').innerHTML =
+      this.count_weight.toFixed(2);
+      document.getElementById('w2').innerHTML =
+      this.count_weight_c.toFixed(2);
     }
 
   });

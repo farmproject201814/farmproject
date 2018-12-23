@@ -37,4 +37,7 @@ export class Menu1Service {
   update_status_complete(data) {
     return this.http.post(api.url + '/api/store/menu1/update-status-complete' , data).pipe(map(res => res.json()));
   }
+  update_status_complete2(data) {
+    return this.http.post(api.url + '/api/store/menu1/update-status-complete2' , data).pipe(map(res => res.json()));
+  }
 }

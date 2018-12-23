@@ -127,4 +127,21 @@ export class OrderT1Component implements OnInit {
 
     });
   }
+
+  filter_type(e1) {
+    this.datas = [];
+    this.count = 0;
+    console.log(e1.value);
+    if (e1.value === 'ทั้งหมด') {
+      this.datas = this.detailFilter;
+      this.count = this.detailFilter.length;
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.type === e1.value) {
+          this.datas.push(a);
+          this.count ++;
+        }
+      });
+    }
+  }
 }

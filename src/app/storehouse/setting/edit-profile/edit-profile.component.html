@@ -1,7 +1,5 @@
-
-<div class="edit text-center" style="margin-top: 50px; padding-top: 20px">
-    <b>แก้ไขข้อมูลส่วนตัว</b>
-  </div>
+<div class="header">
+    <p class="text-center"><strong>แก้ไขข้อมูลส่วนตัว</strong></p>
 
   <div class="container">
     <div class="row">
@@ -24,6 +22,12 @@
             <div class="card-text">
               <div class="row">
                 <div class="col">
+                  <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">เลขประจำตัวสมาชิก</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.id_member}} readonly>
+                    </div>
+                  </div>
                   <div class="form-group row" id="mt">
                     <label class="col-form-label" id="mg">ชื่อผู้ใช้งาน (Username)</label>
                     <div class="col-sm-6 ml-auto">
@@ -100,6 +104,12 @@
                     </div>
                   </div>
                   <div class="form-group row" id="mt">
+                    <label class="col-form-label" id="mg">เบอร์โทรศัพท์บ้าน</label>
+                    <div class="col-sm-6 ml-auto">
+                      <input type="text" class="form-control" ngModel={{e.phone_num}} readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="mt">
                     <label class="col-form-label" id="mg">แฟ็ก</label>
                     <div class="col-sm-6 ml-auto">
                       <input type="text" class="form-control" ngModel={{e.fax}} readonly>
@@ -111,7 +121,7 @@
             <button type="button" class="btn btn-success mt-4" style="margin-left: 25% ;width: 50%;margin-right: 25%;"
               data-toggle="modal" data-target="#modelEdit" (click)="edit_profile(e.key,e.users,e.pass,e.question,e.answer,
               e.fname,e.lname,e.gender,e.day_of_birth,e.id_code,
-              e.email,e.address,e.mobile,e.fax)">แก้ไขข้อมูลส่วนตัว</button>
+              e.email,e.address,e.mobile,e.phone_num,e.fax,e.id_member)">แก้ไขข้อมูลส่วนตัว</button>
           </div>
         </div>
       </div>
@@ -130,17 +140,21 @@
             <div class="row">
               <div class="col">
                 <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">เลขประจำตัวสมาชิก</label>
+                  <input type="text" class="form-control mx-sm-3" name="id_member" ngModel="{{items.id_member}}" readonly>
+                </div>
+                <div class="form-group row">
                   <label class="mx-sm-3 mb-1">ชื่อผู้ใช้งาน (Username)</label>
-                  <input type="text" class="form-control mx-sm-3" name="users" ngModel="{{items.users}}" disabled>
+                  <input type="text" class="form-control mx-sm-3" name="users" ngModel="{{items.users}}" readonly>
                 </div>
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">รหัสผ่าน (Password)</label>
-                  <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}">
-                  <input type="checkbox" (click)="showPass()" class="mx-sm-3">
-                  <label style="margin-left: -10px;margin-top: 2px;">แสดงรหัสผ่าน</label>
+                  <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}" readonly>
+                  <!-- <input type="checkbox" (click)="showPass()" class="mx-sm-3">
+                  <label style="margin-left: -10px;margin-top: 2px;">แสดงรหัสผ่าน</label> -->
                   <!-- <a style="margin-left: 10px;margin-top: 2px;" routerLink="/change-password" (click)="navigate()">เปลี่ยนรหัสผ่าน</a> -->
                 </div>
-                <div class="form-group row"> <!--style="margin-top: -33px"-->
+                <div class="form-group row" style="margin-top: -14px"> <!--style="margin-top: -33px"-->
                   <label class="mx-sm-3 mb-1">คำถามกรณีเมื่อลืมรหัส</label>
                   <input type="text" class="form-control mx-sm-3" name="question" ngModel="{{items.question}}">
                 </div>
@@ -173,9 +187,9 @@
                   <label class="mx-sm-3 mb-1">เลขบัตรประจำตัวประชาชน</label>
                   <input type="text" class="form-control mx-sm-3" name="id_code" maxlength="13" ngModel="{{items.id_code}}">
                 </div>
-                <div class="form-group row" style="margin-top: 49px">
+                <div class="form-group row">
                   <label class="mx-sm-3 mb-1">อีเมล</label>
-                  <input type="text" class="form-control mx-sm-3" name="email" ngModel="{{items.email}}" disabled>
+                  <input type="text" class="form-control mx-sm-3" name="email" ngModel="{{items.email}}" readonly>
                 </div>
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">ที่อยู่</label>
@@ -185,6 +199,10 @@
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">เบอร์โทรศัพท์</label>
                   <input type="text" class="form-control mx-sm-3" name="mobile" maxlength="10" ngModel="{{items.mobile}}">
+                </div>
+                <div class="form-group row">
+                  <label class="mx-sm-3 mb-1">เบอร์โทรศัพท์บ้าน</label>
+                  <input type="text" class="form-control mx-sm-3" name="phone_num" maxlength="10" ngModel="{{items.phone_num}}">
                 </div>
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">แฟ็ก</label>

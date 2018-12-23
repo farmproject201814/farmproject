@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   afterLogin = false;
   user1 = false;
   user2 = false;
+  user_test1 = false;
+  user_test2 = false;
   test1 = 0;
   check = 0;
   key;
@@ -32,6 +34,8 @@ export class HeaderComponent implements OnInit {
     this.isLogin = false;
     this.user1 = false;
     this.user2 = false;
+    this.user_test1 = false;
+    this.user_test2 = false;
     this.auth.cookieAuth().subscribe(datas => {
       if (datas === true) {
       this.afAuth.authState.subscribe(data => {
@@ -45,8 +49,7 @@ export class HeaderComponent implements OnInit {
           } else {
             this.isLogin = datas;
             this.afterLogin = true;
-          this.user = value[0].fname; // this.user = value[0].fname + ' ' + value[0].lname;
-              // this.global.setUser(element.users);
+            this.user = value[0].fname;
               this.privilege_id = value[0].privilege_id;
               this.check = value[0].check;
               this.key = Object.keys(s)[0];
@@ -55,6 +58,12 @@ export class HeaderComponent implements OnInit {
                 this.afterLogin = false;
               } else if ((value[0].privilege_id === '1' || value[0].privilege_id === '3') && value[0].check === '2') {
                 this.user1 = true;
+                this.afterLogin = false;
+              } else if ((value[0].privilege_id === '1' || value[0].privilege_id === '4') && value[0].check === '3') {
+                this.user_test1 = true;
+                this.afterLogin = false;
+              } else if ((value[0].privilege_id === '1' || value[0].privilege_id === '5') && value[0].check === '4') {
+                this.user_test2 = true;
                 this.afterLogin = false;
               }
             }
@@ -74,6 +83,8 @@ export class HeaderComponent implements OnInit {
       this.isLogin = false;
       this.user1 = false;
       this.user2 = false;
+      this.user_test1 = false;
+      this.user_test2 = false;
     }
     });
     // console.log( 'a: ' + this.afterLogin,
@@ -84,29 +95,38 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.auth.logout();
-    this.auth.updateUser(this.key, {check: '0'}).subscribe();
-    this.ngOnInit();
-    setTimeout(() =>  location.reload());
+    this.auth.updateUser(this.key, {check: '0'}).subscribe(a1 => {
+      if (a1.status === 'OK') {
+        this.ngOnInit();
+      }
+    });
+    // setTimeout(() =>  location.reload());
   }
   test() {
-      this.auth.updateUser(this.key, {check: '0'}).subscribe();
-      this.ngOnInit();
-    // this.router.navigate([('/dashboard2')]);
-    setTimeout(() =>  location.reload());
+      this.auth.updateUser(this.key, {check: '0'}).subscribe(d1 => {
+        if (d1.status === 'OK') {
+          this.ngOnInit();
+        }
+      });
+    // setTimeout(() =>  location.reload());
   }
   goSystem1() {
     console.log(this.check);
-    // window.open('https://project-902e7.firebaseapp.com/', '_self');
-    // console.log(this.privilege_id);
     if (this.privilege_id === '1') {
-      this.auth.updateUser(this.key, {check: '1'}).subscribe();
-      this.router.navigate([('/dashboard_store')]);
-      this.ngOnInit();
+      this.auth.updateUser(this.key, {check: '1'}).subscribe(d => {
+        if (d.status === 'OK') {
+          this.router.navigate([('/dashboard_store')]);
+          this.ngOnInit();
+        }
+      });
     } else {
       if (this.privilege_id === '2') {
-        this.auth.updateUser(this.key, {check: '1'}).subscribe();
-        this.router.navigate([('/dashboard_store')]);
-        this.ngOnInit();
+        this.auth.updateUser(this.key, {check: '1'}).subscribe(d => {
+          if (d.status === 'OK') {
+            this.router.navigate([('/dashboard_store')]);
+            this.ngOnInit();
+          }
+        });
       } else {
         swal({
           title: 'ผิดพลาด!',
@@ -120,14 +140,66 @@ export class HeaderComponent implements OnInit {
   goSystem2() {
     console.log(this.privilege_id);
     if (this.privilege_id === '1') {
-      this.auth.updateUser(this.key, {check: '2'}).subscribe();
+      this.auth.updateUser(this.key, {check: '2'}).subscribe(d3 => {
+        if (d3.status === 'OK') {
+          this.router.navigate([('/beefgrading')]);
+          this.ngOnInit();
+        }
+      });
       this.ngOnInit();
       this.router.navigate([('/beefgrading')]);
     } else {
       if (this.privilege_id === '3') {
-        this.auth.updateUser(this.key, {check: '2'}).subscribe();
+        this.auth.updateUser(this.key, {check: '2'}).subscribe(d4 => {
+          if (d4.status === 'OK') {
+            this.ngOnInit();
+            this.router.navigate([('/beefgrading')]);
+          }
+        });
+      } else {
+        swal({
+          title: 'ผิดพลาด!',
+          text: 'คุณไม่ได้รับสิทธิ์เข้าใช้งานระบบนี้',
+          type: 'error',
+          confirmButtonText: 'ปิด'
+        });
+      }
+    }
+  }
+
+  goSystem_test1() {
+    console.log(this.privilege_id);
+    if (this.privilege_id === '1') {
+      this.auth.updateUser(this.key, {check: '3'}).subscribe();
+      this.ngOnInit();
+      this.router.navigate([('/simulation-t1-import1')]);
+    } else {
+      if (this.privilege_id === '4') {
+        this.auth.updateUser(this.key, {check: '3'}).subscribe();
         this.ngOnInit();
-        this.router.navigate([('/beefgrading')]);
+        this.router.navigate([('/simulation-t1-import1')]);
+      } else {
+        swal({
+          title: 'ผิดพลาด!',
+          text: 'คุณไม่ได้รับสิทธิ์เข้าใช้งานระบบนี้',
+          type: 'error',
+          confirmButtonText: 'ปิด'
+        });
+      }
+    }
+  }
+
+  goSystem_test2() {
+    console.log(this.privilege_id);
+    if (this.privilege_id === '1') {
+      this.auth.updateUser(this.key, {check: '4'}).subscribe();
+      this.ngOnInit();
+      this.router.navigate([('/simulation-t2')]);
+    } else {
+      if (this.privilege_id === '5') {
+        this.auth.updateUser(this.key, {check: '4'}).subscribe();
+        this.ngOnInit();
+        this.router.navigate([('/simulation-t2')]);
       } else {
         swal({
           title: 'ผิดพลาด!',

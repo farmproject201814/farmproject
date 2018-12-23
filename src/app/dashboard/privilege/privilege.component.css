@@ -50,7 +50,7 @@ tr td {
 
 tbody {
   display: block;
-  height: 200px; /* ความสูงของตาราง */
+  height: 280px; /* ความสูงของตาราง */
   overflow: auto;
 }
 
@@ -138,7 +138,7 @@ br {
 }
 
 textarea {
-  height: 83px;
+  height: 70px;
   width: 215px;
   margin-left: 15px;
   margin-bottom: -10px;

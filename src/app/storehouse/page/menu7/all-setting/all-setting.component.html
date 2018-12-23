@@ -2,7 +2,7 @@
   <p class="text-center"><strong>ตั้งค่าระบบ</strong></p>
   <div class="row r1">
     <div class="col-4">
-      <form>
+      <form (ngSubmit)="add_settingLimit_day_aging(y, lim_day_aging.key, day_aging_sd.key)" #y="ngForm">
             <div class="card shadow p c1">
                     <div class="card-header">
                         <h5><i class='far'id="oo">&#xf073;</i> วันบ่มซากเนื้อโค</h5>
@@ -12,18 +12,20 @@
                           <label class="col-form-label"><b>ระบุวันบ่มมาตรฐาน</b></label>
                       </div>
                       <div class="row r112">
-                          <input type="text" class="form-control search-query" ngModel style="width: 200px;height: 30px">
+                          <input type="text" class="form-control search-query" style="width: 200px;height: 30px"
+                          name="day_aging_sd" ngModel="{{day_aging_sd.day_aging_sd}}">
                           <label class="rr112"><b>วัน</b></label>
                       </div>
                       <div class="row r113">
                             <label class="col-form-label"><b>ระบุลิมิตวันบ่ม</b></label>
                         </div>
                         <div class="row r112">
-                                <input type="text" class="form-control search-query" ngModel style="width: 200px;height: 30px">
+                                <input type="text" class="form-control search-query" style="width: 200px;height: 30px"
+                                 name="limit_day_aging" ngModel="{{lim_day_aging.limit_day_aging}}">
                                 <label class="rr112"><b>วัน</b></label>
                             </div>
                       <div class="row r213 justify-content-center">
-                          <button type="button" class="btn" id="bt3" (click)="sw_alert()"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+                          <button type="submit" class="btn" id="bt3"><i class='fas'>&#xf0c7;</i> บันทึก</button>
                       </div>
                   </div>
             </div>
@@ -151,6 +153,21 @@
       </div>
     </div>
 </div>
+
+<!-- <div class="row" style="margin-bottom: 5%">
+    <form (ngSubmit)="add_day_limit_sd(tt)"  #tt="ngForm">
+      <label>ตั้งค่าวันบ่มมาตรฐาน</label>
+      <input name="day_aging_sd" ngModel />
+      <button type="submit">Submit</button>
+    </form>
+  </div> -->
+<!-- <div class="row" style="margin-bottom: 5%">
+    <form (ngSubmit)="add_limit_day_aging(t9)"  #t9="ngForm">
+      <label>ตั้งค่าลิมิตวันบ่ม</label>
+      <input name="lim_day_aging" ngModel />
+      <button type="submit">Submit</button>
+    </form>
+  </div> -->
 <!--
   <div class="row" style="margin-top: 5%">
     <form (ngSubmit)="add_r(t)"   #t="ngForm">

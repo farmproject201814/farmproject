@@ -36,7 +36,6 @@ export class HistoryOrderComponent implements OnInit {
       const c = 0;
       const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
       for (let i = 0; i < a2.length; i++) {
-        if (a2[i].status === 'บ่มเสร็จแล้ว') {
           this.datas.push(a2[i]);
           this.datas[c].key = Object.keys(data)[i];
           this.weight_all += Number(a2[i].weight);
@@ -55,19 +54,55 @@ export class HistoryOrderComponent implements OnInit {
           if (Math.abs(diffDay) === 0) {
             this.bykey.push(Object.keys(data)[i]);
             this.api.updateStatus_to_store(a2[i].cow_code).subscribe(d6 => {
-              y.push(Object.keys(d6)[0]);
+              if (d6.status === 'OK') {
+                y.push(Object.keys(d6)[0]);
+              }
             });
           }
-        }
-
         document.getElementById('w').innerHTML =
         this.weight_all.toFixed(2);
       }
-      const y = [];
-      this.api.update_status_complete(this.bykey).subscribe();
-      console.log(this.bykey);
-      this.api.update_status_complete(y).subscribe();
     });
+
+    const y = [];
+    this.api.update_status_complete(this.bykey).subscribe();
+    this.api.update_status_complete(y).subscribe();
+            // console.log(this.bykey);
+            // this.api.showAging().subscribe(data => {
+            //   const c = 0;
+            //   const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+            //   for (let i = 0; i < a2.length; i++) {
+            //       this.datas.push(a2[i]);
+            //       this.datas[c].key = Object.keys(data)[i];
+            //       this.weight_all += Number(a2[i].weight);
+            //       this.count++;
+            //       this.detailFilter.push(a2[i]);
+
+            //       const o = new Date();
+            //       console.log(o.getTime());
+            //       this.aging_lenght = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
+            //       this.datas[c].day_aging = this.aging_lenght;
+
+            //       const a_start = new Date();
+            //       const diffDay = Math.round((a2[i].date_aging - a_start.getTime()) / (1000 * 3600 * 24));
+            //       console.log(Math.abs(diffDay));
+
+            //       if (Math.abs(diffDay) < 0) {
+            //         this.bykey.push(Object.keys(data)[i]);
+            //         this.api.updateStatus_to_store(a2[i].cow_code).subscribe(d6 => {
+            //           y.push(Object.keys(d6)[0]);
+            //         });
+            //       }
+            //     document.getElementById('w').innerHTML =
+            //     this.weight_all.toFixed(2);
+            //   }
+            //   this.api.update_status_complete2(this.bykey).subscribe(y3 => {
+            //     if (y3.status === 'OK') {
+
+            //     }
+            //   });
+            // });      }
+
   }
 
   dropdown_search(v) {       /* เลือกประเภทการ search */

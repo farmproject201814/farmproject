@@ -60,13 +60,13 @@
                   <div class="col">
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">ชื่อผู้ใช้งาน (Username)</label>
-                      <input type="text" class="form-control mx-sm-3" name="users" ngModel="{{items.users}}">
+                      <input type="text" class="form-control mx-sm-3" name="users" ngModel="{{items.users}}" readonly>
                     </div>
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">รหัสผ่าน (Password)</label>
-                      <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}">
-                      <input type="checkbox" class="mx-sm-3" (click)="showPass()">
-                      <label class="sp">แสดงรหัสผ่าน</label>
+                      <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}" readonly>
+                      <!-- <input type="checkbox" class="mx-sm-3" (click)="showPass()">
+                      <label class="sp">แสดงรหัสผ่าน</label> -->
                     </div>
                     <hr>
                     <div class="form-group row"> <!--style="margin-top: -33px"-->
@@ -92,19 +92,19 @@
                         <option value="หญิง">หญิง</option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col">
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">วัน/เดือน/ปีเกิด</label>
-                      <input type="date" class="form-control mx-sm-3" style="height: 38px;margin-top: -10px;" name="day_of_birth" ngModel="{{items.day_of_birth}}">
+                      <input type="date" class="form-control mx-sm-3" style="height: 38px;margin-top: -5px;" name="day_of_birth" ngModel="{{items.day_of_birth}}">
                     </div>
+                  </div>
+                  <div class="col">
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">เลขบัตรประจำตัวประชาชน</label>
                       <input type="text" class="form-control mx-sm-3" name="id_code" maxlength="13" ngModel="{{items.id_code}}">
                     </div>
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">อีเมล</label>
-                      <input type="text" class="form-control mx-sm-3" name="email" ngModel="{{items.email}}">
+                      <input type="text" class="form-control mx-sm-3" name="email" ngModel="{{items.email}}" readonly>
                     </div>
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">ที่อยู่</label>
@@ -116,8 +116,16 @@
                       <input type="text" class="form-control mx-sm-3" name="mobile" maxlength="10" ngModel="{{items.mobile}}">
                     </div>
                     <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">เบอร์โทรศัพท์บ้าน</label>
+                      <input type="text" class="form-control mx-sm-3" name="phone_num" maxlength="9" ngModel="{{items.phone_num}}">
+                    </div>
+                    <div class="form-group row">
                       <label class="mx-sm-3 mb-1">แฟ็ก</label>
                       <input type="text" class="form-control mx-sm-3" name="fax" maxlength="9" ngModel="{{items.fax}}">
+                    </div>
+                    <div class="form-group row">
+                      <label class="mx-sm-3 mb-1">เลขประจำตัวสมาชิก</label>
+                      <input type="text" class="form-control mx-sm-3" name="id_member" ngModel="{{items.id_member}}">
                     </div>
                     <div class="form-group row">
                       <label class="mx-sm-3 mb-1">กำหนดสิทธิ์การใช้งาน</label>
@@ -126,8 +134,10 @@
                         <option value="1">แอดมิน</option>
                         <option value="2">แผนกคลัง</option>
                         <option value="3">แผนกตัดเกรด</option>
-                        <option value="4">แผนกเชือด-ตัดแต่ง</option>
+                        <option value="4">แผนกแปรรูปโค</option>
                         <option value="5">แผนกจำหน่าย</option>
+                        <option value="5">แผนกสหกรณ์</option>
+                        <option value="5">แผนกนำเข้าโค</option>
                       </select>
                       <input type="hidden" class="form-control" name="count_login" ngModel="1">
                     </div>

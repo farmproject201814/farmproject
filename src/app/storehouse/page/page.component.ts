@@ -52,29 +52,49 @@ export class PageComponent implements OnInit {
     //   }
     // });
 
-    this.api_simulation.countNum_dashboard().subscribe(d => {
-      const value = Object.keys(d);
-      console.log(value);
-      for (let i = 0; i < value.length ; i++) {
-        this.count9 += Object.keys(d[value[i]]).length;
+    // this.api_simulation.countNum_dashboard().subscribe(d => {
+    //   const value = Object.keys(d);
+    //   console.log(value);
+    //   for (let i = 0; i < value.length ; i++) {
+    //     this.count9 += Object.keys(d[value[i]]).length;
+    //   }
+    // });
+    this.count1 = 0;
+    this.count2 = 0;
+    this.count3 = 0;
+    this.count4 = 0;
+    this.count5 = 0;
+    this.count6 = 0;
+    this.count7 = 0;
+    this.count8 = 0;
+    this.count9 = 0;
+    this.count10 = 0;
+
+    this.api_simulation.countNum_dashboard().subscribe(d9 => {
+      const value9 = Object.keys(d9);
+      console.log(value9);
+      for (let i = 0; i < value9.length ; i++) {
+        this.count9 += Object.keys(d9[value9[i]]).length;
       }
     });
 
-    this.api_simulation.countNum_dashboard().subscribe(d => {
-      const value = Object.keys(d);
-      console.log(value);
-      for (let i = 0; i < value.length ; i++) {
-        this.count9 += Object.keys(d[value[i]]).length;
+    this.api_simulation.countNum_dashboard2().subscribe(d10 => {
+      const value10 = Object.keys(d10);
+      console.log(d10);
+      for (let i = 0; i < value10.length ; i++) {
+        console.log('aaaaaaa');
+        console.log(value10.length);
+        this.count10 += Object.keys(d10[value10[i]]).length;
       }
     });
 
-    this.api_simulation.test2().subscribe(d => {
-      const values = Object.keys(d.data).map(key => d.data[key]);
-      values.forEach(a => {
+    this.api_simulation.test2().subscribe(d8 => {
+      const values8 = Object.keys(d8.data).map(key => d8.data[key]);
+      values8.forEach(a => {
         console.log(a);
         let i = 0;
-        const values1 =  Object.keys(a).map(key => a[key]);
-        values1.forEach(b => {
+        const values88 =  Object.keys(a).map(key => a[key]);
+        values88.forEach(b => {
          if (i === 0) {
           this.count8 = Object.values(a).length;
           i ++;

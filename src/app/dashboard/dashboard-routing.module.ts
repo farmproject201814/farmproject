@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'dashboard2', component: Dashboard2Component },
-  { path: 'privilege', component: PrivilegeComponent }
+  { path: 'privilege', component: PrivilegeComponent },
+
 ];
 
 @NgModule({
