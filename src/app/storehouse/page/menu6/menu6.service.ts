@@ -19,4 +19,12 @@ export class Menu6Service {
   showNotificationT5() {
     return this.http.get(api.url + '/api/store/simulation/show/simulation/simulation-t5/').pipe(map(res => res.json()));
   }
+
+  showNotificationT1() {
+    return this.http.get(api.url + '/api/store/menu6/show/notification-t1').pipe(map(res => res.json()));
+  }
+
+  showNotificationT3() {
+    return this.http.get(api.url + '/api/store/menu6/show/notification-t3').pipe(map(res => res.json()));
+  }
 }

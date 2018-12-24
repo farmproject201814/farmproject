@@ -55,22 +55,25 @@ export class AgingComponent implements OnInit {
     this.count = 0;
     this.weight_all = 0;
     this.datas = [];
+    this.idcheck = [];
     this.api.showAging().subscribe(data => {
       const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
-      console.log(data);
       for (let i = 0; i < a2.length; i++) {
+        console.log('bbb');
+        console.log(a2[i]);
         if (a2[i].status === 'เชือดแล้ว' && (a2[i].type === 'ซากซ้าย' || a2[i].type === 'ซากขวา')) {
           this.datas.push(a2[i]);
-          this.datas[i].key = Object.keys(data)[i];
+          this.datas[this.count].key = Object.keys(data)[i];
           this.weight_all += Number(a2[i].weight);
           this.count++;
           this.detailFilter.push(a2[i]);
+          console.log('aaa');
           console.log(this.weight_all);
 
       }
-        document.getElementById('w').innerHTML =
-        this.weight_all.toFixed(2);
       }
+      document.getElementById('w').innerHTML =
+      this.weight_all.toFixed(2);
     });
 
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้บ่ม */
@@ -214,15 +217,30 @@ export class AgingComponent implements OnInit {
     console.log(this.endvalue);
     // tslint:disable-next-line:max-line-length
     firebase.database().ref().child('/store/menu1/aging').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
-      if (data.val() != null) {
-        this.datas = Object.keys(data.val()).map(key => data.val()[key]);
-        for (let i = 0 ; i < data.val().length ; i++) {
-          this.datas[i].key = Object.keys(data.val());
-        }
-        console.log(this.datas);
+      console.log('kkk');
+      console.log(data.val());
+      const a2 = Object.keys(data.val()).map(key => data[key]);
+      for (let i = 0; i < a2.length; i++) {
+        console.log('bbb');
+        console.log(a2[i]);
+        if (a2[i].status === 'เชือดแล้ว' && (a2[i].type === 'ซากซ้าย' || a2[i].type === 'ซากขวา')) {
+          this.datas.push(a2[i]);
+          this.datas[this.count].key = Object.keys(data.val())[i];
+          this.weight_all += Number(a2[i].weight);
+          this.count++;
+          this.detailFilter.push(a2[i]);
+          console.log('aaa');
+          console.log(this.weight_all);
+
       } else {
         this.datas = [];
+        this.count = 0;
+        this.weight_all = 0;
+        this.detailFilter = [];
       }
+      }
+      document.getElementById('w').innerHTML =
+      this.weight_all.toFixed(2);
 
     });
   }

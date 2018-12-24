@@ -32,7 +32,7 @@
             </form>
     </div>
     <div class="col-4">
-      <form (ngSubmit)="add_settingLimit_age(r, lim_age.key)" #r="ngForm">
+      <form (ngSubmit)="add_settingLimit_age(r, lim_age.key, exp.key)" #r="ngForm">
             <div class="card shadow p c1">
                     <div class="card-header">
                         <h5><i class='far' id="oo">&#xf017;</i> วันใกล้หมดอายุ</h5>
@@ -42,7 +42,8 @@
                           <label class="col-form-label"><b>ระบุวันใกล้หมดอายุ</b></label>
                       </div>
                       <div class="row r112">
-                          <input type="text" class="form-control search-query" style="width: 200px;height: 30px">
+                          <input type="text" class="form-control search-query" style="width: 200px;height: 30px"
+                          name="exp_date" ngModel="{{exp.exp_date}}">
                           <label class="rr112"><b>วัน</b></label>
                       </div>
                       <div class="row r113">
@@ -154,6 +155,13 @@
     </div>
 </div>
 
+<!-- <div class="row" style="margin-bottom: 5%">
+    <form (ngSubmit)="add_exp_date(tt)"  #tt="ngForm">
+      <label>ตั้งค่าวันใกล้หมดอายุ</label>
+      <input name="exp_date" ngModel />
+      <button type="submit">Submit</button>
+    </form>
+  </div> -->
 <!-- <div class="row" style="margin-bottom: 5%">
     <form (ngSubmit)="add_day_limit_sd(tt)"  #tt="ngForm">
       <label>ตั้งค่าวันบ่มมาตรฐาน</label>

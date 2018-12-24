@@ -389,7 +389,7 @@ export class Report2T2Component implements OnInit {
         {text: '\n'},
 
         this.table(this.data_import, ['count', 'date', 'type', 'barcode', 'weight',
-         'weight_c', 'import_name', 'take_name']),
+         'weight_c', 'status', 'import_name', 'take_name']),
 
         {text: 'จำนวนซากเนื้อโค ' + this.countReport + ' รายการ', alignment: 'right', margin: [0, 5, 0, 0]},
         // tslint:disable-next-line:max-line-length
@@ -444,8 +444,8 @@ export class Report2T2Component implements OnInit {
 
   buildTableBody(data, columns) {
     const body = [];
-    body.push(['ลำดับ', 'วันที่นำเข้า', 'ประเภทซาก', 'รหัสบาร์โค้ด', 'น้ำหนักอุ่น(กก.)',
-     'น้ำหนักเย็น(กก.)', 'ผู้นำเข้า', 'ผู้เบิกออก']);
+    body.push(['ลำดับ', 'วันที่เบิกออก', 'ประเภทซาก', 'รหัสบาร์โค้ด', 'น้ำหนักอุ่น(กก.)',
+     'น้ำหนักเย็น(กก.)', 'สถานะ', 'ผู้นำเข้า', 'ผู้เบิกออก']);
       data.forEach(function (row) {
           const dataRow = [];
 
@@ -461,7 +461,7 @@ export class Report2T2Component implements OnInit {
     return {
       table: {
         headerRows: 1,
-        widths: ['auto', 'auto', 'auto', '*', 'auto', 'auto', 'auto', 'auto'],
+        widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', '*', 'auto', 'auto'],
         body: this.buildTableBody(data, columns),
     }, style: 't'
   };

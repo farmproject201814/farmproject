@@ -35,8 +35,12 @@ export class StoreT1Component implements OnInit {
   name;
   date;
   statusUpdate = [];
-  take;
-
+  take = '';
+  id_member_name = [];
+  age_length;
+  limit_age;
+  up = [];
+  copy_to_noti1 = [];
   constructor(private api: Menu4Service, private api_menu7: Menu7Service,
     private authAf: AngularFireAuth, private auth: AuthService) {
       this.date = new Date();
@@ -52,50 +56,74 @@ export class StoreT1Component implements OnInit {
     this.class = [];
     this.bucket = [];
     this.detailFilter = [];
+    this.id_member_name = [];
       this.api.showStore().subscribe(datas => {
         console.log(datas);
         this.table1 = [];
         this.table2 = [];
       const a = Object.keys(datas).map(key => datas[key]);       /* Qurey ข้อมูล */
-      for (let i = 0; i < a.length; i++) {
-        console.log(a[i]);
-        if (Number(a[i].hidden) === 0) {
-          this.count_weight += Number(a[i].weight);
-          this.count_weight_c += Number(a[i].weight_c);
+      this.api_menu7.showSetting_exp_date().subscribe(dd => {
+        const e = Object.keys(dd).map(key => dd[key]);
+        this.limit_age = e[0].exp_date;
+        for (let i = 0; i < a.length; i++) {
+          console.log(a[i]);
+          if (Number(a[i].hidden) === 0) {
+            this.count_weight += Number(a[i].weight);
+            this.count_weight_c += Number(a[i].weight_c);
 
-          this.table1.push(a[i]);
-          this.table1[this.count].key = Object.keys(datas)[i];
-          this.detailFilter.push(a[i]);
+            this.table1.push(a[i]);
+            this.table1[this.count].key = Object.keys(datas)[i];
+            this.detailFilter.push(a[i]);
 
-          const day1 = new Date();
-          const diff = Math.round((a[i].date - day1.getTime()) / (1000 * 3600 * 24));
-          console.log(diff);
+            const day1 = new Date();
+            const diff = Math.round((a[i].date - day1.getTime()) / (1000 * 3600 * 24));
+            console.log('***********');
+            console.log(a[i].break);
+            console.log(Math.abs(diff));
+            console.log(Number(this.limit_age));
+            if (Math.abs(diff) >= Number(this.limit_age) && a[i].break === '0') {
+              console.log('-*-*-*-*-*-*-*-*-');
+              console.log(a[i]);
+              const d = new Date();
+              a[i].save_date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+              this.copy_to_noti1.push(a[i]);
+              this.up.push(Object.keys(datas)[i]);
+            }
+            this.table1[this.count].day_store = Math.abs(diff);
+            this.count++;
+            if (a[i].weight_c === '-') {
+              this.count_weight_c = 0;
+            }
+          } else if (Number(a[i].hidden) === 1) {
+            this.count_weight2 += Number(a[i].weight);
+            this.count_weight_c2 += Number(a[i].weight_c);
+            this.table2.push(a[i]);
+            this.table2[this.count2].key = Object.keys(datas)[i];
+            this.count2++;
+            if (a[i].weight_c === '-') {
+              this.count_weight_c2 = 0;
+            }
 
-          this.table1[this.count].day_store = Math.abs(diff);
-          this.count++;
-          if (a[i].weight_c === '-') {
-            this.count_weight_c = 0;
           }
-        } else if (Number(a[i].hidden) === 1) {
-          this.count_weight2 += Number(a[i].weight);
-          this.count_weight_c2 += Number(a[i].weight_c);
-          this.table2.push(a[i]);
-          this.table2[this.count2].key = Object.keys(datas)[i];
-          this.count2++;
-          if (a[i].weight_c === '-') {
-            this.count_weight_c2 = 0;
-          }
-
         }
-      }
-      document.getElementById('w1').innerHTML =
-      this.count_weight.toFixed(2);
-      document.getElementById('w2').innerHTML =
-      this.count_weight_c.toFixed(2);
-      document.getElementById('w3').innerHTML =
-      this.count_weight2.toFixed(2);
-      document.getElementById('w4').innerHTML =
-      this.count_weight_c2.toFixed(2);
+        console.log(this.copy_to_noti1);
+        this.api.copyToNotificationT1(this.copy_to_noti1).subscribe(p => {
+          if (p.status === 'OK') {
+            this.api.breakUpdate(this.up).subscribe();
+         }
+        });
+      });
+
+      // document.getElementById('w1').innerHTML =
+      // this.count_weight.toFixed(2);
+      // document.getElementById('w2').innerHTML =
+      // this.count_weight_c.toFixed(2);
+      // document.getElementById('w3').innerHTML =
+      // this.count_weight2.toFixed(2);
+      // document.getElementById('w4').innerHTML =
+      // this.count_weight_c2.toFixed(2);
+
+
     });
 
       this.api_menu7.showSetting_room().subscribe(data => {        /* แสดงจำนวนห้องตามที่ตั้งค่า */
@@ -133,8 +161,15 @@ export class StoreT1Component implements OnInit {
         this.name = values[0].id_member + ' ' + values[0].fname;
       });
     });
-    console.log(this.date);
 
+    this.auth.showMembers().subscribe(data => {
+      const value = Object.keys(data).map(key => data[key]);
+      for (let i = 0; i < Object.values(data).length; i++) {
+        if (value[i].id_member !== '-') {
+          this.id_member_name.push(value[i].id_member + ' ' + value[i].fname);
+        }
+      }
+    });
   }
 
   filter_type(e1) {
@@ -349,26 +384,11 @@ export class StoreT1Component implements OnInit {
 
   update_hidden1(key) {
     console.log(key);
-    this.api.showStore().subscribe(datas => {
-      const a = Object.keys(datas).map(keys => datas[keys]);
-      for (let i = 0; i < a.length; i++) {
-        if (a[i].status === 'กำลังบ่ม') {
-          console.log('aaaaa');
-          console.log(a[i]);
-          // swal({
-          //   title: 'ผิดพลาด!',
-          //   text: 'ไมสามารถเบิกได้ เนื่องจากรายการนี้กำลังบ่มอยู่!',
-          //   type: 'error',
-          //   confirmButtonText: 'ตกลง'
-          // });
-        }
+    this.api.updateHidden1(key).subscribe(d => {
+      if (d.status === 'OK') {
+        this.ngOnInit();
       }
     });
-    // this.api.updateHidden1(key).subscribe(d => {
-    //   if (d.status === 'OK') {
-    //     this.ngOnInit();
-    //   }
-    // });
   }
   update_hidden0(key) {
     console.log(key);
@@ -397,6 +417,8 @@ export class StoreT1Component implements OnInit {
       this.statusUpdate[i].order_name = w1;
       this.statusUpdate[i].date = Number(this.date);
       this.statusUpdate[i].take_name = this.take;
+      console.log('asdf');
+      console.log(this.statusUpdate[i].take_name);
     }
     console.log(w3);
     this.api.updateNewStatus(this.statusUpdate).subscribe(d => {
@@ -410,7 +432,7 @@ export class StoreT1Component implements OnInit {
               if (d2.status === 'OK') {
                 swal({
                   title: 'สำเร็จ!',
-                  text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
+                  text: 'เบิกรายการสำเร็จ',
                   type: 'success',
                   confirmButtonText: 'ตกลง'
                 });
@@ -425,7 +447,16 @@ export class StoreT1Component implements OnInit {
   }
 
   test(text) {          /* เก็บชือผู้ขอเบิกแล้วโยนเข้าฟังก์ชัน updateData */
-    console.log(text);
-    this.take = text;
+    console.log(text.value);
+    this.take = text.value;
+  }
+
+  error() {
+    swal({
+      title: 'ผิดพลาด!',
+      text: 'ไม่สามารถเบิกได้ เนื่องจากกำลังบ่มซากอยู่',
+      type: 'error',
+      confirmButtonText: 'ตกลง'
+    });
   }
 }

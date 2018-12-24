@@ -71,6 +71,7 @@ export class Report1T1Component implements OnInit {
     this.count_weight = 0;
     this.count_weight_c = 0;
     this.datas = [];
+    this.datass = [];
     this.api.showHistory_Import().subscribe(data => {
       const a = Object.keys(data).map(key => data[key]);
       for (let i = 0; i < a.length; i++) {
@@ -559,8 +560,8 @@ export class Report1T1Component implements OnInit {
         {text: 'ข้อมูลระหว่างวันที่ ' + this.start_at + ' ถึงวันที่ ' + this.end_at + ' '},
         {text: '\n'},
 
-        this.table(this.data_import, ['count', 'date', 'owner', 'type', 'cow_code', 'code', 'barcode',
-         'weight', 'weight_c', 'import_name']),
+        this.table(this.data_import, ['count', 'date', 'owner', 'type', 'barcode',
+         'weight', 'weight_c', 'status', 'import_name']),
 
         {text: 'จำนวนซากเนื้อโค ' + this.countReport + ' รายการ', alignment: 'right', margin: [0, 5, 0, 0]},
         // tslint:disable-next-line:max-line-length
@@ -616,8 +617,8 @@ export class Report1T1Component implements OnInit {
 
   buildTableBody(data, columns) {
     const body = [];
-    body.push(['ลำดับ', 'วันที่นำเข้า', 'เจ้าของซาก', 'ประเภทซาก', 'เบอร์โค', 'รหัสซาก', 'รหัสบาร์โค้ด',
-     'น้ำหนักอุ่น(กก.)', 'น้ำหนักเย็น(กก.)', 'ผู้นำเข้า']);
+    body.push(['ลำดับ', 'วันที่นำเข้า', 'เจ้าของซาก', 'ประเภทซาก', 'รหัสบาร์โค้ด',
+     'น้ำหนักอุ่น(กก.)', 'น้ำหนักเย็น(กก.)', 'สถานะ', 'ผู้นำเข้า']);
       data.forEach(function (row) {
           const dataRow = [];
 
@@ -633,7 +634,7 @@ export class Report1T1Component implements OnInit {
     return {
       table: {
         headerRows: 1,
-        widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', '*', 'auto', 'auto', 'auto'],
+        widths: ['auto', 'auto', 'auto', 'auto', '*', 'auto', 'auto', 'auto', 'auto'],
         body: this.buildTableBody(data, columns),
     }, style: 't'
   };
@@ -697,7 +698,7 @@ searchDate() {
     console.log(data.val());
     if (data.val() != null) {
       this.datass = Object.keys(data.val()).map(key => data.val()[key]);
-      console.log(data.val().lenght);
+
       for (let i = 0 ; i < this.datass.lenght ; i++) {
         this.data_import[i].key = Object.keys(data.val());
         this.datass[i].key = Object.keys(data.val());
@@ -745,12 +746,12 @@ searchDate() {
       this.t25_num = 0; this.t25_w = 0; this.t25_wc = 0; this.t26_num = 0; this.t26_w = 0; this.t26_wc = 0;
       this.t27_num = 0; this.t27_w = 0; this.t27_wc = 0; this.t28_num = 0; this.t28_w = 0; this.t28_wc = 0;
       this.t29_num = 0; this.t29_w = 0; this.t29_wc = 0; this.t30_num = 0; this.t30_w = 0; this.t30_wc = 0;
-      document.getElementById('w1').innerHTML =
-      this.count_weight.toFixed(2);
-      document.getElementById('w2').innerHTML =
-      this.count_weight_c.toFixed(2);
     }
 
   });
+  document.getElementById('w1').innerHTML =
+  this.count_weight.toFixed(2);
+  document.getElementById('w2').innerHTML =
+  this.count_weight_c.toFixed(2);
 }
 }

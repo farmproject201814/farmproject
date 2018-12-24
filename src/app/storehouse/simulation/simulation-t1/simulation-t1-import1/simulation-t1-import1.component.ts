@@ -46,6 +46,7 @@ export class SimulationT1Import1Component implements OnInit {
    }
 
   ngOnInit() {
+    this.keyUpdate = [];
     this.id_member_name = [];
     this.api.showST1(this.num).subscribe(data => {
       if (data !== null) {
@@ -142,6 +143,7 @@ export class SimulationT1Import1Component implements OnInit {
       }
     });
     this.test1();
+    this.ngOnInit();
   }
 
   changeType(g) {

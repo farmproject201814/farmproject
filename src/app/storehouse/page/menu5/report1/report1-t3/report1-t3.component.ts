@@ -410,8 +410,8 @@ export class Report1T3Component implements OnInit {
         {text: 'ข้อมูลระหว่างวันที่ ' + this.start_at + ' ถึงวันที่ ' + this.end_at + ' '},
         {text: '\n'},
 
-        this.table(this.data_import, ['count', 'date', 'owner', 'type', 'cow_code', 'code', 'barcode',
-         'weight', 'weight_c', 'import_name']),
+        this.table(this.data_import, ['count', 'date', 'owner', 'type', 'barcode',
+         'weight', 'weight_c', 'status', 'import_name']),
 
         {text: 'จำนวนซากเนื้อโค ' + this.countReport + ' รายการ', alignment: 'right', margin: [0, 5, 0, 0]},
         // tslint:disable-next-line:max-line-length
@@ -466,8 +466,8 @@ export class Report1T3Component implements OnInit {
 
   buildTableBody(data, columns) {
     const body = [];
-    body.push(['ลำดับ', 'วันที่นำเข้า', 'เจ้าของซาก', 'ประเภทซาก', 'เบอร์โค', 'รหัสซาก', 'รหัสบาร์โค้ด',
-     'น้ำหนักอุ่น(กก.)', 'น้ำหนักเย็น(กก.)', 'ผู้นำเข้า']);
+    body.push(['ลำดับ', 'วันที่นำเข้า', 'เจ้าของซาก', 'ประเภทซาก', 'รหัสบาร์โค้ด',
+     'น้ำหนักอุ่น(กก.)', 'น้ำหนักเย็น(กก.)', 'สถานะ', 'ผู้นำเข้า']);
       data.forEach(function (row) {
           const dataRow = [];
 
@@ -483,7 +483,7 @@ export class Report1T3Component implements OnInit {
     return {
       table: {
         headerRows: 1,
-        widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', '*', 'auto', 'auto', 'auto'],
+        widths: ['auto', 'auto', 'auto', 'auto', '*', 'auto', 'auto', 'auto', 'auto'],
         body: this.buildTableBody(data, columns),
     }, style: 't'
   };
