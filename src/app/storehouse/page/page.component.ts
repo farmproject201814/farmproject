@@ -70,6 +70,22 @@ export class PageComponent implements OnInit {
     this.count9 = 0;
     this.count10 = 0;
 
+    this.api_menu6.showNotificationT3().subscribe(d6 => {
+      const value6 = Object.keys(d6);
+      console.log(value6);
+      for (let i = 0; i < value6.length ; i++) {
+        this.count6 += Object.keys(d6[value6[i]]).length;
+      }
+    });
+
+    this.api_menu6.showNotificationT1().subscribe(d7 => {
+      const value7 = Object.keys(d7);
+      console.log(value7);
+      for (let i = 0; i < value7.length ; i++) {
+        this.count7 += Object.keys(d7[value7[i]]).length;
+      }
+    });
+
     this.api_simulation.countNum_dashboard().subscribe(d9 => {
       const value9 = Object.keys(d9);
       console.log(value9);
@@ -124,4 +140,6 @@ export class PageComponent implements OnInit {
       }
     });
   }
+
+
 }

@@ -54,7 +54,7 @@
                     <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="model_detail(i)"><i class='fas'>&#xf002;</i> </button>
                   </td>
                   <td>
-                    <button class="btn" id="btn3"><i class="material-icons">&#xe872;</i></button>
+                    <button class="btn" id="btn3" (click)="onDelete(d.key)"><i class="material-icons">&#xe872;</i></button>
                   </td>
                 </tr>
               </tbody>
@@ -101,7 +101,7 @@
         </table>
       </div>
       <div class="nav_button" style="margin-bottom: 15px" >
-        <button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> พิมพ์รายการ </button>
+        <button type="button" class="btn" id="btn2" (click)="report()"><i class="fa fa-print"></i> พิมพ์รายการ </button>
     </div>
     </div>
   </div>

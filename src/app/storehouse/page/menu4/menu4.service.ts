@@ -38,4 +38,10 @@ export class Menu4Service {
   copyToNotificationT5_copy(data) {
     return this.http.post(api.url + '/api/store/menu6/history/order2' , data).pipe(map(res => res.json()));
   }
+  copyToNotificationT1(data) {
+    return this.http.post(api.url + '/api/store/menu6/copy-to-noti1' , data).pipe(map(res => res.json()));
+  }
+  breakUpdate(data) {
+    return this.http.post(api.url + '/api/store/menu4/break-update', data).pipe(map(res => res.json()));
+  }
 }

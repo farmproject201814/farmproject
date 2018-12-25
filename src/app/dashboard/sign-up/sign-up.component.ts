@@ -70,14 +70,13 @@ export class SignUpComponent implements OnInit {
     if (this.user.length === 0 ) {
     this.auth.register(datas.value.email, datas.value.pass);
       this.auth.registerMember(datas.value).subscribe();
+      this.router.navigate(['/sign-in']);
       swal({
         title: 'สำเร็จ!',
         text: 'สมัครสมาชิกสำเร็จ ปิดหน้าต่างนี้เพื่อเข้าสู่ระบบ',
         type: 'success',
         confirmButtonText: 'ปิด'
       });
-      this.router.navigate(['/sign-in']);
-
     } else {
     let c = 0;
     for (let i = 0 ; i < this.user.length ; i++) {
@@ -91,13 +90,13 @@ export class SignUpComponent implements OnInit {
       this.checkuser = true;
       this.auth.register(datas.value.email, datas.value.pass);
       this.auth.registerMember(datas.value).subscribe();
+      this.router.navigate(['/sign-in']);
       swal({
         title: 'สำเร็จ!',
         text: 'สมัครสมาชิกสำเร็จ',
         type: 'success',
         confirmButtonText: 'ปิด'
       });
-      this.router.navigate(['/sign-in']);
     } else {
       this.checkuser = false;
       swal({

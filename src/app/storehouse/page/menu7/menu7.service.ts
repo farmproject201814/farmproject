@@ -47,6 +47,12 @@ export class Menu7Service {
   showSetting_day_aging_Sd() {
     return this.http.get(api.url + '/api/store/menu7/all-setting/show/day-aging-sd').pipe(map(res => res.json()));
   }
+  addSetting_exp_date(data, key) {
+    return this.http.post(api.url + '/api/store/menu7/all-setting/add/exp-date/' + key , data).pipe(map(res => res.json()));
+  }
+  showSetting_exp_date() {
+    return this.http.get(api.url + '/api/store/menu7/all-setting/show/exp-date').pipe(map(res => res.json()));
+  }
 
   addr(data) {
     return this.http.post(api.url + '/api/store/menu7/all-setting/add/room' , data).pipe(map(res => res.json()));
@@ -68,5 +74,8 @@ export class Menu7Service {
   }
   add_day_aging_Sd(data) {
     return this.http.post(api.url + '/api/store/menu7/all-setting/add/day-aging-sd' , data).pipe(map(res => res.json()));
+  }
+  add_exp_date(data) {
+    return this.http.post(api.url + '/api/store/menu7/all-setting/add/exp-date' , data).pipe(map(res => res.json()));
   }
 }

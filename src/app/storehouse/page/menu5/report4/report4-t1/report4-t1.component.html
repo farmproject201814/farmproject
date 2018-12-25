@@ -16,17 +16,17 @@
       <div class="d1 ml-3">
         <div class="input-group form-search">
             <select class="form-control search-query fcsq1">
-                <option value="ทั้งหมด">ทั้งหมด</option>
-              </select>
+              <option value="ทั้งหมด">ทั้งหมด</option>
+            </select>
           </div>
       </div>
       <label class="col-form-label ml-3"><b>ค้นหา</b></label>
       <div class="input-group form-search  ml-3">
-        <select class="form-control search-query fcsq2" (change)="selectMenu(slt)" ngModel="เบอร์โค" #slt>
-          <option value="เบอร์โค">เบอร์โค</option>
-          <option value="รหัสซาก">รหัสซาก</option>
-          <option value="รหัสบาร์โค้ด">รหัสบาร์โค้ด</option>
-          <option value="รหัสคิวอาร์โค้ด">รหัสคิวอาร์โค้ด</option>
+        <select class="form-control search-query fcsq2" (change)="dropdown_search(slt)" ngModel="1" #slt>
+          <option value="1">เบอร์โค</option>
+          <option value="2">รหัสซาก</option>
+          <option value="3">รหัสบาร์โค้ด</option>
+          <option value="4">รหัสคิวอาร์โค้ด</option>
         </select>
         <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
       </div>
@@ -35,55 +35,25 @@
   <div class="row r2 justify-content-center">
     <label class="col-form-label mr-3"><b>น้ำหนัก</b></label>
       <div class="input-group form-search c2">
-        <select class="form-control search-query "id="fcsq5" (change)="selectMenu(slt)" ngModel="น้ำหนักอุ่น" #slt>
-          <option value="น้ำหนักอุ่น">น้ำหนักอุ่น</option>
-          <option value="น้ำหนักเย็น">น้ำหนักเย็น</option>
+        <select class="form-control search-query "id="fcsq5" (change)="dropdown_search2(slt2)" ngModel="1" #slt2>
+          <option value="1">น้ำหนักอุ่น</option>
+          <option value="2">น้ำหนักเย็น</option>
         </select>
         <input type="text" class="form-control search-query" id="myInput2"(keyup)="searchTable()" ngModel style="height: 33px"/>
       </div>
     <label class="col-form-label ml-3"><b>อายุ</b></label>
     <div class="form-inline">
       <div class="input-group form-search ml-3">
-        <select class="form-control search-query fcsq31" (change)="filter_2(t2)" ngModel="ทั้งหมด" #t2>
+        <select class="form-control search-query fcsq31" (change)="filter_litmit_age(t4)" ngModel="ทั้งหมด" #t4>
           <option value="ทั้งหมด">ทั้งหมด</option>
-          <option value="1">1 วัน</option>
-          <option value="2">2 วัน</option>
-          <option value="3">3 วัน</option>
-          <option value="4">4 วัน</option>
-          <option value="5">5 วัน</option>
-          <option value="6">6 วัน</option>
-          <option value="7">7 วัน</option>
-          <option value="8">8 วัน</option>
-          <option value="9">9 วัน</option>
-          <option value="10">10 วัน</option>
-          <option value="11">11 วัน</option>
-          <option value="12">12 วัน</option>
-          <option value="13">13 วัน</option>
-          <option value="14">14 วัน</option>
-          <option value="15">15 วัน</option>
-          <option value="16">16 วัน</option>
-          <option value="17">17 วัน</option>
-          <option value="18">18 วัน</option>
-          <option value="19">19 วัน</option>
-          <option value="20">20 วัน</option>
-          <option value="21">21 วัน</option>
-          <option value="22">22 วัน</option>
-          <option value="23">23 วัน</option>
-          <option value="24">24 วัน</option>
-          <option value="25">25 วัน</option>
-          <option value="26">26 วัน</option>
-          <option value="27">27 วัน</option>
-          <option value="28">28 วัน</option>
-          <option value="29">29 วัน</option>
-          <option value="30">30 วัน</option>
-          <option value="31">31 วัน</option>
+          <option value="{{a4}}" *ngFor="let a4 of lim_age">{{a4}}</option>
         </select>
       </div>
     </div>
     <label class="col-form-label ml-3 mr-3"><b>เกรด</b></label>
     <div class="form-inline">
       <div class="input-group form-search ml-auto">
-        <select class="form-control search-query fcsq31" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+        <select class="form-control search-query fcsq31" (change)="filter_grade(g)" ngModel="ทั้งหมด" #g>
           <option value="ทั้งหมด">ทั้งหมด</option>
           <option value="2.0">2.0</option>
           <option value="2.5">2.5</option>
@@ -99,43 +69,34 @@
     <label class="col-form-label ml-3 mr-3"><b>ตำแหน่ง</b></label>
     <div class="form-inline">
       <div class="input-group form-search ml-auto">
-        <select class="form-control search-query fcsq32" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+        <select class="form-control search-query fcsq32" (change)="filter_room(t1)" ngModel="ทั้งหมด" #t1>
           <option value="ทั้งหมด">ห้อง</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="{{a}}" *ngFor="let a of room">{{a}}</option>
         </select>
       </div>
     </div>
     <!-- <label class="col-form-label ml-3 mr-3"><b>ชั้น</b></label> -->
     <div class="form-inline">
       <div class="input-group form-search ml-auto">
-        <select class="form-control search-query fcsq33" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+        <select class="form-control search-query fcsq33" (change)="filter_class(t2)" ngModel="ทั้งหมด" #t2>
           <option value="ทั้งหมด">ชั้น</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="{{a2}}" *ngFor="let a2 of class">{{a2}}</option>
         </select>
       </div>
     </div>
     <!-- <label class="col-form-label ml-3 mr-3"><b>ตะกร้า</b></label> -->
     <div class="form-inline">
       <div class="input-group form-search ml-auto">
-        <select class="form-control search-query fcsq34" (change)="filter_4(t4)" ngModel="ทั้งหมด" #t4>
+        <select class="form-control search-query fcsq34" (change)="filter_bucket(t3)" ngModel="ทั้งหมด" #t3>
           <option value="ทั้งหมด">ตะกร้า</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="{{a3}}" *ngFor="let a3 of bucket">{{a3}}</option>
         </select>
       </div>
     </div>
     <label class="col-form-label ml-3 mr-3"><b>สถานะ</b></label>
     <div class="form-inline">
       <div class="input-group form-search">
-        <select class="form-control search-query fcsq3" (change)="filter_3(t3)" ngModel="ทั้งหมด" #t3>
+        <select class="form-control search-query fcsq3" (change)="filter_status(s)" ngModel="ทั้งหมด" #s>
             <option value="ทั้งหมด">ทั้งหมด</option>
             <option value="เชือดแล้ว">เชือดแล้ว</option>
             <option value="กำลังบ่ม">กำลังบ่ม</option>
@@ -180,33 +141,33 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td width="50px"></td>
-            <td width="140px"></td>
-            <td width="70px"></td>
-            <td width="70px"></td>
-            <td width="120px"></td>
-            <td width="120px"></td>
-            <td width="70px"></td>
-            <td width="70px"></td>
-            <td width="50px"></td>
-            <td width="50px"></td>
-            <td width="40px"></td>
-            <td width="40px"></td>
-            <td width="40px"></td>
-            <td width="120px"></td>
-            <td></td>
+          <tr *ngFor="let q of datass;let i = index">
+            <td width="50px">{{ i+1 }}</td>
+            <td width="140px">{{ q.type }}</td>
+            <td width="70px">{{ q.cow_code }}</td>
+            <td width="70px">{{ q.code }}</td>
+            <td width="120px">{{ q.barcode }}</td>
+            <td width="120px">{{ q.qr_code }}</td>
+            <td width="70px">{{ q.weight }}</td>
+            <td width="70px">{{ q.weight_c }}</td>
+            <td width="50px">{{ q.day_store }}</td>
+            <td width="50px">{{ q.grade }}</td>
+            <td width="40px">{{ q.room }}</td>
+            <td width="40px">{{ q.class }}</td>
+            <td width="40px">{{ q.bucket }}</td>
+            <td width="120px">{{ q.status }}</td>
+            <td>{{q.note}}</td>
           </tr>
         </tbody>
       </table>
       <div class="text-right ml-auto">
-        <h6><strong>จำนวนซากเนื้อโค 0 รายการ</strong></h6>
-        <h6><strong>น้ำหนักอุ่น 0.00 น้ำหนักเย็น 0.00 กิโลกรัม</strong></h6>
+        <h6><strong>จำนวนซากเนื้อโค {{ count }} รายการ</strong></h6>
+        <h6><strong>น้ำหนักอุ่น <strong id="w1">{{ count_weight }}</strong> น้ำหนักเย็น <strong id="w2">{{ count_weight_c }}</strong> กิโลกรัม</strong></h6>
       </div>
     </div>
   </div>
   <div class="row justify-content-center">
-      <div class="nav_button"><button type="button" class="btn mr-3" id="btn3" ><i class="fa fa-print"></i> รายงานสรุป </button></div>
-      <div class="nav_button"><button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> รายงานปกติ </button></div>
+      <div class="nav_button"><button type="button" class="btn mr-3" id="btn3" (click)="report_c()"><i class="fa fa-print"></i> รายงานสรุป </button></div>
+      <div class="nav_button"><button type="button" class="btn" id="btn2" (click)="report()"><i class="fa fa-print"></i> รายงานปกติ </button></div>
     </div>
 

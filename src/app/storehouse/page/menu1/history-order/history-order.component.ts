@@ -12,7 +12,7 @@ export class HistoryOrderComponent implements OnInit {
   count = 0;
   date;
   name: any;
-  aging_lenght;
+  aging_length;
   check = 11;
   weight_all = 0;
   detailData: any = [];
@@ -23,6 +23,8 @@ export class HistoryOrderComponent implements OnInit {
   startvalue: any = '';
   endvalue: any = '';
   bykey = [];
+  bykey2 = [];
+  data_to_history = [];
 
   constructor(private api: Menu1Service, private api_menu4: Menu4Service) { }
 
@@ -32,77 +34,66 @@ export class HistoryOrderComponent implements OnInit {
     this.count = 0;
     this.weight_all = 0;
     this.datas = [];
+    this.bykey = [];
+    this.bykey2 = [];
     this.api.showAging().subscribe(data => {
-      const c = 0;
+      let c = 0;
+      console.log(data);
       const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
       for (let i = 0; i < a2.length; i++) {
+        console.log('*******' + a2);
+        console.log(a2);
+        if (a2[i].status !== 'เชือดแล้ว') {
           this.datas.push(a2[i]);
           this.datas[c].key = Object.keys(data)[i];
           this.weight_all += Number(a2[i].weight);
-          this.count++;
           this.detailFilter.push(a2[i]);
 
           const o = new Date();
           console.log(o.getTime());
-          this.aging_lenght = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
-          this.datas[c].day_aging = this.aging_lenght;
+          this.aging_length = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
+          console.log('kkkk');
+          console.log('lenght:' +  this.aging_length);
+          this.datas[c].day_aging = this.aging_length;
 
           const a_start = new Date();
           const diffDay = Math.round((a2[i].date_aging - a_start.getTime()) / (1000 * 3600 * 24));
-          console.log(Math.abs(diffDay));
-
-          if (Math.abs(diffDay) === 0) {
+          console.log('aaa: ' + diffDay);
+          this.count++;
+          c++;
+          console.log('ppp: ' + a2[i].status);
+          if (diffDay <= 0 && a2[i].status === 'กำลังบ่ม') {
+            console.log(a2[i].cow_code);
+            console.log(diffDay);
             this.bykey.push(Object.keys(data)[i]);
             this.api.updateStatus_to_store(a2[i].cow_code).subscribe(d6 => {
-              if (d6.status === 'OK') {
-                y.push(Object.keys(d6)[0]);
-              }
+            this.bykey2.push(Object.keys(d6));
+            const d = new Date(a2[i].date_aging);
+            a2[i].save_date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+            this.data_to_history.push(a2[i]);
+            console.log(d6);
+
             });
           }
         document.getElementById('w').innerHTML =
         this.weight_all.toFixed(2);
+        }
+      }
+      if (this.bykey.length !== 0) {
+        this.api.update_status_complete(this.bykey).subscribe(d9 => {
+          if (d9.status === 'OK') {
+            this.api.update_status_complete2(this.bykey2).subscribe(h => {
+              if (h.status === 'OK') {
+                this.api.history_notification_t3(this.data_to_history).subscribe();
+              }
+            });
+          }
+        });
       }
     });
-
     const y = [];
-    this.api.update_status_complete(this.bykey).subscribe();
-    this.api.update_status_complete(y).subscribe();
-            // console.log(this.bykey);
-            // this.api.showAging().subscribe(data => {
-            //   const c = 0;
-            //   const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
-            //   for (let i = 0; i < a2.length; i++) {
-            //       this.datas.push(a2[i]);
-            //       this.datas[c].key = Object.keys(data)[i];
-            //       this.weight_all += Number(a2[i].weight);
-            //       this.count++;
-            //       this.detailFilter.push(a2[i]);
-
-            //       const o = new Date();
-            //       console.log(o.getTime());
-            //       this.aging_lenght = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
-            //       this.datas[c].day_aging = this.aging_lenght;
-
-            //       const a_start = new Date();
-            //       const diffDay = Math.round((a2[i].date_aging - a_start.getTime()) / (1000 * 3600 * 24));
-            //       console.log(Math.abs(diffDay));
-
-            //       if (Math.abs(diffDay) < 0) {
-            //         this.bykey.push(Object.keys(data)[i]);
-            //         this.api.updateStatus_to_store(a2[i].cow_code).subscribe(d6 => {
-            //           y.push(Object.keys(d6)[0]);
-            //         });
-            //       }
-            //     document.getElementById('w').innerHTML =
-            //     this.weight_all.toFixed(2);
-            //   }
-            //   this.api.update_status_complete2(this.bykey).subscribe(y3 => {
-            //     if (y3.status === 'OK') {
-
-            //     }
-            //   });
-            // });      }
-
+    console.log('aaaaa');
+    console.log(this.bykey);
   }
 
   dropdown_search(v) {       /* เลือกประเภทการ search */
@@ -185,7 +176,7 @@ export class HistoryOrderComponent implements OnInit {
     console.log(this.startvalue);
     console.log(this.endvalue);
     // tslint:disable-next-line:max-line-length
-    firebase.database().ref().child('/store/menu2/import').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+    firebase.database().ref().child('/store/menu1/aging').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
       if (data.val() != null) {
         this.datas = Object.keys(data.val()).map(key => data.val()[key]);
         for (let i = 0 ; i < data.val().length ; i++) {

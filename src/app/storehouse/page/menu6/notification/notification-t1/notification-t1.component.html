@@ -34,22 +34,22 @@
             <thead>
               <tr>
                 <th width="160px">ลำดับ</th>
-                <th width="180px">วันที่ปัจจุบัน</th>
+                <th width="180px">วันหมดอายุ</th>
                 <th width="180px">จำนวนรายการ</th>
                 <th width="200px">รายละเอียด</th>
                 <th>ลบ</th>
               </tr>
             </thead>
               <tbody>
-                <tr>
-                  <td width="160px">1</td>
-                  <td width="180px">19-12-2018</td>
-                  <td width="180px">2</td>
+                <tr *ngFor="let d of datass; let i = index">
+                  <td width="160px">{{i+1}}</td>
+                  <td width="180px">{{d.date | date: 'dd-MM-yyyy'}}</td>
+                  <td width="180px">{{d.count}}</td>
                   <td width="200px">
-                    <button class="btn bt1" data-toggle="modal" data-target="#notifi"><i class='fas'>&#xf002;</i></button>
+                    <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="onModel(d)"><i class='fas'>&#xf002;</i></button>
                   </td>
                   <td>
-                    <button class="btn" id="btn3"><i class="material-icons">&#xe872;</i></button>
+                    <button class="btn" id="btn3" (click)="onDelete(d.key)"><i class="material-icons">&#xe872;</i></button>
                   </td>
                 </tr>
               </tbody>
@@ -81,7 +81,6 @@
               <th width="80px">รหัสซาก</th>
               <th width="120px">รหัสบาร์โค้ดซาก</th>
               <th width="120px">รหัสคิวอาร์โค้ด</th>
-              <th width="50px">อายุ</th>
               <th width="50px">ห้อง</th>
               <th width="50px">ชั้น</th>
               <th width="50px">ตะกร้า</th>
@@ -89,37 +88,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td width="60px">1</td>
-              <td width="100px">เนื้อสันกลางถอดกระดูก</td>
-              <td width="80px">611219</td>
-              <td width="80px">000001</td>
-              <td width="120px">6125610001000</td>
-              <td width="120px">6125610001100</td>
-              <td width="50px">7</td>
-              <td width="50px">2</td>
-              <td width="50px">1</td>
-              <td width="50px">3</td>
-              <td width="100px">ตัดแต่ง (ก้อน) แล้ว</td>
-            </tr>
-            <tr>
-              <td width="60px">1</td>
-              <td width="100px">เนื้อสันใน</td>
-              <td width="80px">611220</td>
-              <td width="80px">000002</td>
-              <td width="120px">6125610002000</td>
-              <td width="120px">6125610002100</td>
-              <td width="50px">12</td>
-              <td width="50px">2</td>
-              <td width="50px">1</td>
-              <td width="50px">4</td>
-              <td width="100px">ตัดแต่ง (ก้อน) แล้ว</td>
+            <tr *ngFor="let d of datas_m; let i = index">
+              <td width="60px">{{i+1}}</td>
+              <td width="100px">{{d.type}}</td>
+              <td width="80px">{{d.cow_code}}</td>
+              <td width="80px">{{d.code}}</td>
+              <td width="120px">{{d.barcode}}</td>
+              <td width="120px">{{d.qr_code}}</td>
+              <td width="50px">{{d.room}}</td>
+              <td width="50px">{{d.class}}</td>
+              <td width="50px">{{d.bucket}}</td>
+              <td width="100px">{{d.status}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="nav_button" style="margin-bottom: 15px" >
-        <button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> พิมพ์รายการ </button>
+        <button type="button" class="btn" id="btn2" (click)="report()"><i class="fa fa-print"></i> พิมพ์รายการ </button>
     </div>
     </div>
   </div>

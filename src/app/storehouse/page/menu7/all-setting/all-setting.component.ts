@@ -19,6 +19,7 @@ export class AllSettingComponent implements OnInit {
   lim_age: any;
   lim_day_aging: any;
   day_aging_sd: any;
+  exp: any;
 
   constructor(private api_menu7: Menu7Service) { }
 
@@ -58,6 +59,12 @@ export class AllSettingComponent implements OnInit {
       console.log(let6);
       this.day_aging_sd = let6[0];
       this.day_aging_sd.key = Object.keys(data6)[0];
+    });
+    this.api_menu7.showSetting_exp_date().subscribe(data7 => {        /* แสดงวันใกล้หมดอายุตามที่ตั้งค่า */
+      const let7 = Object.keys(data7).map(a7 => data7[a7]);
+      console.log(let7);
+      this.exp = let7[0];
+      this.exp.key = Object.keys(data7)[0];
     });
   }
 
@@ -124,7 +131,7 @@ export class AllSettingComponent implements OnInit {
      }
     }
 
-     add_settingLimit_age(rr: NgForm, key) {
+     add_settingLimit_age(rr: NgForm, key, key2) {
       if (rr.value.limit_age === '0' || rr.value.limit_age < '0') {
         swal({
           title: 'ผิดพลาด!',
@@ -135,10 +142,30 @@ export class AllSettingComponent implements OnInit {
           // showConfirmButton: false
         });
        } else {
-        this.api_menu7.addSetting_limitAge(rr.value, key).subscribe();
+        this.api_menu7.addSetting_limitAge({limit_age: rr.value.limit_age}, key).subscribe();
         swal({
           title: 'สำเร็จ!',
           text: 'บันทึกลิมิตอายุซากสำเร็จ',
+          type: 'success',
+          confirmButtonText: 'ตกลง',
+          // showConfirmButton: false
+        });
+       }
+
+       if (rr.value.exp_date === '0' || rr.value.exp_date < '0') {
+        swal({
+          title: 'ผิดพลาด!',
+          text: 'กำหนดวันใกล้อายุไม่ถูกต้อง',
+          type: 'error',
+          confirmButtonText: 'ตกลง',
+          // confirmButtonColor: '#da4151'
+          // showConfirmButton: false
+        });
+       } else {
+        this.api_menu7.addSetting_exp_date({exp_date: rr.value.exp_date}, key2).subscribe();
+        swal({
+          title: 'สำเร็จ!',
+          text: 'บันทึกวันใกล้หมดอายุสำเร็จ',
           type: 'success',
           confirmButtonText: 'ตกลง',
           // showConfirmButton: false
@@ -252,5 +279,8 @@ export class AllSettingComponent implements OnInit {
   // }
     //     add_limit_day_aging(r: NgForm) {
     //   this.api_menu7.add_limit_day_Aging(r.value).subscribe();
+    // }
+    // add_exp_date(r: NgForm) {
+    //   this.api_menu7.add_exp_date(r.value).subscribe();
     // }
 }

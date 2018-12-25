@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-sm-1 mb-2" [hidden]="hid == undefined || hid == 1">
                       <label>ชั้น</label>
-                      <select class="form-control" name="class" [value]="1" ngModel="1" >
+                      <select class="form-control" name="class" ngModel="1" >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -160,6 +160,7 @@
                     <select class="form-control" name="grade" ngModel="-" hidden>เกรด</select>
                     <select class="form-control" name="split" ngModel="0" hidden>ไว้แยกประเภทซากเข้าคลัง</select>
                     <select class="form-control" name="hidden" ngModel="0" hidden>ซ่อน/แสดงข้อมูลในแจ้งเตือนt4</select>
+                    <select class="form-control" name="break" ngModel="0" hidden>ไว้หยุดการอัพเดตเองของวันใกล้หมดอายุ</select>
                     <div class="col-sm-1 mb-2">
                       <label>เพิ่มรายการ</label>
                       <button type="submit" class="btn btn-primary">เพิ่มรายการ</button>

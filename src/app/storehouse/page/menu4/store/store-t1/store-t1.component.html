@@ -170,7 +170,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let q of table1;let i = index" >
+          <tr *ngFor="let q of table1;let i = index">
             <td width="50px">{{ i+1 }}</td>
             <td width="140px">{{ q.type }}</td>
             <td width="70px">{{ q.cow_code }}</td>
@@ -187,7 +187,10 @@
             <td width="120px">{{ q.status }}</td>
             <td width="160px">-</td>
             <td>
-              <button type="button" class="btn btn1" (click)="update_hidden1(q.key)">เบิก</button>
+              <button type="button" class="btn btn1" (click)="update_hidden1(q.key)" [hidden]="q.status == 'กำลังบ่ม' || (q.status == 'เบิกตัดแต่ง (บน-ล่าง)' ||
+               q.status == 'เบิกตัดแต่ง (ก้อน)') || q.status == 'เบิกตัดขาย' || q.status == 'เบิกจำหน่าย'">เบิก</button>
+              <button type="button" class="btn btn1" (click)="error()" [hidden]="q.status != 'กำลังบ่ม' || q.status != 'เบิกตัดแต่ง (บน-ล่าง)' ||
+               q.status != 'เบิกตัดแต่ง (ก้อน)' || q.status != 'เบิกตัดขาย' || q.status != 'เบิกจำหน่าย'">เบิก</button>
             </td>
           </tr>
         </tbody>
@@ -292,7 +295,11 @@
             </div>
             <div class="form-group row mx-sm-2">
               <b>ชื่อผู้ขอเบิก</b>
-              <input id="sz" class="form-control col-6 ml-auto" (keyup)="test($event.target.value)">
+              <!-- <input id="sz" class="form-control col-6 ml-auto" (keyup)="test($event.target.value)"> -->
+              <select class="form-control col-6 ml-auto" (change)="test(o1)" ngModel="0" #o1>
+                <option value="0" disabled selected>เลือกชื่อผู้ขอเบิก..</option>
+                <option value="{{a}}" *ngFor="let a of id_member_name">{{a}}</option>
+              </select>
             </div>
             <div class="form-group row mx-sm-2">
               <label><b>จำนวนซากเนื้อโคที่เบิกออก {{ count2 }} รายการ</b></label>
