@@ -187,8 +187,10 @@
             <td width="120px">{{ q.status }}</td>
             <td width="160px">-</td>
             <td>
-              <button type="button" class="btn btn1" (click)="update_hidden1(q.key)" [hidden]="q.status == 'กำลังบ่ม'">เบิก</button>
-              <button type="button" class="btn btn1" (click)="error()" [hidden]="q.status != 'กำลังบ่ม'">เบิก</button>
+              <button type="button" class="btn btn1" (click)="update_hidden1(q.key)" [hidden]="q.status == 'กำลังบ่ม' || (q.status == 'เบิกตัดแต่ง (บน-ล่าง)' ||
+               q.status == 'เบิกตัดแต่ง (ก้อน)') || q.status == 'เบิกตัดขาย' || q.status == 'เบิกจำหน่าย'">เบิก</button>
+              <button type="button" class="btn btn1" (click)="error()" [hidden]="q.status != 'กำลังบ่ม' || q.status != 'เบิกตัดแต่ง (บน-ล่าง)' ||
+               q.status != 'เบิกตัดแต่ง (ก้อน)' || q.status != 'เบิกตัดขาย' || q.status != 'เบิกจำหน่าย'">เบิก</button>
             </td>
           </tr>
         </tbody>

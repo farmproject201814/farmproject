@@ -219,28 +219,32 @@ export class AgingComponent implements OnInit {
     firebase.database().ref().child('/store/menu1/aging').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
       console.log('kkk');
       console.log(data.val());
-      const a2 = Object.keys(data.val()).map(key => data[key]);
-      for (let i = 0; i < a2.length; i++) {
-        console.log('bbb');
-        console.log(a2[i]);
-        if (a2[i].status === 'เชือดแล้ว' && (a2[i].type === 'ซากซ้าย' || a2[i].type === 'ซากขวา')) {
-          this.datas.push(a2[i]);
-          this.datas[this.count].key = Object.keys(data.val())[i];
-          this.weight_all += Number(a2[i].weight);
-          this.count++;
-          this.detailFilter.push(a2[i]);
-          console.log('aaa');
-          console.log(this.weight_all);
-
-      } else {
-        this.datas = [];
-        this.count = 0;
-        this.weight_all = 0;
-        this.detailFilter = [];
-      }
-      }
+      if (data.val() != null) {
+        const a2 = Object.keys(data.val()).map(k => data.val()[k]);
+        console.log(a2);
+        for (let i = 0; i < a2.length; i++) {
+          console.log('bbb');
+          console.log(a2[i]);
+          if (a2[i].status === 'เชือดแล้ว' && (a2[i].type === 'ซากซ้าย' || a2[i].type === 'ซากขวา')) {
+            this.datas.push(a2[i]);
+            this.datas[this.count].key = Object.keys(data.val())[i];
+            this.weight_all += Number(a2[i].weight);
+            this.count++;
+            this.detailFilter.push(a2[i]);
+            console.log('aaa');
+            console.log(this.weight_all);
+        }
+        }
+        document.getElementById('w').innerHTML =
+        this.weight_all.toFixed(2);
+    } else {
+      this.datas = [];
+      this.count = 0;
+      this.weight_all = 0;
+      this.detailFilter = [];
       document.getElementById('w').innerHTML =
       this.weight_all.toFixed(2);
+      }
 
     });
   }
