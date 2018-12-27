@@ -50,9 +50,13 @@ export class PrivilegeComponent implements OnInit {
         } else if (value[i].privilege_id === '1') {
           this.datas[i].privilege = 'แอดมิน';
         } else if (value[i].privilege_id === '2') {
-          this.datas[i].privilege = 'พนักงานคลัง';
+          this.datas[i].privilege = 'แผนกคลัง';
         } else if (value[i].privilege_id === '3') {
-          this.datas[i].privilege = 'พนักงานตัดเกรด';
+          this.datas[i].privilege = 'แผนกตัดเกรด';
+        } else if (value[i].privilege_id === '4') {
+          this.datas[i].privilege = 'แผนกเชือด-ตัดแต่ง';
+        } else if (value[i].privilege_id === '5') {
+          this.datas[i].privilege = 'แผนกจำหน่าย';
         }
       }
       console.log(value[0].privilege_id);
