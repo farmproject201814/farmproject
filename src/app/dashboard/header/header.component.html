@@ -128,42 +128,42 @@
 
 <!-- หลัง login (คลัง) -->
 <nav class="navbar navbar-dark navbar-expand-xl fixed-top" style="background-color: #003171" [hidden]="!user2">
-  <a routerLink="/dashboard_store"><img class="navbar-icon" src="https://www.img.in.th/images/c9d93cbbec4c3cd936ff4dd4d1c56dff.png"></a>
+  <a routerLink="/dashboard_store"><img class="navbar-icon" src="/assets/1.png"></a>
   <a class="head nav-link" routerLink="/dashboard_store" style="margin-right: 50px; color: white">ระบบคลังชิ้นเนื้อ</a>
 
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
       <div class="dropdown">
-        <button class="dropbtn" routerLink="/menu1" routerLinkActive="active"><i class='fas fa-snowflake'></i>&nbsp;การบ่มซาก&nbsp;<i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-content" style="width: 125px">
+        <button class="dropbtn" style="padding-top: 10px" routerLink="/menu1" routerLinkActive="active"><img id="dd00" src="/assets/1111.png" stype="vertical-align: 0px"> การบ่มซาก <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 140px">
           <a routerLink="/menu1/aging">บ่มซากเนื้อโค</a>
           <a routerLink="/menu1/history-order">ประวัติการบ่ม</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn" routerLink="/menu2" routerLinkActive="active"><i class='fas fa-file-import'></i>&nbsp;การนำเข้า&nbsp;<i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-content" style="width: 121px">
+        <button class="dropbtn" routerLink="/menu2" routerLinkActive="active"><img class="navbar-icon" id="dd55" src="/assets/999.png" style="vertical-align: -20%;"> การนำเข้า <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" style="width: 125px">
           <a routerLink="/menu2/import-t1">ประวัติการนำเข้า</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn" routerLink="/menu3" routerLinkActive="active"><i class='fas fa-file-export'></i>&nbsp;การเบิกออก&nbsp;<i class="fa fa-caret-down"></i></button>
+        <button class="dropbtn" routerLink="/menu3" routerLinkActive="active"><img class="navbar-icon" id="dd66" src="/assets/888.png" style="vertical-align: -20%;"> การเบิกออก <i class="fa fa-caret-down"></i></button>
         <div class="dropdown-content" style="width: 135px">
           <a routerLink="/menu3/order-t1">ประวัติการเบิกออก</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn" routerLink="/menu4" routerLinkActive="active"><i class='fas fa-home'></i>&nbsp;คลัง&nbsp;<i class="fa fa-caret-down"></i></button>
+        <button class="dropbtn" routerLink="/menu4" routerLinkActive="active"><i class='fas fa-home' style="font-size: 20px"></i>&nbsp;คลัง&nbsp;<i class="fa fa-caret-down"></i></button>
         <div class="dropdown-content" style="width: 98px">
           <a routerLink="/menu4/store-t1">ยอดคงคลัง</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn" routerLink="/menu5" routerLinkActive="active"><i class='fas fa-file-pdf'></i>&nbsp;ออกรายงาน&nbsp;<i class="fa fa-caret-down"></i></button>
+        <button class="dropbtn" routerLink="/menu5" routerLinkActive="active"><i class='fas fa-file-pdf' style="font-size: 18px"></i>&nbsp;ออกรายงาน&nbsp;<i class="fa fa-caret-down"></i></button>
         <div class="dropdown-content" style="width: 150px">
           <a routerLink="/menu5/report1-t1">ออกรายงานนำเข้า</a>
           <a routerLink="/menu5/report2-t1">ออกรายงานเบิกออก</a>
@@ -173,7 +173,7 @@
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn" routerLink="/menu6" routerLinkActive="active"><i class="fas fa-exclamation-triangle"></i>&nbsp;การแจ้งเตือน&nbsp;<i class="fa fa-caret-down"></i></button>
+        <button class="dropbtn" routerLink="/menu6" routerLinkActive="active"><i class="material-icons" style="font-size: 20px">&#xe7f7;</i>&nbsp;การแจ้งเตือน&nbsp;<i class="fa fa-caret-down"></i></button>
         <div class="dropdown-content" style="width: 140px">
           <a routerLink="/menu6/notification-t1">การแจ้งเตือนระบบ</a>
         </div>

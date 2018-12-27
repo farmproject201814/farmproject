@@ -86,4 +86,8 @@ export class SimulationService {
     return this.http.get(api.url + '/api/store/simulation/simulation-t2/allCount').pipe(map(res => res.json()));
   }
 
+
+  countNum_dashboard() {
+    return this.http.get(api.url + '/api/store/count-num-dashboard').pipe(map(res => res.json()));
+  }
 }

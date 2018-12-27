@@ -2,7 +2,7 @@
   <p class="text-center"><strong>ประเภทการนำเข้า</strong></p>
   <div class="row r1 justify-content-center">
     <div class="form-inline">
-      <label class="col-form-label"><b>ประเภทการนำเข้า</b></label>
+      <label class="col-form-label"><b>ประเภทซาก</b></label>
       <div class="dropdown mx-sm-3">
         <button class="dropbtn">ซากเนื้อโค (ทั้งหมด) &nbsp;<i class="fa fa-caret-down" ></i></button>
         <div class="dropdown-content">
@@ -12,7 +12,7 @@
           <a routerLink="/menu2/import-t5">ซากเนื้อโค (ส่วนอื่น)</a>
         </div>
       </div>
-      <label class="col-form-label"><b>ชนิดของซาก</b></label>
+      <label class="col-form-label"><b>ชนิดซาก</b></label>
       <div class="ml-3">
         <div class="input-group form-search">
             <select class="form-control search-query fcsq1">
@@ -20,7 +20,7 @@
             </select>
           </div>
       </div>
-      <label class="col-form-label ml-3"><b>ค้นหาโดย</b></label>
+      <label class="col-form-label ml-3"><b>ค้นหา</b></label>
       <div class="input-group form-search  ml-3">
         <select class="form-control search-query fcsq2" (change)="dropdown_search(slt)" ngModel="1" #slt>
           <option value="1">ชื่อเจ้าของ</option>
@@ -41,16 +41,16 @@
     <div class="input-group form-inline c2"></div>
     <div class="input-group form-inline c1">
       <label class="label mr-3 test"><b>วันที่นำเข้า</b></label>
-      <input type="date" class="form-control "id="fc1">
+      <input type="date" class="form-control "id="fc1" (change)="startdate(s1)" [(ngModel)]="start" #s1>
       <div class="input-group-append">
         <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
       </div>
       <label class="label ml-3 mr-3"><b>ถึงวันที่</b></label>
-        <input type="date" class="form-control "id="fc2">
+        <input type="date" class="form-control "id="fc2" (change)="enddate(e1)" [(ngModel)]="end" #e1>
         <div class="input-group-append">
           <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
         </div>
-        <button type="submit" class="btn ml-3" >ค้นหา <i class="fa fa-search"></i></button>
+        <button type="submit" class="btn ml-3" (click)="searchDate()">ค้นหา <i class="fa fa-search"></i></button>
     </div>
     <div class="input-group form-inline c3"></div>
   </div>

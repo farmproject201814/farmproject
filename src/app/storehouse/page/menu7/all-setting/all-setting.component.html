@@ -30,7 +30,7 @@
             </form>
     </div>
     <div class="col-4">
-      <form>
+      <form (ngSubmit)="add_settingLimit_age(r, lim_age.key)" #r="ngForm">
             <div class="card shadow p c1">
                     <div class="card-header">
                         <h5><i class='far' id="oo">&#xf017;</i> วันใกล้หมดอายุ</h5>
@@ -47,11 +47,12 @@
                             <label class="col-form-label"><b>ระบุลิมิตอายุซาก</b></label>
                         </div>
                         <div class="row r112">
-                                <input type="text" class="form-control search-query"style="width: 200px;height: 30px">
+                                <input type="text" class="form-control search-query"style="width: 200px;height: 30px"
+                                name="limit_age" ngModel="{{lim_age.limit_age}}">
                                 <label class="rr112"><b>วัน</b></label>
                             </div>
                       <div class="row r213 justify-content-center">
-                          <button type="button" class="btn" id="bt3" (click)="sw_alert2()"><i class='fas'>&#xf0c7;</i> บันทึก</button>
+                          <button type="submit" class="btn" id="bt3"><i class='fas'>&#xf0c7;</i> บันทึก</button>
                       </div>
                   </div>
             </div>
@@ -70,13 +71,13 @@
                         <div class="row r01">
                             <label class="col-form-label "><b>รายการนำเข้า :</b></label>
                             <div class="col cc">
-                                <button type="button" class="btn" id="bt4" (click)="sw_alert6()">ล้าง</button>
+                                <button type="button" class="btn" id="bt4" (click)="onDelete_import()">ล้าง</button>
                             </div>
                         </div>
                         <div class="row r01">
                             <label class="col-form-label "><b>รายการเบิกออก :</b></label>
                             <div class="col cc">
-                                <button type="button" class="btn" id="bt4" (click)="sw_alert7()">ล้าง</button>
+                                <button type="button" class="btn" id="bt4" (click)="onDelete_export()">ล้าง</button>
                             </div>
                         </div>
                     </div>
@@ -150,26 +151,26 @@
       </div>
     </div>
 </div>
-<!-- <div class="header">
-  <div class="row">
-    <form (ngSubmit)="add_settingRoom(t, room.key)" #t="ngForm">
+<!--
+  <div class="row" style="margin-top: 5%">
+    <form (ngSubmit)="add_r(t)"   #t="ngForm">
       <label>ตั้งค่าห้อง</label>
-      <input name="s_room" ngModel="{{room.s_room}}" />
+      <input name="s_room" ngModel/>
       <button type="submit">Submit</button>
     </form>
   </div>
   <div class="row">
-    <form (ngSubmit)="add_settingClass(t2, class.key)" #t2="ngForm">
+    <form (ngSubmit)="add_c(t2)"  #t2="ngForm">
       <label>ตั้งค่าชั้น</label>
-      <input name="s_class" ngModel="{{class.s_class}}" />
+      <input name="s_class" ngModel />
       <button type="submit">Submit</button>
     </form>
   </div>
-  <div class="row">
-    <form (ngSubmit)="add_settingBucket(t3, bucket.key)" #t3="ngForm">
+  <div class="row" style="margin-bottom: 5%">
+    <form (ngSubmit)="add_b(t3)"  #t3="ngForm">
       <label>ตั้งค่าตะกร้า</label>
-      <input name="s_bucket" ngModel="{{bucket.s_bucket}}" />
+      <input name="s_bucket" ngModel />
       <button type="submit">Submit</button>
     </form>
-  </div>
-</div> -->
+  </div> -->
+

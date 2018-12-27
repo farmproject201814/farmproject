@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu1Service } from '../menu1.service';
+import * as firebase from 'firebase';
+import { Menu4Service } from '../../menu4/menu4.service';
 
 @Component({
   selector: 'app-history-order',
@@ -8,64 +10,64 @@ import { Menu1Service } from '../menu1.service';
 })
 export class HistoryOrderComponent implements OnInit {
   count = 0;
-  data: any;
   date;
   name: any;
-  /*--- ตัวแปรในฟังก์ชัน selectMenu() ---*/
-  chk;
-  idcheck = [];
-  selectQuestions: string[] = [];
-  /*--- ตัวแปรในฟังก์ชัน checkAll_list() ---*/
-  a = 0;
-  c = {
-    check : false
-  };
-  /*--- ตัวแปรในฟังก์ชัน selectMenu() ---*/
+  aging_lenght;
   check = 11;
   weight_all = 0;
   detailData: any = [];
+  detailFilter = [];
+  datas: any = [];
+  start = '';
+  end =  '';
+  startvalue: any = '';
+  endvalue: any = '';
+  bykey = [];
 
-  constructor(private api: Menu1Service) { }
+  constructor(private api: Menu1Service, private api_menu4: Menu4Service) { }
 
   ngOnInit() {
-    // this.api.showHistoryOrder().subscribe(data => {
-    //   this.count = Object.values(data).length;        /* นับจำนวนรายการทั้งหมดในตาราง */
-    //   this.data = Object.values(data);                /* Qurey ข้อมูล */
-    //   for (let i = 0; i < Object.values(data).length; i++) {
-    //     this.data[i].key = Object.keys(data)[i];
-    //   }
-    // });
-  }
+    this.start = '';
+    this.end = '';
+    this.count = 0;
+    this.weight_all = 0;
+    this.datas = [];
+    this.api.showAging().subscribe(data => {
+      const c = 0;
+      const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+      for (let i = 0; i < a2.length; i++) {
+        if (a2[i].status === 'บ่มเสร็จแล้ว') {
+          this.datas.push(a2[i]);
+          this.datas[c].key = Object.keys(data)[i];
+          this.weight_all += Number(a2[i].weight);
+          this.count++;
+          this.detailFilter.push(a2[i]);
 
-  selectMenu(k) {      /* checkbox ทีละตัว */
-    this.chk = this.selectQuestions.indexOf(k.key);
-    if (this.chk >= 0) {
-      this.idcheck.splice(this.chk, 1);
-      this.selectQuestions.splice(this.chk, 1);
-    } else {
-      this.idcheck.push(k);
-      this.selectQuestions.push(k.key);
-    }
-    console.log(this.idcheck);
-  }
+          const o = new Date();
+          console.log(o.getTime());
+          this.aging_lenght = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
+          this.datas[c].day_aging = this.aging_lenght;
 
-  checkAll_list() {        /* checkbox ทั้งหมด */
-    console.log(this.a);
-    if (this.a === 0) {
-       this.c.check = true;
-       this.idcheck = [];
-       this.detailData.forEach( a => {
-          this.idcheck.push(a);
-          this.selectQuestions.push(a.key);
-       });
-       this.a = 1;
-    } else {
-      this.c.check = false;
-      this.a = 0;
-      this.idcheck = [];
-      this.selectQuestions = [];
-    }
-    console.log(this.idcheck);
+          const a_start = new Date();
+          const diffDay = Math.round((a2[i].date_aging - a_start.getTime()) / (1000 * 3600 * 24));
+          console.log(Math.abs(diffDay));
+
+          if (Math.abs(diffDay) === 0) {
+            this.bykey.push(Object.keys(data)[i]);
+            this.api.updateStatus_to_store(a2[i].cow_code).subscribe(d6 => {
+              y.push(Object.keys(d6)[0]);
+            });
+          }
+        }
+
+        document.getElementById('w').innerHTML =
+        this.weight_all.toFixed(2);
+      }
+      const y = [];
+      this.api.update_status_complete(this.bykey).subscribe();
+      console.log(this.bykey);
+      this.api.update_status_complete(y).subscribe();
+    });
   }
 
   dropdown_search(v) {       /* เลือกประเภทการ search */
@@ -100,5 +102,65 @@ export class HistoryOrderComponent implements OnInit {
         }
       }
     }
+  }
+
+  startdate(start) {
+    this.start = start.value;
+    const date1 = new Date(this.start);
+    const date2 = new Date(this.end);
+    if (this.start === '' || this.end === '') {
+      this.start = this.start;
+      this.end = this.end;
+    } else {
+      const timeDiff = date2.getTime() - date1.getTime();
+      const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if (diffDays < 0) {
+        this.end = this.start;
+      }
+      console.log(diffDays);
+
+      console.log(this.startvalue);
+    }
+    this.startvalue = Number(date1);
+  }
+
+  enddate(end) {
+    this.end = end.value;
+    const date3 = new Date(this.start);
+    const date4 = new Date(this.end);
+    if (this.start === '' || this.end === '') {
+      this.start = this.start;
+      this.end = this.end;
+    } else {
+
+      const timeDiff = date4.getTime() - date3.getTime();
+      const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if (diffDays < 0) {
+        this.start = this.end;
+      }
+      console.log(diffDays);
+
+      console.log(this.endvalue);
+    }
+    this.endvalue = Number(date4);
+  }
+
+  searchDate() {
+
+    console.log(this.startvalue);
+    console.log(this.endvalue);
+    // tslint:disable-next-line:max-line-length
+    firebase.database().ref().child('/store/menu2/import').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+      if (data.val() != null) {
+        this.datas = Object.keys(data.val()).map(key => data.val()[key]);
+        for (let i = 0 ; i < data.val().length ; i++) {
+          this.datas[i].key = Object.keys(data.val());
+        }
+        console.log(this.datas);
+      } else {
+        this.datas = [];
+      }
+
+    });
   }
 }

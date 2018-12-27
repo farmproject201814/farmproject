@@ -3,10 +3,11 @@ import { Menu1Service } from '../menu1.service';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { SimulationService } from 'src/app/storehouse/simulation/simulation.service';
 import * as firebase from 'firebase';
+import { d } from '@angular/core/src/render3';
+import { Menu4Service } from '../../menu4/menu4.service';
 
 @Component({
   selector: 'app-aging',
@@ -15,8 +16,9 @@ import * as firebase from 'firebase';
 })
 export class AgingComponent implements OnInit {
   count = 0;
-  data: any = [];
+  datas: any = [];
   date;
+  date_aging;
   name: any;
   /*--- ตัวแปรในฟังก์ชัน selectMenu() ---*/
   chk;
@@ -32,41 +34,40 @@ export class AgingComponent implements OnInit {
   weight_all = 0;
   detailData: any = [];
   detailFilter = [];
-  constructor(private api: Menu1Service, private authAf: AngularFireAuth, private auth: AuthService) {
+  start = '';
+  end =  '';
+  startvalue: any = '';
+  endvalue: any = '';
+  key_store;
+  num_date = 7;
+  constructor(private api: Menu1Service, private authAf: AngularFireAuth, private auth: AuthService,
+    private api_4: Menu4Service) {
     this.date = new Date();
    }
 
   ngOnInit() {
+    this.start = '';
+    this.end = '';
+    this.count = 0;
+    this.weight_all = 0;
+    this.datas = [];
     this.api.showAging().subscribe(data => {
       const a2 = Object.keys(data).map(key => data[key]);       /* Qurey ข้อมูล */
+      console.log(data);
       for (let i = 0; i < a2.length; i++) {
-        this.data.push(a2[i]);
-        // this.datas[i].key = Object.keys(data)[i];
-        this.weight_all += Number(a2[i].weight);
-        this.count++;
-        this.detailFilter.push(a2[i]);
+        if (a2[i].status === 'เชือดแล้ว' && (a2[i].type === 'ซากซ้าย' || a2[i].type === 'ซากขวา')) {
+          this.datas.push(a2[i]);
+          this.datas[i].key = Object.keys(data)[i];
+          this.weight_all += Number(a2[i].weight);
+          this.count++;
+          this.detailFilter.push(a2[i]);
+          console.log(this.weight_all);
+
       }
         document.getElementById('w').innerHTML =
         this.weight_all.toFixed(2);
+      }
     });
-    // let c = 0;
-    // this.api.test().subscribe(d => {
-    //   const values = Object.keys(d.data).map(key => d.data[key]);
-    //   values.forEach(d1 => {
-    //     const s2 = Object.keys(d1).map(key => d1[key]);
-    //     for (let i = 0 ; i < s2.length ; i ++ ) {
-    //       if (s2[i].split === 1 && s2[i].type === 'ซากซ้าย' || s2[i].type === 'ซากขวา') {
-    //         this.detailData.push(s2[i]);
-    //         this.detailData[c].key = Object.keys(d1)[i];
-    //         this.weight_all += Number(s2[i].weight);
-    //         this.count ++;
-    //         c++;
-    //       }
-    //     }
-    //     document.getElementById('w').innerHTML =
-    //     this.weight_all.toFixed(2);
-    //   });
-    // });
 
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้บ่ม */
       this.auth.showData(datas.email).subscribe(snap => {
@@ -74,16 +75,22 @@ export class AgingComponent implements OnInit {
         this.name = values[0].fname; /* + ' ' + values[0].lname */
       });
     });
+
+    this.api_4.showStore().subscribe(data => {
+      const a = Object.keys(data); /* Qurey ข้อมูล */
+      console.log(data);
+    });
   }
 
   selectMenu(k) {      /* checkbox ทีละตัว */
-    console.log(k);
-    console.log(k);
     this.chk = this.selectQuestions.indexOf(k.key);
     if (this.chk >= 0) {
       this.idcheck.splice(this.chk, 1);
       this.selectQuestions.splice(this.chk, 1);
     } else {
+      const dw = new Date();
+      dw.setDate(dw.getDate() + Number(this.num_date));
+       k.date_aging = Number(dw);
       this.idcheck.push(k);
       this.selectQuestions.push(k.key);
     }
@@ -95,8 +102,13 @@ export class AgingComponent implements OnInit {
     if (this.a === 0) {
        this.c.check = true;
        this.idcheck = [];
-       this.detailData.forEach( a => {
+       this.datas.forEach( a => {
+        const dg = new Date();
+        dg.setDate(dg.getDate() + Number(this.num_date));
+         a.date_aging = Number(dg);
+
           this.idcheck.push(a);
+          console.log(a);
           this.selectQuestions.push(a.key);
        });
        this.a = 1;
@@ -135,4 +147,127 @@ export class AgingComponent implements OnInit {
       }
     }
   }
+
+  startdate(start) {
+    this.start = start.value;
+    const date1 = new Date(this.start);
+    const date2 = new Date(this.end);
+    if (this.start === '' || this.end === '') {
+      this.start = this.start;
+      this.end = this.end;
+    } else {
+      const timeDiff = date2.getTime() - date1.getTime();
+      const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if (diffDays < 0) {
+        this.end = this.start;
+      }
+      console.log(diffDays);
+
+      console.log(this.startvalue);
+    }
+    this.startvalue = Number(date1);
+  }
+
+  enddate(end) {
+    this.end = end.value;
+    const date3 = new Date(this.start);
+    const date4 = new Date(this.end);
+    if (this.start === '' || this.end === '') {
+      this.start = this.start;
+      this.end = this.end;
+    } else {
+
+      const timeDiff = date4.getTime() - date3.getTime();
+      const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if (diffDays < 0) {
+        this.start = this.end;
+      }
+      console.log(diffDays);
+
+      console.log(this.endvalue);
+    }
+    this.endvalue = Number(date4);
+  }
+
+  searchDate() {
+
+    console.log(this.startvalue);
+    console.log(this.endvalue);
+    // tslint:disable-next-line:max-line-length
+    firebase.database().ref().child('/store/menu1/aging').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+      if (data.val() != null) {
+        this.datas = Object.keys(data.val()).map(key => data.val()[key]);
+        for (let i = 0 ; i < data.val().length ; i++) {
+          this.datas[i].key = Object.keys(data.val());
+        }
+        console.log(this.datas);
+      } else {
+        this.datas = [];
+      }
+
+    });
+  }
+
+  sendDate(s) {
+    this.num_date = s;
+    console.log(s.value);
+    const de = new Date();
+    de.setDate(de.getDate() + Number(s.value));
+    console.log(de);
+    for (let i = 0 ; i < this.idcheck.length ; i++) {
+      this.idcheck[i].date_aging = Number(de);
+    }
+  }
+  change_status(w) {
+    const r = new Date();
+    this.date = Number(r);
+    const q = [];
+     for (let i = 0; i < this.idcheck.length; i++) {
+       this.api.updateStatus_to_store(this.idcheck[i].cow_code).subscribe(u => {
+         q.push(Object.keys(u)[0]) ;
+         console.log(q);
+
+      });
+        this.idcheck[i].aging_name = w;
+        this.idcheck[i].date = this.date;
+     }
+     console.log(q);
+     setTimeout(() => {
+     this.api.updateStatus_to_store2(q).subscribe(d3 => {
+       if (d3.status === 'OK') {
+        this.api.updateStatus(this.idcheck).subscribe(dd => {
+          if (dd.status === 'OK') {
+            this.api.updateStatus2(this.idcheck).subscribe(d2 => {
+              if (d2.status === 'OK') {
+                swal({
+                  title: 'สำเร็จ!',
+                  text: 'บ่มซากเนื้อโคสำเร็จ',
+                  type: 'success',
+                  confirmButtonText: 'ตกลง'
+                });
+                document.getElementById('openModalButton').click();
+                this.ngOnInit();
+              }
+            });
+          }
+        }
+      );
+    }
+  });
+}, 1000);
+
+  }
+
+//   test() {
+//     swal({
+//       title: 'รอสักครู่',
+//       html: 'ระบบกำลังทำรายการ กรุณารอสักครู่',
+//       timer: 4000,
+//       onBeforeOpen: () => {
+//         swal.showLoading();
+//       },
+//   }).then((result) => {
+
+//   });
+// }
 }

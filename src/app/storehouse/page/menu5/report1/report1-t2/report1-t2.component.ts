@@ -4,8 +4,8 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from 'src/app/auth.service';
-import { t } from '@angular/core/src/render3';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-report1-t2',
@@ -43,6 +43,12 @@ export class Report1T2Component implements OnInit {
   t27_num = 0; t27_w = 0; t27_wc = 0; t28_num = 0; t28_w = 0; t28_wc = 0;
   t29_num = 0; t29_w = 0; t29_wc = 0; t30_num = 0; t30_w = 0; t30_wc = 0;
 
+  start = '';
+  end =  '';
+  startvalue: any = '';
+  endvalue: any = '';
+  start_at;
+  end_at;
   constructor(private api: Menu2Service, private authAf: AngularFireAuth, private auth: AuthService) {
     pdfMake.fonts = {
       THNiramitAS: {
@@ -100,6 +106,21 @@ export class Report1T2Component implements OnInit {
         this.count_weight_c.toFixed(2);
       } else {
         this.data_import = [];
+        this.t1_num = 0; this.t1_w = 0; this.t1_wc = 0; this.t2_num = 0; this.t2_w = 0; this.t2_wc = 0;
+        this.t3_num = 0; this.t3_w = 0; this.t3_wc = 0; this.t4_num = 0; this.t4_w = 0; this.t4_wc = 0;
+        this.t5_num = 0; this.t5_w = 0; this.t5_wc = 0; this.t6_num = 0; this.t6_w = 0; this.t6_wc = 0;
+        this.t7_num = 0; this.t7_w = 0; this.t7_wc = 0; this.t8_num = 0; this.t8_w = 0; this.t8_wc = 0;
+        this.t9_num = 0; this.t9_w = 0; this.t9_wc = 0; this.t10_num = 0; this.t10_w = 0; this.t10_wc = 0;
+        this.t11_num = 0; this.t11_w = 0; this.t11_wc = 0; this.t12_num = 0; this.t12_w = 0; this.t12_wc = 0;
+        this.t13_num = 0; this.t13_w = 0; this.t13_wc = 0; this.t14_num = 0; this.t14_w = 0; this.t14_wc = 0;
+        this.t15_num = 0; this.t15_w = 0; this.t15_wc = 0; this.t16_num = 0; this.t16_w = 0; this.t16_wc = 0;
+        this.t17_num = 0; this.t17_w = 0; this.t17_wc = 0; this.t18_num = 0; this.t18_w = 0; this.t18_wc = 0;
+        this.t19_num = 0; this.t19_w = 0; this.t19_wc = 0; this.t20_num = 0; this.t20_w = 0; this.t20_wc = 0;
+        this.t21_num = 0; this.t21_w = 0; this.t21_wc = 0; this.t22_num = 0; this.t22_w = 0; this.t22_wc = 0;
+        this.t23_num = 0; this.t23_w = 0; this.t23_wc = 0; this.t24_num = 0; this.t24_w = 0; this.t24_wc = 0;
+        this.t25_num = 0; this.t25_w = 0; this.t25_wc = 0; this.t26_num = 0; this.t26_w = 0; this.t26_wc = 0;
+        this.t27_num = 0; this.t27_w = 0; this.t27_wc = 0; this.t28_num = 0; this.t28_w = 0; this.t28_wc = 0;
+        this.t29_num = 0; this.t29_w = 0; this.t29_wc = 0; this.t30_num = 0; this.t30_w = 0; this.t30_wc = 0;
       }
     });
 
@@ -275,7 +296,7 @@ export class Report1T2Component implements OnInit {
         {text: 'ประวัติการนำเข้าซากเนื้อโค', style: 'header2'},
 
         {text: '\n'},
-        {text: 'ข้อมูลระหว่างวันที่ 1 ธันวาคม 2561 ถึงวันที่ 2 ธันวาคม 2561'},
+        {text: 'ข้อมูลระหว่างวันที่ ' + this.start_at + ' ถึงวันที่ ' + this.end_at + ' '},
         {text: '\n'},
 
         {text: 'ซากเนื้อโค (ซ้าย-ขวา)', bold: true, margin: [0, 0, 0, 3]},
@@ -347,7 +368,7 @@ export class Report1T2Component implements OnInit {
         },
       }
     };
-    pdfMake.createPdf(docDefinition).open();
+    pdfMake.createPdf(docDefinition).download();
   }
 
   report() {  /* ------------ ออกรายงานปกติ -------------------------------------------------------- */
@@ -364,7 +385,7 @@ export class Report1T2Component implements OnInit {
         {text: 'ประวัติการนำเข้าซากเนื้อโค', style: 'header2'},
 
         {text: '\n'},
-        {text: 'ข้อมูลระหว่างวันที่ 1 ธันวาคม 2561 ถึงวันที่ 2 ธันวาคม 2561'},
+        {text: 'ข้อมูลระหว่างวันที่ ' + this.start_at + ' ถึงวันที่ ' + this.end_at + ' '},
         {text: '\n'},
 
         this.table(this.data_import, ['count', 'date', 'owner', 'type', 'cow_code', 'code', 'barcode',
@@ -418,7 +439,7 @@ export class Report1T2Component implements OnInit {
         },
       }
     };
-    pdfMake.createPdf(docDefinition).open();
+    pdfMake.createPdf(docDefinition).download();
   }
 
   buildTableBody(data, columns) {
@@ -444,5 +465,100 @@ export class Report1T2Component implements OnInit {
         body: this.buildTableBody(data, columns),
     }, style: 't'
   };
+}
+
+startdate(start) {
+  this.start = start.value;
+  const date1 = new Date(this.start);
+  const date2 = new Date(this.end);
+  if (this.start === '' || this.end === '') {
+    this.start = this.start;
+    this.end = this.end;
+  } else {
+    const timeDiff = date2.getTime() - date1.getTime();
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    if (diffDays < 0) {
+      this.end = this.start;
+    }
+    console.log(diffDays);
+
+    console.log(this.startvalue);
+  }
+  this.startvalue = Number(date1);
+  const month = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', ' พฤษภาคม', 'มิถุนายน',
+  'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+  this.start_at = date1.getDate() + ' ' + month[date1.getMonth()] + ' ' + (date1.getFullYear() + 543);
+  this.end_at = date2.getDate() + ' ' + month[date2.getMonth()] + ' ' + (date2.getFullYear() + 543);
+}
+
+enddate(end) {
+  this.end = end.value;
+  const date3 = new Date(this.start);
+  const date4 = new Date(this.end);
+  if (this.start === '' || this.end === '') {
+    this.start = this.start;
+    this.end = this.end;
+  } else {
+
+    const timeDiff = date4.getTime() - date3.getTime();
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    if (diffDays < 0) {
+      this.start = this.end;
+    }
+    console.log(diffDays);
+
+    console.log(this.endvalue);
+  }
+  this.endvalue = Number(date4);
+  const month = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', ' พฤษภาคม', 'มิถุนายน',
+  'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+  this.start_at = date3.getDate() + ' ' + month[date3.getMonth()] + ' ' + (date3.getFullYear() + 543);
+  this.end_at = date4.getDate() + ' ' + month[date4.getMonth()] + ' ' + (date4.getFullYear() + 543);
+}
+
+searchDate() {
+
+  console.log(this.startvalue);
+  console.log(this.endvalue);
+  // tslint:disable-next-line:max-line-length
+  firebase.database().ref().child('/store/menu2/import').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+    if (data.val() != null) {
+      for (let i = 0 ; i < data.val().length ; i++) {
+        this.data_import[i].key = Object.keys(data.val());
+        this.datass[i].key = Object.keys(data.val());
+      }
+      // this.data_import = Object.keys(data.val()).map(key => data.val()[key]);
+      // for (let i = 0 ; i < data.val().length ; i++) {
+      //   this.data_import[i].key = Object.keys(data.val());
+      // }
+      // this.datass = Object.keys(data.val()).map(key => data.val()[key]);
+      // for (let i = 0 ; i < data.val().length ; i++) {
+      //   this.datass[i].key = Object.keys(data.val());
+      // }
+      console.log(this.datas);
+    } else {
+      this.datass = [];
+      this.data_import = [];
+      this.countReport = 0;
+      this.count_weight = 0;
+      this.count_weight_c = 0;
+      this.t1_num = 0; this.t1_w = 0; this.t1_wc = 0; this.t2_num = 0; this.t2_w = 0; this.t2_wc = 0;
+      this.t3_num = 0; this.t3_w = 0; this.t3_wc = 0; this.t4_num = 0; this.t4_w = 0; this.t4_wc = 0;
+      this.t5_num = 0; this.t5_w = 0; this.t5_wc = 0; this.t6_num = 0; this.t6_w = 0; this.t6_wc = 0;
+      this.t7_num = 0; this.t7_w = 0; this.t7_wc = 0; this.t8_num = 0; this.t8_w = 0; this.t8_wc = 0;
+      this.t9_num = 0; this.t9_w = 0; this.t9_wc = 0; this.t10_num = 0; this.t10_w = 0; this.t10_wc = 0;
+      this.t11_num = 0; this.t11_w = 0; this.t11_wc = 0; this.t12_num = 0; this.t12_w = 0; this.t12_wc = 0;
+      this.t13_num = 0; this.t13_w = 0; this.t13_wc = 0; this.t14_num = 0; this.t14_w = 0; this.t14_wc = 0;
+      this.t15_num = 0; this.t15_w = 0; this.t15_wc = 0; this.t16_num = 0; this.t16_w = 0; this.t16_wc = 0;
+      this.t17_num = 0; this.t17_w = 0; this.t17_wc = 0; this.t18_num = 0; this.t18_w = 0; this.t18_wc = 0;
+      this.t19_num = 0; this.t19_w = 0; this.t19_wc = 0; this.t20_num = 0; this.t20_w = 0; this.t20_wc = 0;
+      this.t21_num = 0; this.t21_w = 0; this.t21_wc = 0; this.t22_num = 0; this.t22_w = 0; this.t22_wc = 0;
+      this.t23_num = 0; this.t23_w = 0; this.t23_wc = 0; this.t24_num = 0; this.t24_w = 0; this.t24_wc = 0;
+      this.t25_num = 0; this.t25_w = 0; this.t25_wc = 0; this.t26_num = 0; this.t26_w = 0; this.t26_wc = 0;
+      this.t27_num = 0; this.t27_w = 0; this.t27_wc = 0; this.t28_num = 0; this.t28_w = 0; this.t28_wc = 0;
+      this.t29_num = 0; this.t29_w = 0; this.t29_wc = 0; this.t30_num = 0; this.t30_w = 0; this.t30_wc = 0;
+    }
+
+  });
 }
 }

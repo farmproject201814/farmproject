@@ -26,6 +26,7 @@ export class StoreT2Component implements OnInit {
   room = [];
   class = [];
   bucket = [];
+  lim_age = [];
   new_status;
   old_status = [];
 
@@ -60,6 +61,7 @@ export class StoreT2Component implements OnInit {
         if ((a[i].type === 'ซากซ้าย' || a[i].type === 'ซากขวา') && Number(a[i].hidden) === 0) {
           this.count_weight += Number(a[i].weight);
           this.count_weight_c += Number(a[i].weight_c);
+
           this.table1.push(a[i]);
           this.table1[this.count].key = Object.keys(datas)[i];
           this.detailFilter.push(a[i]);
@@ -108,6 +110,13 @@ export class StoreT2Component implements OnInit {
       console.log(let3);
       for (let i = 0 ; i < Number(let3[0].s_bucket) ; i++) {
         this.bucket.push(i + 1);
+      }
+    });
+    this.api_menu7.showSetting_limitAge().subscribe(data => {        /* แสดงจำนวนลิมิตอายุซากตามที่ตั้งค่า */
+      const let4 = Object.keys(data).map(a => data[a]);
+      console.log(let4);
+      for (let i = 0 ; i < Number(let4[0].limit_age) ; i++) {
+        this.lim_age.push(i + 1);
       }
     });
 
@@ -312,6 +321,23 @@ export class StoreT2Component implements OnInit {
     }
   }
 
+  filter_litmit_age(s4) {
+    this.table1 = [];
+    this.count = 0;
+    console.log(s4.value);
+    if (s4.value === 'ทั้งหมด') {
+      this.table1 = this.detailFilter;
+      this.count = this.detailFilter.length;
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.age === s4.value) {
+          this.table1.push(a);
+          this.count ++;
+        }
+      });
+    }
+  }
+
   update_hidden1(key) {
     console.log(key);
     this.api.updateHidden1(key).subscribe(d => {
@@ -342,9 +368,10 @@ export class StoreT2Component implements OnInit {
 
   updateData(w1, w2, w3) {                  /* บันทึกการเบิกออกและเปลี่ยนสถานะในคลัง */
     console.log(w1, w2, w3);
+    this.date = new Date();
     for (let i = 0; i < this.statusUpdate.length ; i++) {
       this.statusUpdate[i].order_name = w1;
-      this.statusUpdate[i].date = w2;
+      this.statusUpdate[i].date = Number(this.date);
       this.statusUpdate[i].take_name = this.take;
     }
     console.log(w3);
@@ -354,14 +381,14 @@ export class StoreT2Component implements OnInit {
         this.api.copyToOrder(this.statusUpdate).subscribe(d1 => {
           console.log(d1);
           if (d1.status === 'OK') {
-            this.api.copyToNotificationT5(this.statusUpdate).subscribe(d2 => {
+            this.api.copyToNotificationT5_copy(this.statusUpdate).subscribe(d2 => {
               console.log(d2);
               if (d2.status === 'OK') {
                 swal({
                   title: 'สำเร็จ!',
                   text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
                   type: 'success',
-                  confirmButtonText: 'ปิด'
+                  confirmButtonText: 'ตกลง'
                 });
                 document.getElementById('openModalButton').click();
                   this.ngOnInit();

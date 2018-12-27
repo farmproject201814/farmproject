@@ -52,22 +52,22 @@
         </div>
       </div>
       <div class="row r2 justify-content-center">
-          <div class="input-group form-inline c2"></div>
-          <div class="input-group form-inline c1">
-            <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
-            <input type="date" class="form-control "id="fc1">
+        <div class="input-group form-inline c2"></div>
+        <div class="input-group form-inline c1">
+          <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
+          <input type="date" class="form-control "id="fc1" (change)="startdate(s1)" [(ngModel)]="start" #s1>
+          <div class="input-group-append">
+            <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
+          </div>
+          <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
+            <input type="date" class="form-control "id="fc2" (change)="enddate(e1)" [(ngModel)]="end" #e1>
             <div class="input-group-append">
               <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
             </div>
-            <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
-              <input type="date" class="form-control "id="fc2">
-              <div class="input-group-append">
-                <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
-              </div>
-              <button type="submit" class="btn ml-3" id="btn1">ค้นหา <i class="fa fa-search"></i></button>
-          </div>
-          <div class="input-group form-inline c3"></div>
-      </div>
+            <button type="submit" class="btn ml-3" id="btn1" (click)="searchDate()">ค้นหา <i class="fa fa-search"></i></button>
+        </div>
+        <div class="input-group form-inline c3"></div>
+    </div>
 
           <div class="card shadow p">
               <div class="card-header">

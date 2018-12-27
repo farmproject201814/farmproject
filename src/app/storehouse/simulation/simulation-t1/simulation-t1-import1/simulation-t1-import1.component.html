@@ -55,7 +55,6 @@
                     <div class="col-sm-2 mb-2" [hidden]="hid != 3">
                     <label>ประเภทซาก</label>
                     <select class="form-control" name="type" ngModel>
-                      <option value="ทั้งหมด">ทั้งหมด</option>
                       <option value="เนื้อน่อง">เนื้อน่อง</option>
                       <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
                       <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
@@ -117,9 +116,11 @@
                     </div>
                     <div class="col-sm-1 mb-2">
                       <label>ห้อง</label>
-                      <select class="form-control" name="room" ngModel="1">
+                      <select class="form-control" name="room" ngModel="1" >
                         <option value="1">1</option>
                         <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                       </select>
                     </div>
                     <div class="col-sm-1 mb-2" [hidden]="hid != 2 && hid != 3 && hid != 4">

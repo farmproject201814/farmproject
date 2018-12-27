@@ -58,12 +58,10 @@
     background-color: #003171;
     color: white;
     width: 100%;
-    vertical-align: 20px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    /* text-align: center; */
+    padding: 13px;
     border: none;
-    cursor: pointer;
+    font-size: 16px;
+    height: 52px;
   }
 
   .dropdown {
@@ -88,7 +86,7 @@
     color: white;
     padding: 13px 20px;
     text-decoration: none;
-    /* text-align: center; */
+    text-align: left;
     /* width: auto; */
   }
 
@@ -141,11 +139,11 @@
 
 @media only screen and (max-width:1400px){
   .navbar{
-    height: 55px;
+    height: 52px;
   }
   .navbar-icon{
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
   }
   .head{
     color: #ffffff;
@@ -179,9 +177,9 @@
   li a {
     display: block;
     color: white;
-    /* text-align: center; */
-    padding-top: 15px;
-    padding-bottom: 15px;
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
     text-decoration: none;
     transition: all 0.5s ease;
   }
@@ -200,9 +198,9 @@
     background-color: #003171;
     color: white;
     width: 100%;
-    vertical-align: 20px;
-    padding-top: 17px;
-    padding-bottom: 17px;
+    /* vertical-align: 20px; */
+    /* padding-top: 17px; */
+    /* padding-bottom: 35px; */
     /* text-align: center; */
     border: none;
     cursor: pointer;
@@ -222,7 +220,7 @@
     position: absolute;
     background-color: #003171 ;
     /* width: cover; */
-    margin-top: -3px;
+    /* margin-top: -3px; */
   }
 
   .dropdown-content a {
@@ -280,5 +278,20 @@
 
   .active {
     background-color: rgb(0, 110, 255) !important;
+  }
+
+  #dd00 {
+    height: 30px;
+    width: 30px;
+  }
+
+  #dd55{
+    width: 20px;
+    height: 20px;
+  }
+
+  #dd66{
+    width: 20px;
+    height: 20px;
   }
 }

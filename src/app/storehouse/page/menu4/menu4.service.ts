@@ -31,7 +31,11 @@ export class Menu4Service {
   updateNewStatus(data) {
     return this.http.post(api.url + '/api/store/menu4/update-status/store-t1', data).pipe(map(res => res.json()));
   }
-  copyToNotificationT5(data) {
-    return this.http.post(api.url + '/api/store/menu6/history/order' , data).pipe(map(res => res.json()));
+  copyToNotificationT5(data, num) {
+    return this.http.post(api.url + '/api/store/menu6/history/order/' + num , data).pipe(map(res => res.json()));
+  }
+
+  copyToNotificationT5_copy(data) {
+    return this.http.post(api.url + '/api/store/menu6/history/order2' , data).pipe(map(res => res.json()));
   }
 }

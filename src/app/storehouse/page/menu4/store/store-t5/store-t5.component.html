@@ -50,39 +50,9 @@
       <label class="col-form-label ml-3"><b>อายุ</b></label>
       <div class="form-inline">
         <div class="input-group form-search ml-3">
-          <select class="form-control search-query fcsq31" (change)="filter_age(t2)" ngModel="ทั้งหมด" #t2>
+          <select class="form-control search-query fcsq31" (change)="filter_litmit_age(t4)" ngModel="ทั้งหมด" #t4>
             <option value="ทั้งหมด">ทั้งหมด</option>
-            <option value="1">1 วัน</option>
-            <option value="2">2 วัน</option>
-            <option value="3">3 วัน</option>
-            <option value="4">4 วัน</option>
-            <option value="5">5 วัน</option>
-            <option value="6">6 วัน</option>
-            <option value="7">7 วัน</option>
-            <option value="8">8 วัน</option>
-            <option value="9">9 วัน</option>
-            <option value="10">10 วัน</option>
-            <option value="11">11 วัน</option>
-            <option value="12">12 วัน</option>
-            <option value="13">13 วัน</option>
-            <option value="14">14 วัน</option>
-            <option value="15">15 วัน</option>
-            <option value="16">16 วัน</option>
-            <option value="17">17 วัน</option>
-            <option value="18">18 วัน</option>
-            <option value="19">19 วัน</option>
-            <option value="20">20 วัน</option>
-            <option value="21">21 วัน</option>
-            <option value="22">22 วัน</option>
-            <option value="23">23 วัน</option>
-            <option value="24">24 วัน</option>
-            <option value="25">25 วัน</option>
-            <option value="26">26 วัน</option>
-            <option value="27">27 วัน</option>
-            <option value="28">28 วัน</option>
-            <option value="29">29 วัน</option>
-            <option value="30">30 วัน</option>
-            <option value="31">31 วัน</option>
+            <option value="{{a4}}" *ngFor="let a4 of lim_age">{{a4}}</option>
           </select>
         </div>
       </div>

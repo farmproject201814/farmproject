@@ -20,6 +20,8 @@ export class SimulationT2Component implements OnInit {
   hid = 1;
   constructor(private api: SimulationService) {
     this.date = new Date();
+    this.date = Number(this.date);
+
     this.test2();
    }
 

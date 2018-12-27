@@ -17,7 +17,7 @@
 }
 
 .card-header{
-  background-color: #148AE1;
+  background-color: #3bafda;
   color: white;
   padding: 0.1rem 1.5rem;
 }
@@ -83,8 +83,8 @@ table tbody tr:hover {
 }
 
 .bt1{
-  margin-top: -4px;
-  background-color: #3498DB;
+  margin-top: -6px;
+  background-color: #48cfad;
   color: #FBFCFC;
   font-size: 18px;
   height: 38px;
@@ -102,7 +102,7 @@ table tbody tr:hover {
 
 .bt3{
   margin-top: -8px;
-  background-color: #2ECC71;
+  background-color: #87bf4b;
   color: #FBFCFC;
   font-size: 18px;
   height: 38px;

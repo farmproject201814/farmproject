@@ -284,6 +284,14 @@ export class NotificationT4Component implements OnInit {
       cancelButtonText: 'กลับ'
     }).then((result) => {
       if (result.value) {
+      swal({
+      title: 'รอสักครู่',
+      html: 'ระบบกำลังทำรายการ กรุณารอสักครู่',
+      timer: 4000,
+      onBeforeOpen: () => {
+        swal.showLoading();
+      },
+    });
         this.api_noti4.removeNotification_T4(num, key).subscribe(d2 => {
           if (d2.status === 'OK') {
             if (this.count === 1 ) {

@@ -40,7 +40,7 @@ import { Menu3Component } from './storehouse/page/menu3/menu3.component';
 import { Menu4Component } from './storehouse/page/menu4/menu4.component';
 import { Menu5Component } from './storehouse/page/menu5/menu5.component';
 import { PageRoutingModule, PageRoutingComponents } from './storehouse/page/page-routing.module';
-import { ImportComponent } from './storehouse/page/menu1/import/import.component';
+import { ImportComponent } from './storehouse/page/menu2/import/import.component';
 import { ImportT1Component } from './storehouse/page/menu2/import/import-t1/import-t1.component';
 import { ImportT2Component } from './storehouse/page/menu2/import/import-t2/import-t2.component';
 import { ImportT3Component } from './storehouse/page/menu2/import/import-t3/import-t3.component';

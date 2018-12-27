@@ -21,4 +21,20 @@ export class Menu1Service {
   showHistoryOrder() {
     return this.http.get(api.url + '/api/store/menu1/show/history-order').pipe(map(res => res.json()));
   }
+  updateStatus(data) {
+    return this.http.post(api.url + '/api/store/menu1/update/aging' , data).pipe(map(res => res.json()));
+  }
+  updateStatus2(data) {
+    return this.http.post(api.url + '/api/store/menu1/update2/aging' , data).pipe(map(res => res.json()));
+  }
+  updateStatus_to_store(data) {
+    return this.http.get(api.url + '/api/store/menu1/update-status-to-store/' + data).pipe(map(res => res.json()));
+  }
+  updateStatus_to_store2(data) {
+    return this.http.post(api.url + '/api/store/menu1/update-status-to-store2' , data).pipe(map(res => res.json()));
+  }
+
+  update_status_complete(data) {
+    return this.http.post(api.url + '/api/store/menu1/update-status-complete' , data).pipe(map(res => res.json()));
+  }
 }

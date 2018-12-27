@@ -23,7 +23,7 @@
       <div class="col-10">
         <div class="card shadow p">
           <div class="card-header">
-            <h6>เพิ่มข้อมูลซากเนื้อโค</h6>
+            <h6>เพิ่มคำร้องขอเบิก</h6>
           </div>
           <div class="card-body">
             <form (ngSubmit)="addDataST2(t)" #t="ngForm">
@@ -56,7 +56,6 @@
                     <div class="col-sm-2 mb-2" [hidden]="hid != 3">
                     <label>รายการที่ขอเบิก</label>
                     <select class="form-control" name="type" ngModel>
-                      <option value="ทั้งหมด">ทั้งหมด</option>
                       <option value="เนื้อน่อง">เนื้อน่อง</option>
                       <option value="เนื้อสะโพกนอก">เนื้อสะโพกนอก</option>
                       <option value="เนื้อลูกมะพร้าว">เนื้อลูกมะพร้าว</option>
@@ -132,7 +131,7 @@
         <div class="col">
           <div class="card shadow p">
             <div class="card-header">
-              <h6>ตารางข้อมูลซากเนื้อโค</h6>
+              <h6>ตารางรายการร้องขอเบิก</h6>
             </div>
             <div class="card-body">
               <table id="tables">

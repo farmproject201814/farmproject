@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu2Service } from '../../menu2.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-import-t2',
@@ -12,6 +13,11 @@ export class ImportT2Component implements OnInit {
   check = 3;
   weight_all = 0;
   detailFilter = [];
+
+  start = '';
+  end =  '';
+  startvalue: any = '';
+  endvalue: any = '';
   constructor(private api: Menu2Service) { }
 
   ngOnInit() {
@@ -79,5 +85,65 @@ export class ImportT2Component implements OnInit {
         }
       });
     }
+  }
+
+  startdate(start) {
+    this.start = start.value;
+    const date1 = new Date(this.start);
+    const date2 = new Date(this.end);
+    if (this.start === '' || this.end === '') {
+      this.start = this.start;
+      this.end = this.end;
+    } else {
+      const timeDiff = date2.getTime() - date1.getTime();
+      const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if (diffDays < 0) {
+        this.end = this.start;
+      }
+      console.log(diffDays);
+
+      console.log(this.startvalue);
+    }
+    this.startvalue = Number(date1);
+  }
+
+  enddate(end) {
+    this.end = end.value;
+    const date3 = new Date(this.start);
+    const date4 = new Date(this.end);
+    if (this.start === '' || this.end === '') {
+      this.start = this.start;
+      this.end = this.end;
+    } else {
+
+      const timeDiff = date4.getTime() - date3.getTime();
+      const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      if (diffDays < 0) {
+        this.start = this.end;
+      }
+      console.log(diffDays);
+
+      console.log(this.endvalue);
+    }
+    this.endvalue = Number(date4);
+  }
+
+  searchDate() {
+
+    console.log(this.startvalue);
+    console.log(this.endvalue);
+    // tslint:disable-next-line:max-line-length
+    firebase.database().ref().child('/store/menu2/import').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+      if (data.val() != null) {
+        this.datas = Object.keys(data.val()).map(key => data.val()[key]);
+        for (let i = 0 ; i < data.val().length ; i++) {
+          this.datas[i].key = Object.keys(data.val());
+        }
+        console.log(this.datas);
+      } else {
+        this.datas = [];
+      }
+
+    });
   }
 }

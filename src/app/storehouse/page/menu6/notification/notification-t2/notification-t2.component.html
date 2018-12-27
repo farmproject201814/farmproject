@@ -34,23 +34,27 @@
           <table>
             <thead>
               <tr>
-                <th width="40px">ลำดับ</th>
-                <th width="100px">วันที่ร้องขอ</th>
-                <th width="60px">เวลา</th>
-                <th width="60px">จำนวนรายการ</th>
-                <th width="100px">ผู้ขอเบิก</th>
-                <th width="50px">รายละเอียด</th>
+                <th width="90px">ลำดับ</th>
+                <th width="130px">วันที่ร้องขอ</th>
+                <th width="130px">เวลา</th>
+                <th width="120px">จำนวนรายการ</th>
+                <th width="140px">ผู้ขอเบิก</th>
+                <th width="140px">รายละเอียด</th>
+                <th>ลบ</th>
               </tr>
             </thead>
               <tbody>
                 <tr *ngFor="let d of data;let i = index">
-                  <td width="40px">{{ i+1 }}</td>
-                  <td width="100px">{{ d.date | date: 'dd-MM-yyyy' }}</td>
-                  <td width="60px">{{ d.date | date: 'HH:mm น.' }}</td>
-                  <td width="60px">{{ d.counts }}</td>
-                  <td width="100px">{{ d.take_name }}</td>
-                  <td width="50px">
-                      <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="model_detail(i)"><i class='fas'>&#xf002;</i> </button>
+                  <td width="90px">{{ i+1 }}</td>
+                  <td width="130px">{{ d.date | date: 'dd-MM-yyyy' }}</td>
+                  <td width="130px">{{ d.date | date: 'HH:mm น.' }}</td>
+                  <td width="120px">{{ d.counts }}</td>
+                  <td width="140px">{{ d.take_name }}</td>
+                  <td width="140px">
+                    <button class="btn bt1" data-toggle="modal" data-target="#notifi" (click)="model_detail(i)"><i class='fas'>&#xf002;</i> </button>
+                  </td>
+                  <td>
+                    <button class="btn" id="btn3"><i class="material-icons">&#xe872;</i></button>
                   </td>
                 </tr>
               </tbody>

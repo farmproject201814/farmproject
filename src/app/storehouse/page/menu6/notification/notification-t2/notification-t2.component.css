@@ -151,3 +151,12 @@ tr button {
   font-size: 18px;
 }
 
+#btn3 {
+  color: #FBFCFC;
+  background-color: #da4151;
+  padding: 2px;
+  font-size: 18px;
+  height: 30px;
+  width: 35px;
+}
+

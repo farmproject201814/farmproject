@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import { ActivatedRoute } from '@angular/router';
+import { Menu7Service } from 'src/app/storehouse/page/menu7/menu7.service';
 
 @Component({
   selector: 'app-simulation-t1-import1',
@@ -20,9 +21,14 @@ export class SimulationT1Import1Component implements OnInit {
   detail: any = [];
   num = 0;
   hid = 1;
-  constructor(private api: SimulationService) {
+  r = [];
+  c = [];
+  b = [];
+  lim_age = [];
+
+  constructor(private api: SimulationService, private api_menu7: Menu7Service) {
     this.date = new Date();
-    this.date = Number(this.date);
+    // this.date = Number(this.date);
 
     this.test1();
    }
@@ -45,6 +51,28 @@ export class SimulationT1Import1Component implements OnInit {
         }
       } else {
         this.data = [];
+      }
+    });
+
+    this.api_menu7.showSetting_class().subscribe(data => {        /* แสดงจำนวนชั้นตามที่ตั้งค่า */
+      const let2 = Object.keys(data).map(a => data[a]);
+      console.log(let2);
+      for (let i = 0 ; i < Number(let2[0].s_class) ; i++) {
+        this.c.push(i + 1);
+      }
+    });
+      this.api_menu7.showSetting_bucket().subscribe(data => {        /* แสดงจำนวนตะกร้าตามที่ตั้งค่า */
+      const let3 = Object.keys(data).map(a => data[a]);
+      console.log(let3);
+      for (let i = 0 ; i < Number(let3[0].s_bucket) ; i++) {
+        this.b.push(i + 1);
+      }
+    });
+      this.api_menu7.showSetting_limitAge().subscribe(data => {        /* แสดงจำนวนลิมิตอายุซากตามที่ตั้งค่า */
+      const let4 = Object.keys(data).map(a => data[a]);
+      console.log(let4);
+      for (let i = 0 ; i < Number(let4[0].limit_age) ; i++) {
+        this.lim_age.push(i + 1);
       }
     });
   }

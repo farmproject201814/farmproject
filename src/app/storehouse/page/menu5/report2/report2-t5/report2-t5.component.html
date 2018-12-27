@@ -15,7 +15,7 @@
       <label class="col-form-label"><b>ชนิดซาก</b></label>
       <div class="ml-3">
         <div class="input-group form-search">
-            <select class="form-control search-query fcsq1">
+            <select class="form-control search-query fcsq1" (change)="filter_type(t1)" ngModel="ทั้งหมด" #t1>
               <option value="ทั้งหมด">ทั้งหมด</option>
               <option value="เครื่องใน">เครื่องใน</option>
               <option value="หัว">หัว</option>
@@ -29,13 +29,13 @@
       </div>
       <label class="col-form-label ml-3"><b>ค้นหา</b></label>
       <div class="input-group form-search  ml-3">
-        <select class="form-control search-query fcsq2" (change)="selectMenu(slt)" ngModel="ผู้ขอเบิก" #slt>
-          <option value="ผู้ขอเบิก">ชื่อผู้ขอเบิก</option>
-          <option value="ผู้เบิกออก">ชื่อผู้เบิกออก</option>
-          <option value="เบอร์โค">เบอร์โค</option>
-          <option value="รหัสซาก">รหัสซาก</option>
-          <option value="รหัสบาร์โค้ด">รหัสบาร์โค้ด</option>
-          <option value="รหัสคิวอาร์โค้ด">รหัสคิวอาร์โค้ด</option>
+        <select class="form-control search-query fcsq2" (change)="dropdown_search(slt)" ngModel="1" #slt>
+          <option value="1">ชื่อผู้ขอเบิก</option>
+          <option value="2">ชื่อผู้เบิกออก</option>
+          <option value="3">เบอร์โค</option>
+          <option value="4">รหัสซาก</option>
+          <option value="5">รหัสบาร์โค้ด</option>
+          <option value="6">รหัสคิวอาร์โค้ด</option>
         </select>
         <input type="text" class="form-control search-query" id="myInput"(keyup)="searchTable()" ngModel style="height: 33px"/>
       </div>
@@ -45,23 +45,23 @@
     <div class="input-group form-inline c2"></div>
     <div class="input-group form-inline c1">
       <label class="label mr-3 mt-2 test"><b> วันที่เบิกออก </b></label>
-      <input type="date" class="form-control "id="fc1">
+      <input type="date" class="form-control "id="fc1" (change)="startdate(s1)" [(ngModel)]="start" #s1>
       <div class="input-group-append">
         <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
       </div>
       <label class="label ml-3 mr-3 mt-2" ><b> ถึงวันที่ </b></label>
-        <input type="date" class="form-control "id="fc2">
+        <input type="date" class="form-control "id="fc2" (change)="enddate(e1)" [(ngModel)]="end" #e1>
         <div class="input-group-append">
           <span class="input-group-text" id="igt" style="height: 33px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
         </div>
-        <button type="submit" class="btn ml-3" id="btn1"> ค้นหา <i class="fa fa-search"></i></button>
+        <button type="submit" class="btn ml-3" id="btn1" (click)="searchDate()"> ค้นหา <i class="fa fa-search"></i></button>
     </div>
     <div class="input-group form-inline c3"></div>
   </div>
 
   <div class="card shadow p">
     <div class="card-header">
-      <h5><i class="fa fa-table"></i> รายการที่ต้องการ</h5>
+      <h5><i class="fa fa-table"></i> รายการที่ค้นหา</h5>
     </div>
     <div class="card-body">
           <table id="tables">
@@ -82,29 +82,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td width=50px></td>
-                    <td width=90px></td>
-                    <td width=70px></td>
-                    <td width=120px></td>
-                    <td width=90px></td>
-                    <td width=90px></td>
-                    <td width=150px></td>
-                    <td width=150px></td>
-                    <td width=120px></td>
-                    <td></td>
-                  </tr>
+                    <tr *ngFor="let d of datass ;let i = index">
+                        <td width=50px>{{ i+1 }}</td>
+                        <td width=90px>{{ d.date | date: 'dd-MM-yyyy' }}</td>
+                        <td width=70px>{{ d.date | date: 'HH:mm น.' }}</td>
+                        <td width=120px>{{ d.type }}</td>
+                        <td width=90px>{{ d.cow_code }}</td>
+                        <td width=90px>{{ d.code }}</td>
+                        <td width=120px>{{ d.barcode }}</td>
+                        <td width=120px>{{ d.qr_code }}</td>
+                        <td width=70px>{{ d.weight }}</td>
+                        <td width=70px>{{ d.weight_c }}</td>
+                        <td width=120px>{{ d.import_name }}</td>
+                        <td>{{ d.take_name }}</td>
+                      </tr>
                 </tbody>
           </table>
           <div class="text-right ml-auto">
-            <h6><strong>จำนวนซากเนื้อโค 0 รายการ</strong></h6>
-            <h6><strong>น้ำหนักอุ่น 0.00 น้ำหนักเย็น 0.00 กิโลกรัม</strong></h6>
+              <h6><strong>จำนวนซากเนื้อโค {{ count }} รายการ</strong></h6>
+              <h6><strong>น้ำหนักอุ่น <strong id="w1">{{ count_weight }}</strong> น้ำหนักเย็น <strong id="w2">{{ count_weight_c }}</strong> กิโลกรัม</strong></h6>
           </div>
         </div>
       </div>
       <div class="row justify-content-center">
-          <div class="nav_button"><button type="button" class="btn mr-3" id="btn3" ><i class="fa fa-print"></i> รายงานสรุป </button></div>
-          <div class="nav_button"><button type="button" class="btn" id="btn2"><i class="fa fa-print"></i> รายงานปกติ </button></div>
+          <div class="nav_button"><button type="button" class="btn mr-3" id="btn3" (click)="report_c()"><i class="fa fa-print"></i> รายงานสรุป </button></div>
+          <div class="nav_button"><button type="button" class="btn" id="btn2" (click)="report()"><i class="fa fa-print"></i> รายงานปกติ </button></div>
         </div>
     </div>
 

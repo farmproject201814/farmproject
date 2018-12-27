@@ -4,16 +4,16 @@
     <div class="input-group form-inline c2"></div>
     <div class="input-group form-inline c1">
       <label class="label mr-3 mt-2 test"><b>วันที่นำเข้า</b></label>
-      <input type="date" class="form-control "id="fc1"> <!-- (change)="test(h)" ngModel #h-->
+      <input type="date" class="form-control "id="fc1" (change)="startdate(s1)" [(ngModel)]="start" #s1>
       <div class="input-group-append">
         <span class="input-group-text" id="igt" style="height: 38px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
       </div>
       <label class="label ml-3 mr-3 mt-2" ><b>ถึงวันที่</b></label>
-        <input type="date" class="form-control "id="fc2">
+        <input type="date" class="form-control "id="fc2" (change)="enddate(e1)" [(ngModel)]="end" #e1>
         <div class="input-group-append">
           <span class="input-group-text" id="igt" style="height: 38px"><i style='font-size:24px' class='far'>&#xf073;</i></span>
         </div>
-        <button type="submit" class="search1 btn ml-3">ค้นหา <i class="fa fa-search"></i></button>
+        <button type="submit" class="search1 btn ml-3" (click)="searchDate()">ค้นหา <i class="fa fa-search"></i></button>
     </div>
     <div class="input-group form-inline c3"></div>
   </div>
@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let d of data ;let i = index">
+          <tr *ngFor="let d of datas ;let i = index">
             <td width=50px>{{ i+1 }}</td>
             <td width=90px>{{ d.date | date: 'dd-MM-yyyy' }}</td>
             <td width=70px>{{ d.date | date: 'HH:mm น.' }}</td>
@@ -70,8 +70,8 @@
 </div>
 
 <div class="nav_button">
-        <button type="button" data-toggle="modal" data-target="#exampleModal"
-        class="btn bt1">ดำเนินการ <i class="fa fa-chevron-right"></i></button>
+    <button type="button" data-toggle="modal" data-target="#exampleModal"
+    class="btn bt1">ดำเนินการ <i class="fa fa-chevron-right" style="vertical-align: -10%;"></i></button>
 </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -93,7 +93,8 @@
             <div class="form-group row mx-sm-2">
               <div class="input-group form-search mb-4">
                 <b>ระยะเวลาบ่ม</b>
-                <select class="form-control search-query col-6 ml-auto" ngModel="7" style="border-radius: 4px">
+                <select class="form-control search-query col-6 ml-auto" ngModel="7" style="border-radius: 4px"
+                (change)="sendDate(a1)" ngModel="7" #a1>
                   <option value="1">1 วัน</option>
                   <option value="2">2 วัน</option>
                   <option value="3">3 วัน</option>
@@ -114,9 +115,8 @@
               <label><b>จำนวนการบ่มทั้งหมด {{idcheck.length}} รายการ</b></label>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn bt2" data-dismiss="modal"><i class="fa fa-chevron-left"></i> กลับ</button>
-              <button type="button" class="btn bt3">บันทึก <i class="fa fa-check"></i></button>
-            </div>
+              <button type="button" class="btn bt2" data-dismiss="modal"><i class="fa fa-chevron-left" style="vertical-align: -19%;"></i> กลับ</button>
+              <button type="button" class="btn bt3" (click)="change_status(name)">บันทึก <i class='fas' style="vertical-align: -10%;">&#xf0c7;</i></button>
           </div>
         </div>
       </div>

@@ -26,6 +26,7 @@ export class StoreT1Component implements OnInit {
   room = [];
   class = [];
   bucket = [];
+  lim_age = [];
   new_status;
   old_status = [];
 
@@ -55,20 +56,26 @@ export class StoreT1Component implements OnInit {
         this.table1 = [];
         this.table2 = [];
       const a = Object.keys(datas).map(key => datas[key]);       /* Qurey ข้อมูล */
-      console.log(a);
       for (let i = 0; i < a.length; i++) {
+        console.log(a[i]);
         if (Number(a[i].hidden) === 0) {
           this.count_weight += Number(a[i].weight);
           this.count_weight_c += Number(a[i].weight_c);
+
           this.table1.push(a[i]);
           this.table1[this.count].key = Object.keys(datas)[i];
           this.detailFilter.push(a[i]);
+
+          const day1 = new Date();
+          const diff = Math.round((a[i].date - day1.getTime()) / (1000 * 3600 * 24));
+          console.log(diff);
+
+          this.table1[this.count].day_store = Math.abs(diff);
           this.count++;
           if (a[i].weight_c === '-') {
             this.count_weight_c = 0;
           }
-
-        } else {
+        } else if (Number(a[i].hidden) === 1) {
           this.count_weight2 += Number(a[i].weight);
           this.count_weight_c2 += Number(a[i].weight_c);
           this.table2.push(a[i]);
@@ -111,6 +118,13 @@ export class StoreT1Component implements OnInit {
         this.bucket.push(i + 1);
       }
     });
+      this.api_menu7.showSetting_limitAge().subscribe(data => {        /* แสดงจำนวนลิมิตอายุซากตามที่ตั้งค่า */
+      const let4 = Object.keys(data).map(a => data[a]);
+      console.log(let4);
+      for (let i = 0 ; i < Number(let4[0].limit_age) ; i++) {
+        this.lim_age.push(i + 1);
+      }
+    });
 
     this.authAf.authState.subscribe(datas => {          /* แสดงชื่อผู้เบิกออก */
       this.auth.showData(datas.email).subscribe(snap => {
@@ -118,6 +132,37 @@ export class StoreT1Component implements OnInit {
         this.name = values[0].fname; /* + ' ' + values[0].lname */
       });
     });
+    console.log(this.date);
+
+  }
+
+  filter_type(e1) {
+    this.table1 = [];
+    this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
+    console.log(e1.value);
+    if (e1.value === 'ทั้งหมด') {
+      this.table1 = this.detailFilter;
+      this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+      this.count_weight += Number(a.weight);
+      this.count_weight_c += Number(a.weight_c);
+
+      });
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.type === e1.value) {
+          console.log(a.weight);
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight_c);
+          console.log(this.count_weight);
+          this.table1.push(a);
+          this.count ++;
+        }
+      });
+    }
+    console.log(this.count_weight);
   }
 
   dropdown_search(v) {
@@ -284,6 +329,23 @@ export class StoreT1Component implements OnInit {
     }
   }
 
+  filter_litmit_age(s4) {
+    this.table1 = [];
+    this.count = 0;
+    console.log(s4.value);
+    if (s4.value === 'ทั้งหมด') {
+      this.table1 = this.detailFilter;
+      this.count = this.detailFilter.length;
+    } else {
+      this.detailFilter.forEach( a => {
+        if (a.age === s4.value) {
+          this.table1.push(a);
+          this.count ++;
+        }
+      });
+    }
+  }
+
   update_hidden1(key) {
     console.log(key);
     this.api.updateHidden1(key).subscribe(d => {
@@ -314,9 +376,10 @@ export class StoreT1Component implements OnInit {
 
   updateData(w1, w2, w3) {                  /* บันทึกการเบิกออกและเปลี่ยนสถานะในคลัง */
     console.log(w1, w2, w3);
+    this.date = new Date();
     for (let i = 0; i < this.statusUpdate.length ; i++) {
       this.statusUpdate[i].order_name = w1;
-      this.statusUpdate[i].date = w2;
+      this.statusUpdate[i].date = Number(this.date);
       this.statusUpdate[i].take_name = this.take;
     }
     console.log(w3);
@@ -326,14 +389,14 @@ export class StoreT1Component implements OnInit {
         this.api.copyToOrder(this.statusUpdate).subscribe(d1 => {
           console.log(d1);
           if (d1.status === 'OK') {
-            this.api.copyToNotificationT5(w3).subscribe(d2 => {
+            this.api.copyToNotificationT5_copy(this.statusUpdate).subscribe(d2 => {
               console.log(d2);
               if (d2.status === 'OK') {
                 swal({
                   title: 'สำเร็จ!',
                   text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
                   type: 'success',
-                  confirmButtonText: 'ปิด'
+                  confirmButtonText: 'ตกลง'
                 });
                 document.getElementById('openModalButton').click();
                   this.ngOnInit();
