@@ -48,25 +48,19 @@
                           >rotate_90_degrees_ccw</i
                         >
                       </button>
-                      <!--
-                        <button (click)="cropping.fit()" ly-button><h4>fit</h4></button>
-                      -->
                       <button
                         (click)="cropping.fitToScreen()"
                         ly-button
-                        style="vertical-align: 5px"
+                        style="vertical-align: 5px "
                       >
-                        <h4>เต็มหน้าจอ</h4>
+                        <a style="font-size: 24px">เต็มหน้าจอ</a>
                       </button>
-                      <!--
-                        <button (click)="cropping.setScale(1)" ly-button><h4>1:1</h4></button>
-                      -->
                       <button
                         (click)="cropping.clean(); test()"
                         ly-button
                         style="vertical-align: 5px"
                       >
-                        <h4>ลบภาพ</h4>
+                      <a style="font-size: 24px">ลบภาพ</a>
                       </button>
                     </div>
                     <div class="card">
