@@ -44,12 +44,20 @@ export class AgingComponent implements OnInit {
   lim_day_aging = [];
   day_aging_sd;
 
-  constructor(private api: Menu1Service, private authAf: AngularFireAuth, private auth: AuthService,
-    private api_4: Menu4Service, private api_menu7: Menu7Service) {
-    this.date = new Date();
-   }
+  constructor (
+    private api: Menu1Service, 
+    private authAf: AngularFireAuth, 
+    private auth: AuthService,
+    private api_4: Menu4Service, 
+    private api_menu7: Menu7Service) 
+    {
+    this.date = new Date(); 
+    }
 
   ngOnInit() {
+    this.api.test().subscribe(data => {
+      console.log ("ทดสอบการแสดงค่า",data);
+    })
     this.start = '';
     this.end = '';
     this.count = 0;

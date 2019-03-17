@@ -19,7 +19,7 @@ export class HistoryOrderComponent implements OnInit {
   detailFilter = [];
   datas: any = [];
   start = '';
-  end =  '';
+  end = '';
   startvalue: any = '';
   endvalue: any = '';
   bykey = [];
@@ -53,7 +53,7 @@ export class HistoryOrderComponent implements OnInit {
           console.log(o.getTime());
           this.aging_length = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
           console.log('kkkk');
-          console.log('lenght:' +  this.aging_length);
+          console.log('lenght:' + this.aging_length);
           this.datas[c].day_aging = this.aging_length;
 
           const a_start = new Date();
@@ -67,16 +67,16 @@ export class HistoryOrderComponent implements OnInit {
             console.log(diffDay);
             this.bykey.push(Object.keys(data)[i]);
             this.api.updateStatus_to_store(a2[i].cow_code).subscribe(d6 => {
-            this.bykey2.push(Object.keys(d6));
-            const d = new Date(a2[i].date_aging);
-            a2[i].save_date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-            this.data_to_history.push(a2[i]);
-            console.log(d6);
+              this.bykey2.push(Object.keys(d6));
+              const d = new Date(a2[i].date_aging);
+              a2[i].save_date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+              this.data_to_history.push(a2[i]);
+              console.log(d6);
 
             });
           }
-        document.getElementById('w').innerHTML =
-        this.weight_all.toFixed(2);
+          document.getElementById('w').innerHTML =
+            this.weight_all.toFixed(2);
         }
       }
       if (this.bykey.length !== 0) {
@@ -94,6 +94,31 @@ export class HistoryOrderComponent implements OnInit {
     const y = [];
     console.log('aaaaa');
     console.log(this.bykey);
+  }
+
+  filter_type(e1) {
+    this.datas = [];
+    this.count = 0;
+    this.weight_all = 0;
+    console.log(e1.value);
+    if (e1.value === 'ทั้งหมด') {
+      this.datas = this.detailFilter;
+      this.count = this.detailFilter.length;
+      this.detailFilter.forEach(a => {
+        this.weight_all += Number(a.weight);
+      });
+    } else {
+      this.detailFilter.forEach(a => {
+        if (a.type === e1.value) {
+          console.log(a.weight);
+          this.datas.push(a);
+          this.count++;
+          this.weight_all += Number(a.weight);
+        }
+      });
+    }
+    document.getElementById('w').innerHTML =
+      this.weight_all.toFixed(2);
   }
 
   dropdown_search(v) {       /* เลือกประเภทการ search */
@@ -176,17 +201,63 @@ export class HistoryOrderComponent implements OnInit {
     console.log(this.startvalue);
     console.log(this.endvalue);
     // tslint:disable-next-line:max-line-length
-    firebase.database().ref().child('/store/menu1/aging').orderByChild('date').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+    firebase.database().ref().child('/store/menu1/aging').orderByChild('date_aging').startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+      this.datas = [];
+      console.log('kkk');
+      console.log(data.val());
       if (data.val() != null) {
-        this.datas = Object.keys(data.val()).map(key => data.val()[key]);
-        for (let i = 0 ; i < data.val().length ; i++) {
-          this.datas[i].key = Object.keys(data.val());
+        const a2 = Object.keys(data.val()).map(k => data.val()[k]);
+        console.log(a2);
+        for (let i = 0; i < a2.length; i++) {
+          console.log('bbb');
+          console.log(a2[i]);
+          if (a2[i].status !== 'เชือดแล้ว' && (a2[i].type === 'ซากซ้าย' || a2[i].type === 'ซากขวา')) {
+            this.datas.push(a2[i]);
+            // this.datas[this.count].key = O bject.keys(data.val())[i];
+            this.weight_all += Number(a2[i].weight);
+            this.count++;
+            this.detailFilter.push(a2[i]);
+            console.log('aaa');
+            console.log(this.weight_all);
+            const o = new Date();
+            console.log(o.getTime());
+            this.aging_length = Math.round((o.getTime() - a2[i].date) / (1000 * 3600 * 24));
+            console.log('kkkk');
+            console.log('lenght:' + this.aging_length);
+            this.datas[i].day_aging = this.aging_length;
+          }
         }
-        console.log(this.datas);
-      } else {
-        this.datas = [];
+        document.getElementById('w').innerHTML =
+          this.weight_all.toFixed(2);
       }
+      //  else {
+      //   this.datas = [];
+      //   this.count = 0;
+      //   this.weight_all = 0;
+      //   this.detailFilter = [];
+      //   document.getElementById('w').innerHTML =
+      //   this.weight_all.toFixed(2);
+      //   }
 
     });
   }
+
+  // searchDate() {
+
+  //   console.log(this.startvalue);
+  //   console.log(this.endvalue);
+  //   firebase.database().ref().child('/store/menu1/aging').orderByChild('date')
+  // .startAt(Number(this.startvalue)).endAt(Number(this.endvalue)).once('value', data => {
+  //     if (data.val() != null) {
+  //       this.datas = Object.keys(data.val()).map(key => data.val()[key]);
+  //       for (let i = 0 ; i < data.val().length ; i++) {
+  //         this.datas[i].key = Object.keys(data.val());
+  //       }
+  //       console.log(this.datas);
+  //     } else {
+  //       this.datas = [];
+  //     }
+
+  //   });
+  // }
 }

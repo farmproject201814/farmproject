@@ -13,12 +13,12 @@ import * as firebase from 'firebase';
 export class AllSettingComponent implements OnInit {
   count;
   data: any;
-  room: any;
-  class: any;
-  bucket: any;
-  lim_age: any;
-  lim_day_aging: any;
-  day_aging_sd: any;
+  room: any=0;
+  class: any=0;
+  bucket: any=0;
+  lim_age: any=0;
+  lim_day_aging: any=0;
+  day_aging_sd: any=0;
   exp: any;
 
   constructor(private api_menu7: Menu7Service) { }
@@ -59,6 +59,7 @@ export class AllSettingComponent implements OnInit {
       console.log(let6);
       this.day_aging_sd = let6[0];
       this.day_aging_sd.key = Object.keys(data6)[0];
+      console.log(this.day_aging_sd);
     });
     this.api_menu7.showSetting_exp_date().subscribe(data7 => {        /* แสดงวันใกล้หมดอายุตามที่ตั้งค่า */
       const let7 = Object.keys(data7).map(a7 => data7[a7]);
@@ -249,7 +250,8 @@ export class AllSettingComponent implements OnInit {
       cancelButtonText: 'กลับ'
     }).then((result) => {
       if (result.value) {
-        const del2 = firebase.database().ref('store/simulation/simulation-t2');
+        const del2 = firebase.database().ref('store/menu6/notification-t5');
+        console.log(del2);
         del2.remove();
           swal({
             title: 'สำเร็จ!',
@@ -277,10 +279,10 @@ export class AllSettingComponent implements OnInit {
   // add_limit_age(r: NgForm) {
   //   this.api_menu7.add_limitAge(r.value).subscribe();
   // }
-    //     add_limit_day_aging(r: NgForm) {
-    //   this.api_menu7.add_limit_day_Aging(r.value).subscribe();
-    // }
-    // add_exp_date(r: NgForm) {
-    //   this.api_menu7.add_exp_date(r.value).subscribe();
-    // }
+  //       add_limit_day_aging(r: NgForm) {
+  //     this.api_menu7.add_limit_day_Aging(r.value).subscribe();
+  //   }
+  //   add_exp_date(r: NgForm) {
+  //     this.api_menu7.add_exp_date(r.value).subscribe();
+  //   }
 }

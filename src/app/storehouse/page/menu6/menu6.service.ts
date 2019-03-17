@@ -24,7 +24,9 @@ export class Menu6Service {
     return this.http.get(api.url + '/api/store/menu6/show/notification-t1').pipe(map(res => res.json()));
   }
   removeNotificationT1(key) {
-    return this.http.delete(api.url + '/api/remove/notification-t1/' + key).pipe(map(res => res.json()));
+    console.log(key);
+    
+    return this.http.delete(api.url + '/api/store/remove/notification-t1/' + key).pipe(map(res => res.json()));
   }
 
   showNotificationT3() {

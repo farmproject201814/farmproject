@@ -257,20 +257,32 @@ export class NotificationT4Component implements OnInit {
             aa.push(e);
           }
         });
-        this.api_menu1.addAging(aa).subscribe();                      /* copy ข้อมูลเข้าหน้า menu1 */
-        this.api_menu2.keepHistory_Import(this.show).subscribe();     /* copy ข้อมูลเข้าหน้า menu2 */
-        this.api_menu4.addStore(this.show).subscribe();               /* copy ข้อมูลเข้าหน้า menu4 */
-        this.ngOnInit();
-        swal({
-          title: 'สำเร็จ!',
-          text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
-          type: 'success',
-          confirmButtonText: 'ปิด'
+        /* นำเข้าจากแจ้งเตือนไป menu1(บ่ม) */
+        this.api_menu1.addAging(aa).subscribe(k1 => {
+          if (k1.status === 'OK') {
+          /* นำเข้าจากแจ้งเตือนไป menu2(ประวัตินำเข้า) */
+          this.api_menu2.keepHistory_Import(this.show).subscribe(k2 => {
+            if (k2.status === 'OK') {
+            /* นำเข้าจากแจ้งเตือนไป menu4(คลัง) */
+            this.api_menu4.addStore(this.show).subscribe(k3 => {
+              if (k3.status === 'OK') {
+                this.ngOnInit();
+                swal({
+                  title: 'สำเร็จ!',
+                  text: 'จัดเก็บข้อมูลเข้าคลังสำเร็จ!',
+                  type: 'success',
+                  confirmButtonText: 'ปิด'
+                });
+                document.getElementById('openModalButton').click();
+              }
+            });
+          }
         });
-        document.getElementById('openModalButton').click();
       }
     });
   }
+});
+}
 
   deleteList(num, key) {
     console.log(this.count);

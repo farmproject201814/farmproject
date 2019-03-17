@@ -48,6 +48,9 @@ export class SimulationT1Import1Component implements OnInit {
   ngOnInit() {
     this.keyUpdate = [];
     this.id_member_name = [];
+    this.r = [];
+    this.c = [];
+    this.b = [];
     this.api.showST1(this.num).subscribe(data => {
       if (data !== null) {
         this.count = Object.values(data).length;        /* นับจำนวนรายการทั้งหมดในตาราง */
@@ -58,6 +61,14 @@ export class SimulationT1Import1Component implements OnInit {
         }
       } else {
         this.data = [];
+      }
+    });
+
+    this.api_menu7.showSetting_room().subscribe(data => {        /* แสดงจำนวนห้องตามที่ตั้งค่า */
+      const let1 = Object.keys(data).map(a => data[a]);
+      console.log(let1);
+      for (let i = 0 ; i < Number(let1[0].s_room) ; i++) {
+        this.r.push(i + 1);
       }
     });
 

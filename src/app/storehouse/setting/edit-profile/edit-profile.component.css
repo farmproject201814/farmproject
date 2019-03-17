@@ -9,18 +9,16 @@
 }
 
 .container {
-  max-width: 90%;
-  /* margin-left: 5%;
-  margin-right: 5%; */
+  max-width: 85%;
+}
+.card_image{
+  width: 450px;
+  height: 452px;
 }
 
 .material-icons{
   vertical-align: -6px;
   font-size: 1.8rem;
-}
-
-.card {
-  margin-bottom: 10%;
 }
 
 .card-title {
@@ -49,6 +47,8 @@ h5 {
 
 #profile-image-upload {
   font-size: 16px;
+  margin-left: 70px;
+  margin-top: 3px;
 }
 
 input, select, label {
@@ -92,7 +92,7 @@ br {
 
 textarea:disabled {
   height: 70px;
-  width: 136px;
+  width: 250px;
   border-radius: 5px;
   background-color: #eeeeee;
   border: 1px solid #ccc;
@@ -108,4 +108,13 @@ textarea:disabled {
   border-radius: 5px;
   color: #495057;
   padding-left: 12px;
+}
+
+img{
+  margin-top: -10px;
+  margin-left: 50px;
+  background-color: rgb(207, 207, 207);
+  width: 300px;
+  height: 330px;
+  border-radius: 5px 5px 5px 5px;
 }

@@ -66,20 +66,12 @@ import { Menu5Component } from './storehouse/page/menu5/menu5.component';
 import { PageRoutingModule, PageRoutingComponents } from './storehouse/page/page-routing.module';
 import { ImportComponent } from './storehouse/page/menu2/import/import.component';
 import { ImportT1Component } from './storehouse/page/menu2/import/import-t1/import-t1.component';
-import { ImportT2Component } from './storehouse/page/menu2/import/import-t2/import-t2.component';
-import { ImportT3Component } from './storehouse/page/menu2/import/import-t3/import-t3.component';
-import { ImportT4Component } from './storehouse/page/menu2/import/import-t4/import-t4.component';
-import { ImportT5Component } from './storehouse/page/menu2/import/import-t5/import-t5.component';
 import { Dashboard2Component } from './dashboard/dashboard2/dashboard2.component';
 import { PrivilegeComponent } from './dashboard/privilege/privilege.component';
 import { SettingComponent } from './storehouse/setting/setting.component';
 import { EditProfileComponent } from './storehouse/setting/edit-profile/edit-profile.component';
 import { OrderComponent } from './storehouse/page/menu3/order/order.component';
 import { OrderT1Component } from './storehouse/page/menu3/order/order-t1/order-t1.component';
-import { OrderT2Component } from './storehouse/page/menu3/order/order-t2/order-t2.component';
-import { OrderT3Component } from './storehouse/page/menu3/order/order-t3/order-t3.component';
-import { OrderT4Component } from './storehouse/page/menu3/order/order-t4/order-t4.component';
-import { OrderT5Component } from './storehouse/page/menu3/order/order-t5/order-t5.component';
 import { SimulationComponent } from './storehouse/simulation/simulation.component';
 import { StorehouseRoutingModule } from './storehouse/storehouse-routing.module';
 import { InputDataComponent } from './storehouse/simulation/input-data/input-data.component';
@@ -91,10 +83,6 @@ import { AgingComponent } from './storehouse/page/menu1/aging/aging.component';
 import { HistoryOrderComponent } from './storehouse/page/menu1/history-order/history-order.component';
 import { StoreComponent } from './storehouse/page/menu4/store/store.component';
 import { StoreT1Component } from './storehouse/page/menu4/store/store-t1/store-t1.component';
-import { StoreT2Component } from './storehouse/page/menu4/store/store-t2/store-t2.component';
-import { StoreT3Component } from './storehouse/page/menu4/store/store-t3/store-t3.component';
-import { StoreT4Component } from './storehouse/page/menu4/store/store-t4/store-t4.component';
-import { StoreT5Component } from './storehouse/page/menu4/store/store-t5/store-t5.component';
 import { SimulationT1Import1Component } from './storehouse/simulation/simulation-t1/simulation-t1-import1/simulation-t1-import1.component';
 import { NotificationComponent } from './storehouse/page/menu6/notification/notification.component';
 import { NotificationT1Component } from './storehouse/page/menu6/notification/notification-t1/notification-t1.component';
@@ -158,21 +146,15 @@ import { Report4T5Component } from './storehouse/page/menu5/report4/report4-t5/r
     Menu5Component,
     PageRoutingComponents,
     ImportComponent,
+    
     ImportT1Component,
-    ImportT2Component,
-    ImportT3Component,
-    ImportT4Component,
-    ImportT5Component,
+
     Dashboard2Component,
     PrivilegeComponent,
     SettingComponent,
     EditProfileComponent,
     OrderComponent,
     OrderT1Component,
-    OrderT2Component,
-    OrderT3Component,
-    OrderT4Component,
-    OrderT5Component,
     SimulationComponent,
     InputDataComponent,
     SimulationT1Component,
@@ -183,10 +165,6 @@ import { Report4T5Component } from './storehouse/page/menu5/report4/report4-t5/r
     HistoryOrderComponent,
     StoreComponent,
     StoreT1Component,
-    StoreT2Component,
-    StoreT3Component,
-    StoreT4Component,
-    StoreT5Component,
     SimulationT1Import1Component,
     NotificationComponent,
     NotificationT1Component,

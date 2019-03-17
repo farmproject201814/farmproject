@@ -1,20 +1,21 @@
-<div class="header">
+<div class="header" style="margin-top: -15px;">
     <p class="text-center"><strong>แก้ไขข้อมูลส่วนตัว</strong></p>
-
   <div class="container">
     <div class="row">
-      <div class="col-sm-5">
-        <div class="card jumsize2 shadow p">
+      <!-- <div class="col-sm-5">
+        <div class="card jumsize2 shadow p card_image">
           <div class="card-body">
             <h5 class="card-title">รูปโปรไฟล์</h5>
-            <!-- <img class="navbar-icon" src="/assets/1.png"> -->
-            <div class="custom-file">
-              <input id="profile-image-upload" class="hidden" type="file">
-              <div style="color:#999;margin-top: 5px;font-size: 14px">คลิกที่นี่เพื่อเปลี่ยนรูปโปรไฟล์</div>
+            <div class="row">
+              <div class="custom-file" (change)="uploadLogo($event)">
+              <img src="/assets/iconUser.png">
+              <input id="profile-image-upload" class="hidden" type="file" name="file[];">
+              <div style="color:#999; margin-left: 70px; font-size: 14px;">(รูปขนาด 00 x 00 px)</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="col">
         <div class="card jumsize2 shadow p" *ngFor="let e of detail">
           <div class="card-body">
@@ -78,7 +79,6 @@
                       <input type="text" class="form-control" ngModel={{e.day_of_birth}} readonly>
                     </div>
                   </div>
-                  <!-- <a>วัน/เดือน/ปีเกิด : {{e.day_of_birth | date: "dd/MM/yyyy"}}</a><br> -->
                   <div class="form-group row" id="mt">
                     <label class="col-form-label" id="mg">เลขบัตรประจำตัวประชาชน</label>
                     <div class="col-sm-6 ml-auto">
@@ -92,7 +92,7 @@
                     </div>
                   </div>
                   <div class="form-group row" id="mt">
-                    <label class="col-form-label" id="mg">ที่อยู่</label>
+                    <label class="col-form-label" id="mg" >ที่อยู่</label>
                     <div class="col-sm-6 ml-auto">
                       <textarea disabled>  {{e.address}}</textarea>
                     </div>
@@ -118,7 +118,7 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-success mt-4" style="margin-left: 25% ;width: 50%;margin-right: 25%;"
+            <button type="button" class="btn btn-success mt-4" style="margin-left: 41% ;width: 15%;"
               data-toggle="modal" data-target="#modelEdit" (click)="edit_profile(e.key,e.users,e.pass,e.question,e.answer,
               e.fname,e.lname,e.gender,e.day_of_birth,e.id_code,
               e.email,e.address,e.mobile,e.phone_num,e.fax,e.id_member)">แก้ไขข้อมูลส่วนตัว</button>
@@ -150,11 +150,8 @@
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">รหัสผ่าน (Password)</label>
                   <input id="show_pass" type="password" class="form-control mx-sm-3 mb-1" name="pass" ngModel="{{items.pass}}" readonly>
-                  <!-- <input type="checkbox" (click)="showPass()" class="mx-sm-3">
-                  <label style="margin-left: -10px;margin-top: 2px;">แสดงรหัสผ่าน</label> -->
-                  <!-- <a style="margin-left: 10px;margin-top: 2px;" routerLink="/change-password" (click)="navigate()">เปลี่ยนรหัสผ่าน</a> -->
                 </div>
-                <div class="form-group row" style="margin-top: -14px"> <!--style="margin-top: -33px"-->
+                <div class="form-group row" style="margin-top: -14px">
                   <label class="mx-sm-3 mb-1">คำถามกรณีเมื่อลืมรหัส</label>
                   <input type="text" class="form-control mx-sm-3" name="question" ngModel="{{items.question}}">
                 </div>
@@ -194,7 +191,6 @@
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">ที่อยู่</label>
                   <textarea class="textarea2" name="address" ngModel="{{items.address}}"></textarea>
-                  <!-- <input type="text" class="form-control mx-sm-3" name="address" ngModel="{{items.address}}"> -->
                 </div>
                 <div class="form-group row">
                   <label class="mx-sm-3 mb-1">เบอร์โทรศัพท์</label>

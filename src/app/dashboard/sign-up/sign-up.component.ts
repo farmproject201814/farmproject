@@ -86,6 +86,23 @@ export class SignUpComponent implements OnInit {
         c++;
       }
     }
+
+    // this.auth.showMember().subscribe(y => {
+    //   const v = Object.keys(y).map(d2 => y[d2]);
+    //   for (let i = 0; i < v.length ; i++) {
+    //     if (v[i].id_code === datas.value.id_code) {
+    //       swal({
+    //         title: 'ผิดพลาด!',
+    //         text: 'สมัครสมาชิกไม่สำเร็จ เนื่องจากมีเลขบัตรประชาชนนี้ในระบบแล้ว',
+    //         type: 'error',
+    //         confirmButtonText: 'ปิด'
+    //       });
+    //     }
+    //     console.log('*********');
+    //     console.log(datas.value.id_code);
+    //   }
+    // });
+
     if (c === this.user.length) {
       this.checkuser = true;
       this.auth.register(datas.value.email, datas.value.pass);
@@ -101,7 +118,7 @@ export class SignUpComponent implements OnInit {
       this.checkuser = false;
       swal({
         title: 'ผิดพลาด!',
-        text: 'สมัครสมาชิกไม่สำเร็จ มีชื่อผู้ใช้นี้แล้ว',
+        text: 'สมัครสมาชิกไม่สำเร็จ เนื่องจากมีชื่อผู้ใช้นี้แล้ว',
         type: 'error',
         confirmButtonText: 'ปิด'
       });

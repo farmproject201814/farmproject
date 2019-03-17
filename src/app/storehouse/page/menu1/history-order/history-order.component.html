@@ -2,10 +2,10 @@
   <p class="text-center"><strong>ประวัติการบ่มซากเนื้อโค</strong></p>
   <div class="row r1 justify-content-center">
     <div class="form-inline">
-      <label class="col-form-label"><b>ชนิดซาก</b></label>
+      <label class="col-form-label"><b>ประเภทซาก</b></label>
       <div class="d1 ml-3">
         <div class="input-group form-search">
-            <select class="form-control search-query fcsq1">
+            <select class="form-control search-query fcsq1" (change)="filter_type(t)" ngModel="ทั้งหมด" #t>
               <option value="ทั้งหมด">ทั้งหมด</option>
               <option value="ซากซ้าย">ซากซ้าย</option>
               <option value="ซากขวา">ซากขวา</option>
@@ -55,14 +55,14 @@
             <th width=90px>วันที่บ่มเสร็จ</th>
             <th width=70px>เวลา</th>
             <th width=70px>จำนวนวันบ่ม</th>
-            <th width=100px>ประเภท</th>
-            <th width=70px>เบอร์โค</th>
-            <th width=70px>รหัสซาก</th>
-            <th width=120px>รหัสบาร์โค้ด</th>
-            <th width=120px>รหัสคิวอาร์โค้ด</th>
-            <th width=70px>น้ำหนักอุ่น</th>
-            <th width=50px>ห้อง</th>
-            <th width=120px>สถานะ</th>
+            <th width=110px>ประเภท</th>
+            <th width=80px>เบอร์โค</th>
+            <th width=80px>รหัสซาก</th>
+            <th width=130px>รหัสบาร์โค้ด</th>
+            <th width=130px>รหัสคิวอาร์โค้ด</th>
+            <th width=80px>น้ำหนักอุ่น</th>
+            <th width=60px>ห้อง</th>
+            <th width=130px>สถานะ</th>
             <th>ผู้บ่มซาก</th>
           </tr>
         </thead>
@@ -72,14 +72,14 @@
             <td width=90px>{{ d.date_aging | date: 'dd-MM-yyyy' }}</td>
             <td width=70px>{{ d.date | date: 'HH:mm น.' }}</td>
             <td width=70px>{{ d.day_aging }}</td>
-            <td width=100px>{{ d.type }}</td>
-            <td width=70px>{{ d.cow_code }}</td>
-            <td width=70px>{{ d.code }}</td>
-            <td width=120px>{{ d.barcode }}</td>
-            <td width=120px>{{ d.qr_code }}</td>
-            <td width=70px>{{ d.weight }}</td>
-            <td width=50px>{{ d.room }}</td>
-            <td width=120px>{{ d.status }}</td>
+            <td width=110px>{{ d.type }}</td>
+            <td width=80px>{{ d.cow_code }}</td>
+            <td width=80px>{{ d.code }}</td>
+            <td width=130px>{{ d.barcode }}</td>
+            <td width=130px>{{ d.qr_code }}</td>
+            <td width=80px>{{ d.weight }}</td>
+            <td width=60px>{{ d.room }}</td>
+            <td width=130px>{{ d.status }}</td>
             <td>{{ d.aging_name }}</td>
           </tr>
         </tbody>

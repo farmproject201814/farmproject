@@ -5,6 +5,9 @@ import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { UploadService } from 'src/app/service/uploads/shared/upload.service';
+import { Upload } from 'src/app/service/uploads/shared/upload';
 
 @Component({
   selector: 'app-edit-profile',
@@ -31,8 +34,10 @@ export class EditProfileComponent implements OnInit {
     fax: '',
     id_member: ''
   };
-
-  constructor(private afAuth: AngularFireAuth, private auth: AuthService, private router: Router) {
+  files: any;
+  selectedFiles;
+  constructor(private afAuth: AngularFireAuth, private auth: AuthService, private router: Router,
+    private upSvc: UploadService) {
      }
 
   ngOnInit() {
@@ -101,4 +106,22 @@ export class EditProfileComponent implements OnInit {
   navigate() {
     document.getElementById('openModalButton').click();
   }
+
+  uploadLogo(event) {
+    console.log(event);
+        this.files = event.target.files;
+    console.log(this.files);
+    // this.upSvc.pushUpload(this.files);
+    // console.log(this.upSvc);
+    // const reader = new FileReader();
+    // reader.onload = this._handleReaderLoaded.bind(this);
+    // reader.readAsBinaryString(this.files[0]);
+    // console.log(this.files);
+    // console.log(reader);
+  }
+
+//   _handleReaderLoaded(readerEvt) {
+//     const binaryString = readerEvt.target.result;
+//     this.filestring = btoa(binaryString);  // Converting binary string data.
+// }
 }

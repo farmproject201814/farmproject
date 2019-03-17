@@ -57,6 +57,7 @@ export class StoreT1Component implements OnInit {
     this.bucket = [];
     this.detailFilter = [];
     this.id_member_name = [];
+    this.datas = [];
       this.api.showStore().subscribe(datas => {
         console.log(datas);
         this.table1 = [];
@@ -91,19 +92,13 @@ export class StoreT1Component implements OnInit {
             }
             this.table1[this.count].day_store = Math.abs(diff);
             this.count++;
-            if (a[i].weight_c === '-') {
-              this.count_weight_c = 0;
-            }
+
           } else if (Number(a[i].hidden) === 1) {
             this.count_weight2 += Number(a[i].weight);
             this.count_weight_c2 += Number(a[i].weight_c);
             this.table2.push(a[i]);
             this.table2[this.count2].key = Object.keys(datas)[i];
             this.count2++;
-            if (a[i].weight_c === '-') {
-              this.count_weight_c2 = 0;
-            }
-
           }
         }
         console.log(this.copy_to_noti1);
@@ -112,18 +107,15 @@ export class StoreT1Component implements OnInit {
             this.api.breakUpdate(this.up).subscribe();
          }
         });
+        document.getElementById('w1').innerHTML =
+        this.count_weight.toFixed(2);
+        document.getElementById('w2').innerHTML =
+        this.count_weight_c.toFixed(2);
+        document.getElementById('w3').innerHTML =
+        this.count_weight2.toFixed(2);
+        document.getElementById('w4').innerHTML =
+        this.count_weight_c2.toFixed(2);
       });
-
-      // document.getElementById('w1').innerHTML =
-      // this.count_weight.toFixed(2);
-      // document.getElementById('w2').innerHTML =
-      // this.count_weight_c.toFixed(2);
-      // document.getElementById('w3').innerHTML =
-      // this.count_weight2.toFixed(2);
-      // document.getElementById('w4').innerHTML =
-      // this.count_weight_c2.toFixed(2);
-
-
     });
 
       this.api_menu7.showSetting_room().subscribe(data => {        /* แสดงจำนวนห้องตามที่ตั้งค่า */
@@ -265,121 +257,208 @@ export class StoreT1Component implements OnInit {
     }
   }
 
-  filter_age(a1) {
-    this.table1 = [];
-    this.count = 0;
-    console.log(a1.value);
-    if (a1.value === 'ทั้งหมด') {
-      this.table1 = this.detailFilter;
-      this.count = this.detailFilter.length;
-    } else {
-      this.detailFilter.forEach( a => {
-        if (a.age === a1.value) {
-          this.table1.push(a);
-          this.count ++;
-        }
-      });
-    }
-  }
+  // filter_age(a1) {
+  //   this.table1 = [];
+  //   this.count = 0;
+  //   this.count_weight = 0;
+  //   this.count_weight_c = 0;
+  //   console.log(a1.value);
+  //   if (a1.value === 'ทั้งหมด') {
+  //     this.table1 = this.detailFilter;
+  //     this.count = this.detailFilter.length;
+  //     this.detailFilter.forEach( a => {
+  //       this.count_weight += Number(a.weight);
+  //       this.count_weight_c += Number(a.weight);
+  //     });
+  //   } else {
+  //     this.detailFilter.forEach( a => {
+  //       if (a.age === a1.value) {
+  //         this.table1.push(a);
+  //         this.count ++;
+  //         this.count_weight += Number(a.weight);
+  //         this.count_weight_c += Number(a.weight);
+  //       }
+  //     });
+  //   }
+  //   document.getElementById('w1').innerHTML =
+  //   this.count_weight.toFixed(2);
+  //   document.getElementById('w2').innerHTML =
+  //   this.count_weight_c.toFixed(2);
+  // }
 
   filter_grade(g1) {
     this.table1 = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(g1.value);
     if (g1.value === 'ทั้งหมด') {
       this.table1 = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight);
+      });
+
     } else {
       this.detailFilter.forEach( a => {
         if (a.grade === g1.value) {
           this.table1.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
 
   filter_room(f1) {
     this.table1 = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(f1.value);
     if (f1.value === 'ทั้งหมด') {
       this.table1 = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight);
+      });
     } else {
       this.detailFilter.forEach( a => {
         if (a.room === f1.value) {
           this.table1.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
+
   filter_class(f2) {
     this.table1 = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(f2.value);
     if (f2.value === 'ทั้งหมด') {
       this.table1 = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight);
+      });
     } else {
       this.detailFilter.forEach( a => {
         if (a.class === f2.value) {
           this.table1.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
+
   filter_bucket(f3) {
     this.table1 = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(f3.value);
     if (f3.value === 'ทั้งหมด') {
       this.table1 = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight);
+      });
     } else {
       this.detailFilter.forEach( a => {
         if (a.bucket === f3.value) {
           this.table1.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
 
   filter_status(s1) {
     this.table1 = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(s1.value);
     if (s1.value === 'ทั้งหมด') {
       this.table1 = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight);
+      });
     } else {
       this.detailFilter.forEach( a => {
         if (a.status === s1.value) {
           this.table1.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
 
   filter_litmit_age(s4) {
     this.table1 = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(s4.value);
     if (s4.value === 'ทั้งหมด') {
       this.table1 = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight);
+      });
     } else {
       this.detailFilter.forEach( a => {
         if (a.age === s4.value) {
           this.table1.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
 
   update_hidden1(key) {

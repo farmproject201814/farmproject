@@ -81,6 +81,7 @@ export class Report4T1Component implements OnInit {
     this.class = [];
     this.bucket = [];
     this.detailFilter = [];
+    this.countReport = 0;
     this.api.showStore().subscribe(data => {
       const a = Object.keys(data).map(key => data[key]);
       for (let i = 0; i < a.length; i++) {
@@ -108,15 +109,19 @@ export class Report4T1Component implements OnInit {
     const td = new Date();
     this.today = td.getDate() + ' ' + month[td.getMonth()] + ' ' + (td.getFullYear() + 543);
 
+    this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
       this.api.showStore().subscribe(data => {
       const a = Object.keys(data).map(key => data[key]);
       if (data !== null) {
         for (let i = 0 ; i < a.length ; i++) {
           this.datas.push(a[i]);
-          this.datas[i].count = i + 1;
+          this.datas[i].counts = (i + 1);
           this.detailFilter.push(a[i]);
           this.data_import.push(a[i]);
           this.count_weight += Number(a[i].weight);
+          this.countReport ++;
 
           if (a[i].weight_c === '-') {
             this.count_weight_c += 0;
@@ -129,7 +134,6 @@ export class Report4T1Component implements OnInit {
           this.data_import[i].date = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543);
           // this.data_import[i].date = d.getDate() + ' ' + month[d.getMonth()] + ' ' + (d.getFullYear() + 543);
           // แสดงจำนวนทั้งหมดที่ query
-          this.countReport ++;
 
           if (a[i].type === 'ซากซ้าย') {
             this.t1_num ++;
@@ -275,6 +279,7 @@ export class Report4T1Component implements OnInit {
         this.t27_num = 0; this.t27_w = 0; this.t27_wc = 0; this.t28_num = 0; this.t28_w = 0; this.t28_wc = 0;
         this.t29_num = 0; this.t29_w = 0; this.t29_wc = 0; this.t30_num = 0; this.t30_w = 0; this.t30_wc = 0;
       }
+
     });
 
     this.api_menu7.showSetting_room().subscribe(data => {        /* แสดงจำนวนห้องตามที่ตั้งค่า */
@@ -379,38 +384,74 @@ export class Report4T1Component implements OnInit {
     }
   }
 
-  filter_age(a1) {
-    this.datas = [];
+  filter_litmit_age(a1) {
+    this.datass = [];
+    // this.data_import = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
     console.log(a1.value);
     if (a1.value === 'ทั้งหมด') {
-      this.datas = this.detailFilter;
+      this.datass = this.detailFilter;
+      // this.data_import = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight_c);
+      });
     } else {
       this.detailFilter.forEach( a => {
-        if (a.age === a1.value) {
-          this.datas.push(a);
+        if (a.day_store === a1.value) {
+          this.datass.push(a);
+          // this.data_import.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight_c);
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
 
   filter_grade(g1) {
+    this.datass = [];
     this.datas = [];
+    this.data_import = [];
     this.count = 0;
+    this.count_weight = 0;
+    this.count_weight_c = 0;
+    this.countReport = 0;
     console.log(g1.value);
     if (g1.value === 'ทั้งหมด') {
+      this.datass = this.detailFilter;
       this.datas = this.detailFilter;
       this.count = this.detailFilter.length;
+      this.data_import = this.detailFilter;
+      this.detailFilter.forEach( a => {
+        this.count_weight += Number(a.weight);
+        this.count_weight_c += Number(a.weight_c);
+        this.countReport++;
+      });
     } else {
       this.detailFilter.forEach( a => {
         if (a.grade === g1.value) {
+          this.datass.push(a);
           this.datas.push(a);
+          this.data_import.push(a);
           this.count ++;
+          this.count_weight += Number(a.weight);
+          this.count_weight_c += Number(a.weight_c);
+          this.countReport++;
         }
       });
     }
+    document.getElementById('w1').innerHTML =
+    this.count_weight.toFixed(2);
+    document.getElementById('w2').innerHTML =
+    this.count_weight_c.toFixed(2);
   }
 
   filter_room(f1) {
@@ -479,22 +520,22 @@ export class Report4T1Component implements OnInit {
     }
   }
 
-  filter_litmit_age(s4) {
-    this.datas = [];
-    this.count = 0;
-    console.log(s4.value);
-    if (s4.value === 'ทั้งหมด') {
-      this.datas = this.detailFilter;
-      this.count = this.detailFilter.length;
-    } else {
-      this.detailFilter.forEach( a => {
-        if (a.age === s4.value) {
-          this.datas.push(a);
-          this.count ++;
-        }
-      });
-    }
-  }
+  // filter_litmit_age(s4) {
+  //   this.datas = [];
+  //   this.count = 0;
+  //   console.log(s4.value);
+  //   if (s4.value === 'ทั้งหมด') {
+  //     this.datas = this.detailFilter;
+  //     this.count = this.detailFilter.length;
+  //   } else {
+  //     this.detailFilter.forEach( a => {
+  //       if (a.age === s4.value) {
+  //         this.datas.push(a);
+  //         this.count ++;
+  //       }
+  //     });
+  //   }
+  // }
   report_c_nodate() {
     this.start_at = '-';
     this.end_at = '-';
@@ -753,7 +794,7 @@ export class Report4T1Component implements OnInit {
         {text: 'ข้อมูลระหว่างวันที่ ' + this.start_at + ' ถึงวันที่ ' + this.end_at + ' '},
         {text: '\n'},
 
-        this.table(this.data_import, ['count', 'type', 'barcode', 'weight', 'weight_c',
+        this.table(this.data_import, ['counts', 'type', 'barcode', 'weight', 'weight_c',
          'grade', 'room', 'class', 'bucket', 'status', 'note']),
 
         {text: 'จำนวนซากเนื้อโค ' + this.countReport + ' รายการ', alignment: 'right', margin: [0, 5, 0, 0]},

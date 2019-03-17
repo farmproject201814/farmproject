@@ -98,9 +98,12 @@ export class PageComponent implements OnInit {
       const value10 = Object.keys(d10);
       console.log(d10);
       for (let i = 0; i < value10.length ; i++) {
-        console.log('aaaaaaa');
-        console.log(value10.length);
-        this.count10 += Object.keys(d10[value10[i]]).length;
+        if(d10[i]!=null){
+          console.log('aaaaaaa');
+          console.log(value10);
+          this.count10 += Object.keys(d10[value10[i]]).length;
+        }
+    
       }
     });
 

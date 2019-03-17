@@ -36,6 +36,7 @@ export class NotificationT5Component implements OnInit {
       const a = Object.keys(data);
       console.log(a);
       for ( let i = 0 ; i < a.length ; i++) {
+        if(data[i] != null){
         const e = Object.keys(data[a[i]]).map(k => data[a[i]][k]);
         console.log(e);
         e.forEach(b => {
@@ -191,9 +192,11 @@ export class NotificationT5Component implements OnInit {
             this.w.w30.toFixed(2);
           }
         });
+        
         e[0].num = a[i];
         e[0].length = e.length;
         this.datas.push(e[0]);
+      }
       }
     });
 

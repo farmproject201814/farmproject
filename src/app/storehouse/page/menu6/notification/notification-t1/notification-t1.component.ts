@@ -40,6 +40,7 @@ export class NotificationT1Component implements OnInit {
    }
 
   ngOnInit() {
+    this.datass = []
     this.api.showNotificationT1().subscribe(data => {
       const let1 = Object.keys(data).map(a => data[a]);
       console.log(data);
@@ -154,24 +155,33 @@ export class NotificationT1Component implements OnInit {
   }
 
   onDelete(key) {
-    swal({
-      title: 'ยืนยัน!',
-      text: 'ต้องการลบรายการนี้หริอไม่?',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'ยืนยัน',
-      cancelButtonText: 'กลับ'
-    }).then((result) => {
-      if (result.value) {
-        // this.api.removeNotificationT1(key).subscribe();
-        this.ngOnInit();
-        swal({
-          title: 'สำเร็จ!',
-          text: 'ลบรายการสำเร็จ',
-          type: 'success',
-          confirmButtonText: 'ปิด'
-        });
-      }
+   console.log(this.datass);
+   
+    this.datass[0].data.forEach(element => {
+      console.log(element.key);
+      this.api.removeNotificationT1(element.key).subscribe();
     });
+    setTimeout(()=>{
+      swal({
+        title: 'ยืนยัน!',
+        text: 'ต้องการลบรายการนี้หริอไม่?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ยืนยัน',
+        cancelButtonText: 'กลับ'
+      }).then((result) => {
+        if (result.value) {
+        
+          this.ngOnInit();
+          swal({
+            title: 'สำเร็จ!',
+            text: 'ลบรายการสำเร็จ',
+            type: 'success',
+            confirmButtonText: 'ปิด'
+          });
+        }
+      });
+    },1000)
+    
   }
 }
