@@ -68,7 +68,7 @@ export class AddcattleComponent implements OnInit {
     d.value.datekill = current;
     d.value.datedry = current;
     const day = new Date();
-    day.setDate(day.getDate() + 7);
+    day.setDate(day.getDate() + 7); //ต้องเปลี่ยนไปเป็นตัวแปรวัน ที่เลือกจากหน้าตั้งค่า
     console.log(day);
     d.value.dateready = day;
     console.log(d.value);

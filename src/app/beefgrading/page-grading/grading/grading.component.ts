@@ -159,23 +159,28 @@ export class GradingComponent implements OnInit {
     datecuted: '',
     grade_sys: ''
   };
-  event; count = 0; private basePath = '/uploads';
+  event;
+  // count = 0;
+  private basePath = '/uploads';
 
   classes = this.theme.addStyleSheet(styles);
-  croppedImage = [];
+  // croppedImage = [];
+  croppedImage?: string;
 
   result: string; scale: number;
   myConfig: ImgCropperConfig = {
     width: 250, // Default `250`
     height: 250, // Default `200`,
     output: {
-      width: 200,
-      height: 200
+      width: 425,
+      height: 425
     }
   };
   name_pic; originalPic; LinkOrginal: any; LinkCrop = [];
 
-  serverData: JSON; employeeData: JSON; employee: JSON; grade: JSON; imageblob: JSON;
+  serverData: JSON; employeeData: JSON; employee: JSON;  imageblob: JSON;
+  grade: JSON;
+  // gradetest = '5';
 
   decodepic: any;
   files: any;
@@ -206,16 +211,18 @@ export class GradingComponent implements OnInit {
 
   test() {
     console.log('asdasd');
-    this.croppedImage = [];
+    // this.croppedImage = [];
     this.count = 0;
     this.picName = '';
   }
 
   onCropped(e: ImgCropperEvent) {
+    this.croppedImage = e.dataURL;
+    console.log('cropped img: ', e);
 
-    this.croppedImage[this.count] = e.dataURL;
-    this.count++;
-    this.picName = e.dataURL;
+    // this.croppedImage[this.count] = e.dataURL;
+    // this.count++;
+    // this.picName = e.dataURL;
 
   }
   onloaded(e: ImgCropperEvent) {
@@ -271,20 +278,50 @@ export class GradingComponent implements OnInit {
 
 
   processimage() {
-    // this.upload.pushImageByBase64(this.name_pic, this.originalPic, 'Original');
-    // for (let i = 0; i < this.croppedImage.length; i++) {
-    //   this.upload.pushImageByBase64(this.name_pic, this.croppedImage[i], 'crop' + i);
-    // }
+    this.upload.pushImageByBase64(this.name_pic, this.croppedImage, 'crop');
+    const storageRef = firebase.storage().ref();
+    let picCrop1: String;
 
     swal({
       title: 'กำลังประมวณผลเกรด!',
-      timer: 1000,
+      timer: 12000,
       onOpen: () => {
         swal.showLoading();
+        setTimeout(() => {
+          storageRef
+          .child('uploads/' + this.name_pic + '/crop')
+          .getDownloadURL()
+          .then(datas => {
+            picCrop1 = datas;
+          });
+          setTimeout(() => {
+            const data = {
+              piccrop: picCrop1,
+            };
+            this.api.editData(this.key, data).subscribe(d => {
+              console.log(d);
+              if (d.status === 'OK') {
+                storageRef
+                .child('uploads/' + this.name_pic + '/crop')
+                .getDownloadURL()
+                .then(datas => {
+                  this.api.getDataByKey(this.key).subscribe(data1 => {
+                    const value = Object.keys(data1).map(key => data1[key]);
+                    // value[0].picture = datas;
+                    value[0].piccrop = datas;
+                  });
+                });
+              }
+            });
+          }, 5000);
+        }, 5000);
+
         // this.apicalgrade.createContact(this.datatest).subscribe((response) => {
         //   console.log(response);
         // });
         // this.http.post('http://127.0.0.1:8000/calgrade/', this.datatest).pipe(map(res => res.json()));
+
+        // ตัวยิง APi ออกและรับค่ากลับ ------------------------------------------------------------------------<<<<<<<<<<<<<<<<<<<
         this.httpClient.get('http://127.0.0.1:8000/calgrade/' + 'get').subscribe(datas => {
         this.grade = datas as JSON;
         console.log('param back :', this.grade);
@@ -304,75 +341,66 @@ export class GradingComponent implements OnInit {
 
   greaded(_data: NgForm) {
     this.upload.pushImageByBase64(this.name_pic, this.originalPic, 'Original');
-    for (let i = 0; i < this.croppedImage.length; i++) {
-      this.upload.pushImageByBase64(this.name_pic, this.croppedImage[i], 'crop' + i);
-    }
+    // this.upload.pushImageByBase64(this.name_pic, this.croppedImage, 'crop');
 
     const storageRef = firebase.storage().ref();
     swal({
       title: 'กำลังบันทึกผลเกรด!',
-      timer: 10000,
+      timer: 15000,
       onOpen: () => {
         swal.showLoading();
         setTimeout(() => {
             let picture: String;
-            let picCrop1: String;
-            let picCrop2: String;
-            let picCrop3: String;
-            let picCrop4: String;
-            let picCrop5: String;
+            // let picCrop1: String;
+            // let picCrop2: String;
+            // let picCrop3: String;
+            // let picCrop4: String;
+            // let picCrop5: String;
             storageRef
               .child('uploads/' + this.name_pic + '/Original')
               .getDownloadURL()
               .then(datas => {
                picture = datas;
               });
-              storageRef
-              .child('uploads/' + this.name_pic + ('/crop0'))
-              .getDownloadURL()
-              .then(datas => {
-                  picCrop1 = datas;
-              });
-              storageRef
-              .child('uploads/' + this.name_pic + ('/crop1'))
-              .getDownloadURL()
-              .then(datas => {
-                picCrop2 = datas;
-              });
-              storageRef
-              .child('uploads/' + this.name_pic + ('/crop2'))
-              .getDownloadURL()
-              .then(datas => {
-                picCrop3 = datas;
-              });
-              storageRef
-              .child('uploads/' + this.name_pic + ('/crop3'))
-              .getDownloadURL()
-              .then(datas => {
-                picCrop4 = datas;
-              });
-              storageRef
-              .child('uploads/' + this.name_pic + ('/crop4'))
-              .getDownloadURL()
-              .then(datas => {
-                picCrop5 = datas;
-                //     this.api
-                // .editData(this.key, {
-                //   status: this.grade,
-                //   grade_sys: this.grade,
-                //   datecuted: String(this.datecuted),
-                //   picCrop5: datas,
-                // })
-                // .subscribe();
-              });
+              // storageRef
+              // .child('uploads/' + this.name_pic + ('/crop0'))
+              // .getDownloadURL()
+              // .then(datas => {
+              //     picCrop1 = datas;
+              // });
+              // storageRef
+              // .child('uploads/' + this.name_pic + ('/crop1'))
+              // .getDownloadURL()
+              // .then(datas => {
+              //   picCrop2 = datas;
+              // });
+              // storageRef
+              // .child('uploads/' + this.name_pic + ('/crop2'))
+              // .getDownloadURL()
+              // .then(datas => {
+              //   picCrop3 = datas;
+              // });
+              // storageRef
+              // .child('uploads/' + this.name_pic + ('/crop3'))
+              // .getDownloadURL()
+              // .then(datas => {
+              //   picCrop4 = datas;
+              // });
+              // storageRef
+              // .child('uploads/' + this.name_pic + ('/crop4'))
+              // .getDownloadURL()
+              // .then(datas => {
+              //   picCrop5 = datas;
+              // });
             setTimeout(() => {
               const dataSave = {picture: picture,
-                picCrop1: picCrop1,
-                picCrop2: picCrop2,
-                picCrop3: picCrop3,
-                picCrop4: picCrop4,
-                picCrop5: picCrop5,
-                status: this.grade,
+                // picCrop1: picCrop1,
+                // picCrop2: picCrop2,
+                // picCrop3: picCrop3,
+                // picCrop4: picCrop4,
+                // picCrop5: picCrop5,
+                status: 5,
+                // status: this.grade,
                 grade_sys: this.grade,
                 datecuted: String(this.datecuted),
               };
@@ -405,7 +433,7 @@ export class GradingComponent implements OnInit {
                 }
               });
           }, 5000);
-        }, 5000);
+        }, 7000);
       },
     }).then(result => {
       if (
